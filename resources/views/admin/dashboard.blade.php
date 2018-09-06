@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-md-3 col-sm-6">
         <div class="white-box">
-            <div class="r-icon-stats"> <i class="ti-user bg-megna"></i>
+            <div class="r-icon-stats"> <i class="fa fa-user bg-megna"></i>
                 <div class="bodystate">
                     <h4>370</h4> <span class="text-muted">New Patient</span> </div>
             </div>

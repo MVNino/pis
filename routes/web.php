@@ -23,4 +23,28 @@ Route::group(
 		Route::get('dashboard', function(){
 			return view('admin.dashboard');
 		});
+		Route::group([
+			'prefix' => 'maintenance'
+		], function(){
+			# MAINTENANCE
+			Route::namespace('Maintenance')->group(function () {
+				# PAT :)
+				// About 
+				// Banner 
+				// Clinic 
+				// Company
+				// Contact
+
+				// Features
+				Route::get('features', 'FeatureController@viewFeatures');
+				// Feedback
+				Route::get('feedback', 'FeedbackController@viewFeedback');	
+				// FAQ's
+				Route::get('faqs', 'FAQController@viewFAQs');
+				// News
+				Route::get('news', 'NewsController@viewNews');
+				// Services
+				Route::get('services', 'ServiceController@viewServices');
+			});
+		});
 });
