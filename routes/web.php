@@ -28,13 +28,16 @@ Route::group(
 		], function(){
 			# MAINTENANCE
 			Route::namespace('Maintenance')->group(function () {
-				# PAT :)
 				// About 
+				Route::get('about', 'AboutController@viewAbout');
 				// Banner 
+				Route::get('banner', 'BannerController@viewBanner');
 				// Clinic 
+				Route::get('clinic', 'ClinicController@viewClinic');
 				// Company
+				Route::get('company', 'CompanyController@viewCompany');
 				// Contact
-
+				Route::get('contact', 'ContactController@viewContact');
 				// Features
 				Route::get('features', 'FeatureController@viewFeatures');
 				// Feedback
