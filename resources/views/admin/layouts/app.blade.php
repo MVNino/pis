@@ -59,6 +59,7 @@
     <!--Style Switcher -->
     <script src="{{ asset('elite/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
 
+    @yield('pg-specific-js')
 </body>
 
 </html>
