@@ -83,12 +83,11 @@
                             <li> <a href="clinic.html">Clinic</a> </li>
                             <li> <a href="company.html">Company</a> </li>
                             <li> <a href="contact.html">Contact</a> </li>
-                            <li> <a href="features.html">Features</a> </li>
-                            <li> <a href="feedback.html">Feedback</a> </li>
-                            <li> <a href="faqs.html">FAQs</a> </li>
-                            <li> <a href="news.html">News</a> </li>
-                            <li> <a href="other-services.html">Other Services</a> </li>
-                            <li> <a href="specialty-services.html">Speciality Services</a> </li>
+                            <li> <a href="{{ route('maintenance.features') }}">Features</a> </li>
+                            <li> <a href="{{ route('maintenance.feedback') }}">Feedback</a> </li>
+                            <li> <a href="{{ route('maintenance.faqs') }}">FAQs</a> </li>
+                            <li> <a href="{{ route('maintenance.news') }}">News</a> </li>
+                            <li> <a href="{{ route('maintenance.services') }}">Services</a> </li>
                         </ul>
                     </li>
                 </ul>
