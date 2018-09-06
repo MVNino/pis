@@ -9,6 +9,6 @@ class AboutController extends Controller
 {
     public function viewAbout()
     {
-        //return view('maintenance.index');
+        return view('maintenance.about');
     }
 }

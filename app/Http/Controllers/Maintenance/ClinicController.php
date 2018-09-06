@@ -9,6 +9,6 @@ class ClinicController extends Controller
 {
     public function viewClinic()
     {
-        
+        return view('maintenance.clinic');
     }
 }

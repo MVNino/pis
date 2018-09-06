@@ -29,15 +29,15 @@ Route::group(
 			# MAINTENANCE
 			Route::namespace('Maintenance')->group(function () {
 				// About 
-				Route::get('about', 'AboutController@viewAbout');
+				Route::get('about', 'AboutController@viewAbout')->name('maintenance.about');
 				// Banner 
-				Route::get('banner', 'BannerController@viewBanner');
+				Route::get('banner', 'BannerController@viewBanner')->name('maintenance.banner');
 				// Clinic 
-				Route::get('clinic', 'ClinicController@viewClinic');
+				Route::get('clinic', 'ClinicController@viewClinic')->name('maintenance.clinic');
 				// Company
-				Route::get('company', 'CompanyController@viewCompany');
+				Route::get('company', 'CompanyController@viewCompany')->name('maintenance.company');
 				// Contact
-				Route::get('contact', 'ContactController@viewContact');
+				Route::get('contact', 'ContactController@viewContact')->name('maintenance.contact');
 				// Features
 				Route::get('features', 'FeatureController@viewFeatures')->name('maintenance.features');
 				// Feedback
