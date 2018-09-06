@@ -6,5 +6,5 @@
 
 
 @section('content')
-	FEATURES TOH!
+	SERVICES!
 @endsection
