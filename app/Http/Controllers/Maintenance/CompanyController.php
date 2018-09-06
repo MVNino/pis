@@ -9,6 +9,6 @@ class CompanyController extends Controller
 {
     public function viewCompany()
     {
-        return view('maintenance.company');
+        return view('admin.maintenance.company');
     }
 }

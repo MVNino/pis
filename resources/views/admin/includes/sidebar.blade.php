@@ -78,11 +78,11 @@
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i>
                             <span class="hide-menu">Maintenance<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="about.html">About</a></li>
-                            <li> <a href="banner.html">Banner</a> </li>
-                            <li> <a href="clinic.html">Clinic</a> </li>
-                            <li> <a href="company.html">Company</a> </li>
-                            <li> <a href="contact.html">Contact</a> </li>
+                            <li> <a href="{{ route('maintenance.about') }}">About</a></li>
+                            <li> <a href="{{ route('maintenance.banner') }}">Banner</a> </li>
+                            <li> <a href="{{ route('maintenance.clinic') }}">Clinic</a> </li>
+                            <li> <a href="{{ route('maintenance.company') }}">Company</a> </li>
+                            <li> <a href="{{ route('maintenance.contact') }}">Contact</a> </li>
                             <li> <a href="{{ route('maintenance.features') }}">Features</a> </li>
                             <li> <a href="{{ route('maintenance.feedback') }}">Feedback</a> </li>
                             <li> <a href="{{ route('maintenance.faqs') }}">FAQs</a> </li>

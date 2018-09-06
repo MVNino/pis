@@ -9,6 +9,6 @@ class BannerController extends Controller
 {
     public function viewBanner()
     {
-        return view('maintenance.banner');
+        return view('admin.maintenance.banner');
     }
 }

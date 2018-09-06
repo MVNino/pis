@@ -9,6 +9,6 @@ class ContactController extends Controller
 {
     public function viewContact()
     {
-        return view('maintenance.contact');
+        return view('admin.maintenance.contact');
     }
 }
