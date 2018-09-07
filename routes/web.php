@@ -31,28 +31,16 @@ Route::group(
 		], function(){
 			# MAINTENANCE
 			Route::namespace('Maintenance')->group(function () {
-				# PAT :)
-				// About
-				route::get('about', function(){
-					return view('admin.maintenance.about');
-				}); 
-				// Banner
-				route::get('banner', function(){
-					return view('admin.maintenance.banner');
-				});
-				// Clinic
-				route::get('clinic', function(){
-					return view('admin.maintenance.clinic');
-				});
+				// About 
+				Route::get('about', 'AboutController@viewAbout')->name('maintenance.about');
+				// Banner 
+				Route::get('banner', 'BannerController@viewBanner')->name('maintenance.banner');
+				// Clinic 
+				Route::get('clinic', 'ClinicController@viewClinic')->name('maintenance.clinic');
 				// Company
-				route::get('company', function(){
-					return view('admin.maintenance.company');
-				});
+				Route::get('company', 'CompanyController@viewCompany')->name('maintenance.company');
 				// Contact
-				route::get('contact', function(){
-					return view('admin.maintenance.contact');
-				});
-
+				Route::get('contact', 'ContactController@viewContact')->name('maintenance.contact');
 				// Features
 				Route::get('features', 'FeatureController@viewFeatures')->name('maintenance.features');
 				// Feedback
