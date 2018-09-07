@@ -46,6 +46,7 @@ Route::group(
 				Route::post('contact', 'ContactController@addContact');
 				// Features
 				Route::get('features', 'FeatureController@viewFeatures')->name('maintenance.features');
+				Route::post('features', 'FeatureController@storeFeature');
 				// Feedback
 				Route::get('feedback', 'FeedbackController@viewFeedback')->name('maintenance.feedback');	
 				// FAQ's
@@ -53,6 +54,7 @@ Route::group(
 				Route::post('faqs', 'FAQController@addFAQs');
 				// News
 				Route::get('news', 'NewsController@viewNews')->name('maintenance.news');
+				Route::post('news', 'NewsController@addNews');
 				// Services
 				Route::get('services', 'ServiceController@viewServices')->name('maintenance.services');
 			});
