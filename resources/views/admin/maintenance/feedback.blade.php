@@ -6,5 +6,5 @@
 
 
 @section('content')
-	FEEDBACK TOH!
+	FEEDBACK TOH!! EKIS NA HAHAHAHHAHAHAHA LEGIT
 @endsection
