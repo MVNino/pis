@@ -1,61 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Home | Hospital </title>
-   <!--  <link rel="icon" href="img/favicon.png" type="image/x-icon"/> -->
-    <!-- google fonts lato -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <!-- google fonts pt-Sans -->
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700" rel="stylesheet">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="{{ asset('medicre/css/bootstrap.min.css') }}">
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="{{ asset('medicre/css/font-awesome.min.css') }}">
-    <!-- animate css -->
-    <link rel="stylesheet" href="{{ asset('medicre/css/animate.min.css') }}">
-    <!-- slider custom effects -->
-    <link rel="stylesheet" href="{{ asset('medicre/css/myslider.css') }}">
-    <!-- magnific-popup -->
-    <link rel="stylesheet" href="{{ asset('medicre/css/magnific-popup.css') }}">
-    <!-- slick css -->
-    <link rel="stylesheet" href="{{ asset('medicre/css/slick.css') }}">
-    <!-- reset css -->
-    <link rel="stylesheet" href="{{ asset('medicre/css/reset.css') }}">
-    <!-- style css -->
-    <link rel="stylesheet" href="{{ asset('medicre/style.css') }}">
-    <!-- responsive css -->
-    <link rel="stylesheet" href="{{ asset('medicre/css/responsive.css') }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @include('guest.includes.head-content')
 </head>
 
 <body class="js">
    <div id="preloader"></div>
     <section class="home-area v3">
         <!-- navbare area -->
-        <nav class="navbar navbar-area">
-            <div class="container">
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <div class="col-sm-3 col-md-4">
-                        <div class="site-logo">
-                        <img src="{{ asset('medicre/img/logo.png') }}" style="padding-top: 3px; padding-bottom: 3px;">
-                    </div>
-                </div>
-                    <ul class="nav menu navbar-right navbar-nav">
-                        <li class="current-menu-item"><a href="index.html"> Home </a></li>
-                        <li><a href="about.html"> About </a></li>
-                        <li><a href="Services.html"> Services </a></li>
-                        <li><a href="News.html"> News </a></li>
-                        <li><a href="Contact.html"> Contact </a></li>
-                        <li><a href="faqs.html" title="FAQs"> <i class="fa fa-question-circle" style="font-size: 20px;"> </i> </a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @include('guest.includes.navbar')
         <!-- end of navbare area -->
         @yield('content')
     <footer class="footer-area section-padding">
@@ -167,7 +120,7 @@
     <script src="{{ asset('medicre/plugins/bower_components/owl.carousel/owl.custom.js') }}"></script>
     <!--Style Switcher -->
     <script src="{{ asset('medicre/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
-
+    @yield('pg-specific-js')
 </body>
 
 </html>
