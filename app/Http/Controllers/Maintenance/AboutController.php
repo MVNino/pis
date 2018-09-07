@@ -12,24 +12,35 @@ class AboutController extends Controller
 {
     public function viewAbout()
     {
-        //$about = DB::select('SELECT * FROM about_table');
         $about = About::all();
-
-        return view('admin.maintenance.about', ['about' => $about]);
+        if ($about->count() > 0)
+        {
+    		$aboutMaxId = About::max('about_id');
+    		$about = About::findOrFail($aboutMaxId);
+    		return view('admin.maintenance.about', ['about' => $about]);
+        }
+        else
+        {
+	        return view('admin.maintenance.about');
+    	}
     }
 
-    public function updateAbout(Request $request)
+    public function addAbout(Request $request)
     {
+        $this->validate($request, [
+    		'aboutTitle' => 'required|string',
+            'aboutDescription' => 'required|string'
+        ]);
+
         try
         {
-            //Create Intake
-            $about = new Proof;
+            $about = new About;
             $about->about_title = $request->input('aboutTitle');
             $about->about_desc = $request->input('aboutDescription');
-            $about->about_img = $request->input('aboutImage');
+
             $about->save();
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'About Details Updated!');
         }
         catch (\Exception $e)
         {

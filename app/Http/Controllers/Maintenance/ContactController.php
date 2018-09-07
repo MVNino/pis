@@ -4,6 +4,7 @@ namespace App\Http\Controllers\MAINTENANCE;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\ContactUs;
 use DB;
 
@@ -12,11 +13,14 @@ class ContactController extends Controller
     public function viewContact()
     {
     	$contacts = ContactUs::all();
-    	if ($contacts->count() > 0) {
+		if ($contacts->count() > 0)
+		{
     		$contactMaxId = ContactUs::max('contact_us_id');
     		$contact = ContactUs::findOrFail($contactMaxId);
     		return view('admin.maintenance.contact', ['contact' => $contact]);
-    	} else {
+		}
+		else
+		{
 	        return view('admin.maintenance.contact');
     	}
     }

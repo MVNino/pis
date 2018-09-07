@@ -18,6 +18,7 @@
 		<div class="col-md-12">
 			<div class="white-box">
 				<h3 class="box-title">FAQs</h3>
+				{!! Form::open(['action' => 'Maintenance\FAQController@addFAQs', 'method' => 'POST']) !!}
 				<form class="form-material form-horizontal">
 					<div class="form-group">
 						<label class="col-md-12">Question</label>

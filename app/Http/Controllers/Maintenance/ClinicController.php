@@ -12,7 +12,6 @@ class ClinicController extends Controller
 {
     public function viewClinic()
     {
-        //$client = DB::select('SELECT * FROM about_table');
         $clinic = Clinic::all();
         if ($clinic->count() > 0)
         {
@@ -28,6 +27,14 @@ class ClinicController extends Controller
 
     public function addClinic(Request $request)
     {
+        $this->validate($request, [
+    		'contact' => 'required|string',
+            'location' => 'required|string',
+            'hours' => 'required|string',
+            'days' => 'required|string',
+            'email' => 'required|string|email'
+        ]);
+        
         try
         {
             $clinic = new Clinic;

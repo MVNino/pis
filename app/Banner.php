@@ -9,5 +9,7 @@ class Banner extends Model
     // Table
 	protected $table = 'banner_table';
     //Primary Key
-	protected $primaryKey = 'banner_id';
+    protected $primaryKey = 'banner_id';
+    // timestamp
+	public $timestamps = false;
 }

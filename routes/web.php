@@ -17,6 +17,12 @@
 
 Route::get('/', 'GuestController@viewIndex');
 Route::get('/about', 'GuestController@viewAbout');
+Route::get('/services','GuestController@viewServices');
+Route::get('/news','GuestController@viewNews');
+Route::get('/contact','GuestController@viewContact');
+Route::get('faqs','GuestController@viewFaqs');
+
+
 
 Route::group(
 	[
@@ -41,17 +47,21 @@ Route::group(
 				Route::post('clinic', 'ClinicController@addClinic');
 				// Company
 				Route::get('company', 'CompanyController@viewCompany')->name('maintenance.company');
+				Route::post('company', 'CompanyController@addCompany');
 				// Contact
 				Route::get('contact', 'ContactController@viewContact')->name('maintenance.contact');
 				Route::post('contact', 'ContactController@addContact');
 				// Features
 				Route::get('features', 'FeatureController@viewFeatures')->name('maintenance.features');
+				Route::post('features', 'FeatureController@storeFeature');
 				// Feedback
 				Route::get('feedback', 'FeedbackController@viewFeedback')->name('maintenance.feedback');	
 				// FAQ's
 				Route::get('faqs', 'FAQController@viewFAQs')->name('maintenance.faqs');
+				Route::post('faqs', 'FAQController@addFAQs');
 				// News
 				Route::get('news', 'NewsController@viewNews')->name('maintenance.news');
+				Route::post('news', 'NewsController@addNews');
 				// Services
 				Route::get('services', 'ServiceController@viewServices')->name('maintenance.services');
 			});
