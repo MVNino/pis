@@ -48,6 +48,7 @@ Route::group(
 				Route::get('feedback', 'FeedbackController@viewFeedback')->name('maintenance.feedback');	
 				// FAQ's
 				Route::get('faqs', 'FAQController@viewFAQs')->name('maintenance.faqs');
+				Route::post('faqs', 'FAQController@addFAQs');
 				// News
 				Route::get('news', 'NewsController@viewNews')->name('maintenance.news');
 				// Services
