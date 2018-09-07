@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Feature extends Model
 {
     // Table
-	protected $table = 'contact_us_table';
+	protected $table = 'features';
     //Primary Key
-	protected $primaryKey = 'contact_us_id';
+	protected $primaryKey = 'features_id';
 	// timestamp
 	public $timestamps = false;
 }

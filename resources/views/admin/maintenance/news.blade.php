@@ -19,7 +19,7 @@
 		<div class="col-md-12">
 			<div class="white-box">
 				<h3 class="box-title">News</h3>
-				<form class="form-material form-horizontal" method="POST">
+				{!! Form::open(['action' => 'Maintenance\NewsController@addNews', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 					<div class="form-group">
 						<label class="col-md-12">Title</label>
 						<div class="col-md-12">
@@ -36,7 +36,8 @@
 						<div class="col-sm-12">
 							<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 								<div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-								<input type="file" name="..."> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> </div>
+								<input type="file" name="fileNewsImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+							</div>
 						</div>
 					</div>
 					<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
