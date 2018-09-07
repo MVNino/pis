@@ -15,7 +15,7 @@ class AboutController extends Controller
         //$about = DB::select('SELECT * FROM about_table');
         $about = About::all();
 
-        return view('admin.maintenance.about', ['about'=>$about]);
+        return view('admin.maintenance.about', ['about' => $about]);
     }
 
     public function storeAbout(Request $request)
