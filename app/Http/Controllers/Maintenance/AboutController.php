@@ -18,7 +18,7 @@ class AboutController extends Controller
         return view('admin.maintenance.about', ['about' => $about]);
     }
 
-    public function storeAbout(Request $request)
+    public function updateAbout(Request $request)
     {
         try
         {
