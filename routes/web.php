@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'GuestController@viewIndex');
+Route::get('/about', 'GuestController@viewAbout');
 
 Route::group(
 	[
