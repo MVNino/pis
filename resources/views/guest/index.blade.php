@@ -191,3 +191,9 @@
     </section>
     <!-- end of latest news event section -->
 @endsection
+
+@section('pg-specific-js')
+<script>
+$("#navlink-index").addClass("current-menu-item");
+</script>
+@endsection

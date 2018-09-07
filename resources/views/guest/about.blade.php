@@ -152,7 +152,7 @@
                         </div>
                         <div class="client">
                             <div class="clien-photo">
-                                <img src="img/client-2.png" alt="Jigsawlab">
+                                <img src="{{ asset('medicre/img/client-2.png') }}" alt="Jigsawlab">
                             </div>
                             <div class="client-name">
                                 <h4>Samuel Rockafeller</h4>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="client">
                             <div class="clien-photo">
-                                <img src="img/client-1.png" alt="Jigsawlab">
+                                <img src="{{ asset('medicre/img/client-1.png') }}" alt="Jigsawlab">
                             </div>
                             <div class="client-name">
                                 <h4>Michael Brahm</h4>
@@ -190,4 +190,10 @@
         </div>
     </section>
     <!-- end of client say section -->
+@endsection
+
+@section('pg-specific-js')
+<script>
+$("#navlink-about").addClass("current-menu-item");
+</script>
 @endsection
