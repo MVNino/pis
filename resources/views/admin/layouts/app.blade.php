@@ -22,6 +22,7 @@
                     @yield('breadcrumb')
                     <!-- /.col-lg-12 -->
                 </div>
+                @include('admin.includes.messages')
                 @yield('content')
                 <!-- .right-sidebar -->
                 @include('admin.includes.right-sidebar')

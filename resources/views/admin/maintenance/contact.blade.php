@@ -13,32 +13,35 @@
     </div>
 @endsection
 
-
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
                 <h3 class="box-title">Contact Us</h3>
-                <form class="form-material form-horizontal" method ="POST">
+                {!! Form::open(['action' => 'Maintenance\ContactController@addContact', 'method' => 'POST']) !!}
                     <div class="form-group">
                         <label class="col-md-12">Name</span></label>
                         <div class="col-md-12">
-                            <input type="text" name="name" class="form-control"> </div>
+                            <input type="text" name="name" class="form-control" value="{{ $contact->contact_name }}" />
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Email Address</span></label>
                         <div class="col-md-12">
-                            <input type="text" name="email" class="form-control"> </div>
+                            <input type="text" name="email" class="form-control" value="{{ $contact->contact_email }}" /> 
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Phone</span></label>
                         <div class="col-md-12">
-                            <input type="text" name="phone" class="form-control"> </div>
+                            <input type="text" name="phone" class="form-control" value="{{ $contact->contact_phone }}" /> 
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Inquiry</span></label>
                         <div class="col-md-12">
-                            <input type="text" name="inquiry" class="form-control"> </div>
+                            <input type="text" name="inquiry" class="form-control" value="{{ $contact->contact_inquiry }}" /> 
+                        </div>
                     </div>
                     
                     <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>

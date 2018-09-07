@@ -41,6 +41,7 @@ Route::group(
 				Route::get('company', 'CompanyController@viewCompany')->name('maintenance.company');
 				// Contact
 				Route::get('contact', 'ContactController@viewContact')->name('maintenance.contact');
+				Route::post('contact', 'ContactController@addContact');
 				// Features
 				Route::get('features', 'FeatureController@viewFeatures')->name('maintenance.features');
 				// Feedback
