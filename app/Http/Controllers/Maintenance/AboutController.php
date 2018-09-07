@@ -29,7 +29,8 @@ class AboutController extends Controller
     {
         $this->validate($request, [
     		'aboutTitle' => 'required|string',
-            'aboutDescription' => 'required|string'
+            'aboutDescription' => 'required|string',
+            'aboutImage' => 'image|nullable|max:3000'
         ]);
 
         try
@@ -37,10 +38,24 @@ class AboutController extends Controller
             $about = new About;
             $about->about_title = $request->input('aboutTitle');
             $about->about_desc = $request->input('aboutDescription');
+            // Handle file upload for news image
+            if($request->hasFile('aboutImage')){
+                // Get the file's extension
+                $fileExtension = $request->file('logo')
+                    ->getClientOriginalExtension();
+                // Create a filename to store(database)
+                $aboutImgNameToStore = $request->title
+                    .'_'.'aboutImage'.'_'.time().'.'.$fileExtension;
+                // Upload file to system
+                $path = $request->file('aboutImage')
+                    ->storeAs('public/images/about', $aboutImgNameToStore);
+                $about->about_image = $aboutImgNameToStore;
+            }
 
-            $about->save();
-
-            return redirect()->back()->with('success', 'About Details Updated!');
+            if ($about->save())
+            {
+                return redirect()->back()->with('success', 'About Details Updated!');
+            }
         }
         catch (\Exception $e)
         {

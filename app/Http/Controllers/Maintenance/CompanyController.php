@@ -31,7 +31,7 @@ class CompanyController extends Controller
         $this->validate($request, [
     		'name' => 'required|string',
             'description' => 'required|string',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'logo' => 'image|nullable|max:3000'
         ]);
 
         try
@@ -39,11 +39,25 @@ class CompanyController extends Controller
             $company = new Company;
             $company->company_name = $request->input('name');
             $company->company_desc = $request->input('description');
-            $company->clinic_clinic_logo = $request->input('logo');
+            // Handle file upload for news image
+            if($request->hasFile('logo')){
+                // Get the file's extension
+                $fileExtension = $request->file('logo')
+                    ->getClientOriginalExtension();
+                // Create a filename to store(database)
+                $logoImgNameToStore = $request->title
+                    .'_'.'logo'.'_'.time().'.'.$fileExtension;
+                // Upload file to system
+                $path = $request->file('logo')
+                    ->storeAs('public/images/logo', $logoImgNameToStore);
+                $company->company_clinic_logo = $logoImgNameToStore;
+            }
 
-            $company->save();
+            if ($company->save())
+            {
+                return redirect()->back()->with('success', 'Company Details Updated!');
+            }
 
-            return redirect()->back()->with('success', 'Company Details Updated!');
         }
         catch (\Exception $e)
         {
