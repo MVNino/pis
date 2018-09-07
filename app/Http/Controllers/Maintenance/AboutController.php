@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use DB;
+use App\About;
 
 class AboutController extends Controller
 {
     public function viewAbout()
     {
-        $about = DB::select('SELECT * FROM about_table');
+        //$about = DB::select('SELECT * FROM about_table');
+        $about = About::all();
 
         return view('admin.maintenance.about', ['about'=>$about]);
     }
