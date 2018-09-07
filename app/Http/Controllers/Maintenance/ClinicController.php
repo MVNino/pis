@@ -14,18 +14,23 @@ class ClinicController extends Controller
     {
         //$client = DB::select('SELECT * FROM about_table');
         $clinic = Clinic::all();
-
-        return view('admin.maintenance.clinic', ['clinic'=>$clinic]);
+        if ($clinic->count() > 0)
+        {
+    		$clinicMaxId = Clinic::max('clinic_contact_id');
+    		$clinic = Clinic::findOrFail($clinicMaxId);
+    		return view('admin.maintenance.clinic', ['clinic' => $clinic]);
+        }
+        else
+        {
+	        return view('admin.maintenance.clinic');
+    	}
     }
 
-    public function updateClinic()
+    public function addClinic(Request $request)
     {
         try
         {
-            $id = 1;
-            
-            $clinic = Intake::find($id);
-
+            $clinic = new Clinic;
             $clinic->clinic_contact = $request->input('contact');
             $clinic->clinic_location = $request->input('location');
             $clinic->clinic_hours = $request->input('hours');
@@ -34,7 +39,7 @@ class ClinicController extends Controller
 
             $clinic->save();
             
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Clinic Details Updated!');
         }
         catch (\Exception $e)
         {
