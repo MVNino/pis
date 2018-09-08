@@ -47,6 +47,7 @@ Route::group(
 				Route::post('clinic', 'ClinicController@addClinic');
 				// Company
 				Route::get('company', 'CompanyController@viewCompany')->name('maintenance.company');
+				Route::post('company', 'CompanyController@addCompany');
 				// Contact
 				Route::get('contact', 'ContactController@viewContact')->name('maintenance.contact');
 				Route::post('contact', 'ContactController@addContact');

@@ -9,5 +9,7 @@ class Company extends Model
     // Table
 	protected $table = 'company_table';
     //Primary Key
-	protected $primaryKey = 'company_id';
+    protected $primaryKey = 'company_id';
+    // timestamp
+	public $timestamps = false;
 }

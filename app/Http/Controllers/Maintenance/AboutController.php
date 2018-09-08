@@ -12,24 +12,50 @@ class AboutController extends Controller
 {
     public function viewAbout()
     {
-        //$about = DB::select('SELECT * FROM about_table');
         $about = About::all();
-
-        return view('admin.maintenance.about', ['about' => $about]);
+        if ($about->count() > 0)
+        {
+    		$aboutMaxId = About::max('about_id');
+    		$about = About::findOrFail($aboutMaxId);
+    		return view('admin.maintenance.about', ['about' => $about]);
+        }
+        else
+        {
+	        return view('admin.maintenance.about');
+    	}
     }
 
-    public function updateAbout(Request $request)
+    public function addAbout(Request $request)
     {
+        $this->validate($request, [
+    		'aboutTitle' => 'required|string',
+            'aboutDescription' => 'required|string',
+            'aboutImage' => 'image|nullable|max:3000'
+        ]);
+
         try
         {
-            //Create Intake
-            $about = new Proof;
+            $about = new About;
             $about->about_title = $request->input('aboutTitle');
             $about->about_desc = $request->input('aboutDescription');
-            $about->about_img = $request->input('aboutImage');
-            $about->save();
+            // Handle file upload for news image
+            if($request->hasFile('aboutImage')){
+                // Get the file's extension
+                $fileExtension = $request->file('logo')
+                    ->getClientOriginalExtension();
+                // Create a filename to store(database)
+                $aboutImgNameToStore = $request->title
+                    .'_'.'aboutImage'.'_'.time().'.'.$fileExtension;
+                // Upload file to system
+                $path = $request->file('aboutImage')
+                    ->storeAs('public/images/about', $aboutImgNameToStore);
+                $about->about_image = $aboutImgNameToStore;
+            }
 
-            return redirect()->back();
+            if ($about->save())
+            {
+                return redirect()->back()->with('success', 'About Details Updated!');
+            }
         }
         catch (\Exception $e)
         {

@@ -15,8 +15,7 @@
 
 
 @section('content')
-    @foreach($about as $a)
-        {!! Form::open(['action' => 'AboutController@storeAbout', 'method' => 'POST', 'autocomplete' => 'off'])!!}
+        {!! Form::open(['action' => 'Maintenance\AboutController@addAbout', 'method' => 'POST', 'autocomplete' => 'off'])!!}
             <div class="row">
                 <div class="col-md-12">
                     <div class="white-box">
@@ -25,7 +24,7 @@
                             <div class="form-group">
                                 <label class="col-md-12">Title</span></label>
                                 <div class="col-md-12">
-                                    <input type="text" name="aboutTitle" placeholder="{{$a->about_title}}" class="form-control">
+                                    <input type="text" name="aboutTitle" placeholder="{{$about->about_title}}" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -39,15 +38,13 @@
                             <div class="form-group">
                                 <label class="col-md-12">Description</label>
                                 <div class="col-md-12">
-                                    <input name = "aboutDescription" class="form-control" placeholder="{{$a->about_desc}}">
+                                    <input name = "aboutDescription" class="form-control" placeholder="{{$about->about_desc}}">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
-                            <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                            <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
                         </form>
                     </div>
                 </div>
             </div>
         {!! Form::close() !!}
-    @endforeach
 @endsection

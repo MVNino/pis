@@ -9,5 +9,7 @@ class Contact extends Model
     // Table
 	protected $table = 'contact_us_table';
     //Primary Key
-	protected $primaryKey = 'contact_us_id';
+    protected $primaryKey = 'contact_us_id';
+    // timestamp
+	public $timestamps = false;
 }
