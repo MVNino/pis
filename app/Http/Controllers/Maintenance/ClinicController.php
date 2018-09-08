@@ -12,8 +12,8 @@ class ClinicController extends Controller
 {
     public function viewClinic()
     {
-        $clinic = Clinic::all();
-        if ($clinic->count() > 0)
+        $clinics = Clinic::all();
+        if ($clinics->count() > 0)
         {
     		$clinicMaxId = Clinic::max('clinic_contact_id');
     		$clinic = Clinic::findOrFail($clinicMaxId);

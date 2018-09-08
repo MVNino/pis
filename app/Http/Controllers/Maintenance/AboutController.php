@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MAINTENANCE;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 use DB;
@@ -41,7 +42,7 @@ class AboutController extends Controller
             // Handle file upload for news image
             if($request->hasFile('aboutImage')){
                 // Get the file's extension
-                $fileExtension = $request->file('logo')
+                $fileExtension = $request->file('aboutImage')
                     ->getClientOriginalExtension();
                 // Create a filename to store(database)
                 $aboutImgNameToStore = $request->title

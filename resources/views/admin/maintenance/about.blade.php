@@ -15,7 +15,7 @@
 
 
 @section('content')
-        {!! Form::open(['action' => 'Maintenance\AboutController@addAbout', 'method' => 'POST', 'autocomplete' => 'off'])!!}
+        {!! Form::open(['action' => 'Maintenance\AboutController@addAbout', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data'])!!}
             <div class="row">
                 <div class="col-md-12">
                     <div class="white-box">
