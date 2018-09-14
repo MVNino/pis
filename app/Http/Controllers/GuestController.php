@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ContactUs;
+use App\FAQ;
 
 class GuestController extends Controller {
     public function viewIndex() {
@@ -28,8 +29,10 @@ class GuestController extends Controller {
         return view('guest.contact', ['contact' => $contact]);
     }
 
+    # FAQs
     public function viewFaqs() {
-        return view('guest.faqs');
+        $faqs = FAQ::all();
+        return view('guest.faqs', ['faqs' => $faqs]);
     }
 }
 

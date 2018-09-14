@@ -57,24 +57,20 @@
                                         </div>
                                         <hr/>
                                         <div class="container">
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">Questions here. Ask me please?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Hey pip, sometimes, it's not necessary to ask everytime. You can observe.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My classmate bit me. Will I die?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Yes man. We will all die eventually. Sorry to hear that.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My heart feels so strange. What should I do?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">You got heartworms. Accept ur death m8. You only have 48 hours left.</a></li>
-                                            </ol>
+                                            @forelse($faqs as $faq)
+                                                @if($faq->faq_category == 'surgery')
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
+                                                    <br/>
+                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
+                                                </ol>
+                                                @endif
+                                            @empty
+                                                <ol class="breadcrumb">
+                                                    <li><h3>NONE</h3></li>
+                                                </ol>
+                                            @endforelse
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="dentalcare">
@@ -87,24 +83,20 @@
                                         </div>
                                         <hr/>
                                         <div class="container">
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">Questions here. Ask me please?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Hey pip, sometimes, it's not necessary to ask everytime. You can observe.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My classmate bit me. Will I die?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Yes man. We will all die eventually. Sorry to hear that.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My heart feels so strange. What should I do?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">You got heartworms. Accept ur death m8. You only have 48 hours left.</a></li>
-                                            </ol>
+                                            @forelse($faqs as $faq)
+                                                @if($faq->faq_category == 'service')
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
+                                                    <br/>
+                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
+                                                </ol>
+                                                @endif
+                                            @empty
+                                                <ol class="breadcrumb">
+                                                    <li><h3 class="qText">NONE</h3></li>
+                                                </ol>
+                                            @endforelse
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="diseases">
@@ -117,24 +109,21 @@
                                         </div>
                                         <hr/>
                                         <div class="container">
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">Questions here. Ask me please?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Hey pip, sometimes, it's not necessary to ask everytime. You can observe.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My classmate bit me. Will I die?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Yes man. We will all die eventually. Sorry to hear that.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My heart feels so strange. What should I do?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">You got heartworms. Accept ur death m8. You only have 48 hours left.</a></li>
-                                            </ol>
+                                            @forelse($faqs as $faq)
+                                                @if($faq->faq_category == 'recovery')
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
+                                                    <br/>
+                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
+                                                </ol>
+                                                @endif
+                                            @empty
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">NONE</h3></li>
+                                                </ol>
+                                            @endforelse
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="eaycare">
@@ -147,24 +136,23 @@
                                         </div>
                                         <hr/>
                                         <div class="container">
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">Questions here. Ask me please?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Hey pip, sometimes, it's not necessary to ask everytime. You can observe.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My classmate bit me. Will I die?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Yes man. We will all die eventually. Sorry to hear that.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My heart feels so strange. What should I do?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">You got heartworms. Accept ur death m8. You only have 48 hours left.</a></li>
-                                            </ol>
+                                            @forelse($faqs as $faq)
+                                                @if($faq->faq_category == 'appointment')
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
+                                                    <br/>
+                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
+                                                </ol>
+                                                @endif
+                                            @empty
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">No FAQ Record</h3></li>
+                                                    <br/>
+                                                    <li><a aria-readonly="true"></a></li>
+                                                </ol>
+                                            @endforelse
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="cancer">
@@ -177,24 +165,23 @@
                                         </div>
                                         <hr/>
                                         <div class="container">
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">Questions here. Ask me please?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Hey pip, sometimes, it's not necessary to ask everytime. You can observe.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My classmate bit me. Will I die?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Yes man. We will all die eventually. Sorry to hear that.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My heart feels so strange. What should I do?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">You got heartworms. Accept ur death m8. You only have 48 hours left.</a></li>
-                                            </ol>
+                                            @forelse($faqs as $faq)
+                                                @if($faq->faq_category == 'payment')
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
+                                                    <br/>
+                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
+                                                </ol>
+                                                @endif
+                                            @empty
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">No FAQ Record</h3></li>
+                                                    <br/>
+                                                    <li><a aria-readonly="true"></a></li>
+                                                </ol>
+                                            @endforelse
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="nurology">
@@ -207,24 +194,23 @@
                                         </div>
                                         <hr/>
                                         <div class="container">
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">Questions here. Ask me please?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Hey pip, sometimes, it's not necessary to ask everytime. You can observe.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My classmate bit me. Will I die?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">Yes man. We will all die eventually. Sorry to hear that.</a></li>
-                                            </ol>
-                                            <ol class="breadcrumb">
-                                                <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                <li><h3 class="qText">My heart feels so strange. What should I do?</h3></li>
-                                                <br/>
-                                                <li><a aria-readonly="true">You got heartworms. Accept ur death m8. You only have 48 hours left.</a></li>
-                                            </ol>
+                                            @forelse($faqs as $faq)
+                                                @if($faq->faq_category == 'others')
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
+                                                    <br/>
+                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
+                                                </ol>
+                                                @endif
+                                            @empty
+                                                <ol class="breadcrumb">
+                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
+                                                    <li><h3 class="qText">No FAQ Record</h3></li>
+                                                    <br/>
+                                                    <li><a aria-readonly="true"></a></li>
+                                                </ol>
+                                            @endforelse
                                         </div>
                                     </div>
                                 </div>
