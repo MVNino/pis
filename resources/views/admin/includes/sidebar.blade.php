@@ -84,7 +84,6 @@
                             <li> <a href="{{ route('maintenance.company') }}">Company</a> </li>
                             <li> <a href="{{ route('maintenance.contact') }}">Contact</a> </li>
                             <li> <a href="{{ route('maintenance.features') }}">Features</a> </li>
-                            <li> <a href="{{ route('maintenance.feedback') }}">Feedback</a> </li>
                             <li> <a href="{{ route('maintenance.faqs') }}">FAQs</a> </li>
                             <li> <a href="{{ route('maintenance.news') }}">News</a> </li>
                             <li> <a href="{{ route('maintenance.services') }}">Services</a> </li>
