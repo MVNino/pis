@@ -23,6 +23,7 @@ class NewsController extends Controller
   		$news = new News;
   		$news->news_title = $request->title;
   		$news->news_desc = $request->description;
+      $news->news_order = 1;
         // Handle file upload for news image
         if($request->hasFile('fileNewsImg')){
             // Get the file's extension
