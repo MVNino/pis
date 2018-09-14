@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class FAQ extends Model
 {
     // Table
-	protected $table = 'faq_table';
+	protected $table = 'faq_tbl';
     //Primary Key
 	protected $primaryKey = 'faq_id';
 	// timestamp

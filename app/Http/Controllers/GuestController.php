@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ContactUs;
 
 class GuestController extends Controller {
     public function viewIndex() {
@@ -22,7 +23,9 @@ class GuestController extends Controller {
     }
 
     public function viewContact() {
-        return view('guest.contact');
+        $maxId = ContactUs::max('contact_us_id');
+        $contact = ContactUs::findOrFail($maxId);
+        return view('guest.contact', ['contact' => $contact]);
     }
 
     public function viewFaqs() {

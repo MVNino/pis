@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Banner extends Model
 {
     // Table
-	protected $table = 'banner_table';
+	protected $table = 'banner_tbl';
     //Primary Key
     protected $primaryKey = 'banner_id';
     // timestamp

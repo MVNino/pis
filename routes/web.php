@@ -53,9 +53,7 @@ Route::group(
 				Route::post('contact', 'ContactController@addContact');
 				// Features
 				Route::get('features', 'FeatureController@viewFeatures')->name('maintenance.features');
-				Route::post('features', 'FeatureController@storeFeature');
-				// Feedback
-				Route::get('feedback', 'FeedbackController@viewFeedback')->name('maintenance.feedback');	
+				Route::post('features', 'FeatureController@storeFeature');	
 				// FAQ's
 				Route::get('faqs', 'FAQController@viewFAQs')->name('maintenance.faqs');
 				Route::post('faqs', 'FAQController@addFAQs');
