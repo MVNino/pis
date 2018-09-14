@@ -13,7 +13,6 @@ class FAQController extends Controller
     	return view('admin.maintenance.faqs');
     }
 
-
     public function addFAQs(Request $request)
     {
     	$this->validate($request, [
