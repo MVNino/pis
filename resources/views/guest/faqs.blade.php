@@ -259,8 +259,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>0507815377</h4>
-                            <h4>0501725581</h4>
+                            <h4>{{ $contact->contact_phone }}</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -268,7 +267,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>info@starclinic.com.sa</h4>
+                            <h4>{{ $contact->contact_email }}</h4>
                         </div>
                     </div>
                 </div>

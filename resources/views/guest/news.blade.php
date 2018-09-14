@@ -40,33 +40,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-7">
+                    @foreach($news as $new)
                     <div class="single-news-post">
                         <div class="news-post-img">
-                            <img src="{{ asset('medicre/img/single-news-1.jpg') }}" alt="theconstructo.com">
+                            <img src="/storage/images/news/{{ $new->news_picture }}" alt="theconstructo.com">
                         </div>
                         <div class="post-title">
-                            <h2>HEAVY medical EQUIPMENTS</h2>
+                            <h2>{{ $new->news_title }}</h2>
                         </div>
                         <div class="date">
                             <p>Posted by : <span>Emma Walt</span> // On : <span>01 Jan, 2015</span></p>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. </p>
+                        <p>{{ $new->news_desc }}</p>
                         <a href="single.html" class="read-more">READ MORE</a>
                     </div>
-                    <div class="single-news-post">
-                        <div class="news-post-img">
-                            <iframe src="https://www.youtube.com/embed/w6ikW4heLrg?rel=0&amp;controls=0&amp;showinfo=0"  allowfullscreen></iframe>
-                        </div>
-                        <div class="post-title">
-                            <h2>dental care services</h2>
-                        </div>
-                        <div class="date">
-                            <p>Posted by : <span>Emma Walt</span> // On : <span>01 Jan, 2015</span></p>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. </p>
-                        <a href="single.html" class="read-more">READ MORE</a>
-                    </div>
-                    <div class="row">
+                    @endforeach
+                    {{ $news->links() }}
+                    <!-- <div class="row">
                         <div class="col-xs-12 text-center">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination">
@@ -80,7 +70,7 @@
                                 </ul>
                             </nav>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-sm-5 col-md-4">
                     <div class="sidebar-area">
@@ -89,6 +79,20 @@
                                 <h2> <span>RECENT</span> NEWS</h2>
                             </div>
                             <div class="widget-sider">
+                                <span>
+                                @foreach($recentNews as $news)
+                                <div class="widget-sider">
+                                    <div class="widget-single-slider">
+                                        <a href="single.html">
+                                            <img src="/storage/images/news/{{ $news->news_picture }}" alt="{{ $news->news_picture }}">
+                                            <div class="widget-post-title">
+                                                <p>{{ $news->news_title }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </span>
                                 <div class="widget-single-slider">
                                     <a href="single.html">
                                         <img src="{{ asset('medicre/img/w-2.png') }}" alt="theconstructo.com">
