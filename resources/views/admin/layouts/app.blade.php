@@ -60,6 +60,8 @@
     <!--Style Switcher -->
     <script src="{{ asset('elite/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
 
+    <script src="{{ asset('elite/js/jasny-bootstrap.js') }}"></script>
+
     @yield('pg-specific-js')
 </body>
 
