@@ -1,6 +1,16 @@
 @extends('admin.layouts.app')
 
 @section('breadcrumb')
+<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Company</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Maintenance</a></li>
+            <li class="active">Company</li>
+        </ol>
+    </div>
 @endsection
 
 
@@ -14,17 +24,17 @@
                         <div class="form-group">
                             <label class="col-md-12">Name</span></label>
                             <div class="col-md-12">
-                                <input type="text" name="name" placeholder="{{$company->company_name}}" class="form-control">
+                                <input type="text" name="name" placeholder="Company Name" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-12">Description</label>
                             <div class="col-md-12">
-                                <input name ="description" placeholder="{{$company->company_desc}}" class="form-control" rows="3"/>
+                                <input name ="description" placeholder="Company Description" class="form-control" rows="3"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-12">Clinic Logo</label>
+                            <label class="col-sm-12">Company Logo</label>
                             <div class="col-sm-12">
                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                     <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
@@ -36,8 +46,49 @@
                         </div> 
                         <!-- MAP DITO -->
                         <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
+                        <br><br>
+
+                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Logo</th>
+                                <th>Action</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($company as $row) 
+                        <tr>
+                            <td>{{$row['company_name']}}</td>
+                            <td>{{$row['company_desc']}}</td>
+                            <td>{{$row['company_clinic_logo']}} </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit"><i
+                                        class="ti-pencil-alt" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
+                                        class="ti-close" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                        @endforeach
+
+                       
+                    </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="text-right">
+                                        <ul class="pagination"> </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                        </table>
                     </form>
                 </div>
+
             </div>
         </div>
     {!! Form::close() !!}

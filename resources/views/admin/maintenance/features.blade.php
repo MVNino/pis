@@ -7,7 +7,7 @@
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
 			<li><a href="#">Dashboard</a></li>
-			<li>Maintenance</li>
+			<li><a href="#">Maintenance</a></li>
 			<li class="active">Features</li>
 		</ol>
 	</div>
@@ -15,11 +15,12 @@
 
 
 @section('content')
+	{!! Form::open(['action' => 'Maintenance\FeatureController@storeFeature', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="white-box">
 				<h3 class="box-title">Features</h3>
-				{!! Form::open(['action' => 'Maintenance\FeatureController@storeFeature', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+				
 					<div class="form-group">
 						<label class="col-md-12">Title</label>
 						<div class="col-md-12">
@@ -41,8 +42,49 @@
 					</div>
 					<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
 					<button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+
+					 <br><br>
+
+                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                         @foreach($feature as $row)  
+                        <tr>
+                            <td>{{$row['feature_title']}}</td>
+                            <td>{{$row['feature_description']}}</td>
+                            <td>{{$row['feature_image']}} </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit"><i
+                                        class="ti-pencil-alt" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
+                                        class="ti-close" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                        @endforeach
+
+                       
+                    </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="text-right">
+                                        <ul class="pagination"> </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                        </table>
 				</form>
 			</div>
 		</div>
 	</div>
+	{!! Form::close() !!}
 @endsection
