@@ -31,9 +31,14 @@
                                     <input type="text" name="location" class="form-control" value="{{$clinic->clinic_location}}"> </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-12">Clinic Hours</span></label>
-                                <div class="col-md-12">
-                                    <input type="text" name="hours" class="form-control" value="{{$clinic->clinic_hours}}"> </div>
+                                <label class="col-md-6">Clinic Opening Time</span></label>
+                                <label class="col-md-6">Clinic Closing Time</span></label>
+                                <div class="col-md-6">
+                                    <input type="time" name="open" class="form-control" value="{{$clinic->clinic_open_time}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="time" name="close" class="form-control" value="{{$clinic->clinic_close_time}}">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-12">Clinic Days</span></label>
@@ -45,8 +50,8 @@
                                 <div class="col-md-12">
                                     <input type="text" name="email" class="form-control" value="{{$clinic->clinic_email}}"> </div>
                             </div>
-                            <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
-                            <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                            <br/>
+                            <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
                         </form>
                     </div>
                 </div>

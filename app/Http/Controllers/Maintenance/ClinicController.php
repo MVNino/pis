@@ -30,7 +30,8 @@ class ClinicController extends Controller
         $this->validate($request, [
     		'contact' => 'required|string',
             'location' => 'required|string',
-            'hours' => 'required|string',
+            'open' => 'required|string',
+            'close' => 'required|string',
             'days' => 'required|string',
             'email' => 'required|string|email'
         ]);
@@ -40,7 +41,8 @@ class ClinicController extends Controller
             $clinic = new Clinic;
             $clinic->clinic_contact = $request->input('contact');
             $clinic->clinic_location = $request->input('location');
-            $clinic->clinic_hours = $request->input('hours');
+            $clinic->clinic_open_time = $request->input('open');
+            $clinic->clinic_close_time = $request->input('close');
             $clinic->clinic_days = $request->input('days');
             $clinic->clinic_email = $request->input('email');
 
