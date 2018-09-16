@@ -5,7 +5,7 @@
 <div class="single-page-title">
     <section class="home-area v3">
         <!--About Image-->
-        <div class="page-title-cell"  style="background-image: url('{{ asset('medicre/img/v3home.png') }}');">
+        <div class="page-title-cell"  style="background-image: url('/storage/images/aboutr/{{$about->about_image}}');">
             <div class="container">
                 <div class="row">
                 </div>
@@ -17,8 +17,8 @@
             <div class="row">
                 <div class="col-sm-8 text-left">
                     <div class="get-quate-content">
-                        <h2>Providing Total Health Care Solution [about title]</h2>
-                        <p>Maecenas scelerisque felis ornare placerat tempus. In turpis nisi, viverra hendrerit dolor vel, auctor blandit sapien. Aenean quis venenatis felis, adipiscing pretium nunc.[about desc]</p>
+                        <h2>{{$about->about_title}}</h2>
+                        <p>{{$about->about_desc}}</p>
                     </div>
                 </div>
                 <div class="col-sm-4 text-right">
