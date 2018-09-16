@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Banner;
 use App\ContactUs;
 use App\FAQ;
 use App\News;
@@ -17,11 +18,17 @@ class GuestController extends Controller
         // return $this->contact = ContactUs::findOrFail($maxId);
     }
 
-    public function viewIndex() {
-    	return view('guest.index');
+    public function viewIndex()
+    {
+        $banners = Banner::
+            all()
+            ->where('banner_status', '=', 1);
+
+    	return view('guest.index', ['banners'=>$banners]);
     }
 
-    public function viewAbout() {
+    public function viewAbout()
+    {
     	return view('guest.about');
     }
 
