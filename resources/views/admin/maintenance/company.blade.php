@@ -15,22 +15,24 @@
 
 
 @section('content')
-    {!! Form::open(['action' => 'Maintenance\CompanyController@addCompany', 'method' => 'POST', 'enctype' => 'multipart/data', 'autocomplete' => 'off'])!!}
+    
         <div class="row">
             <div class="col-md-12">
                 <div class="white-box">
                     <h3 class="box-title">Company</h3>
+                    {!! Form::open(['action' => 'Maintenance\CompanyController@addCompany', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'autocomplete' => 'off'])!!}
+                    
                     <form class="form-material form-horizontal" method ="POST">
                         <div class="form-group">
                             <label class="col-md-12">Name</span></label>
                             <div class="col-md-12">
-                                <input type="text" name="name" placeholder="Company Name" class="form-control">
+                                <input type="text" name="name"  class="form-control" value="{{$company->company_name}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-12">Description</label>
                             <div class="col-md-12">
-                                <input name ="description" placeholder="Company Description" class="form-control" rows="3"/>
+                                <input name ="description" class="form-control"  value="{{$company->company_desc}}" rows="3"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -45,47 +47,8 @@
                             </div>
                         </div> 
                         <!-- MAP DITO -->
-                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
-                        <br><br>
-
-                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Logo</th>
-                                <th>Action</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach($company as $row) 
-                        <tr>
-                            <td>{{$row['company_name']}}</td>
-                            <td>{{$row['company_desc']}}</td>
-                            <td>{{$row['company_clinic_logo']}} </td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit"><i
-                                        class="ti-pencil-alt" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
-                                        class="ti-close" aria-hidden="true"></i></button>
-                            </td>
-                        </tr>
-                        @endforeach
-
+                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
                        
-                    </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="6">
-                                    <div class="text-right">
-                                        <ul class="pagination"> </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tfoot>
-                        </table>
                     </form>
                 </div>
 

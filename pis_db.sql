@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2018 at 02:43 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Sep 16, 2018 at 12:59 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pis`
+-- Database: `patient_info_db`
 --
 
 -- --------------------------------------------------------
@@ -120,8 +122,8 @@ CREATE TABLE `company_tbl` (
   `company_id` int(11) NOT NULL,
   `company_name` varchar(160) DEFAULT NULL,
   `company_desc` text,
-  `company_clinic_logo` varchar(150) NOT NULL,
-  `company_map` text NOT NULL
+  `company_clinic_logo` varchar(150) DEFAULT NULL,
+  `company_map` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -129,7 +131,9 @@ CREATE TABLE `company_tbl` (
 --
 
 INSERT INTO `company_tbl` (`company_id`, `company_name`, `company_desc`, `company_clinic_logo`, `company_map`) VALUES
-(1, 'Romero Company', 'Romero Company Description', 'romero logo wow', 'Google map haha');
+(1, 'Romero Company', 'Romero Company Description', 'romero logo wow', 'Google map haha'),
+(2, 'Causaren Company', 'Romero Company Description', NULL, NULL),
+(3, 'Romero Company', 'Romero Company Description', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -514,101 +518,121 @@ ALTER TABLE `user_tbl`
 --
 ALTER TABLE `about_tbl`
   MODIFY `about_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `appointment_tbl`
 --
 ALTER TABLE `appointment_tbl`
   MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `banner_tbl`
 --
 ALTER TABLE `banner_tbl`
   MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `billing_tbl`
 --
 ALTER TABLE `billing_tbl`
   MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `clinic_contact_tbl`
 --
 ALTER TABLE `clinic_contact_tbl`
   MODIFY `clinic_contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `company_tbl`
 --
 ALTER TABLE `company_tbl`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `contact_us_tbl`
 --
 ALTER TABLE `contact_us_tbl`
   MODIFY `contact_us_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `expense_tbl`
 --
 ALTER TABLE `expense_tbl`
   MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `faq_tbl`
 --
 ALTER TABLE `faq_tbl`
   MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `features_tbl`
 --
 ALTER TABLE `features_tbl`
   MODIFY `features_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `holiday_tbl`
 --
 ALTER TABLE `holiday_tbl`
   MODIFY `holiday_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `medical_records_tbl`
 --
 ALTER TABLE `medical_records_tbl`
   MODIFY `medical_record_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `news_tbl`
 --
 ALTER TABLE `news_tbl`
   MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `official_receipt_tbl`
 --
 ALTER TABLE `official_receipt_tbl`
   MODIFY `or_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `other_services_tbl`
 --
 ALTER TABLE `other_services_tbl`
   MODIFY `other_services_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `patient_information_tbl`
 --
 ALTER TABLE `patient_information_tbl`
   MODIFY `patient_info_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `patient_tbl`
 --
 ALTER TABLE `patient_tbl`
   MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `services_tbl`
 --
 ALTER TABLE `services_tbl`
   MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `specialty_service_tbl`
 --
 ALTER TABLE `specialty_service_tbl`
   MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `user_tbl`
 --
 ALTER TABLE `user_tbl`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Constraints for dumped tables
 --
@@ -650,6 +674,7 @@ ALTER TABLE `official_receipt_tbl`
 --
 ALTER TABLE `patient_information_tbl`
   ADD CONSTRAINT `patient_information_tbl_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient_tbl` (`patient_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
