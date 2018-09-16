@@ -86,4 +86,22 @@ class BannerController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function deleteBanner($id)
+    {
+        try
+        {
+            $banner = Banner::find($id);
+
+            if ($banner->delete())
+            {
+                return redirect()->back()->with('success', 'Banner Removed Successfully!');
+            }
+
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
 }
