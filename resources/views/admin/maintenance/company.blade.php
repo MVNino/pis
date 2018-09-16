@@ -1,30 +1,42 @@
 @extends('admin.layouts.app')
 
 @section('breadcrumb')
+<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Company</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Maintenance</a></li>
+            <li class="active">Company</li>
+        </ol>
+    </div>
 @endsection
 
 
 @section('content')
-    {!! Form::open(['action' => 'Maintenance\CompanyController@addCompany', 'method' => 'POST', 'enctype' => 'multipart/data', 'autocomplete' => 'off'])!!}
+    
         <div class="row">
             <div class="col-md-12">
                 <div class="white-box">
                     <h3 class="box-title">Company</h3>
+                    {!! Form::open(['action' => 'Maintenance\CompanyController@addCompany', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'autocomplete' => 'off'])!!}
+                    
                     <form class="form-material form-horizontal" method ="POST">
                         <div class="form-group">
                             <label class="col-md-12">Name</span></label>
                             <div class="col-md-12">
-                                <input type="text" name="name" placeholder="{{$company->company_name}}" class="form-control">
+                                <input type="text" name="name"  class="form-control" value="{{$company->company_name}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-12">Description</label>
                             <div class="col-md-12">
-                                <input name ="description" placeholder="{{$company->company_desc}}" class="form-control" rows="3"/>
+                                <input name ="description" class="form-control"  value="{{$company->company_desc}}" rows="3"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-12">Clinic Logo</label>
+                            <label class="col-sm-12">Company Logo</label>
                             <div class="col-sm-12">
                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                     <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
@@ -35,9 +47,11 @@
                             </div>
                         </div> 
                         <!-- MAP DITO -->
-                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
+                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
+                       
                     </form>
                 </div>
+
             </div>
         </div>
     {!! Form::close() !!}

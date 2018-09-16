@@ -11,7 +11,8 @@ class FeatureController extends Controller
 {
     public function viewFeatures()
     {
-    	return view('admin.maintenance.features');
+    	$feature = Feature::all()->toArray();
+      return view('admin.maintenance.features', compact('feature'));
     }
 
     public function storeFeature(Request $request)
@@ -21,6 +22,9 @@ class FeatureController extends Controller
   			'description' => 'required',
   			'fileFeatureImg' => 'image|nullable|max:3000'
   		]);
+
+      try 
+      {
   		$feature = new Feature;
   		$feature->title = $request->title;
   		$feature->description = $request->description;
@@ -40,5 +44,11 @@ class FeatureController extends Controller
         if ($feature->save()) {
         	return redirect()->back()->with('success', 'feature added!');
         }
+
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        } 
     }
 }

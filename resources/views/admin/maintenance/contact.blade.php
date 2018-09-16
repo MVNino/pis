@@ -22,30 +22,73 @@
                     <div class="form-group">
                         <label class="col-md-12">Name</span></label>
                         <div class="col-md-12">
-                            <input type="text" name="name" class="form-control" value="{{ $contact->contact_name }}" />
+                            <input type="text" name="name" class="form-control" placeholder="Input Full Name" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Email Address</span></label>
                         <div class="col-md-12">
-                            <input type="text" name="email" class="form-control" value="{{ $contact->contact_email }}" /> 
+                            <input type="text" name="email" class="form-control" placeholder="Input Email" /> 
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Phone</span></label>
                         <div class="col-md-12">
-                            <input type="text" name="phone" class="form-control" value="{{ $contact->contact_phone }}" /> 
+                            <input type="text" name="phone" class="form-control" placeholder="Input Phone Number"  /> 
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Inquiry</span></label>
                         <div class="col-md-12">
-                            <input type="text" name="inquiry" class="form-control" value="{{ $contact->contact_inquiry }}" /> 
+                            <input type="text" name="inquiry" class="form-control" placeholder="Input Inquiry" /> 
                         </div>
                     </div>
+
                     
                     <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
                     <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                     <br><br>
+
+                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email Address</th>
+                                <th>Phone</th>
+                                <th>Inquiry</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                         @foreach($contact as $row) 
+                        <tr>
+                            <td>{{ $row['contact_name'] }}</td>
+                            <td>{{ $row['contact_email'] }}</td>
+                            <td>{{ $row['contact_phone'] }}</td>
+                            <td>{{$row['contact_inquiry']}} </td>
+
+                            <td>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit"><i
+                                        class="ti-pencil-alt" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
+                                        class="ti-close" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                        @endforeach
+
+                       
+                    </tbody>
+                    <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="text-right">
+                                        <ul class="pagination"> </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                        </table>
                 </form>
             </div>
         </div>
