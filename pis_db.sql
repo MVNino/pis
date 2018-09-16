@@ -120,7 +120,7 @@ CREATE TABLE `company_tbl` (
   `company_id` int(11) NOT NULL,
   `company_name` varchar(160) DEFAULT NULL,
   `company_desc` text,
-  `company_clinic_logo` varchar(150) NOT NULL,
+  `company_clinic_logo` varchar(160) NOT NULL,
   `company_map` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
