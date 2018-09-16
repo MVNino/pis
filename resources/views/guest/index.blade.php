@@ -8,17 +8,11 @@
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="{{ asset('medicre/img/banner.jpg') }}" alt="Los Angeles" style="width:100%;">
-                        </div>
-
-                        <div class="item">
-                            <img src="{{ asset('medicre/img/v3home.png') }}" alt="Chicago" style="width:100%;">
-                        </div>
-                        
-                        <div class="item">
-                            <img src="{{ asset('medicre/img/ny.jpg') }}" alt="New york" style="width:100%;">
-                        </div>
+                        @foreach($banners as $banner)
+                            <div class="item">
+                                <img src="/storage/images/banner/{{$banner->banner_picture}}" alt="banner" style="width:100%;">
+                            </div>
+                        @endforeach
                     </div>
                     <!-- Left and right controls -->
                 </div>
@@ -193,7 +187,11 @@
 @endsection
 
 @section('pg-specific-js')
-<script>
-$("#navlink-index").addClass("current-menu-item");
-</script>
+    <script>
+        $("#navlink-index").addClass("current-menu-item");
+        
+        //add active to first banner
+        document.querySelector('.item').classList.add("active");
+        //document.getElementsByClassName('item')[0].classList.add("active");
+    </script>
 @endsection

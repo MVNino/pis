@@ -45,7 +45,7 @@
 								@endif
 								<td>
 									@if($banner->banner_status == 0)
-										{!!Form::open(['action' => ['BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
+										{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 											{{Form::hidden('_method', 'PUT')}}
 											<input type="text" name="status" value="1" style="display: none;">
 											<button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Activate">
@@ -53,16 +53,20 @@
 											</button>
 										{!!Form::close()!!}
 									@else
-										{!!Form::open(['action' => ['BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
+										{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 											{{Form::hidden('_method', 'PUT')}}
 											<input type="text" name="status" value="0" style="display: none;">
-											<button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Deactivate">
+											<button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Deactivate">
 												<i class="ti-pencil-alt" aria-hidden="true"></i>
 											</button>
 										{!!Form::close()!!}
 									@endif
-									<button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
-											class="ti-close" aria-hidden="true"></i></button>
+									{!!Form::open(['action' => ['Maintenance\BannerController@deleteBanner', $banner->banner_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
+											<i class="ti-close" aria-hidden="true"></i>
+										</button>
+                                    {!!Form::close()!!}
 								</td>
 							</tr>
 						@endforeach
