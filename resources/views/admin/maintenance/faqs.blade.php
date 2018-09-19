@@ -39,7 +39,7 @@
 								<option value="surgery">Surgery</option>
 								<option value="service">Service</option>
 								<option value="recovery">Recovery</option>
-								<option value="appointments">Appointments</option>
+								<option value="appointment">Appointments</option>
 								<option value="payments">Payments</option>
 								<option value="others">Others</option>
 							  </select>

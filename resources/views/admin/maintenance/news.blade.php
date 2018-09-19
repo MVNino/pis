@@ -27,32 +27,38 @@
 				<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
 					<thead>
 						<tr>
-							<th>Order</th>
-							<th>Title</th>
-							<th>Description</th>
-							<th>Action</th>
+							<th>News Order</th>
+							<th>News Title</th>
+							<th>News Description</th>
+							<th>Status</th>
+							<th class="text-center">Action</th>
 						</tr>
 					</thead>
 					<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td><span class="label label-table label-success">Active</span></td>
-								<td>
-									wow
-								</td>
-							</tr>
-					</tbody>
-					<tfoot>
+					@forelse($news as $new)
 						<tr>
-							<td colspan="6">
-								<div class="text-right">
-									<ul class="pagination"> </ul>
-								</div>
+							<td>{{ $new->news_order }}</td>
+							<td>{{ $new->news_title }}</td>
+							<td>{{ $new->news_desc }}</td>
+							<td>
+								<span class="label label-table label-success">
+									Active
+								</span>
+							</td>
+							<td class="text-center">
+								<button class="btn btn-primary"><i class="fa fa-edit"></i> Alter</button>
 							</td>
 						</tr>
+					@empty
+						<div class="alert alert-warning">
+        					There is no record yet.
+        				</div>
+					@endforelse
+					</tbody>
+					<tfoot>
 					</tfoot>
 				</table>
+				{{ $news->links() }}
 			</div>
 		</div>
 	</div>
