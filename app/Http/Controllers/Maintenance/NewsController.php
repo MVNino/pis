@@ -16,14 +16,15 @@ class NewsController extends Controller
     public function addNews(Request $request) 
     {	
   		$this->validate($request, [
-  			'title' => 'required',
+            'numOrder' => 'required',  
+            'title' => 'required',
   			'description' => 'required',
-  			'fileNewsImg' => 'image|nullable|max:3000'
+            'fileNewsImg' => 'image|nullable|max:3000'
   		]);
-  		$news = new News;
+        $news = new News;
+        $news->news_order = $request->numOrder;
   		$news->news_title = $request->title;
   		$news->news_desc = $request->description;
-      $news->news_order = 1;
         // Handle file upload for news image
         if($request->hasFile('fileNewsImg')){
             // Get the file's extension
