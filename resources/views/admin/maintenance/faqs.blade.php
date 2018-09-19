@@ -18,7 +18,7 @@
 		<div class="col-md-12">
 			<div class="white-box">
 				<h3 class="box-title">FAQs</h3>
-				{!! Form::open(['action' => 'Maintenance\FAQController@addFAQs', 'method' => 'POST']) !!}
+				{!! Form::open(['action' => 'Maintenance\FAQController@addFAQs', 'method' => 'POST', 'autocomplete' => 'off', 'class' => 'form-material']) !!}
 				<form class="form-material form-horizontal">
 					<div class="form-group">
 						<label class="col-md-12">Question</label>
@@ -34,12 +34,20 @@
 					<div class="form-group">
 						<label class="col-md-12">Category</label>
 						<div class="col-md-12">
-							<input type="text" name="category" class="form-control">
+							<select class="custom-select form-control" name="category">
+								<option selected>Select category</option>
+								<option value="surgery">Surgery</option>
+								<option value="service">Service</option>
+								<option value="recovery">Recovery</option>
+								<option value="appointments">Appointments</option>
+								<option value="payments">Payments</option>
+								<option value="others">Others</option>
+							  </select>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
+					<button type="submit" class="btn btn-info btn-md waves-effect waves-light m-r-10">Submit</button>
 					<button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
-				</form>
+				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>
