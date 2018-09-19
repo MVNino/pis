@@ -11,10 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
+# Website
 Route::get('/', 'GuestController@viewIndex');
 Route::get('/about', 'GuestController@viewAbout');
 Route::get('/services','GuestController@viewServices');
@@ -22,8 +19,7 @@ Route::get('/news','GuestController@viewNews');
 Route::get('/contact','GuestController@viewContact');
 Route::get('faqs','GuestController@viewFaqs');
 
-
-
+# Admin
 Route::group(
 	[
 		'prefix' => 'admin'
