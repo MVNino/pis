@@ -10,7 +10,8 @@ use App\News;
 class NewsController extends Controller
 {
     public function viewNews() {
-    	return view('admin.maintenance.news');
+        $news = News::orderBy('news_order')->paginate(5);
+    	return view('admin.maintenance.news', ['news' => $news]);
     }
 
     public function addNews(Request $request) 

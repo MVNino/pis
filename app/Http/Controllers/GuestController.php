@@ -38,8 +38,8 @@ class GuestController extends Controller
 
     # News
     public function viewNews() {
-        $recentNews = News::orderBy('news_id', 'desc')->get();
-        $news = News::orderBy('news_id', 'desc')->paginate(2);
+        $recentNews = News::orderBy('news_order')->get();
+        $news = News::orderBy('news_order')->paginate(2);
         return view('guest.news', ['news' => $news, 
             'recentNews' => $recentNews]);
     }
