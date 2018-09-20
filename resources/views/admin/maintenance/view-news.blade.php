@@ -19,9 +19,11 @@
 @endsection
 
 @section('content')
-    <h3>Edit News<h3>
 	<div class="container">
 		<div class="card">
+			<div class="card-header bg-primary">
+				<h3 class="text-light">Edit News</h3>
+			</div>
 			<div class="card-body">
 				<div class="container">
 					{!! Form::open(['action' => ['Maintenance\NewsController@updateNews', $news->news_id], 'method' => 'POST', 
@@ -35,8 +37,8 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							{{ Form::label('lblStatus', 'Status of news') }}
-							<div class="form-check">
+							{{ Form::label('lblStatus', 'Status of news') }}<br>
+							<div class="form-check form-check-inline">
 								@if($news->isActive == 1)
 								<input class="form-check-input" type="radio" name="radioStatus" id="exampleRadios1" value="1" checked>
 								@else
@@ -46,7 +48,7 @@
 									Active
 								</label>
 							</div>
-							<div class="form-check">
+							<div class="form-check form-check-inline">
 								@if($news->isActive == 0)
 								<input class="form-check-input" type="radio" name="radioStatus" id="exampleRadios2" value="0" checked>
 								@else

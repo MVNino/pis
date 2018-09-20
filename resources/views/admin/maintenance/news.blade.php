@@ -68,7 +68,7 @@
 					<tfoot>
 					</tfoot>
 				</table>
-				<div align="right">
+				<div align="center">
 					{{ $news->links() }}
 				</div>
 			</div>

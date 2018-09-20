@@ -23,7 +23,7 @@ class NewsController extends Controller
     public function addNews(Request $request) 
     {	
   		$this->validate($request, [
-            'numOrder' => 'required',  
+            'numOrder' => 'required|unique:news_tbl',  
             'title' => 'required',
   			'description' => 'required',
             'fileNewsImg' => 'image|nullable|max:3000'
@@ -62,6 +62,7 @@ class NewsController extends Controller
         
         // Update record in database
         $news = News::findOrFail($id);
+        // !order must be unique
         $news->news_order = $request->numOrder;
         $news->isActive = $request->radioStatus;
         $news->news_title = $request->title;
