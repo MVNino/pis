@@ -43,13 +43,19 @@
 							<td>{{ $new->news_title }}</td>
 							<td>{{ $new->news_desc }}</td>
 							<td>
+								@if($new->isActive == 1)
 								<span class="label label-table label-success">
 									Active
 								</span>
+								@else
+								<span class="label label-table label-danger">
+									Inactive
+								</span>
+								@endif
 							</td>
 							<td class="text-center">
 								<a role="button" class="btn btn-primary" href="/admin/maintenance/news/{{ $new->news_id }}">
-									<i class="fa fa-edit"></i> Alter
+									<i class="fa fa-edit"></i> Edit
 								</a>
 							</td>
 						</tr>
@@ -62,7 +68,9 @@
 					<tfoot>
 					</tfoot>
 				</table>
-				{{ $news->links() }}
+				<div align="right">
+					{{ $news->links() }}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -78,9 +86,9 @@
 				</button>
 				<h4 class="modal-title" id="exampleModalLabel">Add News</h4>
 			</div>
+			{!! Form::open(['action' => 'Maintenance\NewsController@addNews', 'method' => 'POST', 
+			'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
 			<div class="modal-body">
-				{!! Form::open(['action' => 'Maintenance\NewsController@addNews', 'method' => 'POST', 
-				'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
 					<div class="form-group">
 						{{ Form::label('lblOrder', 'Order of viewing') }}
 						{{ Form::number('numOrder', '', ['class' => 'form-control', 'min' => '1']) }}					

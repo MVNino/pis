@@ -1,7 +1,6 @@
 @extends('guest.layouts.app')
 
 @section('content')
-
 <div class="single-page-title">
     <section class="home-area v3">
         <!--About Image-->
