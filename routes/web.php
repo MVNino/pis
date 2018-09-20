@@ -60,10 +60,11 @@ Route::group(
 				Route::get('news', 'NewsController@listNews')
 					->name('maintenance.news');
 				Route::post('news', 'NewsController@addNews');
-				Route::get('news/{id}', 'NewsController@viewNews')
-					->name('maintenance.view-news');
+				Route::get('news/{id}', 'NewsController@viewNews');
+				Route::put('news/{id}', 'NewsController@updateNews');
 				// Services
-				Route::get('services', 'ServiceController@viewServices')->name('maintenance.services');
+				Route::get('services', 'ServiceController@viewServices')
+					->name('maintenance.services');
 			});
 		});
 });
