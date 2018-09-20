@@ -27,7 +27,7 @@ Route::group(
 	function() {
 		Route::get('dashboard', function(){
 			return view('admin.dashboard');
-		});
+		})->name('admin.dashboard');
 		Route::group([
 			'prefix' => 'maintenance'
 		], function(){
@@ -57,8 +57,11 @@ Route::group(
 				Route::get('faqs', 'FAQController@viewFAQs')->name('maintenance.faqs');
 				Route::post('faqs', 'FAQController@addFAQs');
 				// News
-				Route::get('news', 'NewsController@viewNews')->name('maintenance.news');
+				Route::get('news', 'NewsController@listNews')
+					->name('maintenance.news');
 				Route::post('news', 'NewsController@addNews');
+				Route::get('news/{id}', 'NewsController@viewNews')
+					->name('maintenance.view-news');
 				// Services
 				Route::get('services', 'ServiceController@viewServices')->name('maintenance.services');
 			});

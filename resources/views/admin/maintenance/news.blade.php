@@ -6,9 +6,11 @@
 	</div>
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="#">Dashboard</a></li>
+			<li><a href="#"><i class="fa fa-home"></i></a></li>
 			<li>Maintenance</li>
-			<li class="active">News</li>
+			<li>
+				<a class="active" href="{{ route('maintenance.news') }}">News</a>
+			</li>
 		</ol>
 	</div>
 @endsection
@@ -46,7 +48,9 @@
 								</span>
 							</td>
 							<td class="text-center">
-								<button class="btn btn-primary"><i class="fa fa-edit"></i> Alter</button>
+								<a role="button" class="btn btn-primary" href="/admin/maintenance/news/{{ $new->news_id }}">
+									<i class="fa fa-edit"></i> Alter
+								</a>
 							</td>
 						</tr>
 					@empty
