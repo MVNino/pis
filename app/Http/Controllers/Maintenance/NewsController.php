@@ -9,8 +9,15 @@ use App\News;
 
 class NewsController extends Controller
 {
-    public function viewNews() {
-    	return view('admin.maintenance.news');
+    public function listNews() {
+        $news = News::orderBy('news_order')->paginate(5);
+    	return view('admin.maintenance.news', ['news' => $news]);
+    }
+
+    public function viewNews($id)
+    {
+        $news = News::findOrFail($id);
+        return view('admin.maintenance.view-news', ['news' => $news]);
     }
 
     public function addNews(Request $request) 

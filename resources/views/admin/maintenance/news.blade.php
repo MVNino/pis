@@ -6,9 +6,11 @@
 	</div>
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="#">Dashboard</a></li>
+			<li><a href="#"><i class="fa fa-home"></i></a></li>
 			<li>Maintenance</li>
-			<li class="active">News</li>
+			<li>
+				<a class="active" href="{{ route('maintenance.news') }}">News</a>
+			</li>
 		</ol>
 	</div>
 @endsection
@@ -27,32 +29,40 @@
 				<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
 					<thead>
 						<tr>
-							<th>Order</th>
-							<th>Title</th>
-							<th>Description</th>
-							<th>Action</th>
+							<th>News Order</th>
+							<th>News Title</th>
+							<th>News Description</th>
+							<th>Status</th>
+							<th class="text-center">Action</th>
 						</tr>
 					</thead>
 					<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td><span class="label label-table label-success">Active</span></td>
-								<td>
-									wow
-								</td>
-							</tr>
-					</tbody>
-					<tfoot>
+					@forelse($news as $new)
 						<tr>
-							<td colspan="6">
-								<div class="text-right">
-									<ul class="pagination"> </ul>
-								</div>
+							<td>{{ $new->news_order }}</td>
+							<td>{{ $new->news_title }}</td>
+							<td>{{ $new->news_desc }}</td>
+							<td>
+								<span class="label label-table label-success">
+									Active
+								</span>
+							</td>
+							<td class="text-center">
+								<a role="button" class="btn btn-primary" href="/admin/maintenance/news/{{ $new->news_id }}">
+									<i class="fa fa-edit"></i> Alter
+								</a>
 							</td>
 						</tr>
+					@empty
+						<div class="alert alert-warning">
+        					There is no record yet.
+        				</div>
+					@endforelse
+					</tbody>
+					<tfoot>
 					</tfoot>
 				</table>
+				{{ $news->links() }}
 			</div>
 		</div>
 	</div>

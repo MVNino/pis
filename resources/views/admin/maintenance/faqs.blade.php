@@ -6,9 +6,9 @@
 	</div>
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="#">Dashboard</a></li>
+			<li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home"></i></a></li>
 			<li>Maintenance</li>
-			<li class="active">FAQs</li>
+			<li><a class="active" href="{{ route('maintenance.faqs') }}">FAQs</a></li>
 		</ol>
 	</div>
 @endsection
@@ -39,7 +39,7 @@
 								<option value="surgery">Surgery</option>
 								<option value="service">Service</option>
 								<option value="recovery">Recovery</option>
-								<option value="appointments">Appointments</option>
+								<option value="appointment">Appointments</option>
 								<option value="payments">Payments</option>
 								<option value="others">Others</option>
 							  </select>
