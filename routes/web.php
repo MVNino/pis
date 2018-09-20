@@ -11,10 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
+# Website
 Route::get('/', 'GuestController@viewIndex');
 Route::get('/about', 'GuestController@viewAbout');
 Route::get('/services','GuestController@viewServices');
@@ -22,8 +19,7 @@ Route::get('/news','GuestController@viewNews');
 Route::get('/contact','GuestController@viewContact');
 Route::get('faqs','GuestController@viewFaqs');
 
-
-
+# Admin
 Route::group(
 	[
 		'prefix' => 'admin'
@@ -31,7 +27,7 @@ Route::group(
 	function() {
 		Route::get('dashboard', function(){
 			return view('admin.dashboard');
-		});
+		})->name('admin.dashboard');
 		Route::group([
 			'prefix' => 'maintenance'
 		], function(){
@@ -61,10 +57,14 @@ Route::group(
 				Route::get('faqs', 'FAQController@viewFAQs')->name('maintenance.faqs');
 				Route::post('faqs', 'FAQController@addFAQs');
 				// News
-				Route::get('news', 'NewsController@viewNews')->name('maintenance.news');
+				Route::get('news', 'NewsController@listNews')
+					->name('maintenance.news');
 				Route::post('news', 'NewsController@addNews');
+				Route::get('news/{id}', 'NewsController@viewNews');
+				Route::put('news/{id}', 'NewsController@updateNews');
 				// Services
-				Route::get('services', 'ServiceController@viewServices')->name('maintenance.services');
+				Route::get('services', 'ServiceController@viewServices')
+					->name('maintenance.services');
 			});
 		});
 });
