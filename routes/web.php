@@ -63,7 +63,8 @@ Route::group(
 				Route::get('news/{id}', 'NewsController@viewNews');
 				Route::put('news/{id}', 'NewsController@updateNews');
 				// Services
-				Route::get('services', 'ServiceController@viewServices')->name('maintenance.services');
+				Route::get('services', 'ServiceController@viewServices')
+					->name('maintenance.services');
 			});
 		});
 });
