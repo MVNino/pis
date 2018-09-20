@@ -23,7 +23,7 @@ class NewsController extends Controller
     public function addNews(Request $request) 
     {	
   		$this->validate($request, [
-            'numOrder' => 'required',  
+            'numOrder' => 'required|unique:news_tbl',  
             'title' => 'required',
   			'description' => 'required',
             'fileNewsImg' => 'image|nullable|max:3000'
@@ -47,6 +47,43 @@ class NewsController extends Controller
         }
         if ($news->save()) {
         	return redirect()->back()->with('success', 'News added!');
+        }
+    }
+
+    public function updateNews(Request $request, $id)
+    {
+        $this->validate($request, [
+            'numOrder' => 'required',
+            'radioStatus' => 'required',  
+            'title' => 'required',
+  			'description' => 'required',
+            'fileNewsImg' => 'image|nullable|max:3000'
+        ]);
+        
+        // Update record in database
+        $news = News::findOrFail($id);
+        // !order must be unique
+        $news->news_order = $request->numOrder;
+        $news->isActive = $request->radioStatus;
+        $news->news_title = $request->title;
+        $news->news_desc = $request->description;
+        // Handle file upload for news image
+        if($request->hasFile('fileNewsImg')){
+            // Get the file's extension
+            $fileExtension = $request->file('fileNewsImg')
+                ->getClientOriginalExtension();
+            // Create a filename to store(database)
+            $newsImgNameToStore = $request->title
+                .'_'.'NewsImg'.'_'.time().'.'.$fileExtension;
+            // Upload file to system
+            $path = $request->file('fileNewsImg')
+                ->storeAs('public\images\news', $newsImgNameToStore);
+            $news->news_picture = $newsImgNameToStore;
+        }
+        // Save record
+        if ($news->save()) {
+            return redirect(route('maintenance.news'))
+                ->with('success', 'News updated!');
         }
     }
 }
