@@ -65,6 +65,8 @@ Route::group(
 				// Services
 				Route::get('services', 'ServiceController@viewServices')
 					->name('maintenance.services');
+				Route::post('services/specialty', 'ServiceController@addSpecialty');
+				Route::post('services/other', 'ServiceController@addOtherService');
 			});
 		});
 });

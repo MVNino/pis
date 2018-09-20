@@ -28,6 +28,8 @@ class NewsController extends Controller
   			'description' => 'required',
             'fileNewsImg' => 'image|nullable|max:3000'
   		]);
+
+        // Insert record to database
         $news = new News;
         $news->news_order = $request->numOrder;
   		$news->news_title = $request->title;
@@ -45,6 +47,7 @@ class NewsController extends Controller
                 ->storeAs('public/images/news', $newsImgNameToStore);
             $news->news_picture = $newsImgNameToStore;
         }
+        // Save record
         if ($news->save()) {
         	return redirect()->back()->with('success', 'News added!');
         }
