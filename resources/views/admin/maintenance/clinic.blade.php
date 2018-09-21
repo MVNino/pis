@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-        {!! Form::open(['action' => 'Maintenance\ClinicController@addClinic', 'method' => 'POST', 'autocomplete' => 'off'])!!}
+        {!! Form::open(['action' => 'Maintenance\ClinicController@addClinic', 'method' => 'POST', 'class' => 'form-material', 'autocomplete' => 'off'])!!}
             <div class="row">
                 <div class="col-md-12">
                     <div class="white-box">
@@ -50,7 +50,6 @@
                                 <div class="col-md-12">
                                     <input type="text" name="email" class="form-control" value="{{$clinic->clinic_email}}"> </div>
                             </div>
-                            <br/>
                             <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
                         </form>
                     </div>
