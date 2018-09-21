@@ -36,7 +36,7 @@
 		<div class="tab-content">
 			<div class="tab-pane active" id="home2" role="tabpanel">
 				<div class="p-20">
-					<h3 class="box-title">Speciality Services</h3>
+					<h3 class="box-title">Specialty Services</h3>
 					{!! Form::open(['action' => 'Maintenance\ServiceController@addSpecialty','class' => 'form-material' ,'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 						<div class="form-group">
 							<label class="col-sm-12">Image</label>
