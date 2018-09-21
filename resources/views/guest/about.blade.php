@@ -51,6 +51,8 @@
                     <div class="best-feature-title">
                         <h2 class="text-uppercase">best <span>features</span></h2>
                     </div>
+
+                    
                     <div class="best-features-accoudion">
                         <div class="panel-group" id="Abaccordion" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">

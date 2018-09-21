@@ -79,6 +79,12 @@ class GuestController extends Controller
         }
     }
 
+    public function getContact()
+    {
+        $MaxId = Contact::max('contact_us_id');
+        return $contact = Contact::findOrFail($MaxId);
+    }
+
     //Get about
     public function getAbout()
     {
