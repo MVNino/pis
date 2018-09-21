@@ -18,10 +18,9 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="white-box">
-				<h3 class="box-title m-b-0">Banner List</h3>
 				<div align="right">
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-						Add Banner
+					<i class="fa fa-plus"></i> &nbsp;Add Banner
 					</button><br><br>
 				</div>
 				<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
@@ -62,9 +61,10 @@
 								<td>
 									{!!Form::open(['action' => ['Maintenance\BannerController@deleteBanner', $banner->banner_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
                                         {{Form::hidden('_method', 'DELETE')}}
-                                        <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
+                                        <button type="submit" class="btn btn-sm btn-icon btn-warning delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
 											<i class="ti-close" aria-hidden="true"></i>
 										</button>
+								</a>
                                     {!!Form::close()!!}
 								</td>
 							</tr>
@@ -117,7 +117,7 @@
 						</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Add Banner</button>
+					<button type="submit" class="btn btn-info">Add</button>
 				</div>
 				{!! Form::close() !!}
 			</div>

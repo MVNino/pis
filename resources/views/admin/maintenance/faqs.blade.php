@@ -46,7 +46,6 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-info btn-md waves-effect waves-light m-r-10">Submit</button>
-					<button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
 				{!! Form::close() !!}
 			</div>
 		</div>
