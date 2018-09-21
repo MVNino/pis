@@ -37,11 +37,7 @@
 			<div class="tab-pane active" id="home2" role="tabpanel">
 				<div class="p-20">
 					<h3 class="box-title">Speciality Services</h3>
-<<<<<<< HEAD
-					{!! Form::open(['action' => 'Maintenance\ServiceController@addSpecialty', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-material', 'autocomplete' => 'off', 'files' => true]) !!}
-=======
 					{!! Form::open(['action' => 'Maintenance\ServiceController@addSpecialty','class' => 'form-material' ,'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
->>>>>>> 00d79830fb5bd6a25ce8c328935f14db354a0c63
 						<div class="form-group">
 							<label class="col-sm-12">Image</label>
 							<div class="col-sm-12">
