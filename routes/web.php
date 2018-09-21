@@ -30,10 +30,10 @@ Route::group(
 		Route::get('dashboard', function(){
 			return view('admin.dashboard');
 		})->name('admin.dashboard');
+		# MAINTENANCE
 		Route::group([
 			'prefix' => 'maintenance'
 		], function(){
-			# MAINTENANCE
 			Route::namespace('Maintenance')->group(function () {
 				// About 
 				Route::get('about', 'AboutController@viewAbout')->name('maintenance.about');
@@ -46,6 +46,9 @@ Route::group(
 				// Clinic 
 				Route::get('clinic', 'ClinicController@viewClinic')->name('maintenance.clinic');
 				Route::post('clinic', 'ClinicController@addClinic');
+				Route::get('clinic/{id}', 'ClinicController@edit');
+				Route::put('clinic/{id}', 'ClinicController@editClinic');
+				Route::delete('clinic/{id}', 'ClinicController@deleteClinic');
 				// Company
 				Route::get('company', 'CompanyController@viewCompany')->name('maintenance.company');
 				Route::post('company', 'CompanyController@addCompany');
@@ -75,6 +78,16 @@ Route::group(
 					->name('maintenance.services');
 				Route::post('services/specialty', 'ServiceController@addSpecialty');
 				Route::post('services/other', 'ServiceController@addOtherService');
+			});
+
+		});
+
+		# TRANSACTION
+		Route::group([
+			'prefix' => 'transaction'
+		], function() {
+			Route::namespace('Transaction')->group(function () {
+				Route::get('patients', 'PatientController@listPatients');
 			});
 		});
 });
