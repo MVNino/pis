@@ -44,7 +44,6 @@
                             <td>{{$row['clinic_days']}} </td>
                             <td>{{$row['clinic_email']}} </td>
 
-
                             <td>
                             <a href="{{action('Maintenance\ClinicController@edit', $row['clinic_contact_id'])}}" class="btn btn-sm btn-primary">
                                 <i class="fa fa-edit"></i>
@@ -62,13 +61,13 @@
                         @endforeach
                     </tbody>
                     <tfoot>
-                        <tr>
-                            <td colspan="6">
-                                <div class="text-right">
-                                    <ul class="pagination"> </ul>
-                                </div>
-                            </td>
-                        </tr>
+                    <tr>
+						<td colspan="8">
+							<div class="text-right">
+								<ul class="pagination"> </ul>
+							</div>
+						</td>
+					</tr>
                     </tfoot>
                 </table>
             </div>
