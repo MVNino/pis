@@ -38,35 +38,35 @@
                     </div>
                 </div>
                  <div class="col-sm-6">
-                     <div class="about-form">
-                             <div class="form-title text-center">
-                                <h2>SCHEDULE AN APPOINTMENT</h2>
-                            </div>
-                            <div class="v2-about-input">
-                                <input type="text"  placeholder="Patient's Name" >
-                            </div>
-                            <div class="v2-about-input mr0">
-                              <input type="email" placeholder="Email">
-                            </div>
-                            <div class="v2-about-input">
-                                <input type="text" placeholder="Phone">
-                            </div>
+                    <div class="about-form">
+                        <div class="form-title text-center">
+                            <h2>SCHEDULE AN APPOINTMENT</h2>
+                        </div>
+                        <div class="v2-about-input">
+                            <input type="text"  placeholder="Patient's Name" >
+                        </div>
+                        <div class="v2-about-input mr0">
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <div class="v2-about-input">
+                            <input type="text" placeholder="Phone">
+                        </div>
                         <div class="v2-about-input mr0">
                             <div class="v2-about-select">
-                                 <select>
-                                       <option value="Preferred Date & Time">Preferred Date & Time</option>
-                                         <option value="Preferred Date & Time">Preferred Date & Time</option>
-                                         <option value="Preferred Date & Time">Preferred Date & Time</option>
+                                <select>
+                                    <option value="Preferred Date & Time">Preferred Date & Time</option>
+                                    <option value="Preferred Date & Time">Preferred Date & Time</option>
+                                    <option value="Preferred Date & Time">Preferred Date & Time</option>
                                 </select>
                             </div>
                         </div>
-                            <div class="v2-about-textarea">
+                        <div class="v2-about-textarea">
                              <textarea name="message" id="message2" cols="30" rows="10" placeholder="Write your message here..."></textarea>
-                            </div>
-                            <div class="v2-about-submit">
-                             <input type="submit" value="SUBMIT">
-                            </div>
-                     </div>                    
+                        </div>
+                        <div class="v2-about-submit">
+                            <input type="submit" value="SUBMIT">
+                        </div>
+                    </div>                    
                 </div>
             </div>
         </div>
