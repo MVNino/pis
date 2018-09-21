@@ -45,7 +45,8 @@
 							  </select>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-info btn-md waves-effect waves-light m-r-10">Submit</button>
+					<button type="submit" class="btn btn-info btn-md waves-effect waves-light m-r-10">
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
 				{!! Form::close() !!}
 			</div>
 		</div>

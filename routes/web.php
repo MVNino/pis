@@ -88,6 +88,7 @@ Route::group(
 		], function() {
 			Route::namespace('Transaction')->group(function () {
 				Route::get('patients', 'PatientController@listPatients');
+				Route::get('editPatients', 'PatientController@editPatients'); //change it
 			});
 		});
 });
