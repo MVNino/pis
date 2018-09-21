@@ -43,7 +43,7 @@
                     @foreach($news as $new)
                     <div class="single-news-post">
                         <div class="news-post-img">
-                            <img src="/storage/images/news/{{ $new->news_picture }}" alt="$new->news_title">
+                            <img src="/storage/images/news/{{ $new->news_picture }}" alt="$new->news_title" height="500" width="600">
                         </div>
                         <div class="post-title">
                             <h2>{{ $new->news_title }}</h2>
@@ -52,7 +52,6 @@
                             <p>Posted by : <span>Emma Walt</span> // On : <span>01 Jan, 2015</span></p>
                         </div>
                         <p>{{ $new->news_desc }}</p>
-                        <a href="single.html" class="read-more">READ MORE</a>
                     </div>
                     @endforeach
                     {{ $news->links() }}
