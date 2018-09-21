@@ -30,7 +30,8 @@
 	                    <th>Title</th>
 	                    <th>Description</th>
 	                    <th>Image</th>
-	                    <th>Action</th>
+	                    <th></th>
+	                    <th></th>
 	                </tr>
 	            </thead>
 	            <tbody>
@@ -41,15 +42,14 @@
 	                <td>{{$row['feature_description']}}</td>
 	                <td>{{$row['feature_image']}} </td>
 	                <td>
-	                
 	                <a href="{{action('Maintenance\FeatureController@edit', $row['features_id'])}}" class="btn btn-warning">Edit</a>
-	           
-	                
-	                {!!Form::open(['action' => ['Maintenance\FeatureController@deleteFeature', $row['features_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Contact?')"])!!}
-	                    {{Form::hidden('_method', 'DELETE')}}
-	                    <button type="button" class="btn btn-warning">Delete</button> 
-
-	                {!! Form::close() !!}
+	                </td>
+	                <td>
+	                	{!!Form::open(['action' => ['Maintenance\FeatureController@deleteFeature', $row['features_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Delete">Delete
+										</button>
+                                    {!!Form::close()!!}
 	                </td>
 	            </tr>
 	            @endforeach
