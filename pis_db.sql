@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2018 at 05:24 AM
+-- Generation Time: Sep 21, 2018 at 05:32 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -339,7 +339,8 @@ CREATE TABLE `patient_information_tbl` (
   `city` varchar(160) NOT NULL,
   `zip_code` varchar(5) NOT NULL,
   `blood_type` varchar(5) NOT NULL,
-  `patient_id` int(11) NOT NULL
+  `patient_id` int(11) NOT NULL,
+  `birthday` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
