@@ -51,7 +51,7 @@
                         <img src="/storage/images/service/specialty/{{ $service->spec_image_icon }}" alt="Pic" width="300" height="250">
                     </div>
                     <h4><a href="/service/{{ $service->spec_service_id }}">{{ $service->spec_title }}</a></h4>
-                    <p>{{ str_limit($service->spec_desc, $limit = 80, $end = '...') }}</p>
+                    <p>{{ str_limit($service->spec_desc, $limit = 40, $end = '...') }}</p>
                 </div>
             </div>
             @endforeach
