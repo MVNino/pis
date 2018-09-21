@@ -17,7 +17,6 @@ class ServiceController extends Controller
 
     public function addSpecialty(Request $request)
     {
-        return $request->file('fileServiceVid');
     	$this->validate($request, [
     		'txtTitle' => 'required',
     		'txtareaDescription' => 'required',
@@ -43,6 +42,14 @@ class ServiceController extends Controller
                 ->storeAs('public/images/service/specialty/', $serviceImgNameToStore);
             $service->spec_image_icon = $serviceImgNameToStore;
         }
+        
+        // if ($request->hasFile('fileServiceVid')) {
+        //     $file = $request->file('fileServiceVid');
+        //     $filename = $file->getClientOriginalName();
+        //     $file->move('public/images/service/specialty/', $filename);
+        //     $service->spec_video = $filename;
+        // }
+
         // Handle file upload for specialty service image
         if($request->hasFile('fileServiceVid')){
             // Get the file's extension
@@ -58,7 +65,7 @@ class ServiceController extends Controller
         }
     	if ($service->save()) {
     		return redirect()->back()
-    			->with('success', 'Specialty service added!');
+                ->with('success', 'Specialty service added!');
     	}
     }
 
