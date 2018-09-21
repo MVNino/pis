@@ -12,7 +12,7 @@ class FeatureController extends Controller
     public function viewFeatures()
     {
     	$feature = Feature::all()->toArray();
-      return view('admin.maintenance.features', compact('feature'));
+        return view('admin.maintenance.features', compact('feature'));
     }
 
     public function storeFeature(Request $request)

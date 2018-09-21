@@ -1,25 +1,28 @@
 @extends('admin.layouts.app')
 
 @section('breadcrumb')
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">Contact Us</h4>
-    </div>
-    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-        <ol class="breadcrumb">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Maintenance</a></li>
-            <li><a href="/admin/maintenance/features">Features</a></li>
-            <li class="active">Edit Features</li>
-        </ol>
-    </div>
+	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+		<h4 class="page-title">Features</h4>
+	</div>
+	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+		<ol class="breadcrumb">
+			<li><a href="#">Dashboard</a></li>
+			<li><a href="#">Maintenance</a></li>
+            <li>Features</li>
+            <li><a href="/admin/maintenance/features/{{ $feature->features_id }}" class="active">{{ $feature->feature_title }}</a></li>
+		</ol>
+	</div>
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="white-box">
-                <h3 class="box-title">Contact Us</h3>
-                {!!Form::open(['action' => ['Maintenance\FeatureController@editFeature', $feature->features_id], 'method' => 'POST'])!!}
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h3 class="text-light">Edit Feature</h3>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                {!!Form::open(['action' => ['Maintenance\FeatureController@editFeature', $feature->features_id], 'method' => 'POST', 'class' => 'form-material'])!!}
                 {{Form::hidden('_method', 'PUT')}}
                 @csrf
                     <div class="form-group">
@@ -41,7 +44,13 @@
                                 <input type="file" name="fileFeatureImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> </div>
                         </div>
                     </div>
-                   
-                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
+                    <div align="right">
+                        <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+                    </div>
                 {!!Form::close()!!}
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
