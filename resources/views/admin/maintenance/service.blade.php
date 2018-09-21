@@ -12,7 +12,6 @@
 		</ol>
 	</div>
 @endsection
-
 @section('content')
 <div class="card">
 	<div class="card-body p-b-0">
