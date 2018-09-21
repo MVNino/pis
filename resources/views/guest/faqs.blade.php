@@ -472,8 +472,8 @@
                             <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>25th Street, Sydney, </h4>
-                            <h4>Australia</h4>
+                            <h4>{{ $clinic->clinic_location }},</h4>
+                            <h4>Philippines</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -481,7 +481,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $contact->contact_phone }}</h4>
+                            <h4>{{ $clinic->clinic_contact }}</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -489,7 +489,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $contact->contact_email }}</h4>
+                            <h4>{{ $clinic->clinic_email }}</h4>
                         </div>
                     </div>
                 </div>

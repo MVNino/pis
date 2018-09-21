@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\About;
 use App\Banner;
 use App\Clinic;
-use App\ContactUs;
+use App\Contact;
 use App\FAQ;
 use App\News;
 use App\OtherService;
@@ -56,7 +56,7 @@ class GuestController extends Controller
 
     # Contact
     public function viewContact() {
-        $contact = $this->getContact();
+        $contact = $this->getClinicContact();
 
         $clinics = Clinic::all();
 
@@ -73,18 +73,18 @@ class GuestController extends Controller
     }
 
     // Get contact information
-    public function getContact()
+    public function getClinicContact()
     {
-        $maxId = ContactUs::max('contact_us_id');
-        return $contact = ContactUs::findOrFail($maxId);
+        $maxId = Clinic::max('clinic_contact_id');
+        return Clinic::findOrFail($maxId);
     }
 
     # FAQs
     public function viewFaqs() {
         $faqs = FAQ::all();
-        $contact = $this->getContact();
+        $clinic = $this->getClinicContact();
         return view('guest.faqs', ['faqs' => $faqs, 
-            'contact' => $contact]);
+            'clinic' => $clinic]);
     }
 }
 
