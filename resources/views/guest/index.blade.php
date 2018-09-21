@@ -88,7 +88,6 @@
                         <p>If you need a doctor for to consectetuer Lorem </p>
                         <p>ipsum dolor, consectetur adipiscing elit Lorem </p>
                         <p>ipsum dolor, consectetur Ut volutpat eros.</p>
-                        
                     </div>
                 </div>
                 <div class="col-sm-4 text-center">
