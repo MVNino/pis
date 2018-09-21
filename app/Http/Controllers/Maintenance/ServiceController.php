@@ -17,6 +17,7 @@ class ServiceController extends Controller
 
     public function addSpecialty(Request $request)
     {
+        return $request->file('fileServiceVid');
     	$this->validate($request, [
     		'txtTitle' => 'required',
     		'txtareaDescription' => 'required',
@@ -35,14 +36,26 @@ class ServiceController extends Controller
             $fileExtension = $request->file('fileServiceImg')
                 ->getClientOriginalExtension();
             // Create a filename to store(database)
-            $serviceImgNameToStore = $request->title
+            $serviceImgNameToStore = $request->txtTitle
                 .'_'.'SpecialtyServiceImg'.'_'.time().'.'.$fileExtension;
             // Upload file to system
             $path = $request->file('fileServiceImg')
                 ->storeAs('public/images/service/specialty/', $serviceImgNameToStore);
             $service->spec_image_icon = $serviceImgNameToStore;
         }
-        // Save record
+        // Handle file upload for specialty service image
+        if($request->hasFile('fileServiceVid')){
+            // Get the file's extension
+            $fileExtension = $request->file('fileServiceVid')
+                ->getClientOriginalExtension();
+            // Create a filename to store(database)
+            $serviceVidNameToStore = $request->txtTitle
+                .'_'.'SpecialtyServiceVid'.'_'.time().'.'.$fileExtension;
+            // Upload file to system
+            $path = $request->file('fileServiceVid')
+                ->storeAs('public/images/service/specialty/', $serviceVidNameToStore);
+            $service->spec_video = $serviceVidNameToStore;
+        }
     	if ($service->save()) {
     		return redirect()->back()
     			->with('success', 'Specialty service added!');
@@ -69,7 +82,7 @@ class ServiceController extends Controller
             $fileExtension = $request->file('fileServiceImg')
                 ->getClientOriginalExtension();
             // Create a filename to store(database)
-            $serviceImgNameToStore = $request->title
+            $serviceImgNameToStore = $request->txtTitle
                 .'_'.'OtherServiceImg'.'_'.time().'.'.$fileExtension;
             // Upload file to system
             $path = $request->file('fileServiceImg')
