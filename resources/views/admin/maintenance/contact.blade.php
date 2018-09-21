@@ -71,18 +71,13 @@
                             <td>{{$row['contact_inquiry']}} </td>
 
                             <td>
-                            {!!Form::open(['action' => ['Maintenance\ContactController@editContact', $row['contact_us_id']], 'method' => 'POST'])!!}
-                                {{Form::hidden('_method', 'PUT')}}
-                                <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit">
-                                                <i class="ti-pencil-alt" aria-hidden="true"></i>
 
-                            {!! Form::close() !!}
-
+                            <a href="{{action('Maintenance\ContactController@edit', $row['contact_us_id'])}}" class="btn btn-warning">Edit</a>
+                       
                             
                             {!!Form::open(['action' => ['Maintenance\ContactController@deleteContact', $row['contact_us_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Contact?')"])!!}
                                 {{Form::hidden('_method', 'DELETE')}}
-                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
-                                        class="ti-close" aria-hidden="true"></i></button> 
+                                <button type="button" class="btn btn-warning">Delete</button> 
 
                             {!! Form::close() !!}
                             </td>
@@ -106,4 +101,6 @@
         </div>
         {!! Form::close() !!}
     </div>
+
+
 @endsection
