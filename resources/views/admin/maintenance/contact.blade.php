@@ -34,10 +34,17 @@
                             <td>{{$row['contact_inquiry']}} </td>
 
                             <td>
-                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit"><i
-                                        class="ti-pencil-alt" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
-                                        class="ti-close" aria-hidden="true"></i></button>
+
+                            <a href="{{action('Maintenance\ContactController@edit', $row['contact_us_id'])}}" class="btn btn-warning">Edit</a>
+                            </td>
+                            <td>
+                            
+                            {!!Form::open(['action' => ['Maintenance\ContactController@deleteContact', $row['contact_us_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Delete">Delete
+                                            
+                                        </button>
+                            {!!Form::close()!!}
                             </td>
                         </tr>
                         @endforeach
