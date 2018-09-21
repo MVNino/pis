@@ -47,6 +47,8 @@
                     
                     <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
                     <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+
+                    
                      <br><br>
 
                         <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
@@ -61,18 +63,28 @@
                         </thead>
                         <tbody>
 
-                         @foreach($contact as $row) 
+                        @foreach($contact as $row) 
                         <tr>
-                            <td>{{ $row['contact_name'] }}</td>
-                            <td>{{ $row['contact_email'] }}</td>
-                            <td>{{ $row['contact_phone'] }}</td>
+                            <td>{{$row['contact_name']}}</td>
+                            <td>{{$row['contact_email']}}</td>
+                            <td>{{$row['contact_phone']}}</td>
                             <td>{{$row['contact_inquiry']}} </td>
 
                             <td>
-                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit"><i
-                                        class="ti-pencil-alt" aria-hidden="true"></i></button>
+                            {!!Form::open(['action' => ['Maintenance\ContactController@editContact', $row['contact_us_id']], 'method' => 'POST'])!!}
+                                {{Form::hidden('_method', 'PUT')}}
+                                <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit">
+                                                <i class="ti-pencil-alt" aria-hidden="true"></i>
+
+                            {!! Form::close() !!}
+
+                            
+                            {!!Form::open(['action' => ['Maintenance\ContactController@deleteContact', $row['contact_us_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Contact?')"])!!}
+                                {{Form::hidden('_method', 'DELETE')}}
                                 <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
-                                        class="ti-close" aria-hidden="true"></i></button>
+                                        class="ti-close" aria-hidden="true"></i></button> 
+
+                            {!! Form::close() !!}
                             </td>
                         </tr>
                         @endforeach
@@ -92,5 +104,6 @@
                 </form>
             </div>
         </div>
+        {!! Form::close() !!}
     </div>
 @endsection

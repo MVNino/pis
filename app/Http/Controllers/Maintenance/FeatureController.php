@@ -51,4 +51,28 @@ class FeatureController extends Controller
             return $e->getMessage();
         } 
     }
+
+    public function editFeature(Request $request)
+    {
+        return 123;
+    }
+
+    public function deleteFeature($id)
+    {
+        try
+        {
+            $feature = Feature::find($id);
+
+            if ($feature->delete())
+            {
+                return redirect()->back()->with('success', 'Removed Successfully!');
+            }
+
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
+
 }

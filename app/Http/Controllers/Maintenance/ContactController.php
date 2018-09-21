@@ -45,4 +45,28 @@ class ContactController extends Controller
     		return redirect()->back()->with('success', 'Contact added!');
     	}
     }
+
+    public function editContact(Request $request)
+    {
+        return 123;
+    }
+
+    public function deleteContact($id)
+    {
+        try
+        {
+            $contact = Contact::find($id);
+
+            if ($contact->delete())
+            {
+                return redirect()->back()->with('success', 'Contact Removed Successfully!');
+            }
+
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
+
 }
