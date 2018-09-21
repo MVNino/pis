@@ -260,8 +260,8 @@
                             <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>25th Street, Sydney, </h4>
-                            <h4>Australia</h4>
+                            <h4>{{ $clinic->clinic_location }}</h4>
+                            
                         </div>
                     </div>
                     <div class="row single-contact">
