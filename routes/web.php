@@ -31,10 +31,10 @@ Route::group(
 		Route::get('dashboard', function(){
 			return view('admin.dashboard');
 		})->name('admin.dashboard');
+		# MAINTENANCE
 		Route::group([
 			'prefix' => 'maintenance'
 		], function(){
-			# MAINTENANCE
 			Route::namespace('Maintenance')->group(function () {
 				// About 
 				Route::get('about', 'AboutController@viewAbout')->name('maintenance.about');
@@ -76,6 +76,16 @@ Route::group(
 					->name('maintenance.services');
 				Route::post('services/specialty', 'ServiceController@addSpecialty');
 				Route::post('services/other', 'ServiceController@addOtherService');
+			});
+
+		});
+
+		# TRANSACTION
+		Route::group([
+			'prefix' => 'transaction'
+		], function() {
+			Route::namespace('Transaction')->group(function () {
+				Route::get('patients', 'PatientController@listPatients');
 			});
 		});
 });
