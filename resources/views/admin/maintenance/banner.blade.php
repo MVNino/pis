@@ -38,17 +38,13 @@
 							<tr>
 								<td>{{$banner->banner_order}}</td>
 								<td>{{$banner->banner_picture}}</td>
-								@if($banner->banner_status == 0)
-									<td><span class="label label-table label-danger">Not Active</span></td>
-								@else
-									<td><span class="label label-table label-success">Active</span></td>
-								@endif
 								<td>
 									@if($banner->banner_status == 0)
 										{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 											{{Form::hidden('_method', 'PUT')}}
 											<input type="text" name="status" value="1" style="display: none;">
-											<button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Activate">
+											<span class="label label-table label-danger" data-toggle="tooltip" data-original-title="Click to Activate" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Not Active</span>
+											<button id="{{$banner->banner_id}}" type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" style="display: none;">
 												<i class="ti-pencil-alt" aria-hidden="true"></i>
 											</button>
 										{!!Form::close()!!}
@@ -56,11 +52,14 @@
 										{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 											{{Form::hidden('_method', 'PUT')}}
 											<input type="text" name="status" value="0" style="display: none;">
-											<button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Deactivate">
+											<span class="label label-table label-success" data-toggle="tooltip" data-original-title="Click to Deactivate" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Active</span>
+											<button id="{{$banner->banner_id}}" type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" style="display: none;">
 												<i class="ti-pencil-alt" aria-hidden="true"></i>
 											</button>
 										{!!Form::close()!!}
 									@endif
+								</td>
+								<td>
 									{!!Form::open(['action' => ['Maintenance\BannerController@deleteBanner', $banner->banner_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
                                         {{Form::hidden('_method', 'DELETE')}}
                                         <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete">

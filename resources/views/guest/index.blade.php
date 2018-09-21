@@ -10,7 +10,7 @@
                     <div class="carousel-inner">
                         @foreach($banners as $banner)
                             <div class="item">
-                                <img src="/storage/images/banner/{{$banner->banner_picture}}" alt="banner" style="width:100%;">
+                                <img src="/storage/images/banner/{{$banner->banner_picture}}" alt="banner" style="object-fit: cover; height: 650px; width: 100%;">
                             </div>
                         @endforeach
                     </div>

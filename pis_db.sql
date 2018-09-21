@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2018 at 12:59 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.2
+-- Generation Time: Sep 21, 2018 at 05:32 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `patient_info_db`
+-- Database: `pis_db`
 --
 
 -- --------------------------------------------------------
@@ -73,6 +73,15 @@ CREATE TABLE `banner_tbl` (
   `banner_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `banner_tbl`
+--
+
+INSERT INTO `banner_tbl` (`banner_id`, `banner_picture`, `banner_order`, `banner_status`) VALUES
+(1, '_bannerImage_1537016297.jpg', 1, 1),
+(2, '_bannerImage_1537086326.png', 2, 1),
+(3, '_bannerImage_1537109766.PNG', 3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -122,8 +131,8 @@ CREATE TABLE `company_tbl` (
   `company_id` int(11) NOT NULL,
   `company_name` varchar(160) DEFAULT NULL,
   `company_desc` text,
-  `company_clinic_logo` varchar(150) DEFAULT NULL,
-  `company_map` text
+  `company_clinic_logo` varchar(150) NOT NULL,
+  `company_map` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -131,9 +140,7 @@ CREATE TABLE `company_tbl` (
 --
 
 INSERT INTO `company_tbl` (`company_id`, `company_name`, `company_desc`, `company_clinic_logo`, `company_map`) VALUES
-(1, 'Romero Company', 'Romero Company Description', 'romero logo wow', 'Google map haha'),
-(2, 'Causaren Company', 'Romero Company Description', NULL, NULL),
-(3, 'Romero Company', 'Romero Company Description', NULL, NULL);
+(1, 'Romero Company', 'Romero Company Description', 'romero logo wow', 'Google map haha');
 
 -- --------------------------------------------------------
 
@@ -159,7 +166,8 @@ INSERT INTO `contact_us_tbl` (`contact_us_id`, `contact_name`, `contact_email`, 
 (3, 'Marlon Villa Niño', 'ninomarlonvilla@gmail.com', '09123733947', 'HEHEH inquiry'),
 (4, 'Pyke Bio', 'pyke.bio@gmail.com', '09487521456', 'INQUIRY!'),
 (5, 'Edgardo Cubian', 'ed.cubian@gmail.com', '09194579647', 'Wow inquiry'),
-(6, 'Edgardo Cubian', 'ed.cubian@gmail.com', '09194579647', 'Ano oras kayo pwede bukas');
+(6, 'Edgardo Cubian', 'ed.cubian@gmail.com', '09194579647', 'Ano oras kayo pwede bukas'),
+(7, 'Edgardo Cubiannn', 'ed.cubian@gmail.com', '09194579647', 'Ano oras kayo pwede bukas');
 
 -- --------------------------------------------------------
 
@@ -192,10 +200,14 @@ CREATE TABLE `faq_tbl` (
 --
 
 INSERT INTO `faq_tbl` (`faq_id`, `faq_question`, `faq_answer`, `faq_category`) VALUES
-(1, 'How to be u po?', 'Just be yourself.', 'class A'),
-(2, 'How to be superman', 'It\'s impossible', 'Wow'),
-(3, 'How to be u Leki', 'walwal lang', 'HEHE'),
-(4, 'My question to you', 'My answer to you', 'Category 1');
+(1, 'How to be u po?', 'Just be yourself.', 'surgery'),
+(2, 'How to be superman', 'It\'s impossible', 'service'),
+(3, 'How to be u Leki', 'walwal lang', 'recovery'),
+(4, 'My question to you', 'My answer to you', 'appointment'),
+(5, 'What is love', 'Love is what', 'payment'),
+(6, 'How to smoke in a healthier way?', 'Smoke 3x in the morning, 4x in the afternoon, and 5x before going to bed. :)', 'others'),
+(7, 'What is the success rate of a heart transplant?', 'The success rate of a heart transplant depends on the patient, doctor\'s skill, and prayer.', 'surgery'),
+(8, 'Can you do reappointments?', 'It is possible. We\'ll work into that.', 'appointment');
 
 -- --------------------------------------------------------
 
@@ -264,16 +276,21 @@ CREATE TABLE `news_tbl` (
   `news_title` varchar(160) NOT NULL,
   `news_desc` text NOT NULL,
   `news_picture` varchar(190) NOT NULL,
-  `news_order` int(11) NOT NULL
+  `news_order` int(11) NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `news_tbl`
 --
 
-INSERT INTO `news_tbl` (`news_id`, `news_title`, `news_desc`, `news_picture`, `news_order`) VALUES
-(1, 'sda', 'dska', 'sda_NewsImg_1536312652.png', 0),
-(2, 'Sample news title45', 'News Description', 'Sample news title45_NewsImg_1536367233.png', 0);
+INSERT INTO `news_tbl` (`news_id`, `news_title`, `news_desc`, `news_picture`, `news_order`, `isActive`) VALUES
+(1, 'Ed Sheeran to release his latest song, Thinking Out Loud.', '\"This is one of my favorite songs...\" -- Ed Sheeran', 'sda_NewsImg_1536312652.png', 6, 1),
+(2, 'Sample news title45', 'News Description', 'Sample news title45_NewsImg_1536367233.png', 5, 1),
+(3, 'Land Fall of Typhoon Ompong', 'Binabagyo ng bagyong Ompong ang mga bayan ng Cagayan.', 'Land Fall of Bagyong Ompong._NewsImg_1536939688.jpg', 1, 1),
+(4, 'National Rabies Awareness Month', 'Annual activity relative to the prevention of having rabies', 'National Rabies Awareness Month_NewsImg_1536940499.jpg', 3, 1),
+(5, 'Downloadable Human Memory', 'This section was made to describe a news with a title of \"Downloadable Human Memory\"', 'Downloadable Human Memory_NewsImg_1537355547.jpg', 2, 1),
+(6, 'Ganda mo Tea yiieeh', 'Advertisement for Nestea.', 'Ganda mo Tea yiieeh_NewsImg_1537371357.png', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -302,6 +319,13 @@ CREATE TABLE `other_services_tbl` (
   `other_vidlink` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `other_services_tbl`
+--
+
+INSERT INTO `other_services_tbl` (`other_services_id`, `other_image`, `other_title`, `other_desc`, `other_vidlink`) VALUES
+(1, '_OtherServiceImg_1537458623.jpg', 'Patent Service', 'Service description for Patent.', 'www.youtube,com/patent');
+
 -- --------------------------------------------------------
 
 --
@@ -315,7 +339,8 @@ CREATE TABLE `patient_information_tbl` (
   `city` varchar(160) NOT NULL,
   `zip_code` varchar(5) NOT NULL,
   `blood_type` varchar(5) NOT NULL,
-  `patient_id` int(11) NOT NULL
+  `patient_id` int(11) NOT NULL,
+  `birthday` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
@@ -360,6 +385,14 @@ CREATE TABLE `specialty_service_tbl` (
   `spec_desc` text NOT NULL,
   `spec_vidlink` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `specialty_service_tbl`
+--
+
+INSERT INTO `specialty_service_tbl` (`spec_service_id`, `spec_image_icon`, `spec_title`, `spec_desc`, `spec_vidlink`) VALUES
+(1, '_SpecialtyServiceImg_1537458116.jpg', 'Copyright Service', 'This is to describe copyright service.', 'www.youtube,com/copyright'),
+(2, '_SpecialtyServiceImg_1537458547.jpg', 'Patent Service', 'Other description for Patent', 'www.youtube,com/patent');
 
 -- --------------------------------------------------------
 
@@ -529,7 +562,7 @@ ALTER TABLE `appointment_tbl`
 -- AUTO_INCREMENT for table `banner_tbl`
 --
 ALTER TABLE `banner_tbl`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `billing_tbl`
@@ -547,13 +580,13 @@ ALTER TABLE `clinic_contact_tbl`
 -- AUTO_INCREMENT for table `company_tbl`
 --
 ALTER TABLE `company_tbl`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `contact_us_tbl`
 --
 ALTER TABLE `contact_us_tbl`
-  MODIFY `contact_us_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `contact_us_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `expense_tbl`
@@ -565,7 +598,7 @@ ALTER TABLE `expense_tbl`
 -- AUTO_INCREMENT for table `faq_tbl`
 --
 ALTER TABLE `faq_tbl`
-  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `features_tbl`
@@ -589,7 +622,7 @@ ALTER TABLE `medical_records_tbl`
 -- AUTO_INCREMENT for table `news_tbl`
 --
 ALTER TABLE `news_tbl`
-  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `official_receipt_tbl`
@@ -601,7 +634,7 @@ ALTER TABLE `official_receipt_tbl`
 -- AUTO_INCREMENT for table `other_services_tbl`
 --
 ALTER TABLE `other_services_tbl`
-  MODIFY `other_services_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `other_services_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `patient_information_tbl`
@@ -625,7 +658,7 @@ ALTER TABLE `services_tbl`
 -- AUTO_INCREMENT for table `specialty_service_tbl`
 --
 ALTER TABLE `specialty_service_tbl`
-  MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_tbl`

@@ -9,6 +9,8 @@ use App\Clinic;
 use App\ContactUs;
 use App\FAQ;
 use App\News;
+use App\OtherService;
+use App\SpecialtyService;
 
 class GuestController extends Controller 
 {
@@ -22,10 +24,7 @@ class GuestController extends Controller
 
     public function viewIndex()
     {
-        $banners = Banner::
-            all()
-            ->where('banner_status', '=', 1);
-
+        $banners = Banner::where('banner_status', '=', 1);
     	return view('guest.index', ['banners'=>$banners]);
     }
 
@@ -45,7 +44,8 @@ class GuestController extends Controller
     }
 
     public function viewServices() {
-        return view('guest.services');
+        $specialtyServices = SpecialtyService::all();
+        return view('guest.services', ['specialtyServices' => $specialtyServices]);
     }
 
     # News

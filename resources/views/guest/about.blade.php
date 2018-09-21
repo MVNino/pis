@@ -1,14 +1,12 @@
 @extends('guest.layouts.app')
 
 @section('content')
+
 <div class="single-page-title">
     <section class="home-area v3">
         <!--About Image-->
-        <div class="page-title-cell"  style="background-image: url('/storage/images/aboutr/{{$about->about_image}}');">
-            <div class="container">
-                <div class="row">
-                </div>
-            </div>
+        <div>
+            <img src="/storage/images/about/{{$about->about_image}}" alt="banner" style="object-fit: cover; height: 700px; width: 100%;">
         </div>
     </section>
     <section class="get-quote-area">

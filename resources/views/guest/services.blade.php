@@ -1,7 +1,6 @@
 @extends('guest.layouts.app')
 
 @section('content')
-
     <section class="features-area singlepageservice section-padding">
         <div class="container">
             <div class="row">
@@ -64,68 +63,20 @@
                 </div>
             </div>
             <div class="row">
+               @forelse($specialtyServices as $service) 
                 <div class="col-sm-4">
                     <div class="speacila-single-service">
                         <div class="service-thumb">
-                            <img src="{{ asset('medicre/img/news-2.png') }}" alt="jigsawlab">
+                            <img src="/storage/images/service/specialty/{{ $service->spec_image_icon }}" alt="jigsawlab" height="200" width="300">
                         </div>
-                        <h4>George QUICK</h4>
-                        <p>Our construction management professio nals organize, lead, and manage the people, materials, and processes of construction utilizing the latest techno logies.</p>
-                        <a href="single.html">READ MORE +</a>
+                        <h4>{{ $service->spec_title }}</h4>
+                        <p>{{ $service->spec_desc }}</p>
+                        <a href="">READ MORE +</a>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="speacila-single-service">
-                        <div class="service-thumb">
-                            <img src="{{ asset('medicre/img/news-3.png') }}" alt="jigsawlab">
-                        </div>
-                        <h4>SAMANTHA FOX</h4>
-                        <p>Our construction management professio nals organize, lead, and manage the people, materials, and processes of construction utilizing the latest techno logies.</p>
-                        <a href="single.html">READ MORE +</a>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="speacila-single-service">
-                        <div class="service-thumb">
-                            <img src="{{ asset('medicre/img/news-1.png') }}" alt="jigsawlab">
-                        </div>
-                        <h4>Jeremy hendixson</h4>
-                        <p>Our construction management professio nals organize, lead, and manage the people, materials, and processes of construction utilizing the latest techno logies.</p>
-                        <a href="single.html">READ MORE +</a>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="speacila-single-service">
-                        <div class="service-thumb">
-                            <img src="{{ asset('medicre/img/news-1.png') }}" alt="jigsawlab">
-                        </div>
-                        <h4>Jeremy hendixson</h4>
-                        <p>Our construction management professio nals organize, lead, and manage the people, materials, and processes of construction utilizing the latest techno logies.</p>
-                        <a href="single.html">READ MORE +</a>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="speacila-single-service">
-                        <div class="service-thumb">
-                            <img src="{{ asset('medicre/img/news-2.png') }}" alt="jigsawlab">
-                        </div>
-                        <h4>George QUICK</h4>
-                        <p>Our construction management professio nals organize, lead, and manage the people, materials, and processes of construction utilizing the latest techno logies.</p>
-                        <a href="single.html">READ MORE +</a>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="speacila-single-service">
-                        <div class="service-thumb">
-                            <img src="{{ asset('medicre/img/news-3.png') }}" alt="jigsawlab">
-                        </div>
-                        <h4>Jeremy hendixson</h4>
-                        <p>Our construction management professio nals organize, lead, and manage the people, materials, and processes of construction utilizing the latest techno logies.</p>
-                        <a href="single.html">READ MORE +</a>
-                    </div>
-                </div>
-            </div>
-            </div>
+                @empty
+                @endforelse
+            </div> 
         </div>
     </section>
 @endsection
