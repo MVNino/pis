@@ -112,6 +112,7 @@
             </div>
         </div>
     </section>
+
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="dentalcare">
                                         <div class="row">
@@ -122,6 +123,7 @@
                                             </div>
                                         </div>
                                         <hr/>
+
                                          <section class="mediacare-whychoose-us ">
         <div class="container">
             <div class="row">
@@ -177,6 +179,7 @@
             </div>
         </div>
     </section>
+
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="diseases">
                                         <div class="row">

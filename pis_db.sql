@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2018 at 05:32 AM
+-- Generation Time: Sep 21, 2018 at 10:35 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -80,7 +80,8 @@ CREATE TABLE `banner_tbl` (
 INSERT INTO `banner_tbl` (`banner_id`, `banner_picture`, `banner_order`, `banner_status`) VALUES
 (1, '_bannerImage_1537016297.jpg', 1, 1),
 (2, '_bannerImage_1537086326.png', 2, 1),
-(3, '_bannerImage_1537109766.PNG', 3, 1);
+(3, '_bannerImage_1537109766.PNG', 3, 1),
+(4, '_bannerImage_1537515420.jpeg', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -324,7 +325,21 @@ CREATE TABLE `other_services_tbl` (
 --
 
 INSERT INTO `other_services_tbl` (`other_services_id`, `other_image`, `other_title`, `other_desc`, `other_vidlink`) VALUES
-(1, '_OtherServiceImg_1537458623.jpg', 'Patent Service', 'Service description for Patent.', 'www.youtube,com/patent');
+(1, '_OtherServiceImg_1537458623.jpg', 'Patent Service', 'Service description for Patent.', 'www.youtube,com/patent'),
+(2, '_OtherServiceImg_1537511505.png', 'Law service title', 'Law is a system of rules that are created and enforced through social or governmental institutions to regulate behavior. Law is a system that regulates and ensures that individuals or a community adhere to the will of the state.', 'www.youtube,com/law'),
+(3, '_OtherServiceImg_1537511865.png', 'CAFA Service Title', 'The College of Architecture and Fine Arts of the Polytechnic University of the Philippines is defined as a supportive and complementing academic unit in this institution  contributory to its aspirations of offering varied and quality academic programs available to deserving youths whose families come from the lower income bracket in our society.', 'www.youtube.com/cafa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `other_service_vid_tbl`
+--
+
+CREATE TABLE `other_service_vid_tbl` (
+  `video_id` int(11) NOT NULL,
+  `other_service_id` int(11) NOT NULL,
+  `video` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -392,7 +407,23 @@ CREATE TABLE `specialty_service_tbl` (
 
 INSERT INTO `specialty_service_tbl` (`spec_service_id`, `spec_image_icon`, `spec_title`, `spec_desc`, `spec_vidlink`) VALUES
 (1, '_SpecialtyServiceImg_1537458116.jpg', 'Copyright Service', 'This is to describe copyright service.', 'www.youtube,com/copyright'),
-(2, '_SpecialtyServiceImg_1537458547.jpg', 'Patent Service', 'Other description for Patent', 'www.youtube,com/patent');
+(2, '_SpecialtyServiceImg_1537458547.jpg', 'Patent Service', 'Other description for Patent', 'www.youtube,com/patent'),
+(3, '_SpecialtyServiceImg_1537501797.jpg', 'CCIS Title', 'CCIS Service Description', 'hahah'),
+(4, '_SpecialtyServiceImg_1537505645.png', 'PUP Service Title', 'Polytechnic University of the Philippines is a research and coeducational state university in the Philippines. It was founded on October 19, 1904 as the Manila Business School and as part of Manila\'s public school system.', 'www.youtube.com/pup'),
+(5, '_SpecialtyServiceImg_1537511605.png', 'COC Service Title', 'Clash of Clans is a freemium mobile strategy video game developed and published by Finnish game developer Supercell. The game was released for iOS platforms on August 2, 2012, and on Google Play for Android on October 7, 2013.', 'www.youtube.com/coc'),
+(6, '_SpecialtyServiceImg_1537517185.PNG', 'Car Service', 'Car Service Description', 'www.youtube.com/car');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `specialty_service_vid_tbl`
+--
+
+CREATE TABLE `specialty_service_vid_tbl` (
+  `video_id` int(11) NOT NULL,
+  `specialty_service_id` int(11) NOT NULL,
+  `video` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -512,6 +543,13 @@ ALTER TABLE `other_services_tbl`
   ADD PRIMARY KEY (`other_services_id`);
 
 --
+-- Indexes for table `other_service_vid_tbl`
+--
+ALTER TABLE `other_service_vid_tbl`
+  ADD PRIMARY KEY (`video_id`),
+  ADD KEY `other_service_id` (`other_service_id`);
+
+--
 -- Indexes for table `patient_information_tbl`
 --
 ALTER TABLE `patient_information_tbl`
@@ -535,6 +573,13 @@ ALTER TABLE `services_tbl`
 --
 ALTER TABLE `specialty_service_tbl`
   ADD PRIMARY KEY (`spec_service_id`);
+
+--
+-- Indexes for table `specialty_service_vid_tbl`
+--
+ALTER TABLE `specialty_service_vid_tbl`
+  ADD PRIMARY KEY (`video_id`),
+  ADD KEY `specialty_service_id` (`specialty_service_id`);
 
 --
 -- Indexes for table `user_tbl`
@@ -562,7 +607,7 @@ ALTER TABLE `appointment_tbl`
 -- AUTO_INCREMENT for table `banner_tbl`
 --
 ALTER TABLE `banner_tbl`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `billing_tbl`
@@ -634,7 +679,13 @@ ALTER TABLE `official_receipt_tbl`
 -- AUTO_INCREMENT for table `other_services_tbl`
 --
 ALTER TABLE `other_services_tbl`
-  MODIFY `other_services_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `other_services_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `other_service_vid_tbl`
+--
+ALTER TABLE `other_service_vid_tbl`
+  MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `patient_information_tbl`
@@ -658,7 +709,7 @@ ALTER TABLE `services_tbl`
 -- AUTO_INCREMENT for table `specialty_service_tbl`
 --
 ALTER TABLE `specialty_service_tbl`
-  MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_tbl`

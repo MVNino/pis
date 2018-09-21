@@ -15,13 +15,11 @@
 
 
 @section('content')
-    
         <div class="row">
             <div class="col-md-12">
                 <div class="white-box">
                     <h3 class="box-title">Company</h3>
-                    {!! Form::open(['action' => 'Maintenance\CompanyController@addCompany', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'autocomplete' => 'off'])!!}
-                    
+                    {!! Form::open(['action' => 'Maintenance\CompanyController@addCompany', 'method' => 'POST', 'enctype' => 'multipart/form-data','class' => 'form-material' ,'autocomplete' => 'off'])!!}
                     <form class="form-material form-horizontal" method ="POST">
                         <div class="form-group">
                             <label class="col-md-12">Name</span></label>

@@ -43,7 +43,7 @@
                     @foreach($news as $new)
                     <div class="single-news-post">
                         <div class="news-post-img">
-                            <img src="/storage/images/news/{{ $new->news_picture }}" alt="theconstructo.com">
+                            <img src="/storage/images/news/{{ $new->news_picture }}" alt="$new->news_title">
                         </div>
                         <div class="post-title">
                             <h2>{{ $new->news_title }}</h2>
@@ -84,7 +84,8 @@
                                 <div class="widget-sider">
                                     <div class="widget-single-slider">
                                         <a href="single.html">
-                                            <img src="/storage/images/news/{{ $news->news_picture }}" alt="{{ $news->news_picture }}">
+                                            <img src="/storage/images/news/{{ $news->news_picture }}" alt="{{ $news->news_picture }}"
+                                                width="200" height="150">
                                             <div class="widget-post-title">
                                                 <p>{{ $news->news_title }}</p>
                                             </div>

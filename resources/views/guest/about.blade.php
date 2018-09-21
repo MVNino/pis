@@ -6,7 +6,7 @@
     <section class="home-area v3">
         <!--About Image-->
         <div>
-            <img src="/storage/images/about/{{$about->about_image}}" alt="banner" style="object-fit: cover; height: 700px; width: 100%;">
+            <img src="/storage/images/about/{{$about->about_image}}" alt="banner" style="object-fit: cover; height: 800px; width: 100%;">
         </div>
     </section>
     <section class="get-quote-area">
