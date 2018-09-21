@@ -78,64 +78,23 @@
                             <div class="widget-title text-center">
                                 <h2> <span>RECENT</span> NEWS</h2>
                             </div>
+                            <span>
                             <div class="widget-sider">
-                                <span>
-                                @foreach($recentNews as $news)
-                                <div class="widget-sider">
-                                    <div class="widget-single-slider">
-                                        <a href="single.html">
-                                            <img src="/storage/images/news/{{ $news->news_picture }}" alt="{{ $news->news_picture }}"
-                                                width="200" height="150">
-                                            <div class="widget-post-title">
-                                                <p>{{ $news->news_title }}</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </span>
+                            @foreach($recentNews as $news)
                                 <div class="widget-single-slider">
                                     <a href="single.html">
-                                        <img src="{{ asset('medicre/img/w-2.png') }}" alt="theconstructo.com">
+                                        <img src="/storage/images/news/{{ $news->news_picture }}" alt="{{ $news->news_picture }}"
+                                            width="200" height="150">
                                         <div class="widget-post-title">
-                                            <p>From 0 To 14 Clients & $14,000 a Month Case Study</p>
+                                            <p>{{ $news->news_title }}</p>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="widget-single-slider">
-                                    <a href="single.html">
-                                        <img src="{{ asset('medicre/img/w-1.png') }}" alt="theconstructo.com">
-                                        <div class="widget-post-title">
-                                            <p>Put Your Content Syndication Strategy On Autopilot</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="widget-single-slider">
-                                    <a href="single.html">
-                                        <img src="{{ asset('medicre/img/w3.png') }}" alt="theconstructo.com">
-                                        <div class="widget-post-title">
-                                            <p>How To Rank In Google Maps Fast + Case Study</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="widget-single-slider">
-                                    <a href="single.html">
-                                        <img src="{{ asset('medicre/img/news-2.png') }}" alt="theconstructo.com">
-                                        <div class="widget-post-title">
-                                            <p>From 0 To 14 Clients & $14,000 a Month Case Study</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="widget-single-slider">
-                                    <a href="single.html">
-                                        <img src="{{ asset('medicre/img/news-3.png') }}" alt="theconstructo.com">
-                                        <div class="widget-post-title">
-                                            <p>Put Your Content Syndication Strategy On Autopilot</p>
-                                        </div>
-                                    </a>
-                                </div>
+                            @endforeach
                             </div>
+                            </span>
                         </div>
+                    </div>
                         <div class="single-sidebar">
                             <div class="widget-title text-center">
                                 <h2>DEPARTMENTS</h2>

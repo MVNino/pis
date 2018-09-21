@@ -19,8 +19,10 @@ class GuestController extends Controller
 
     public function viewIndex()
     {
-        $banners = Banner::where('banner_status', '=', 1);
-    	return view('guest.index', ['banners'=>$banners]);
+        $news = News::orderBy('news_id', 'desc')->limit(3)->get();
+        $banners = Banner::where('banner_status', '=', 1)->get();
+        return view('guest.index', ['banners'=>$banners, 
+                'news' => $news]);
     }
 
     public function viewAbout()
@@ -59,10 +61,9 @@ class GuestController extends Controller
     }
 
     # Contact
-    public function viewContact() {
-
-
-        $contact = $this->getContact();
+    public function viewContact() 
+    {
+        $contact = $this->getClinicContact();
         $about = $this->getAbout();
         
         $clinics = Clinic::all();

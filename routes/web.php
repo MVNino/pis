@@ -14,10 +14,10 @@
 # Website
 Route::get('/', 'GuestController@viewIndex');
 Route::get('about', 'GuestController@viewAbout');
-Route::get('services','GuestController@viewServices');
+Route::get('services','GuestController@viewServices')->name('services');
 Route::get('service/{id}', 'GuestController@showService');
 Route::get('other-service/{id}', 'GuestController@showOtherService');
-Route::get('news','GuestController@viewNews');
+Route::get('news','GuestController@viewNews')->name('news');
 Route::get('contact','GuestController@viewContact');
 Route::get('faqs','GuestController@viewFaqs');
 
