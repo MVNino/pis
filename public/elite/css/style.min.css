@@ -20,10 +20,6 @@ td {
     padding: 9px 6px !important;
 }
 
-a {
-    display: inline-block
-}
-
 @font-face {
     font-family: 'Poppins';
     font-style: normal;
