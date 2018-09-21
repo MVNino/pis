@@ -46,6 +46,9 @@ Route::group(
 				// Clinic 
 				Route::get('clinic', 'ClinicController@viewClinic')->name('maintenance.clinic');
 				Route::post('clinic', 'ClinicController@addClinic');
+				Route::get('clinic/{id}', 'ClinicController@edit');
+				Route::put('clinic/{id}', 'ClinicController@editClinic');
+				Route::delete('clinic/{id}', 'ClinicController@deleteClinic');
 				// Company
 				Route::get('company', 'CompanyController@viewCompany')->name('maintenance.company');
 				Route::post('company', 'CompanyController@addCompany');
