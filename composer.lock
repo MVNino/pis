@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ddf86d94e02d3635472e4af3bebc25a",
+
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3387,16 +3387,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.3.5",
+            "version": "7.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7b331efabbb628c518c408fdfcaf571156775de2"
+                "reference": "0356331bf62896dc56e3a15030b23b73f38b2935"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7b331efabbb628c518c408fdfcaf571156775de2",
-                "reference": "7b331efabbb628c518c408fdfcaf571156775de2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0356331bf62896dc56e3a15030b23b73f38b2935",
+                "reference": "0356331bf62896dc56e3a15030b23b73f38b2935",
                 "shasum": ""
             },
             "require": {
@@ -3467,7 +3467,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-09-08T15:14:29+00:00"
+            "time": "2018-09-05T09:58:53+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

@@ -41,11 +41,53 @@
                 </div>
             </div>
             <div class="row">
-               @forelse($specialtyServices as $service) 
+               
                 <div class="col-sm-4">
                     <div class="speacila-single-service">
                         <div class="service-thumb">
-                            <img src="/storage/images/service/specialty/{{ $service->spec_image_icon }}" alt="jigsawlab" height="200" width="300">
+                            <img src="{{ asset('medicre/img/news-3.png') }}" alt="Pic" style="width: 100%" >
+                        </div>
+                       <a class="button" style="padding-bottom: 1%" data-toggle="modal" data-target="#videoModal" data-vid="https://www.youtube.com/embed/M54aHpm1TWc">Link ng Video </a>
+                        <h4>X-ray</h4>
+                        <p>Ayos na ang buto buto </p>
+                    </div>
+                </div>
+                <!--MODAL-->
+                 <div class="col-sm-4">
+                    <div class="speacila-single-service">
+                        <div class="service-thumb">
+                            <img src="{{ asset('medicre/img/news-2.png') }}" alt="jigsawlab">
+                        </div>
+                        <h4>George QUICK</h4>
+                        <p>Our construction management professio nals organize, lead, and manage the people, materials, and processes of construction utilizing the latest techno logies.</p>
+                        <a href="single.html">READ MORE +</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="speacila-single-service">
+                        <div class="service-thumb">
+                            <img src="{{ asset('medicre/img/news-1.png') }}" alt="jigsawlab">
+                        </div>
+                        <h4>Jeremy hendixson</h4>
+                        <p>Our construction management professio nals organize, lead, and manage the people, materials, and processes of construction utilizing the latest techno logies.</p>
+                        <a href="single.html">READ MORE +</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="speacila-single-service">
+                        <div class="service-thumb">
+                            <img src="{{ asset('medicre/img/news-1.png') }}" alt="jigsawlab">
+                        </div>
+                        <h4>Jeremy hendixson</h4>
+                        <p>Our construction management professio nals organize, lead, and manage the people, materials, and processes of construction utilizing the latest techno logies.</p>
+                        <a href="single.html">READ MORE +</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="speacila-single-service">
+                        <div class="service-thumb">
+                            <img src="{{ asset('medicre/img/news-2.png') }}" alt="jigsawlab">
+
                         </div>
                         <h4>{{ $service->spec_title }}</h4>
                         <p>{{ $service->spec_desc }}</p>
@@ -61,10 +103,48 @@
             </div>
         </div>
     </section>
+                <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+                  <div class="modal-dialog">
+
+                    <div class="modal-content">
+                    <div class="modal-heading">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<div class="modal-title" style="padding-left: 2%; padding-top: 2%;">
+    <h3><strong>Video Title</h3<strong></h3></div>
+                        
+                    </div>
+                      <div class="modal-body">
+                        
+                        <div>
+                          <iframe id="videosample" width="100%" height="350" src="">
+                          </iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--End of Modal-->
+
+
+
+
 @endsection
 
 @section('pg-specific-js')
 <script>
 $("#navlink-services").addClass("current-menu-item");
+</script>
+
+
+<script>
+  $('#videoModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget)
+      var video = button.data('vid')
+      console.log(video)
+  
+      var modal = $(this)
+      $('#videosample').attr('src', video);
+      
+      });
 </script>
 @endsection
