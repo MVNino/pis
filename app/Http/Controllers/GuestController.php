@@ -13,13 +13,8 @@ use App\OtherService;
 use App\SpecialtyService;
 
 class GuestController extends Controller 
-{
-    // public $maxId;
-    // public $contact;
-    
+{   
     public function _construct() {
-        // $this->maxId = ContactUs::max('contact_us_id');
-        // return $this->contact = ContactUs::findOrFail($maxId);
     }
 
     public function viewIndex()
@@ -44,8 +39,10 @@ class GuestController extends Controller
     }
 
     public function viewServices() {
+        $otherServices = OtherService::all();
         $specialtyServices = SpecialtyService::all();
-        return view('guest.services', ['specialtyServices' => $specialtyServices]);
+        return view('guest.services', ['otherServices' => $otherServices, 
+                'specialtyServices' => $specialtyServices]);
     }
 
     # News

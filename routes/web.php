@@ -13,10 +13,13 @@
 
 # Website
 Route::get('/', 'GuestController@viewIndex');
-Route::get('/about', 'GuestController@viewAbout');
-Route::get('/services','GuestController@viewServices');
-Route::get('/news','GuestController@viewNews');
-Route::get('/contact','GuestController@viewContact');
+Route::get('about', 'GuestController@viewAbout');
+Route::get('services','GuestController@viewServices');
+Route::get('test/services', function() {
+	return view('guest.test-service');
+});
+Route::get('news','GuestController@viewNews');
+Route::get('contact','GuestController@viewContact');
 Route::get('faqs','GuestController@viewFaqs');
 
 # Admin
