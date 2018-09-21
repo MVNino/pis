@@ -59,9 +59,6 @@ Route::group(
 				Route::get('features/{id}', 'FeatureController@edit');
 				Route::put('features/{id}', 'FeatureController@editFeature');
 				Route::delete('features/{id}', 'FeatureController@deleteFeature');
-
-				Route::put('features/{id}', 'FeatureController@editFeature');
-				Route::delete('features/{id}', 'FeatureController@deleteFeature');
 				// FAQ's
 				Route::get('faqs', 'FAQController@viewFAQs')->name('maintenance.faqs');
 				Route::post('faqs', 'FAQController@addFAQs');
