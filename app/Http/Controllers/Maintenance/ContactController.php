@@ -45,4 +45,60 @@ class ContactController extends Controller
     		return redirect()->back()->with('success', 'Contact added!');
     	}
     }
+
+    public function edit($id)
+    {
+        $contact = ContactUs::findOrFail($id);
+        return view('admin.maintenance.edit-contact', compact('contact', 'id'));
+    }
+
+    public function editContact(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'email' => 'required|string|email',
+            'phone' => 'required',
+            'inquiry' => 'required'
+        ]);
+
+        // save contact to database
+        try
+        {
+        $contact = ContactUs::find($id);
+        $contact->contact_name = $request->input('name');
+        $contact->contact_email = $request->input('email');
+        $contact->contact_phone = $request->input('phone');
+        $contact->contact_inquiry = $request->input('inquiry');
+        
+        $contact->save();
+
+        if ($contact->save())
+            {
+                return redirect()->back()->with('success', 'Contact Updated!');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
+
+    public function deleteContact($id)
+    {
+        try
+        {
+            $contact = ContactUs::find($id);
+
+            if ($contact->delete())
+            {
+                return redirect()->back()->with('success', 'Contact Removed Successfully!');
+            }
+
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
+
 }

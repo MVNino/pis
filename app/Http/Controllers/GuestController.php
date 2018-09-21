@@ -6,26 +6,20 @@ use Illuminate\Http\Request;
 use App\About;
 use App\Banner;
 use App\Clinic;
-use App\ContactUs;
+use App\Contact;
 use App\FAQ;
 use App\News;
+use App\OtherService;
+use App\SpecialtyService;
 
 class GuestController extends Controller 
-{
-    // public $maxId;
-    // public $contact;
-    
+{   
     public function _construct() {
-        // $this->maxId = ContactUs::max('contact_us_id');
-        // return $this->contact = ContactUs::findOrFail($maxId);
     }
 
     public function viewIndex()
     {
-        $banners = Banner::
-            all()
-            ->where('banner_status', '=', 1);
-
+        $banners = Banner::where('banner_status', '=', 1);
     	return view('guest.index', ['banners'=>$banners]);
     }
 
@@ -36,7 +30,24 @@ class GuestController extends Controller
     }
 
     public function viewServices() {
-        return view('guest.services');
+        $otherServices = OtherService::orderBy('other_services_id', 'desc')
+                ->paginate(6);
+        $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
+                ->paginate(6);
+        return view('guest.services', ['otherServices' => $otherServices, 
+                'specialtyServices' => $specialtyServices]);
+    }
+
+    public function showService($id)
+    {
+        $specialtyService = SpecialtyService::findOrFail($id);
+        return view('guest.show-service', ['service' => $specialtyService]);
+    }
+
+    public function showOtherService($id)
+    {
+        $otherService = OtherService::findOrFail($id);
+        return view('guest.show-other-service', ['service' => $otherService]);
     }
 
     # News
@@ -49,6 +60,7 @@ class GuestController extends Controller
 
     # Contact
     public function viewContact() {
+
         $contact = $this->getContact();
         $about = $this->getAbout();
         
@@ -73,18 +85,18 @@ class GuestController extends Controller
     }
 
     // Get contact information
-    public function getContact()
+    public function getClinicContact()
     {
-        $maxId = ContactUs::max('contact_us_id');
-        return $contact = ContactUs::findOrFail($maxId);
+        $maxId = Clinic::max('clinic_contact_id');
+        return Clinic::findOrFail($maxId);
     }
 
     # FAQs
     public function viewFaqs() {
         $faqs = FAQ::all();
-        $contact = $this->getContact();
+        $clinic = $this->getClinicContact();
         return view('guest.faqs', ['faqs' => $faqs, 
-            'contact' => $contact]);
+            'clinic' => $clinic]);
     }
 }
 
