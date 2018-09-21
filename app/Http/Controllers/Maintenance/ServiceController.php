@@ -17,7 +17,7 @@ class ServiceController extends Controller
 
     public function addSpecialty(Request $request)
     {
-        return $request->file('fileServiceVid');
+        // return $request->file('fileServiceVid');
     	$this->validate($request, [
     		'txtTitle' => 'required',
     		'txtareaDescription' => 'required',
