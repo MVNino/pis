@@ -63,7 +63,7 @@
 							<div class="col-md-12">
 								<input type="text" name="txtVideoLink" class="form-control"> </div>
 						</div>
-						<div class="form-group">
+						{{-- <div class="form-group">
 							<div class="col-sm-12">
 								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 									<div class="form-control" data-trigger="fileinput"> 
@@ -78,7 +78,7 @@
 									<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
 								</div>
 							</div>
-						</div>
+						</div> --}}
 						<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
 					</form>
 				</div>
