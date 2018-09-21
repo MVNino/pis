@@ -16,7 +16,7 @@
                                     <div class="v3 welcome-text">
                                         <h1>The Doctor is In!</h1>
                                         <h2>Clinic Schedule</h2>
-                                        <h4>We're open {{$clinic->clinic_days}} during {{$clinic->clinic_open_time}} to {{$clinic->clinic_close_time}}.<br/> Please visit us at {{$clinic->clinic_location}}</h4>
+                                        <h4>We're open from {{$clinic->clinic_days}} during {{$clinic->clinic_open_time}} to {{$clinic->clinic_close_time}}.<br/> You can visit us at {{$clinic->clinic_location}}</h4>
                                     </div>
                                 </div>
                             </div>
