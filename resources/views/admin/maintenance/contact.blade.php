@@ -14,8 +14,8 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
+<div class="row">
+        <div class="col-lg-12">
             <div class="white-box">
                 <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                     <thead>
@@ -87,6 +87,6 @@
                 </form>
             </div>
         </div>
-        {!! Form::close() !!}
     </div>
 </div>
+
