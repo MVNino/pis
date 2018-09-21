@@ -8,6 +8,7 @@ use App\Banner;
 use App\Clinic;
 use App\Contact;
 use App\FAQ;
+use App\Feature;
 use App\News;
 use App\OtherService;
 use App\SpecialtyService;
@@ -27,9 +28,12 @@ class GuestController extends Controller
 
     public function viewAbout()
     {
+        $features = Feature::all();
         $about = $this->getAbout();
-        return view('guest.about', ['about' => $about]);
+        return view('guest.about', ['about' => $about, 'features' => $features]);
     }
+
+
 
     public function viewServices() {
         $otherServices = OtherService::orderBy('other_services_id', 'desc')

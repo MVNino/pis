@@ -21,6 +21,7 @@ Route::get('news','GuestController@viewNews')->name('news');
 Route::get('contact','GuestController@viewContact');
 Route::get('faqs','GuestController@viewFaqs');
 
+
 # Admin
 Route::group(
 	[
