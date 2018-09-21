@@ -54,8 +54,8 @@
 								@endif
 							</td>
 							<td class="text-center">
-								<a role="button" class="btn btn-primary" href="/admin/maintenance/news/{{ $new->news_id }}">
-									<i class="fa fa-edit"></i> Edit
+								<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/news/{{ $new->news_id }}">
+									<i class="fa fa-edit"></i>
 								</a>
 							</td>
 						</tr>

@@ -17,8 +17,48 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title">Contact Us</h3>
-                {!! Form::open(['action' => 'Maintenance\ContactController@addContact', 'method' => 'POST']) !!}
+                <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+                    <thead>
+                        <th>Name</th>
+                        <th>Email Address</th>
+                        <th>Phone</th>
+                        <th>Inquiry</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        @foreach($contact as $row) 
+                        <tr>
+                            <td>{{ $row['contact_name'] }}</td>
+                            <td>{{ $row['contact_email'] }}</td>
+                            <td>{{ $row['contact_phone'] }}</td>
+                            <td>{{$row['contact_inquiry']}} </td>
+
+                            <td>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit"><i
+                                        class="ti-pencil-alt" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
+                                        class="ti-close" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6">
+                                <div class="text-right">
+                                    <ul class="pagination"> </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div align="right">
+                    <button class="btn btn-info waves-effect waves-light m-r-10" type="button" data-toggle="collapse" data-target="#contactForm" aria-expanded="false" aria-controls="collapseExample">Add Contact</button>
+                </div>
+
+                <div class="collapse" id="contactForm">
+                {!! Form::open(['action' => 'Maintenance\ContactController@addContact','class' => 'form-material' ,'autocomplete'=>'off' ,'method' => 'POST']) !!}
                     <div class="form-group">
                         <label class="col-md-12">Name</span></label>
                         <div class="col-md-12">
@@ -43,54 +83,10 @@
                             <input type="text" name="inquiry" class="form-control" placeholder="Input Inquiry" /> 
                         </div>
                     </div>
-
-                    
-                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
-                    <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
-                     <br><br>
-
-                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email Address</th>
-                                <th>Phone</th>
-                                <th>Inquiry</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                         @foreach($contact as $row) 
-                        <tr>
-                            <td>{{ $row['contact_name'] }}</td>
-                            <td>{{ $row['contact_email'] }}</td>
-                            <td>{{ $row['contact_phone'] }}</td>
-                            <td>{{$row['contact_inquiry']}} </td>
-
-                            <td>
-                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit"><i
-                                        class="ti-pencil-alt" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
-                                        class="ti-close" aria-hidden="true"></i></button>
-                            </td>
-                        </tr>
-                        @endforeach
-
-                       
-                    </tbody>
-                    <tfoot>
-                            <tr>
-                                <td colspan="6">
-                                    <div class="text-right">
-                                        <ul class="pagination"> </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tfoot>
-                        </table>
+                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
                 </form>
             </div>
         </div>
     </div>
+</div>
 @endsection
