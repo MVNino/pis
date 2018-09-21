@@ -12,8 +12,6 @@
         </ol>
     </div>
 @endsection
-
-
 @section('content')
         {!! Form::open(['action' => 'Maintenance\AboutController@addAbout','class' => 'form-material' ,'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data'])!!}
             <div class="row">
