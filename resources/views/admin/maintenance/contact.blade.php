@@ -17,13 +17,20 @@
 <div class="row">
         <div class="col-lg-12">
             <div class="white-box">
+			<div align="right">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+					<i class="fa fa-plus"></i> Add Contact
+				</button><br><br>
+			</div>
                 <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                     <thead>
-                        <th>Name</th>
-                        <th>Email Address</th>
-                        <th>Phone</th>
-                        <th>Inquiry</th>
-                        <th>Action</th>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Phone</th>
+                            <th>Inquiry</th>
+                            <th colspan="2">Action</th>
+                        <tr>
                     </thead>
                     <tbody>
                         @foreach($contact as $row) 
@@ -34,15 +41,15 @@
                             <td>{{$row['contact_inquiry']}} </td>
 
                             <td>
-
-                            <a href="{{action('Maintenance\ContactController@edit', $row['contact_us_id'])}}" class="btn btn-warning">Edit</a>
+                            <a href="{{action('Maintenance\ContactController@edit', $row['contact_us_id'])}}" class="btn btn-sm btn-primary">
+                                <i class="fa fa-edit"></i>
+                            </a>
                             </td>
                             <td>
-                            
                             {!!Form::open(['action' => ['Maintenance\ContactController@deleteContact', $row['contact_us_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
                                         {{Form::hidden('_method', 'DELETE')}}
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Delete">Delete
-                                            
+                                        <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
+                                        <i class="fa fa-times"></i>
                                         </button>
                             {!!Form::close()!!}
                             </td>
@@ -59,41 +66,52 @@
                         </tr>
                     </tfoot>
                 </table>
-
-                <div align="right">
-                    <button class="btn btn-info waves-effect waves-light m-r-10" type="button" data-toggle="collapse" data-target="#contactForm" aria-expanded="false" aria-controls="collapseExample">Add Contact</button>
-                </div>
-
-                <div class="collapse" id="contactForm">
-                {!! Form::open(['action' => 'Maintenance\ContactController@addContact','class' => 'form-material' ,'autocomplete'=>'off' ,'method' => 'POST']) !!}
-                    <div class="form-group">
-                        <label class="col-md-12">Name</span></label>
-                        <div class="col-md-12">
-                            <input type="text" name="name" class="form-control" placeholder="Input Full Name" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-12">Email Address</span></label>
-                        <div class="col-md-12">
-                            <input type="text" name="email" class="form-control" placeholder="Input Email" /> 
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-12">Phone</span></label>
-                        <div class="col-md-12">
-                            <input type="text" name="phone" class="form-control" placeholder="Input Phone Number"  /> 
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-12">Inquiry</span></label>
-                        <div class="col-md-12">
-                            <input type="text" name="inquiry" class="form-control" placeholder="Input Inquiry" /> 
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
-                </form>
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="exampleModalLabel">Add Contact</h4>
+            </div>
+            <div class="modal-body">
+                {!! Form::open(['action' => 'Maintenance\ContactController@addContact','class' => 'form-material' ,'autocomplete'=>'off' ,'method' => 'POST']) !!}
+                    <div class="form-group">
+                        <label class="col-md-12">Name</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="name" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Email Address</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="email" class="form-control"/> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Phone</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="phone" class="form-control"/> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Inquiry</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="inquiry" class="form-control"/> 
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+                </div>
+            </form>
+		</div>
+	</div>
+</div>
+@endsection
