@@ -71,9 +71,9 @@ class GuestController extends Controller
     public function viewContact() {
         $contact = $this->getClinicContact();
 
-        $clinics = Clinic::all();
+        $clinic = Clinic::all();
 
-        if ($clinics->count() > 0)
+        if ($clinic->count() > 0)
         {
     		$clinicMaxId = Clinic::max('clinic_contact_id');
     		$clinic = Clinic::findOrFail($clinicMaxId);
