@@ -40,7 +40,8 @@ class GuestController extends Controller
 
     public function viewServices() {
         $otherServices = OtherService::all();
-        $specialtyServices = SpecialtyService::all();
+        $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
+                ->paginate(6);
         return view('guest.services', ['otherServices' => $otherServices, 
                 'specialtyServices' => $specialtyServices]);
     }

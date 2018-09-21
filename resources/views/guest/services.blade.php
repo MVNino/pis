@@ -53,8 +53,12 @@
                     </div>
                 </div>
                 @empty
+                
                 @endforelse
             </div> 
+            <div align="center">
+                {{ $specialtyServices->links() }}
+            </div>
         </div>
     </section>
 @endsection
