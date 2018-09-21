@@ -61,7 +61,7 @@
 								<td>
 									{!!Form::open(['action' => ['Maintenance\BannerController@deleteBanner', $banner->banner_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
                                         {{Form::hidden('_method', 'DELETE')}}
-                                        <button type="submit" class="btn btn-sm btn-icon btn-warning delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
+                                        <button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
 											<i class="ti-close" aria-hidden="true"></i>
 										</button>
 								</a>
