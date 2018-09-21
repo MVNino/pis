@@ -39,11 +39,24 @@ class GuestController extends Controller
     }
 
     public function viewServices() {
-        $otherServices = OtherService::all();
+        $otherServices = OtherService::orderBy('other_services_id', 'desc')
+                ->paginate(6);
         $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
                 ->paginate(6);
         return view('guest.services', ['otherServices' => $otherServices, 
                 'specialtyServices' => $specialtyServices]);
+    }
+
+    public function showService($id)
+    {
+        $specialtyService = SpecialtyService::findOrFail($id);
+        return view('guest.show-service', ['service' => $specialtyService]);
+    }
+
+    public function showOtherService($id)
+    {
+        $otherService = OtherService::findOrFail($id);
+        return view('guest.show-other-service', ['service' => $otherService]);
     }
 
     # News
@@ -56,7 +69,7 @@ class GuestController extends Controller
 
     # Contact
     public function viewContact() {
-        $contact = $this->getContact();
+        $contact = $this->getClinicContact();
 
         $clinic = Clinic::all();
 
@@ -73,26 +86,18 @@ class GuestController extends Controller
     }
 
     // Get contact information
-    public function getContact()
-    {
-        $maxId = Contact::max('contact_us_id');
-        return $contact = Contact::findOrFail($maxId);
-    }
-
-    //get clinic information
     public function getClinicContact()
     {
         $maxId = Clinic::max('clinic_contact_id');
-        return $clinic = Clinic::findOrFail($maxId);
+        return Clinic::findOrFail($maxId);
     }
 
     # FAQs
     public function viewFaqs() {
         $faqs = FAQ::all();
-        $contact = $this->getContact();
         $clinic = $this->getClinicContact();
         return view('guest.faqs', ['faqs' => $faqs, 
-            'contact' => $contact, 'clinic' => $clinic]);
+            'clinic' => $clinic]);
     }
 }
 

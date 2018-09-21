@@ -56,24 +56,63 @@
                                             </div>
                                         </div>
                                         <hr/>
-                                        <div class="container">
-                                            @forelse($faqs as $faq)
-                                                @if($faq->faq_category == 'surgery')
-                                                <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
-                                                    <br/>
-                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
-                                                </ol>
-                                                @endif
-                                            @empty
-                                                <ol class="breadcrumb">
-                                                    <li>
-                                                        <h3>NONE</h3>
-                                                    </li>
-                                                </ol>
-                                            @endforelse
-                                        </div>
+    <section class="mediacare-whychoose-us ">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-12 text-left">
+                    <div class="best-features-accoudion">
+                        <div class="panel-group" id="Abaccordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingOne1">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseOne1" aria-expanded="true" aria-controls="AbcollapseOne">
+                                          QUESTION # 1
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1">
+                                    <div class="panel-body">
+                                        <p>Question # 1 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingTwo1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseTwo1" aria-expanded="false" aria-controls="AbcollapseTwo">
+                                            QUESTION # 2
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingTwo">
+                                    <div class="panel-body">
+                                        <p>Question # 2 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingThree1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseThree1" aria-expanded="false" aria-controls="AbcollapseThree">
+                                           QUESTION # 3
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingThree">
+                                    <div class="panel-body">
+                                        <p>Question # 3 Anwer</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="dentalcare">
                                         <div class="row">
@@ -84,30 +123,63 @@
                                             </div>
                                         </div>
                                         <hr/>
-                                        <div class="container">
-                                            @forelse($faqs as $faq)
-                                                @if($faq->faq_category == 'service')
-                                                <ol class="breadcrumb">
-                                                    <li>
-                                                        <a aria-readonly="true">
-                                                            <i class="fa fa-question-circle-o qIcon"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <h3 class="qText">{{ $faq->faq_question }}</h3>
-                                                    </li>
-                                                    <br/>
-                                                    <li>
-                                                        <a aria-readonly="true">{{ $faq->faq_answer }}</a>
-                                                    </li>
-                                                </ol>
-                                                @endif
-                                            @empty
-                                                <ol class="breadcrumb">
-                                                    <li><h3 class="qText">NONE</h3></li>
-                                                </ol>
-                                            @endforelse
-                                        </div>
+
+                                         <section class="mediacare-whychoose-us ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <div class="best-features-accoudion">
+                        <div class="panel-group" id="Abaccordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingOne1">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseOne2" aria-expanded="true" aria-controls="AbcollapseOne">
+                                          QUESTION # 1
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1">
+                                    <div class="panel-body">
+                                        <p>Question # 1 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingTwo1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseTwo2" aria-expanded="false" aria-controls="AbcollapseTwo">
+                                            QUESTION # 2
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseTwo2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingTwo">
+                                    <div class="panel-body">
+                                        <p>Question # 2 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingThree1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseThree2" aria-expanded="false" aria-controls="AbcollapseThree">
+                                           QUESTION # 3
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseThree2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingThree">
+                                    <div class="panel-body">
+                                        <p>Question # 3 Answer</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="diseases">
                                         <div class="row">
@@ -118,23 +190,61 @@
                                             </div>
                                         </div>
                                         <hr/>
-                                        <div class="container">
-                                            @forelse($faqs as $faq)
-                                                @if($faq->faq_category == 'recovery')
-                                                <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
-                                                    <br/>
-                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
-                                                </ol>
-                                                @endif
-                                            @empty
-                                                <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">NONE</h3></li>
-                                                </ol>
-                                            @endforelse
-                                        </div>
+                                            <section class="mediacare-whychoose-us ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <div class="best-features-accoudion">
+                        <div class="panel-group" id="Abaccordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingOne1">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseOne3" aria-expanded="true" aria-controls="AbcollapseOne">
+                                          QUESTION # 1
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseOne3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1">
+                                    <div class="panel-body">
+                                        <p>Question # 1 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingTwo1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseTwo3" aria-expanded="false" aria-controls="AbcollapseTwo">
+                                            QUESTION # 2
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseTwo3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingTwo">
+                                    <div class="panel-body">
+                                        <p>Question # 2 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingThree1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseThree3" aria-expanded="false" aria-controls="AbcollapseThree">
+                                           QUESTION # 3
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseThree3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingThree">
+                                    <div class="panel-body">
+                                        <p>Question # 3 Anwer</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="eaycare">
                                         <div class="row">
@@ -145,25 +255,61 @@
                                             </div>
                                         </div>
                                         <hr/>
-                                        <div class="container">
-                                            @forelse($faqs as $faq)
-                                                @if($faq->faq_category == 'appointment')
-                                                <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
-                                                    <br/>
-                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
-                                                </ol>
-                                                @endif
-                                            @empty
-                                                <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">No FAQ Record</h3></li>
-                                                    <br/>
-                                                    <li><a aria-readonly="true"></a></li>
-                                                </ol>
-                                            @endforelse
-                                        </div>
+                                           <section class="mediacare-whychoose-us ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <div class="best-features-accoudion">
+                        <div class="panel-group" id="Abaccordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingOne1">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseOne4" aria-expanded="true" aria-controls="AbcollapseOne">
+                                          QUESTION # 1
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseOne4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1">
+                                    <div class="panel-body">
+                                        <p>Question # 1 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingTwo1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseTwo4" aria-expanded="false" aria-controls="AbcollapseTwo">
+                                            QUESTION # 2
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseTwo4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingTwo">
+                                    <div class="panel-body">
+                                        <p>Question # 2 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingThree1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseThree4" aria-expanded="false" aria-controls="AbcollapseThree">
+                                           QUESTION # 3
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseThree4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingThree">
+                                    <div class="panel-body">
+                                        <p>Question # 3 Anwer</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="cancer">
                                         <div class="row">
@@ -174,25 +320,61 @@
                                             </div>
                                         </div>
                                         <hr/>
-                                        <div class="container">
-                                            @forelse($faqs as $faq)
-                                                @if($faq->faq_category == 'payment')
-                                                <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
-                                                    <br/>
-                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
-                                                </ol>
-                                                @endif
-                                            @empty
-                                                <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">No FAQ Record</h3></li>
-                                                    <br/>
-                                                    <li><a aria-readonly="true"></a></li>
-                                                </ol>
-                                            @endforelse
-                                        </div>
+                                             <section class="mediacare-whychoose-us ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <div class="best-features-accoudion">
+                        <div class="panel-group" id="Abaccordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingOne1">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseOne4" aria-expanded="true" aria-controls="AbcollapseOne">
+                                          QUESTION # 1
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseOne5" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1">
+                                    <div class="panel-body">
+                                        <p>Question # 1 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingTwo1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseTwo5" aria-expanded="false" aria-controls="AbcollapseTwo">
+                                            QUESTION # 2
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseTwo5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingTwo">
+                                    <div class="panel-body">
+                                        <p>Question # 2 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingThree1">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseThree5" aria-expanded="false" aria-controls="AbcollapseThree">
+                                           QUESTION # 3
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseThree5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingThree">
+                                    <div class="panel-body">
+                                        <p>Question # 3 Anwer</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="nurology">
                                         <div class="row">
@@ -203,25 +385,54 @@
                                             </div>
                                         </div>
                                         <hr/>
-                                        <div class="container">
-                                            @forelse($faqs as $faq)
-                                                @if($faq->faq_category == 'others')
-                                                <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
-                                                    <br/>
-                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
-                                                </ol>
-                                                @endif
-                                            @empty
-                                                <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">No FAQ Record</h3></li>
-                                                    <br/>
-                                                    <li><a aria-readonly="true"></a></li>
-                                                </ol>
-                                            @endforelse
-                                        </div>
+
+                                       <section class="mediacare-whychoose-us ">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-12 text-left">
+                    <div class="best-features-accoudion">
+                        <div class="panel-group" id="Abaccordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseOne" aria-expanded="true" aria-controls="AbcollapseOne">
+                                          QUESTION # 1
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne">
+                                    <div class="panel-body">
+                                        <p>Question # 1 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingTwo">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseTwo" aria-expanded="false" aria-controls="AbcollapseTwo">
+                                            QUESTION # 2
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingTwo">
+                                    <div class="panel-body">
+                                        <p>Question # 2 Answer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="AbheadingThree">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseThree" aria-expanded="false" aria-controls="AbcollapseThree">
+                                           QUESTION # 3
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="AbcollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingThree">
+                                    <div class="panel-body">
+                                        <p>Question # 3 </p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +440,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+                                      </section>
         <!-- end of department section -->
     
     <section class="aboutUs-area v2 section-padding">
@@ -260,8 +472,8 @@
                             <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_location }}</h4>
-                            
+                            <h4>{{ $clinic->clinic_location }},</h4>
+                            <h4>Philippines</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -269,7 +481,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $contact->contact_phone }}</h4>
+                            <h4>{{ $clinic->clinic_contact }}</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -277,7 +489,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $contact->contact_email }}</h4>
+                            <h4>{{ $clinic->clinic_email }}</h4>
                         </div>
                     </div>
                 </div>
