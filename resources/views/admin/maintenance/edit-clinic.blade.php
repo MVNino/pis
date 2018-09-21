@@ -60,7 +60,7 @@
                 </div>
                 {{Form::hidden('_method', 'PUT')}}
                 <div align="right">
-                        <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+                    <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
 				</div>
             {!! Form::close() !!}
             </div>
