@@ -15,9 +15,8 @@
 Route::get('/', 'GuestController@viewIndex');
 Route::get('about', 'GuestController@viewAbout');
 Route::get('services','GuestController@viewServices');
-Route::get('test/services', function() {
-	return view('guest.test-service');
-});
+Route::get('service/{id}', 'GuestController@showService');
+Route::get('other-service/{id}', 'GuestController@showOtherService');
 Route::get('news','GuestController@viewNews');
 Route::get('contact','GuestController@viewContact');
 Route::get('faqs','GuestController@viewFaqs');

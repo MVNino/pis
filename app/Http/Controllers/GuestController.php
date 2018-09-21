@@ -39,11 +39,24 @@ class GuestController extends Controller
     }
 
     public function viewServices() {
-        $otherServices = OtherService::all();
+        $otherServices = OtherService::orderBy('other_services_id', 'desc')
+                ->paginate(6);
         $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
                 ->paginate(6);
         return view('guest.services', ['otherServices' => $otherServices, 
                 'specialtyServices' => $specialtyServices]);
+    }
+
+    public function showService($id)
+    {
+        $specialtyService = SpecialtyService::findOrFail($id);
+        return view('guest.show-service', ['service' => $specialtyService]);
+    }
+
+    public function showOtherService($id)
+    {
+        $otherService = OtherService::findOrFail($id);
+        return view('guest.show-other-service', ['service' => $otherService]);
     }
 
     # News
