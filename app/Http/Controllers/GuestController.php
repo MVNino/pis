@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\About;
 use App\Banner;
+use App\Clinic;
 use App\ContactUs;
 use App\FAQ;
 use App\News;
@@ -23,7 +25,17 @@ class GuestController extends Controller
 
     public function viewAbout()
     {
-    	return view('guest.about');
+        $about = About::all();
+        if ($about->count() > 0)
+        {
+    		$aboutMaxId = About::max('about_id');
+    		$about = About::findOrFail($aboutMaxId);
+    		return view('guest.about', ['about' => $about]);
+        }
+        else
+        {
+	        return view('guest.about');
+    	}
     }
 
     public function viewServices() {
@@ -44,7 +56,19 @@ class GuestController extends Controller
     # Contact
     public function viewContact() {
         $contact = $this->getContact();
-        return view('guest.contact', ['contact' => $contact]);
+
+        $clinics = Clinic::all();
+
+        if ($clinics->count() > 0)
+        {
+    		$clinicMaxId = Clinic::max('clinic_contact_id');
+    		$clinic = Clinic::findOrFail($clinicMaxId);
+    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact]);
+        }
+        else
+        {
+	        return view('guest.contact');
+        }
     }
 
     // Get contact information

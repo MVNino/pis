@@ -7,7 +7,7 @@
             {{Request::is('news') ? 'News' : ''}}
             {{Request::is('contact') ? 'Contact' : ''}}
             {{Request::is('faqs') ? 'FAQs' : ''}} | Hospital </title>
-   <!--  <link rel="icon" href="img/favicon.png" type="image/x-icon"/> -->
+   <link rel="icon" href="{{ asset('medicre/img/favicon.png') }}" type="image/x-icon"/>
     <!-- google fonts lato -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <!-- google fonts pt-Sans -->

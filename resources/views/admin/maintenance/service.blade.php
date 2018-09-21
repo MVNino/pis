@@ -16,8 +16,6 @@
 @section('content')
 <div class="card">
 	<div class="card-body p-b-0">
-		<h3 class="card-title">Services</h3>
-		<h5 class="card-subtitle">Services offered</h5> 
 	</div>
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs customtab" role="tablist">
@@ -40,7 +38,11 @@
 			<div class="tab-pane active" id="home2" role="tabpanel">
 				<div class="p-20">
 					<h3 class="box-title">Speciality Services</h3>
+<<<<<<< HEAD
 					{!! Form::open(['action' => 'Maintenance\ServiceController@addSpecialty', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-material', 'autocomplete' => 'off', 'files' => true]) !!}
+=======
+					{!! Form::open(['action' => 'Maintenance\ServiceController@addSpecialty','class' => 'form-material' ,'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+>>>>>>> 00d79830fb5bd6a25ce8c328935f14db354a0c63
 						<div class="form-group">
 							<label class="col-sm-12">Image</label>
 							<div class="col-sm-12">
@@ -58,7 +60,7 @@
 						<div class="form-group">
 							<label class="col-md-12">Service Description</label>
 							<div class="col-md-12">
-								<textarea name="txtareaDescription" class="form-control"> </textarea>
+								<textarea name="txtareaDescription" class="form-control" cols="5"> </textarea>
 							</div>
 						</div>
 						<div class="form-group">
@@ -83,13 +85,12 @@
 							</div>
 						</div>
 						<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
-						<button type="button" class="btn btn-inverse waves-effect waves-light">Cancel</button>
 					</form>
 				</div>
 			</div>
 			<div class="tab-pane  p-20" id="profile2" role="tabpanel">
 				<h3 class="box-title">Other Services</h3>
-				{!! Form::open(['action' => 'Maintenance\ServiceController@addOtherService', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-material', 'autocomplete' => 'off']) !!}
+				{!! Form::open(['action' => 'Maintenance\ServiceController@addOtherService', 'class' => 'form-material','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 					<div class="form-group">
 						<label class="col-sm-12">Image</label>
 						<div class="col-sm-12">
@@ -108,7 +109,7 @@
 					<div class="form-group">
 						<label class="col-md-12">Service Description</label>
 						<div class="col-md-12">
-							<textarea name="txtareaDescription" class="form-control"> </textarea>
+							<textarea name="txtareaDescription" class="form-control" rows="5"> </textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -117,7 +118,6 @@
 							<input type="text" name="txtVideoLink" class="form-control"> </div>
 					</div>
 					<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
-					<button type="button" class="btn btn-inverse waves-effect waves-light">Cancel</button>
 				</form>
 			</div>
 		</div>
