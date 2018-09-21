@@ -50,9 +50,13 @@ Route::group(
 				// Contact
 				Route::get('contact', 'ContactController@viewContact')->name('maintenance.contact');
 				Route::post('contact', 'ContactController@addContact');
+				Route::put('contact/{id}', 'ContactController@editContact');
+				Route::delete('contact/{id}', 'ContactController@deleteContact');
 				// Features
 				Route::get('features', 'FeatureController@viewFeatures')->name('maintenance.features');
 				Route::post('features', 'FeatureController@storeFeature');	
+				Route::put('features/{id}', 'FeatureController@editFeature');
+				Route::delete('features/{id}', 'FeatureController@deleteFeature');
 				// FAQ's
 				Route::get('faqs', 'FAQController@viewFAQs')->name('maintenance.faqs');
 				Route::post('faqs', 'FAQController@addFAQs');
