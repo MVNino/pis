@@ -40,7 +40,7 @@
 			<div class="tab-pane active" id="home2" role="tabpanel">
 				<div class="p-20">
 					<h3 class="box-title">Speciality Services</h3>
-					{!! Form::open(['action' => 'Maintenance\ServiceController@addSpecialty', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+					{!! Form::open(['action' => 'Maintenance\ServiceController@addSpecialty', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-material', 'autocomplete' => 'off']) !!}
 						<div class="form-group">
 							<label class="col-sm-12">Image</label>
 							<div class="col-sm-12">
@@ -73,13 +73,15 @@
 			</div>
 			<div class="tab-pane  p-20" id="profile2" role="tabpanel">
 				<h3 class="box-title">Other Services</h3>
-				{!! Form::open(['action' => 'Maintenance\ServiceController@addOtherService', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+				{!! Form::open(['action' => 'Maintenance\ServiceController@addOtherService', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-material', 'autocomplete' => 'off']) !!}
 					<div class="form-group">
 						<label class="col-sm-12">Image</label>
 						<div class="col-sm-12">
 							<div class="fileinput fileinput-new input-group" data-provides="fileinput">
-								<div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-								<input type="file" name="fileServiceImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> </div>
+								<div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>
+								</div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+								<input type="file" name="fileServiceImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+							</div>
 						</div>
 					</div>
 					<div class="form-group">

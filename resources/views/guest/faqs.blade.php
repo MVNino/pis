@@ -68,7 +68,9 @@
                                                 @endif
                                             @empty
                                                 <ol class="breadcrumb">
-                                                    <li><h3>NONE</h3></li>
+                                                    <li>
+                                                        <h3>NONE</h3>
+                                                    </li>
                                                 </ol>
                                             @endforelse
                                         </div>
@@ -86,10 +88,18 @@
                                             @forelse($faqs as $faq)
                                                 @if($faq->faq_category == 'service')
                                                 <ol class="breadcrumb">
-                                                    <li><a aria-readonly="true"><i class="fa fa-question-circle-o qIcon"></i></a></li>
-                                                    <li><h3 class="qText">{{ $faq->faq_question }}</h3></li>
+                                                    <li>
+                                                        <a aria-readonly="true">
+                                                            <i class="fa fa-question-circle-o qIcon"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <h3 class="qText">{{ $faq->faq_question }}</h3>
+                                                    </li>
                                                     <br/>
-                                                    <li><a aria-readonly="true">{{ $faq->faq_answer }}</a></li>
+                                                    <li>
+                                                        <a aria-readonly="true">{{ $faq->faq_answer }}</a>
+                                                    </li>
                                                 </ol>
                                                 @endif
                                             @empty
