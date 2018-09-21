@@ -13,54 +13,22 @@
 	</div>
 @endsection
 
-
 @section('content')
 	<div class="row">
 		<div class="col-md-12">
 			<div class="white-box">
-				<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
-					<thead>
-						<th>Title</th>
-						<th>Description</th>
-						<th>Image</th>
-						<th>Action</th>
-					</thead>
-					<tbody>
-					@foreach($feature as $row)  
-					<tr>
-						<td>{{$row['feature_title']}}</td>
-						<td>{{$row['feature_description']}}</td>
-						<td>{{$row['feature_image']}} </td>
-						<td>
-							<button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Edit"><i
-									class="ti-pencil-alt" aria-hidden="true"></i></button>
-							<button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i
-									class="ti-close" aria-hidden="true"></i></button>
-						</td>
-					</tr>
-					@endforeach
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="6">
-								<div class="text-right">
-									<ul class="pagination"> </ul>
-								</div>
-							</td>
-						</tr>
-					</tfoot>
-				</table>
 				<div align="right">
-                    <button class="btn btn-info waves-effect waves-light m-r-10" type="button" data-toggle="collapse" data-target="#featuresForm" aria-expanded="false" aria-controls="collapseExample">Add Contact</button>
-                </div>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+						<i class="fa fa-plus"></i> Add Features
+					</button>
+				</div><br>
 	            <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
 	                <thead>
 	                <tr>
 	                    <th>Title</th>
 	                    <th>Description</th>
 	                    <th>Image</th>
-	                    <th></th>
-	                    <th></th>
+	                    <th>Action</th>
 	                </tr>
 	            </thead>
 	            <tbody>
@@ -71,14 +39,12 @@
 	                <td>{{$row['feature_description']}}</td>
 	                <td>{{$row['feature_image']}} </td>
 	                <td>
-	                <a href="{{action('Maintenance\FeatureController@edit', $row['features_id'])}}" class="btn btn-warning">Edit</a>
-	                </td>
-	                <td>
-	                	{!!Form::open(['action' => ['Maintenance\FeatureController@deleteFeature', $row['features_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
-                                        {{Form::hidden('_method', 'DELETE')}}
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-original-title="Delete">Delete
-										</button>
-                                    {!!Form::close()!!}
+	                <a href="{{action('Maintenance\FeatureController@edit', $row['features_id'])}}" class="btn btn-sm btn-warning">a</a>
+	                {!!Form::open(['action' => ['Maintenance\FeatureController@deleteFeature', $row['features_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
+                        {{Form::hidden('_method', 'DELETE')}}
+                            <button type="submit" class="btn btn-sm btn-warning" data-toggle="tooltip" data-original-title="Delete">b
+							</button>
+                    {!!Form::close()!!}
 	                </td>
 	            </tr>
 	            @endforeach
@@ -142,6 +108,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	{!! Form::close() !!}
 @endsection
