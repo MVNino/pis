@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- start slider section -->
+    <section class="home-area v3">
         <div class="Modern-Slider">
             <!-- Item -->
             <div>
