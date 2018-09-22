@@ -18,7 +18,7 @@
                             <img src="/storage/images/service/other/{{ $service->other_image }}" alt="jigsawlab">
                         </div>
                         <h4><a href="/other-service/{{ $service->other_services_id }}">{{ $service->other_title }}</a></h4>
-                        <p>{{ $service->other_desc }}</p>
+                        <p>{{ str_limit($service->other_desc, $limit = 80, $end = '...') }}</p>
                         <a href="#" class="service-link">READ MORE +</a>
                     </div>
                 </div>      
@@ -44,18 +44,17 @@
             </div>
         </div>
         <div class="row">
-            @forelse($specialtyServices as $service) 
-            <div class="col-sm-4">
+            @foreach($specialtyServices as $service) 
+            <div class="col-md-4 col-sm-4">
                 <div class="speacila-single-service">
                     <div class="service-thumb">
-                        <img src="/storage/images/service/specialty/{{ $service->spec_image_icon }}" alt="Pic" width="300" height="250">
+                        <img src="/storage/images/service/specialty/{{ $service->spec_image_icon }}" alt="Pic" width="400" height="250">
                     </div>
-                    <h4><a target="_blank" href="/service/{{ $service->spec_service_id }}">{{ $service->spec_title }}</a></h4>
-                    <p>{{ $service->spec_desc }}</p>
+                    <h4><a href="/service/{{ $service->spec_service_id }}">{{ $service->spec_title }}</a></h4>
+                    <p>{{ str_limit($service->spec_desc, $limit = 40, $end = '...') }}</p>
                 </div>
             </div>
-            @empty
-            @endforelse
+            @endforeach
         </div> 
         <div align="center">
             {{ $specialtyServices->links() }}

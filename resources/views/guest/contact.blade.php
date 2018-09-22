@@ -1,23 +1,79 @@
 @extends('guest.layouts.app')
 
 @section('content')
-<div class="single-page-title">
-    <div class="page-title-cell" style="background-image: url(img/v3home.png);">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 text-left">
-                    <div class="page-title">
-                        <h2>CONTACT US NOW</h2>
-                        <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
-                            <li class="active"><a href="#">Contact Us</a></li>
-                        </ol>
+    <section class="home-sm">
+        <!-- start slider section -->
+        <div class="Modern-Slider">
+            <!-- Item -->
+            <div class="item">
+                <div class="img-fill">
+                    <img src="/storage/images/about/{{$about->about_image}}" alt="banner" style="object-fit: cover; height: 700px; width: 100%;">
+                    <div class="info">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6 slider-content-area text-left">
+                                    <div class="v3 welcome-text">
+                                        <h1>The Doctor is In!</h1>
+                                        <h2>Clinic Schedule</h2>
+                                        <h4>We're open from {{$clinic->clinic_days}} during {{$clinic->clinic_open_time}} to {{$clinic->clinic_close_time}}.<br/> You can visit us at {{$clinic->clinic_location}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- // Item -->
         </div>
-    </div>
+        <!-- end of slider section -->
+    </section>
+    <section class="section-padding">
+    The Doctor is In!
+    <div class="col-md-4">
+    <table class="table" style="width:80%">
+    <thead>
+        <tr>
+            <th>Row</th>
+            <th>Bill</th>
+            <th>Payment Date</th>
+            <th>Payment Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="active">
+            <td>1</td>
+            <td>Credit Card</td>
+            <td>04/07/2014</td>
+            <td>Call in to confirm</td>
+        </tr>
+        <tr class="success">
+            <td>2</td>
+            <td>Water</td>
+            <td>01/07/2014</td>
+            <td>Paid</td>
+        </tr>
+        <tr class="info">
+            <td>3</td>
+            <td>Internet</td>
+            <td>05/07/2014</td>
+            <td>Change plan</td>
+        </tr>
+        <tr class="warning">
+            <td>4</td>
+            <td>Electricity</td>
+            <td>03/07/2014</td>
+            <td>Pending</td>
+        </tr>
+        <tr class="danger">
+            <td>5</td>
+            <td>Telephone</td>
+            <td>06/07/2014</td>
+            <td>Due</td>
+        </tr>
+    </tbody>
+</table>
 </div>
+    </section>
     <section class="section-padding v3-contact v2contact-page">
         <div class="container">
             <div class="row">
@@ -44,7 +100,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $contact->contact_phone }}</h4>
+                            <h4>{{ $clinic->clinic_contact }}</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -52,7 +108,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $contact->contact_email }}</h4>
+                            <h4>{{ $clinic->clinic_email }}</h4>
                         </div>
                     </div>
                 </div>

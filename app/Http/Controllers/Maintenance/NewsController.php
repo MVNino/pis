@@ -9,6 +9,11 @@ use App\News;
 
 class NewsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function listNews() {
         $news = News::orderBy('news_order')->paginate(5);
     	return view('admin.maintenance.news', ['news' => $news]);
@@ -23,7 +28,7 @@ class NewsController extends Controller
     public function addNews(Request $request) 
     {	
   		$this->validate($request, [
-            'numOrder' => 'required|unique:news_tbl',  
+            'numOrder' => 'required',  
             'title' => 'required',
   			'description' => 'required',
             'fileNewsImg' => 'image|nullable|max:3000'

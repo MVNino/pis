@@ -8,6 +8,7 @@ use App\Banner;
 use App\Clinic;
 use App\Contact;
 use App\FAQ;
+use App\Feature;
 use App\News;
 use App\OtherService;
 use App\SpecialtyService;
@@ -19,23 +20,25 @@ class GuestController extends Controller
 
     public function viewIndex()
     {
-        $banners = Banner::where('banner_status', '=', 1);
-    	return view('guest.index', ['banners'=>$banners]);
+        if (!auth()->guest()) {
+            return redirect('/admin/dashboard');
+        }
+        $otherServices = OtherService::orderBy('other_services_id', 'desc')
+                ->limit(3)
+                ->get();
+        $news = News::orderBy('news_id', 'desc')->limit(3)->get();
+        $banners = Banner::where('banner_status', '=', 1)->get();
+        return view('guest.index', ['banners'=>$banners, 
+                'news' => $news, 'otherServices' => $otherServices]);
     }
 
     public function viewAbout()
     {
-        $about = About::all();
-        if ($about->count() > 0)
-        {
-    		$aboutMaxId = About::max('about_id');
-    		$about = About::findOrFail($aboutMaxId);
-    		return view('guest.about', ['about' => $about]);
-        }
-        else
-        {
-	        return view('guest.about');
-    	}
+        $features = Feature::orderBy('features_id', 'desc')->get();
+        $about = $this->getAbout();
+        return view('guest.about', ['about' => $about, 
+                'features' => $features]);
+
     }
 
     public function viewServices() {
@@ -68,21 +71,36 @@ class GuestController extends Controller
     }
 
     # Contact
-    public function viewContact() {
+    public function viewContact() 
+    {
         $contact = $this->getClinicContact();
+        $about = $this->getAbout();
+        
+        $clinics = Clinic::all();
+        if ($clinics->count() > 0)
 
-        $clinic = Clinic::all();
-
-        if ($clinic->count() > 0)
         {
     		$clinicMaxId = Clinic::max('clinic_contact_id');
     		$clinic = Clinic::findOrFail($clinicMaxId);
-    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact]);
+    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact, 'about' => $about]);
         }
         else
         {
 	        return view('guest.contact');
         }
+    }
+
+    public function getContact()
+    {
+        $MaxId = Contact::max('contact_us_id');
+        return $contact = Contact::findOrFail($MaxId);
+    }
+
+    //Get about
+    public function getAbout()
+    {
+        $MaxId = About::max('about_id');
+    	return $about = About::findOrFail($MaxId);
     }
 
     // Get contact information

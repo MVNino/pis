@@ -11,7 +11,7 @@
                     </li>
                     <li class="user-pro">
                         <a href="#" class="waves-effect"><img src="{{ asset('elite/plugins/images/users/d1.jpg') }}" alt="user-img" class="img-circle">                            <span
-                                class="hide-menu">Dr. Joy Gali</span>
+                                class="hide-menu">Dr. {{ Auth::user()->name }}</span>
                         </a>
                     </li>
                     <li class="nav-small-cap m-t-10">--- Professional</li>
@@ -21,22 +21,20 @@
                     <li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-people p-r-10"></i> <span class="hide-menu">
                             Patients <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="patients.html">All Patients</a> </li>
+                            <li> <a href="{{ route('transaction.patients') }}">All Patients</a> </li>
                         </ul>
                     </li>
                     <li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-chart p-r-10"></i> <span class="hide-menu">
                             Reports <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="payment-report.html">Expense Report</a></li>
-                            <li> <a href="income-report.html">Income Report</a></li>
-                            <li> <a href="sales-report.html">Sales Report</a></li>
+                            <li> <a href="payment-report.html">Daily Cash Position</a></li>
                         </ul>
                     </li>
                     <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-inr p-r-10"></i> <span class="hide-menu">
                             Payments <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="payments.html">Payments</a></li>
-                            <li> <a href="patient-invoice.html">Patient Invoice</a></li>
+                            <li> <a href="payments.html">Billing</a></li>
+                            <li> <a href="patient-invoice.html">Official Receipt</a></li>
                         </ul>
                     </li>
                     </li>
@@ -48,7 +46,6 @@
                             <li> <a href="{{ route('maintenance.banner') }}">Banner</a> </li>
                             <li> <a href="{{ route('maintenance.clinic') }}">Clinic</a> </li>
                             <li> <a href="{{ route('maintenance.company') }}">Company</a> </li>
-                            <li> <a href="{{ route('maintenance.contact') }}">Contact</a> </li>
                             <li> <a href="{{ route('maintenance.features') }}">Features</a> </li>
                             <li> <a href="{{ route('maintenance.faqs') }}">FAQs</a> </li>
                             <li> <a href="{{ route('maintenance.news') }}">News</a> </li>

@@ -41,8 +41,8 @@
                             <td>{{$row['contact_inquiry']}} </td>
 
                             <td>
-                            <a href="{{action('Maintenance\ContactController@edit', $row['contact_us_id'])}}" class="btn btn-sm btn-info">
-                                <i class="fa fa-eye"></i>
+                            <a href="{{action('Maintenance\ContactController@edit', $row['contact_us_id'])}}" class="btn btn-sm btn-primary">
+                                <i class="fa fa-edit"></i>
                             </a>
                             </td>
                             <td>

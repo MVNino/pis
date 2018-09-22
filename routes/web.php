@@ -14,12 +14,13 @@
 # Website
 Route::get('/', 'GuestController@viewIndex');
 Route::get('about', 'GuestController@viewAbout');
-Route::get('services','GuestController@viewServices');
+Route::get('services','GuestController@viewServices')->name('services');
 Route::get('service/{id}', 'GuestController@showService');
 Route::get('other-service/{id}', 'GuestController@showOtherService');
-Route::get('news','GuestController@viewNews');
+Route::get('news','GuestController@viewNews')->name('news');
 Route::get('contact','GuestController@viewContact');
 Route::get('faqs','GuestController@viewFaqs');
+
 
 # Admin
 Route::group(
@@ -27,13 +28,11 @@ Route::group(
 		'prefix' => 'admin'
 	], 
 	function() {
-		Route::get('dashboard', function(){
-			return view('admin.dashboard');
-		})->name('admin.dashboard');
+		Route::get('dashboard', 'DashboardController@viewDashboard')->name('admin.dashboard');
+		# MAINTENANCE
 		Route::group([
 			'prefix' => 'maintenance'
 		], function(){
-			# MAINTENANCE
 			Route::namespace('Maintenance')->group(function () {
 				// About 
 				Route::get('about', 'AboutController@viewAbout')->name('maintenance.about');
@@ -79,5 +78,20 @@ Route::group(
 				Route::post('services/specialty', 'ServiceController@addSpecialty');
 				Route::post('services/other', 'ServiceController@addOtherService');
 			});
+
+		});
+
+		# TRANSACTION
+		Route::group([
+			'prefix' => 'transaction'
+		], function() {
+			Route::namespace('Transaction')->group(function () {
+				Route::get('patients', 'PatientController@listPatients')
+					->name('transaction.patients');
+				Route::get('editPatients', 'PatientController@editPatients'); //change it
+			});
 		});
 });
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

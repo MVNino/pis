@@ -1,7 +1,8 @@
 @extends('guest.layouts.app')
 
 @section('content')
-        <section class="aboutUs-area v2 v3 section-padding">
+    <section class="home-sm">
+        <!-- <section class="">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
@@ -14,9 +15,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- end of department section -->
-        <section class="get-quote-area" style="background-color: #79A7AC;">
+        <!-- <section class="get-quote-area" style="background-color: #79A7AC;">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 text-left">
@@ -32,7 +33,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- end of get quote area -->
     </section>
     <!-- start about us section -->
@@ -43,16 +44,12 @@
                     @foreach($news as $new)
                     <div class="single-news-post">
                         <div class="news-post-img">
-                            <img src="/storage/images/news/{{ $new->news_picture }}" alt="$new->news_title">
+                            <img src="/storage/images/news/{{ $new->news_picture }}" alt="$new->news_title" >
                         </div>
                         <div class="post-title">
                             <h2>{{ $new->news_title }}</h2>
                         </div>
-                        <div class="date">
-                            <p>Posted by : <span>Emma Walt</span> // On : <span>01 Jan, 2015</span></p>
-                        </div>
                         <p>{{ $new->news_desc }}</p>
-                        <a href="single.html" class="read-more">READ MORE</a>
                     </div>
                     @endforeach
                     {{ $news->links() }}
@@ -78,95 +75,23 @@
                             <div class="widget-title text-center">
                                 <h2> <span>RECENT</span> NEWS</h2>
                             </div>
+                            <span>
                             <div class="widget-sider">
-                                <span>
-                                @foreach($recentNews as $news)
-                                <div class="widget-sider">
-                                    <div class="widget-single-slider">
-                                        <a href="single.html">
-                                            <img src="/storage/images/news/{{ $news->news_picture }}" alt="{{ $news->news_picture }}"
-                                                width="200" height="150">
-                                            <div class="widget-post-title">
-                                                <p>{{ $news->news_title }}</p>
-                                            </div>
-                                        </a>
-                                    </div>
+                            @foreach($recentNews as $news)
+                                <div class="widget-single-slider">
+                                    <a href="single.html">
+                                        <img src="/storage/images/news/{{ $news->news_picture }}" alt="{{ $news->news_picture }}"
+                                            >
+                                        <div class="widget-post-title">
+                                            <p>{{ $news->news_title }}</p>
+                                        </div>
+                                    </a>
                                 </div>
-                                @endforeach
+                            @endforeach
+                            </div>
                             </span>
-                                <div class="widget-single-slider">
-                                    <a href="single.html">
-                                        <img src="{{ asset('medicre/img/w-2.png') }}" alt="theconstructo.com">
-                                        <div class="widget-post-title">
-                                            <p>From 0 To 14 Clients & $14,000 a Month Case Study</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="widget-single-slider">
-                                    <a href="single.html">
-                                        <img src="{{ asset('medicre/img/w-1.png') }}" alt="theconstructo.com">
-                                        <div class="widget-post-title">
-                                            <p>Put Your Content Syndication Strategy On Autopilot</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="widget-single-slider">
-                                    <a href="single.html">
-                                        <img src="{{ asset('medicre/img/w3.png') }}" alt="theconstructo.com">
-                                        <div class="widget-post-title">
-                                            <p>How To Rank In Google Maps Fast + Case Study</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="widget-single-slider">
-                                    <a href="single.html">
-                                        <img src="{{ asset('medicre/img/news-2.png') }}" alt="theconstructo.com">
-                                        <div class="widget-post-title">
-                                            <p>From 0 To 14 Clients & $14,000 a Month Case Study</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="widget-single-slider">
-                                    <a href="single.html">
-                                        <img src="{{ asset('medicre/img/news-3.png') }}" alt="theconstructo.com">
-                                        <div class="widget-post-title">
-                                            <p>Put Your Content Syndication Strategy On Autopilot</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-sidebar">
-                            <div class="widget-title text-center">
-                                <h2>DEPARTMENTS</h2>
-                            </div>
-                            <ul>
-                                <li><a href="#">Construction</a></li>
-                                <li><a href="#">Builders</a></li>
-                                <li><a href="#">Metal Roofing</a></li>
-                                <li><a href="#">Painting</a></li>
-                                <li><a href="#">Marketing Plan</a></li>
-                                <li><a href="#">Flooring</a></li>
-                                <li><a href="#">Heavy Vehicles</a></li>
-                                <li><a href="#">Diggin & Tiling</a></li>
-                                <li><a href="#">Others</a></li>
-                            </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- start footer top section -->
-    <section class="constructo-footer-top section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <div class="footer-top-content">
-                        <h2>Want to be updated on the latest news from us?</h2>
-                        <p>Subscribe to our newsletter by giving us your e-mail!</p>
-                        <a href="#" class="contat-usf">SUBSCRIBE</a>
-                        <a href="#" class="learn-moref">LEARN MORE</a>
                     </div>
                 </div>
             </div>

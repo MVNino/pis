@@ -15,11 +15,14 @@
 @endsection
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="white-box">
-            <h3 class="box-title">Clinic Information</h3>
-            {!!Form::open(['action' => ['Maintenance\ClinicController@editClinic', $clinic->clinic_contact_id], 'method' => 'POST'])!!}
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h3 class="text-light">Edit Details</h3>
+        </div>
+        <div class="card-body">
+            <div class="container">
+            {!!Form::open(['action' => ['Maintenance\ClinicController@editClinic', $clinic->clinic_contact_id], 'method' => 'POST', 'class' => 'form-material'])!!}
             @csrf
                 <div class="form-group">
                     <label class="col-md-12">Contact</span></label>
@@ -56,8 +59,11 @@
                     </div>
                 </div>
                 {{Form::hidden('_method', 'PUT')}}
-                <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
+                <div align="right">
+                    <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+				</div>
             {!! Form::close() !!}
+            </div>
         </div>
     </div>
 </div>

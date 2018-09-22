@@ -9,6 +9,11 @@ use App\Feature;
 
 class FeatureController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function viewFeatures()
     {
     	$feature = Feature::all()->toArray();
@@ -17,7 +22,7 @@ class FeatureController extends Controller
 
     public function storeFeature(Request $request)
     {	
-  		$this->validate($request, [
+        $this->validate($request, [
   			'title' => 'required',
   			'description' => 'required',
   			'fileFeatureImg' => 'image|nullable|max:3000'
@@ -26,8 +31,8 @@ class FeatureController extends Controller
       try 
       {
   		$feature = new Feature;
-  		$feature->title = $request->title;
-  		$feature->description = $request->description;
+  		$feature->feature_title = $request->title;
+  		$feature->feature_description = $request->description;
         // Handle file upload for feature image
         if($request->hasFile('fileFeatureImg')){
             // Get the file's extension
@@ -39,7 +44,7 @@ class FeatureController extends Controller
             // Upload file to system
             $path = $request->file('fileFeatureImg')
                 ->storeAs('public/images/feature', $featureImgNameToStore);
-            $feature->image = $featureImgNameToStore;
+            $feature->feature_image = $featureImgNameToStore;
         }
         if ($feature->save()) {
         	return redirect()->back()->with('success', 'feature added!');
@@ -60,17 +65,16 @@ class FeatureController extends Controller
 
     public function editFeature(Request $request, $id)
     {
+        // return $request;
        $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'fileFeatureImg' => 'image|nullable|max:3000'
+            'fileFeatureImg' => 'nullable|max:3000'
         ]);
 
-      try 
-      {
-        $feature = new Feature;
-        $feature->title = $request->input('title');
-        $feature->description = $request->input('description');
+        $feature = Feature::findOrFail($id);
+        $feature->feature_title = $request->title;
+        $feature->feature_description = $request->description;
         // Handle file upload for feature image
         if($request->hasFile('fileFeatureImg')){
             // Get the file's extension
@@ -82,17 +86,11 @@ class FeatureController extends Controller
             // Upload file to system
             $path = $request->file('fileFeatureImg')
                 ->storeAs('public/images/feature', $featureImgNameToStore);
-            $feature->image = $featureImgNameToStore;
+            $feature->feature_image = $featureImgNameToStore;
         }
         if ($feature->save()) {
             return redirect()->back()->with('success', 'feature added!');
         }
-
-        }
-        catch (\Exception $e)
-        {
-            return $e->getMessage();
-        } 
     }
 
     public function deleteFeature($id)

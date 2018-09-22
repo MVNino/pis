@@ -200,6 +200,10 @@ nav.navbar {
     height: 700px;
 }
 
+.home-sm {
+    height: 0px !important;
+}
+
 .navbar-area {
     position: absolute;
     width: 100%;
