@@ -77,50 +77,20 @@
      <section class="features-area v2 section-padding">
         <div class="container">
             <div class="row">
+                @foreach($otherServices as $otherService)
                 <div class="col-sm-4 text-center">
                     <div class="v2 single-features">
                         <div class="features-icon">
-                            <img src="{{ asset('medicre/img/v2f1.png') }}" alt="theimran.com">
+                            <img src="/storage/images/service/other/{{ $otherService->other_image }}" alt="theimran.com">
                             <div class="hover-features">
                                 <img src="{{ asset('medicre/img/service-3.png') }}" alt="theimran.com">
                             </div>
                         </div>
-                        <h4>Qualified Doctors</h4>
-                        <p>If you need a doctor for to consectetuer Lorem </p>
-                        <p>ipsum dolor, consectetur adipiscing elit Lorem </p>
-                        <p>ipsum dolor, consectetur Ut volutpat eros.</p>
+                        <h4>{{ $otherService->other_title }}</h4>
+                        <p>{{ str_limit($otherService->other_desc, $limit = 140, $end = '...') }}</p>
                     </div>
                 </div>
-                <div class="col-sm-4 text-center">
-                    <div class="v2 single-features">
-                        <div class="features-icon">
-                            <img src="{{ asset('medicre/img/v2f2.png') }}" alt="theimran.com">
-                            <div class="hover-features">
-                                <img src="{{ asset('medicre/img/service-1.png') }}" alt="theimran.com">
-                            </div>
-                        </div>
-                        <h4>Operation Theater</h4>
-                        <p>If you need a doctor for to consectetuer Lorem </p>
-                        <p>ipsum dolor, consectetur adipiscing elit Lorem </p>
-                        <p>ipsum dolor, consectetur Ut volutpat eros.</p>
-                        
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <div class="v2 single-features">
-                        <div class="features-icon">
-                            <img src="{{ asset('medicre/img/v2f3.png') }}" alt="theimran.com">
-                            <div class="hover-features">
-                                <img src="{{ asset('medicre/img/service-2.png') }}" alt="theimran.com">
-                            </div>
-                        </div>
-                        <h4>Emergency Services</h4>
-                        <p>If you need a doctor for to consectetuer Lorem </p>
-                        <p>ipsum dolor, consectetur adipiscing elit Lorem </p>
-                        <p>ipsum dolor, consectetur Ut volutpat eros.</p>
-                      
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section> 

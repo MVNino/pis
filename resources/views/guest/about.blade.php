@@ -46,28 +46,26 @@
                     <div class="best-feature-title">
                         <h2 class="text-uppercase">best <span>features</span></h2>
                     </div>
-
-
                     <div class="best-features-accoudion">
-                        <div class="panel-group" id="Abaccordion" role="tablist">
-                            @foreach($features as $feature)
+                        @foreach($features as $feature)
+                        <div class="panel-group" id="Abaccordion{{ $feature->features_id }}" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="AbheadingOne">
+                                <div class="panel-heading" role="tab" id="AbheadingOne{{ $feature->features_id }}">
                                     <h4 class="panel-title">
-                                        
-                                        <a role="button" >
-                                          {{ $feature->feature_title }}  
+                                        <a role="button" data-toggle="collapse" data-parent="#Abaccordion{{ $feature->features_id }}" href="#AbcollapseOne{{ $feature->features_id }}" aria-expanded="true" aria-controls="AbcollapseOne{{ $feature->features_id }}">
+                                            {{ $feature->feature_title }}
                                         </a>
                                     </h4>
                                 </div>
-                                <div id="AbcollapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne">
+                                <div id="AbcollapseOne{{ $feature->features_id }}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="AbheadingOne{{ $feature->features_id }}">
                                     <div class="panel-body">
-                                        <p>{{$feature->feature_description}}</p>
+                                        <p>{{ str_limit($feature->feature_description, $limit = 80, $end = '...') }}</p>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

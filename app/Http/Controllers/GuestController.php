@@ -20,20 +20,23 @@ class GuestController extends Controller
 
     public function viewIndex()
     {
+        $otherServices = OtherService::orderBy('other_services_id', 'desc')
+                ->limit(3)
+                ->get();
         $news = News::orderBy('news_id', 'desc')->limit(3)->get();
         $banners = Banner::where('banner_status', '=', 1)->get();
         return view('guest.index', ['banners'=>$banners, 
-                'news' => $news]);
+                'news' => $news, 'otherServices' => $otherServices]);
     }
 
     public function viewAbout()
     {
-        $features = Feature::all();
+        $features = Feature::orderBy('features_id', 'desc')->get();
         $about = $this->getAbout();
-        return view('guest.about', ['about' => $about, 'features' => $features]);
+        return view('guest.about', ['about' => $about, 
+                'features' => $features]);
+
     }
-
-
 
     public function viewServices() {
         $otherServices = OtherService::orderBy('other_services_id', 'desc')
