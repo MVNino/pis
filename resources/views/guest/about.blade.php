@@ -51,57 +51,25 @@
                     <div class="best-feature-title">
                         <h2 class="text-uppercase">best <span>features</span></h2>
                     </div>
-
-                    
                     <div class="best-features-accoudion">
-                        <div class="panel-group" id="Abaccordion" role="tablist" aria-multiselectable="true">
+                        @foreach($features as $feature)
+                        <div class="panel-group" id="Abaccordion{{ $feature->features_id }}" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="AbheadingOne">
+                                <div class="panel-heading" role="tab" id="AbheadingOne{{ $feature->features_id }}">
                                     <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseOne" aria-expanded="true" aria-controls="AbcollapseOne">
-                                          PROFESSIONAL PLANNING
+                                        <a role="button" data-toggle="collapse" data-parent="#Abaccordion{{ $feature->features_id }}" href="#AbcollapseOne{{ $feature->features_id }}" aria-expanded="true" aria-controls="AbcollapseOne{{ $feature->features_id }}">
+                                            {{ $feature->feature_title }}
                                         </a>
                                     </h4>
                                 </div>
-                                <div id="AbcollapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne">
+                                <div id="AbcollapseOne{{ $feature->features_id }}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="AbheadingOne{{ $feature->features_id }}">
                                     <div class="panel-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo.</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="AbheadingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseTwo" aria-expanded="false" aria-controls="AbcollapseTwo">
-                                          HOME MAINTENANCE
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="AbcollapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingTwo">
-                                    <div class="panel-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo.</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="AbheadingThree">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#Abaccordion" href="#AbcollapseThree" aria-expanded="false" aria-controls="AbcollapseThree">
-                                          EVERYTHING IN BUDGET
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="AbcollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AbheadingThree">
-                                    <div class="panel-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo. consectetur adipiscing elit. Nulla id dolor ut mauris tempor dapibus ut ac justo.</p>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. Nulla id dolor ut mauris tempor.</p>
+                                        <p>{{ str_limit($feature->feature_description, $limit = 80, $end = '...') }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
