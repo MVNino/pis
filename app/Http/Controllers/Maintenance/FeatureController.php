@@ -9,6 +9,11 @@ use App\Feature;
 
 class FeatureController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function viewFeatures()
     {
     	$feature = Feature::all()->toArray();

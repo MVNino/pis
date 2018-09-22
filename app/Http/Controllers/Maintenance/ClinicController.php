@@ -10,6 +10,11 @@ use App\Clinic;
 
 class ClinicController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function viewClinic()
     {
 

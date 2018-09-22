@@ -28,9 +28,7 @@ Route::group(
 		'prefix' => 'admin'
 	], 
 	function() {
-		Route::get('dashboard', function(){
-			return view('admin.dashboard');
-		})->name('admin.dashboard');
+		Route::get('dashboard', 'DashboardController@viewDashboard')->name('admin.dashboard');
 		# MAINTENANCE
 		Route::group([
 			'prefix' => 'maintenance'
@@ -94,3 +92,6 @@ Route::group(
 			});
 		});
 });
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

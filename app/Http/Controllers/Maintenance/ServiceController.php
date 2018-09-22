@@ -10,6 +10,11 @@ use App\SpecialtyService;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function viewServices()
     {
     	return view('admin.maintenance.service');
