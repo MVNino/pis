@@ -23,7 +23,7 @@ class NewsController extends Controller
     public function addNews(Request $request) 
     {	
   		$this->validate($request, [
-            'numOrder' => 'required|unique:news_tbl',  
+            'numOrder' => 'required',  
             'title' => 'required',
   			'description' => 'required',
             'fileNewsImg' => 'image|nullable|max:3000'
