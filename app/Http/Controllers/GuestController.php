@@ -20,6 +20,9 @@ class GuestController extends Controller
 
     public function viewIndex()
     {
+        if (!auth()->guest()) {
+            return redirect('/admin/dashboard');
+        }
         $otherServices = OtherService::orderBy('other_services_id', 'desc')
                 ->limit(3)
                 ->get();

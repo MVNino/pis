@@ -10,6 +10,11 @@ use DB;
 
 class ContactController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function viewContact()
     {
     	$contact = ContactUs::all()->toArray();

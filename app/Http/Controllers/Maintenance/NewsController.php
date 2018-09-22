@@ -9,6 +9,11 @@ use App\News;
 
 class NewsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function listNews() {
         $news = News::orderBy('news_order')->paginate(5);
     	return view('admin.maintenance.news', ['news' => $news]);

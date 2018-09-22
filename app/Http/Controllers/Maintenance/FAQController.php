@@ -8,6 +8,11 @@ use App\FAQ;
 
 class FAQController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function viewFAQs()
     { 
     	return view('admin.maintenance.faqs');
