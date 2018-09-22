@@ -1,6 +1,7 @@
 @extends('guest.layouts.app')
 
 @section('content')
+    <section class="home-sm">
         <!-- <section class="">
             <div class="container">
                 <div class="row">
