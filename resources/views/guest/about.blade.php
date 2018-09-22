@@ -76,87 +76,11 @@
     <!-- end of about us section -->
 
 
-<!-- start client say section -->
 </div>
-<section class="client-say-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <div class="section-title">
-                        <h1><span>What Patients are Saying</span> About Us</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="row testimonial-section">
-                <div class="col-sm-6">
-                    <div class="single-client wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-                        <div class="client-content">
-                            <span class="fa fa-quote-left"></span>
-                            <p>As soon as you can, use real and relevant words. If your site or application requires data input, enter the real deal. And actually type in the text. If your site or application requires data input, enter the real deal.</p>
-                        </div>
-                        <div class="client">
-                            <div class="clien-photo">
-                                <img src="{{ asset('medicre/img/client-1.png') }}" alt="Jigsawlab">
-                            </div>
-                            <div class="client-name">
-                                <h4>Michael Brahm</h4>
-                                <!-- <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="single-client wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-                        <div class="client-content">
-                            <span class="fa fa-quote-left"></span>
-                            <p>As soon as you can, use real and relevant words. If your site or application requires data input, enter the real deal. And actually type in the text. If your site or application requires data input, enter the real deal.</p>
-                        </div>
-                        <div class="client">
-                            <div class="clien-photo">
-                                <img src="{{ asset('medicre/img/client-2.png') }}" alt="Jigsawlab">
-                            </div>
-                            <div class="client-name">
-                                <h4>Samuel Rockafeller</h4>
-                               <!--  <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="single-client">
-                        <div class="client-content">
-                            <span class="fa fa-quote-left"></span>
-                            <p>As soon as you can, use real and relevant words. If your site or application requires data input, enter the real deal. And actually type in the text. If your site or application requires data input, enter the real deal.</p>
-                        </div>
-                        <div class="client">
-                            <div class="clien-photo">
-                                <img src="{{ asset('medicre/img/client-1.png') }}" alt="Jigsawlab">
-                            </div>
-                            <div class="client-name">
-                                <h4>Michael Brahm</h4>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- end of client say section -->
-    <section class="section-padding">
+    <section class="client-say-area section-padding">
     <div class="container">
            <div class="section-title">
                         <center><h1><span>Know More About</span> Dr. Joy Gali</h1></center>

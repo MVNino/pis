@@ -48,7 +48,7 @@
             <div class="col-md-4 col-sm-4">
                 <div class="speacila-single-service">
                     <div class="service-thumb">
-                        <img src="/storage/images/service/specialty/{{ $service->spec_image_icon }}" alt="Pic" width="300" height="250">
+                        <img src="/storage/images/service/specialty/{{ $service->spec_image_icon }}" alt="Pic" width="400" height="250">
                     </div>
                     <h4><a href="/service/{{ $service->spec_service_id }}">{{ $service->spec_title }}</a></h4>
                     <p>{{ str_limit($service->spec_desc, $limit = 40, $end = '...') }}</p>
