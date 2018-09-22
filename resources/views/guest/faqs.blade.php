@@ -72,7 +72,7 @@
                                                                     </a>
                                                                 </h4>
                                                             </div>
-                                                            <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
+                                                            <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
                                                                 <div class="panel-body">
                                                                     <p>{{ $faq->faq_answer }}</p>
                                                                 </div>
@@ -112,7 +112,7 @@
                                                                     </a>
                                                                 </h4>
                                                             </div>
-                                                            <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
+                                                            <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
                                                                 <div class="panel-body">
                                                                     <p>{{ $faq->faq_answer }}</p>
                                                                 </div>
@@ -152,7 +152,7 @@
                                                                     </a>
                                                                 </h4>
                                                             </div>
-                                                            <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
+                                                            <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
                                                                 <div class="panel-body">
                                                                     <p>{{ $faq->faq_answer }}</p>
                                                                 </div>
@@ -192,7 +192,7 @@
                                                                         </a>
                                                                     </h4>
                                                                 </div>
-                                                                <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
+                                                                <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
                                                                     <div class="panel-body">
                                                                         <p>{{ $faq->faq_answer }}</p>
                                                                     </div>
@@ -233,7 +233,7 @@
                                                                         </a>
                                                                     </h4>
                                                                 </div>
-                                                                <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
+                                                                <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
                                                                     <div class="panel-body">
                                                                         <p>{{ $faq->faq_answer }}</p>
                                                                     </div>
@@ -276,7 +276,7 @@
                                                                         </a>
                                                                     </h4>
                                                                 </div>
-                                                                <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
+                                                                <div id="AbcollapseOne4{{ $faq->faq_id }}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="AbheadingOne1{{ $faq->faq_id }}">
                                                                     <div class="panel-body">
                                                                         <p>{{ $faq->faq_answer }}</p>
                                                                     </div>
