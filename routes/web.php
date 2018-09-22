@@ -88,7 +88,8 @@ Route::group(
 			'prefix' => 'transaction'
 		], function() {
 			Route::namespace('Transaction')->group(function () {
-				Route::get('patients', 'PatientController@listPatients');
+				Route::get('patients', 'PatientController@listPatients')
+					->name('transaction.patients');
 				Route::get('editPatients', 'PatientController@editPatients'); //change it
 			});
 		});

@@ -13,14 +13,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 text-left">
-                    <div class="get-quate-content">
+                    <div class="get-quate-content"><br><br><br>
                         <h2>{{$about->about_title}}</h2>
                         <p>{{$about->about_desc}}</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-right">
-                    <div class="get-btn">
-                        <a href="index-3.html">SCHEDULE AN APPOINTMENT</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +64,6 @@
                                     <div class="panel-body">
                                         <p>{{$feature->feature_description}}</p>
                                     </div>
-                                <a href="single.html" class="read-more">READ MORE</a>
                                 </div>
                             </div>
                             @endforeach
@@ -171,7 +165,7 @@
         <div class="col-md-4">
             <div class="single-speacialist">
               <div class="specialist-img">
-                 <img src="pis/profile.jpg" alt="profile" style="width: 100%">
+                 <img src="/storage/images/profile/d1.jpg" alt="profile" style="width: 100%">
               </div>
                   <h4 style="margin-left: 2%">DR. JOY GALI</h4>
                   <p style="margin-left: 2%">Vascular Surgery Consultant </p>       
