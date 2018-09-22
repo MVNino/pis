@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- start slider section -->
+    <section class="home-area v3">
         <div class="Modern-Slider">
             <!-- Item -->
             <div>
@@ -11,7 +12,7 @@
                         @foreach($banners as $banner)
                             <div class="item">
                                 <img src="/storage/images/banner/{{$banner->banner_picture}}" 
-                                    alt="banner" style="object-fit: cover; height: 650px; width: 100%;">
+                                    alt="banner" style="object-fit: cover; height: 700px; width: 100%;">
                             </div>
                         @endforeach
                     </div>

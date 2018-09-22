@@ -35,6 +35,7 @@ class GuestController extends Controller
         $about = $this->getAbout();
         return view('guest.about', ['about' => $about, 
                 'features' => $features]);
+
     }
 
     public function viewServices() {
