@@ -6,7 +6,7 @@
 
 <body class="js">
    <div id="preloader"></div>
-    <section class="home-area v3">
+    <section class="home-sm home-area v3">
         <!-- navbare area -->
         @include('guest.includes.navbar')
         <!-- end of navbare area -->

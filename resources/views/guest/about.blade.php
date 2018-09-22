@@ -3,6 +3,12 @@
 @section('content')
 
 <div class="single-page-title">
+    <section class="home-sm v3">
+        <!--About Image-->
+        <div>
+            <img src="/storage/images/about/{{$about->about_image}}" alt="banner" style="object-fit: cover; height: 800px; width: 100%;">
+        </div>
+    </section>
     <section class="get-quote-area">
         <div class="container">
             <div class="row">
