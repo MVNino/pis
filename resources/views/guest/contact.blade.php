@@ -33,10 +33,9 @@
     <table class="table" style="width:80%">
     <thead>
         <tr>
-            <th>Row</th>
-            <th>Bill</th>
-            <th>Payment Date</th>
-            <th>Payment Status</th>
+            <th></th>
+            <th>Clinic Hours</th>
+         
         </tr>
     </thead>
     <tbody>
@@ -71,8 +70,8 @@
             <td>Due</td>
         </tr>
     </tbody>
-</table>
-</div>
+    </table>
+    </div>
     </section>
     <section class="section-padding v3-contact v2contact-page">
         <div class="container">
