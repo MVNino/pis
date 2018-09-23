@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('admin.includes.head-content')
+    @yield('pg-specific-css')
 </head>
 
 <body>
@@ -64,5 +65,4 @@
 
     @yield('pg-specific-js')
 </body>
-
 </html>

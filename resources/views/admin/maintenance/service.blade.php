@@ -63,9 +63,12 @@
 									</a>
 								</td>
 								<td>
-									<a role="button" class="btn btn-sm btn-danger" >
-										<i class="fa fa-times"></i>
-									</a>
+									{!!Form::open(['action' => ['Maintenance\ServiceController@deleteSpecialty', $specialtyService->spec_service_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove service?')"])!!}
+										{{Form::hidden('_method', 'DELETE')}}
+										<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
+											<i class="fa fa-times" aria-hidden="true"></i>
+										</button>
+									{!!Form::close()!!}
 								</td>
 							</tr>
 						@empty
@@ -111,9 +114,12 @@
 									</a>
 								</td>
 								<td>
-									<a role="button" class="btn btn-sm btn-danger" >
-										<i class="fa fa-times"></i>
-									</a>
+									{!!Form::open(['action' => ['Maintenance\ServiceController@deleteMainService', $otherService->other_services_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove service?')"])!!}
+										{{Form::hidden('_method', 'DELETE')}}
+										<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
+											<i class="fa fa-times" aria-hidden="true"></i>
+										</button>
+									{!!Form::close()!!}
 								</td>
 							</tr>
 						@empty
