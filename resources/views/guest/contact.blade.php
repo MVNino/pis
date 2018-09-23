@@ -3,8 +3,8 @@
 @section('content')
     <section class="home-sm">
         <!-- start slider section -->
-        <div class="Modern-Slider">
-            <!-- Item -->
+       <!--  <div class="Modern-Slider">
+            
             <div class="item">
                 <div class="img-fill">
                     <img src="/storage/images/about/{{$about->about_image}}" alt="banner" style="object-fit: cover; height: 700px; width: 100%;">
@@ -23,54 +23,68 @@
                     </div>
                 </div>
             </div>
-            <!-- // Item -->
-        </div>
+        </div> -->
         <!-- end of slider section -->
     </section>
     <section class="section-padding">
-    The Doctor is In!
-    <div class="col-md-4">
-    <table class="table" style="width:80%">
+    <div class="row"> 
+        <div class="col-md-6" style="padding-left: 10%; margin-top: 10%; margin-bottom: 10%">
+            <h3>Clinic</h3>
+            <h2><strong>Schedule</strong></h2>
+        </div>
+    <div class="col-md-5">
+<table class="table" style="width:120%;">
     <thead>
         <tr>
+            <th>Location</th>
             <th></th>
-            <th>Clinic Hours</th>
-         
+            <th>Opening</th>
+            <th>Closing</th>        
         </tr>
     </thead>
     <tbody>
-        <tr class="active">
-            <td>1</td>
-            <td>Credit Card</td>
-            <td>04/07/2014</td>
-            <td>Call in to confirm</td>
-        </tr>
-        <tr class="success">
-            <td>2</td>
-            <td>Water</td>
-            <td>01/07/2014</td>
-            <td>Paid</td>
-        </tr>
-        <tr class="info">
-            <td>3</td>
-            <td>Internet</td>
-            <td>05/07/2014</td>
-            <td>Change plan</td>
+        <tr class="warning">
+            <td>Makati</td>
+            <td>Week days</td>
+            <td></td>
+            <td></td>
         </tr>
         <tr class="warning">
-            <td>4</td>
-            <td>Electricity</td>
-            <td>03/07/2014</td>
-            <td>Pending</td>
+            <td></td>
+            <td>Week end</td>
+            <td></td>
+            <td></td>
         </tr>
-        <tr class="danger">
-            <td>5</td>
-            <td>Telephone</td>
-            <td>06/07/2014</td>
-            <td>Due</td>
+        <tr class="info">
+            <td>Taguig</td>
+            <td>Week days</td>
+            <td></td>
+            <td></td>
+            
         </tr>
+        <tr class="info">
+            <td></td>
+            <td>Week ends</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="success">
+            <td>Marikina</td>
+            <td>Week days</td>
+            <td></td>
+            <td></td>
+            
+        </tr>
+        <tr class="success">
+            <td></td>
+            <td>Week ends</td>
+            <td></td>
+            <td></td>
+        </tr>
+
     </tbody>
-    </table>
+</table>
+</div>
     </div>
     </section>
     <section class="section-padding v3-contact v2contact-page">
