@@ -41,7 +41,7 @@ class ClinicController extends Controller
             'open' => 'required',
             'close' => 'required',
             'days' => 'required',
-            'email' => 'required|email',
+            'map' => 'image|nullable|max:3000',
 
         ]);
 
@@ -53,7 +53,19 @@ class ClinicController extends Controller
         $clinic->clinic_open_time = $request->open;
         $clinic->clinic_close_time = $request->close;
         $clinic->clinic_days = $request->days;
-        $clinic->clinic_email = $request->email;
+        if($request->hasFile('fileMapImg')){
+            // Get the file's extension
+            $fileExtension = $request->file('fileMapImg')
+                ->getClientOriginalExtension();
+            // Create a filename to store(database)
+            $newsImgNameToStore = $request->title
+                .'_'.'MapImg'.'_'.time().'.'.$fileExtension;
+            // Upload file to system
+            $path = $request->file('fileMapImg')
+                ->storeAs('public/images/map', $MapImgNameToStore);
+            $clinic->clinic_email = $mapImgNameToStore;
+        }
+        
         if($clinic->save()){
             return redirect()->back()->with('success', 'Clinic Info added!');
         }
@@ -73,7 +85,7 @@ class ClinicController extends Controller
             'open' => 'required',
             'close' => 'required',
             'days' => 'required',
-            'email' => 'required|email',
+            'map' => 'image|nullable|max:3000',
         ]);
 
         // save clinic to database
@@ -84,7 +96,18 @@ class ClinicController extends Controller
         $clinic->clinic_open_time = $request->input('open');
         $clinic->clinic_close_time = $request->input('close');
         $clinic->clinic_days = $request->input('days');
-        $clinic->clinic_email = $request->input('email');
+        if($request->hasFile('fileMapImg')){
+            // Get the file's extension
+            $fileExtension = $request->file('fileMapImg')
+                ->getClientOriginalExtension();
+            // Create a filename to store(database)
+            $newsImgNameToStore = $request->title
+                .'_'.'MapImg'.'_'.time().'.'.$fileExtension;
+            // Upload file to system
+            $path = $request->file('fileMapImg')
+                ->storeAs('public/images/map', $MapImgNameToStore);
+            $clinic->clinic_email = $mapImgNameToStore;
+        }
         
         $clinic->save();
 

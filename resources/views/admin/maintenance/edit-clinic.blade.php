@@ -58,7 +58,9 @@
                     <img src="">
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-12">Map Image</label>
+                    <label class="col-sm-12">Map Image
+                    <small>Current Image: <a target="_blank" href="/storage/images/news/{{ $clinic->clinic_email }}">{{ $clinic->clinic_email }}</a></small>
+                    </label>
                     <div class="col-sm-12">
                         <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                             <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
