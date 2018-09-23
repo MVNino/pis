@@ -47,14 +47,6 @@
 							</select>
 						</div>
 					</div>
-                    <div class="form-group">
-						<div class="col-md-12">
-								<!-- If the status is active to the table the /a/ must be Click to Deactivate
-								else Click to Activate -->
-							<a href="#" class="text-success">Click to Activate</a><br>
-							<a href="#" class="text-warning">Click to Deactivate</a>
-						</div>
-                    </div>
 				</form>	
             </div>
         </div>

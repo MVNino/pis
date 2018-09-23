@@ -69,6 +69,11 @@
 						{{ Form::textarea('description', $news->news_desc, ['class' => 'form-control']) }}
 					</div>
 					<div class="form-group">
+						<!-- Existing image na nasa database -->    
+						<label class="col-md-12">Uploaded News Image</span></label>
+						<img src="">
+					</div>
+					<div class="form-group">
 						<label class="col-sm-12">Image 
 						<small>Current Image: <a target="_blank" href="/storage/images/news/{{ $news->news_picture }}">{{ $news->news_picture }}</a></small>
 						</label>
