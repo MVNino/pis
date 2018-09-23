@@ -36,14 +36,6 @@
                                 <input name ="description" class="form-control"  value="{{$feature->feature_description}}" rows="3"/>
                             </div>
                         </div>
-                    <div class="form-group">
-                        <label class="col-sm-12">Image</label>
-                        <div class="col-sm-12">
-                            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-                                <input type="file" name="fileFeatureImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> </div>
-                        </div>
-                    </div>
                     <div align="right">
                         <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
                     </div>

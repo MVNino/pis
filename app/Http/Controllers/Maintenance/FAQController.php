@@ -33,5 +33,5 @@ class FAQController extends Controller
     	if($faq->save()) {
     		return redirect()->back()->with('success', 'FAQs added!');
     	}
-    }
+	}
 }
