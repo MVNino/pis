@@ -38,8 +38,8 @@ class CompanyController extends Controller
         $this->validate($request, [
     		'name' => 'required|string',
             'description' => 'required|string',
-            'fileCompanyLogo' => 'image|nullable|max:3000',
-            'map'=>'nullable'
+            'fileCompanyLogo' => 'required|image|mimes:png|nullable|max:3000',
+            
         ]);
  
         try
