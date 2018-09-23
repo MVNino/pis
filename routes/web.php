@@ -35,12 +35,13 @@ Route::group(
 		], function(){
 			Route::namespace('Maintenance')->group(function () {
 				// About 
-				Route::get('about', 'AboutController@viewAbout')->name('maintenance.about');
-				Route::post('about', 'AboutController@addAbout');
+				//Route::get('about', 'AboutController@viewAbout')->name('maintenance.about');
+				//Route::post('about', 'AboutController@addAbout');
 				// Banner 
 				Route::get('banner', 'BannerController@viewBanner')->name('maintenance.banner');
 				Route::post('banner', 'BannerController@addBanner');
 				Route::put('banner/{id}', 'BannerController@updateBanner');
+				Route::put('banner/{id}', 'BannerController@reorderBanner');
 				Route::delete('banner/{id}', 'BannerController@deleteBanner');
 				// Clinic 
 				Route::get('clinic', 'ClinicController@viewClinic')->name('maintenance.clinic');

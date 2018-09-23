@@ -92,6 +92,47 @@ class BannerController extends Controller
         }
     }
 
+    public function reorderBanner(Request $request, $id)
+    {
+        try
+        {
+            $banners = Banner::all();
+            $b = Banner::find($id);
+            $bc = Banner::count();
+
+            $order = $request->input('order');
+            $flag = 0;
+
+            foreach ($banners as $banner)
+            {
+                //search for similar order
+                if ($banner->banner_order == $order)
+                {
+                    $banner->banner_order = $b->banner_order;
+                    $b->banner_order = $order;
+                    $b->save();
+
+                    $flag = 1;
+                }
+            }
+
+            if ($flag == 0)
+            {
+                $b->banner_order = $order;
+                $b->save();
+            }
+
+            if ($banner->save())
+            {
+                return redirect()->back()->with('success', 'Banner Status Changed!');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
+
     public function deleteBanner($id)
     {
         try
