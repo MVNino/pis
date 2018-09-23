@@ -53,11 +53,26 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-12">Email Address</span></label>
-                    <div class="col-md-12">
-                        <input type="text" name="email" class="form-control" value="{{$clinic->clinic_email}}" /> 
-                    </div>
+                    <!-- Existing image na nasa database -->    
+                    <label class="col-md-12">Uploaded Map</span></label>
+                    <img src="">
                 </div>
+                <div class="form-group">
+                    <label class="col-sm-12">Map Image</label>
+                    <div class="col-sm-12">
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                <span class="fileinput-filename"></span>
+                            </div> 
+                            <span class="input-group-addon btn btn-default btn-file">
+                            <span class="fileinput-new">Select file</span> 
+                            <span class="fileinput-exists">Change</span>
+                                <input type="file" name="logo"> 
+                            </span> 
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists"data-dismiss="fileinput">Remove</a>
+                        </div>
+                    </div>
+                </div> 
                 {{Form::hidden('_method', 'PUT')}}
                 <div align="right">
                     <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
