@@ -78,9 +78,12 @@ Route::group(
 				Route::post('services/specialty', 'ServiceController@addSpecialty');
 				Route::post('services/other', 'ServiceController@addOtherService');
 				Route::get('specialty-service/{id}/edit', 'ServiceController@editSpecialty');
+				Route::put('specialty-service/{id}/edit', 'ServiceController@updateSpecialty');
+				Route::delete('specialty-service/{id}/delete', 'ServiceController@deleteSpecialty');
 				Route::get('main-service/{id}/edit', 'ServiceController@editMainService');
+				Route::put('main-service/{id}/edit', 'ServiceController@updateMainService');
+				Route::delete('main-service/{id}/delete', 'ServiceController@deleteMainService');
 			});
-
 		});
 
 		# TRANSACTION

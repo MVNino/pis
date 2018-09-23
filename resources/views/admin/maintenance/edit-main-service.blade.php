@@ -26,7 +26,9 @@
         </div>
         <div class="card-body">
             <div class="container">
-                <form class="form-material">
+				{!! Form::open(['action' => ['Maintenance\ServiceController@updateMainService', $mainService->other_services_id],
+				'class' => 'form-material' ,'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data']) !!}
+                @csrf
                 <div class="form-group">
 							<label class="col-sm-12">Image</label>
 							<div class="col-sm-12">
@@ -54,7 +56,7 @@
 								<input type="text" name="txtVideoLink" class="form-control" value="{{ $mainService->other_vidlink }}"> 
 							</div>
 						</div>
-						 <div class="form-group">
+						 {{-- <div class="form-group">
 							<div class="col-sm-12">
 								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 									<div class="form-control" data-trigger="fileinput"> 
@@ -69,9 +71,10 @@
 									<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
 								</div>
 							</div>
-						</div>
-						<button type="submit" class="btn btn-info waves-effect waves-light m-r-10 float-right" disabled="">Submit</button>
-					</form>
+						</div> --}}
+						{{ Form::hidden('_method', 'PUT') }}
+						<button type="submit" class="btn btn-info waves-effect waves-light m-r-10 float-right"><i class="fa fa-fw fa-lg fa-check-circle"></i> Submit</button>	
+					{!! Form::close() !!}
             </div>
         </div>
     </div>

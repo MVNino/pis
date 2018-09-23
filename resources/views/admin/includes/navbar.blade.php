@@ -21,8 +21,8 @@
                     <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
                     <li><a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                                         document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> 
+                                {{ __('Logout') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
