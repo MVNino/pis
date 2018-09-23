@@ -42,7 +42,9 @@
 						<tr>
 							<td>
 								<div id="orig{{$banner->banner_id}}">
-									<span class="label label-table label-primary" data-toggle="tooltip" data-original-title="Click to Change Order" onclick="editOrder('{{$banner->banner_id}}');" style="cursor: pointer;">{{$banner->banner_order}}</span>
+									<span class="label label-table label-primary" data-toggle="tooltip" data-original-title="Click to Change Order" onclick="editOrder('{{$banner->banner_id}}');" style="cursor: pointer;">
+										{{$banner->banner_order}}
+									</span>
 								</div>
 								<div id="edit{{$banner->banner_id}}" class="form-group" style="display: none;">
 									{!!Form::open(['action' => ['Maintenance\BannerController@reorderBanner', $banner->banner_id], 'method' => 'POST'])!!}
