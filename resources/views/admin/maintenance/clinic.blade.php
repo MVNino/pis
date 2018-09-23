@@ -48,12 +48,12 @@
                             </a>
                             </td>
                             <td>
-                            {!!Form::open(['action' => ['Maintenance\ClinicController@deleteClinic', $row['clinic_contact_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Clinic Details?')"])!!}
-                                        {{Form::hidden('_method', 'DELETE')}}
-                                        <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
+                                {!!Form::open(['action' => ['Maintenance\ClinicController@deleteClinic', $row['clinic_contact_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Clinic Details?')"])!!}
+                                    {{Form::hidden('_method', 'DELETE')}}
+                                    <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
                                         <i class="fa fa-times"></i>
-                                        </button>
-                            {!!Form::close()!!}
+                                    </button>
+                                {!!Form::close()!!}
                             </td>
                         </tr>
                         @endforeach
