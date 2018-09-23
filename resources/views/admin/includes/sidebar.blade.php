@@ -42,7 +42,6 @@
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i>
                             <span class="hide-menu">Maintenance<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="{{ route('maintenance.about') }}">About</a></li>
                             <li> <a href="{{ route('maintenance.banner') }}">Banner</a> </li>
                             <li> <a href="{{ route('maintenance.clinic') }}">Clinic</a> </li>
                             <li> <a href="{{ route('maintenance.company') }}">Company</a> </li>
