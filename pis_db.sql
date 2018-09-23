@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2018 at 05:30 PM
+-- Generation Time: Sep 23, 2018 at 02:30 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -102,7 +102,7 @@ CREATE TABLE `clinic_contact_tbl` (
   `clinic_days` varchar(15) NOT NULL,
   `clinic_open_time` time NOT NULL,
   `clinic_close_time` time NOT NULL,
-  `clinic_email` varchar(80) NOT NULL,
+  `clinic_map` text NOT NULL,
   `clinic_places` text NOT NULL,
   `clinic_telephone` varchar(15) NOT NULL,
   `status` int(11) NOT NULL
@@ -112,10 +112,10 @@ CREATE TABLE `clinic_contact_tbl` (
 -- Dumping data for table `clinic_contact_tbl`
 --
 
-INSERT INTO `clinic_contact_tbl` (`clinic_contact_id`, `clinic_contact`, `clinic_location`, `clinic_days`, `clinic_open_time`, `clinic_close_time`, `clinic_email`, `clinic_places`, `clinic_telephone`, `status`) VALUES
-(1, '09123733941', 'Quezon City', 'Monday-Friday', '00:00:00', '00:00:00', 'clinic@gmail.com', '', '', 0),
-(2, '09123739520', 'Marikina City', 'Monday-Saturday', '00:00:00', '00:00:00', 'clinicc@gmail.com', '', '', 0),
-(3, '09123739520', 'Makati City', 'Monday-Saturday', '00:00:00', '00:00:00', 'clinicc@gmail.com', '', '', 0);
+INSERT INTO `clinic_contact_tbl` (`clinic_contact_id`, `clinic_contact`, `clinic_location`, `clinic_days`, `clinic_open_time`, `clinic_close_time`, `clinic_map`, `clinic_places`, `clinic_telephone`, `status`) VALUES
+(1, '09123733941', 'Quezon City', 'Monday-Friday', '00:00:00', '00:00:00', '', '', '', 0),
+(2, '09123739520', 'Marikina City', 'Monday-Saturday', '00:00:00', '00:00:00', '', '', '', 0),
+(3, '09123739520', 'Makati City', 'Monday-Saturday', '00:00:00', '00:00:00', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -458,6 +458,13 @@ CREATE TABLE `user_tbl` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `user_tbl`
+--
+
+INSERT INTO `user_tbl` (`user_id`, `username`, `password`, `role`, `lname`, `fname`, `mname`) VALUES
+(1, 'admin@gmail.com', 'admin', 'Doctor', 'Gali', 'Joy', '');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -724,7 +731,7 @@ ALTER TABLE `specialty_service_tbl`
 -- AUTO_INCREMENT for table `user_tbl`
 --
 ALTER TABLE `user_tbl`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
