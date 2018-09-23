@@ -77,6 +77,8 @@ Route::group(
 					->name('maintenance.services');
 				Route::post('services/specialty', 'ServiceController@addSpecialty');
 				Route::post('services/other', 'ServiceController@addOtherService');
+				Route::get('specialty-service/{id}/edit', 'ServiceController@editSpecialty');
+				Route::get('main-service/{id}/edit', 'ServiceController@editMainService');
 			});
 
 		});

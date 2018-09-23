@@ -17,7 +17,13 @@ class ServiceController extends Controller
     
     public function viewServices()
     {
-    	return view('admin.maintenance.service');
+        $otherServices = OtherService::orderBy('other_services_id', 'desc')
+                ->paginate(5);
+        $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
+                ->paginate(5);
+    	return view('admin.maintenance.service', 
+            ['otherServices' => $otherServices,
+            'specialtyServices' => $specialtyServices]);
     }
 
     public function addSpecialty(Request $request)
@@ -107,5 +113,20 @@ class ServiceController extends Controller
     		return redirect()->back()
     			->with('success', 'Other service added!');
     	}
+    }
+
+    // Edit Services
+    public function editSpecialty($id)
+    {
+        $specialtyService = SpecialtyService::findOrFail($id);
+        return view('admin.maintenance.edit-special-service', 
+            ['specialtyService' => $specialtyService]);
+    }
+
+    public function editMainService($id)
+    {
+        $mainService = OtherService::findOrFail($id);
+        return view('admin.maintenance.edit-main-service', 
+            ['mainService' => $mainService]);
     }
 }

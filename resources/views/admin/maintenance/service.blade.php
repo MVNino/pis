@@ -35,58 +35,180 @@
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div class="tab-pane active" id="home2" role="tabpanel">
-				<div class="p-20">
+				<div>
 					<h3 class="box-title">Specialty Services</h3>
-					{!! Form::open(['action' => 'Maintenance\ServiceController@addSpecialty','class' => 'form-material' ,'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-						<div class="form-group">
-							<label class="col-sm-12">Image</label>
-							<div class="col-sm-12">
-								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
-									<div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-									<input type="file" name="fileServiceImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
-								</div>
+					<div align="right">
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#specialtyServiceModal">
+							<i class="fa fa-plus"></i> Add Specialty Service
+						</button><br><br>
+					</div>
+					<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+						<thead>
+							<tr>
+								<th>Service ID</th>
+								<th>Service</th>
+								<th>Service Description</th>
+								<th colspan="2" class = "text-center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+						@forelse($specialtyServices as $specialtyService)
+							<tr>
+								<td>{{ $specialtyService->spec_service_id }}</td>
+								<td>{{ $specialtyService->spec_title }}</td>
+								<td>{{ $specialtyService->spec_desc }}</td>
+								<td>
+									<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/specialty-service/{{ $specialtyService->spec_service_id }}/edit">
+										<i class="fa fa-edit"></i>
+									</a>
+								</td>
+								<td>
+									<a role="button" class="btn btn-sm btn-danger" >
+										<i class="fa fa-times"></i>
+									</a>
+								</td>
+							</tr>
+						@empty
+							<div class="alert alert-warning">
+								There is no record yet.
 							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-12">Service Title</label>
-							<div class="col-md-12">
-								<input type="text" name="txtTitle" class="form-control"> </div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-12">Service Description</label>
-							<div class="col-md-12">
-								<textarea name="txtareaDescription" class="form-control" cols="5"> </textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-12">Video Link</label>
-							<div class="col-md-12">
-								<input type="text" name="txtVideoLink" class="form-control"> </div>
-						</div>
-						{{-- <div class="form-group">
-							<div class="col-sm-12">
-								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
-									<div class="form-control" data-trigger="fileinput"> 
-										<i class="glyphicon glyphicon-file fileinput-exists"></i> 
-										<span class="fileinput-filename"></span>
-									</div> 
-									<span class="input-group-addon btn btn-default btn-file"> 
-										<span class="fileinput-new">Select file</span> 
-										<span class="fileinput-exists">Change</span>
-										<input type="file" name="fileServiceVid"> 
-									</span> 
-									<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
-								</div>
-							</div>
-						</div> --}}
-						<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
-					</form>
+						@endforelse
+						</tbody>
+						<tfoot>
+						</tfoot>
+					</table>
+					<div align="center">
+						{{ $specialtyServices->links() }}
+					</div>
 				</div>
 			</div>
-			<div class="tab-pane  p-20" id="profile2" role="tabpanel">
+			<div class="tab-pane" id="profile2" role="tabpanel">
+				<div>
 				<h3 class="box-title">Other Services</h3>
-				{!! Form::open(['action' => 'Maintenance\ServiceController@addOtherService', 'class' => 'form-material','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-					<div class="form-group">
+					<div align="right">
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#otherServiceModal">
+							<i class="fa fa-plus"></i> Add Other Service
+						</button><br><br>
+					</div>
+					<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+						<thead>
+							<tr>
+								<th>Service ID</th>
+								<th>Service</th>
+								<th>Service Description</th>
+								<th colspan="2" class = "text-center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+						@forelse($otherServices as $otherService)
+							<tr>
+								<td>{{ $otherService->other_services_id }}</td>
+								<td>{{ $otherService->other_title }}</td>
+								<td>{{ $otherService->other_desc }}</td>
+								<td>
+									<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/main-service/{{ $otherService->other_services_id }}/edit">
+										<i class="fa fa-edit"></i>
+									</a>
+								</td>
+								<td>
+									<a role="button" class="btn btn-sm btn-danger" >
+										<i class="fa fa-times"></i>
+									</a>
+								</td>
+							</tr>
+						@empty
+							<div class="alert alert-warning">
+								There is no record yet.
+							</div>
+						@endforelse
+						</tbody>
+						<tfoot>
+						</tfoot>
+					</table>
+					<div align="center">
+						{{ $otherServices->links() }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{-- Add special service modal --}}
+<div class="modal fade" id="specialtyServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="exampleModalLabel">Add Specialty Service</h4>
+			</div>
+			{!! Form::open(['action' => 'Maintenance\ServiceController@addSpecialty','class' => 'form-material' ,'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data']) !!}
+			<div class="modal-body">
+				<div class="form-group">
+					<label class="col-sm-12">Image</label>
+					<div class="col-sm-12">
+						<div class="fileinput fileinput-new input-group" data-provides="fileinput">
+							<div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+							<input type="file" name="fileServiceImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-12">Service Title</label>
+					<div class="col-md-12">
+						<input type="text" name="txtTitle" class="form-control"> </div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-12">Service Description</label>
+					<div class="col-md-12">
+						<textarea name="txtareaDescription" class="form-control" rows="8"> </textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-12">Video Link</label>
+					<div class="col-md-12">
+						<input type="text" name="txtVideoLink" class="form-control"> </div>
+				</div>
+				{{-- <div class="form-group">
+					<div class="col-sm-12">
+						<div class="fileinput fileinput-new input-group" data-provides="fileinput">
+							<div class="form-control" data-trigger="fileinput"> 
+								<i class="glyphicon glyphicon-file fileinput-exists"></i> 
+								<span class="fileinput-filename"></span>
+							</div> 
+							<span class="input-group-addon btn btn-default btn-file"> 
+								<span class="fileinput-new">Select file</span> 
+								<span class="fileinput-exists">Change</span>
+								<input type="file" name="fileServiceVid"> 
+							</span> 
+							<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+						</div>
+					</div>
+				</div> --}}
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+			</div>
+			{!! Form::close() !!}
+		</div>
+	</div>
+</div>
+{{-- /Add special service modal --}}
+
+{{-- Add other service modal --}}
+<div class="modal fade" id="otherServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="exampleModalLabel">Add Other Service</h4>
+			</div>
+			{!! Form::open(['action' => 'Maintenance\ServiceController@addOtherService', 'class' => 'form-material','method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data']) !!}
+			<div class="modal-body">
+				<div class="form-group">
 						<label class="col-sm-12">Image</label>
 						<div class="col-sm-12">
 							<div class="fileinput fileinput-new input-group" data-provides="fileinput">
@@ -112,10 +234,13 @@
 						<div class="col-md-12">
 							<input type="text" name="txtVideoLink" class="form-control"> </div>
 					</div>
-					<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
-				</form>
 			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+			</div>
+			{!! Form::close() !!}
 		</div>
 	</div>
 </div>
+{{-- /Add other service modal --}}
 @endsection
