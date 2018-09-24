@@ -12,4 +12,9 @@ class OtherService extends Model
 	protected $primaryKey = 'other_services_id';
 	// timestamp
 	public $timestamps = false;
+
+	public function otherServiceVid()
+	{
+		return $this->hasMany('App\OtherServiceVideo', 'other_service_id', 'other_services_id');
+	}
 }
