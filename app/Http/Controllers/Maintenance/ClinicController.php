@@ -18,8 +18,12 @@ class ClinicController extends Controller
     public function viewClinic()
     {
 
-     $clinic = Clinic::all()->toArray();
-     return view('admin.maintenance.clinic', compact('clinic'));   
+     $clinic = Clinic::
+        where('status', '=', 0)
+        ->orderBy('clinic_location')
+        ->paginate(5);
+        
+     return view('admin.maintenance.clinic', ['clinic'=>$clinic]);   
      //    $clinics = Clinic::all();
      //    if ($clinics->count() > 0)
      //    {
@@ -53,17 +57,22 @@ class ClinicController extends Controller
         $clinic->clinic_open_time = $request->open;
         $clinic->clinic_close_time = $request->close;
         $clinic->clinic_days = $request->days;
-        if($request->hasFile('fileMapImg')){
+        $clinic->clinic_map = $request->input('fileMapImg');
+        $clinic->clinic_places = $request->input('places');
+        $clinic->clinic_telephone = $request->input('telephone');
+        $clinic->status = 0;
+        if($request->hasFile('fileMapImg'))
+        {
             // Get the file's extension
             $fileExtension = $request->file('fileMapImg')
                 ->getClientOriginalExtension();
             // Create a filename to store(database)
-            $newsImgNameToStore = $request->title
+            $mapImgNameToStore = $request->title
                 .'_'.'MapImg'.'_'.time().'.'.$fileExtension;
             // Upload file to system
             $path = $request->file('fileMapImg')
-                ->storeAs('public/images/map', $MapImgNameToStore);
-            $clinic->clinic_email = $mapImgNameToStore;
+                ->storeAs('public/images/map', $mapImgNameToStore);
+            $clinic->clinic_map = $mapImgNameToStore;
         }
         
         if($clinic->save()){
@@ -96,19 +105,20 @@ class ClinicController extends Controller
         $clinic->clinic_open_time = $request->input('open');
         $clinic->clinic_close_time = $request->input('close');
         $clinic->clinic_days = $request->input('days');
+        $clinic->clinic_map = $request->input('fileMapImg');
         if($request->hasFile('fileMapImg')){
             // Get the file's extension
             $fileExtension = $request->file('fileMapImg')
                 ->getClientOriginalExtension();
             // Create a filename to store(database)
-            $newsImgNameToStore = $request->title
+            $mapImgNameToStore = $request->title
                 .'_'.'MapImg'.'_'.time().'.'.$fileExtension;
             // Upload file to system
             $path = $request->file('fileMapImg')
-                ->storeAs('public/images/map', $MapImgNameToStore);
-            $clinic->clinic_email = $mapImgNameToStore;
+                ->storeAs('public/images/map', $mapImgNameToStore);
+            $clinic->clinic_map = $mapImgNameToStore;
         }
-        
+
         $clinic->save();
 
         if ($clinic->save())
@@ -124,8 +134,9 @@ class ClinicController extends Controller
         try
         {
             $clinic = Clinic::find($id);
+            $clinic->status = 1;
 
-            if ($clinic->delete())
+            if ($clinic->save())
             {
                 return redirect()->back()->with('success', 'Removed Successfully!');
             }

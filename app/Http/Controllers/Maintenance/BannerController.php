@@ -50,7 +50,7 @@ class BannerController extends Controller
                 $banner->banner_status = 0;
                 $banner->status = 0;
                 $banner->banner_picture = $request->input('bannerImage');
-                // Handle file upload for news image
+                // Handle file upload for banner image
                 if($request->hasFile('bannerImage')){
                     // Get the file's extension
                     $fileExtension = $request->file('bannerImage')
