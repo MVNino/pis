@@ -75,61 +75,65 @@ class BannerController extends Controller
 
     public function updateBanner(Request $request, $id)
     {
-        try
+        //if update to reorder
+        if ($request->input('request') == 0)
         {
-            $banner = Banner::find($id);
-                $banner->banner_status = $request->input('status');
-                $banner->save();
-
-            if ($banner->save())
+            try
             {
-                return redirect()->back()->with('success', 'Banner Status Changed!');
-            }
-        }
-        catch (\Exception $e)
-        {
-            return $e->getMessage();
-        }
-    }
+                $banners = Banner::all();
+                $b = Banner::find($id);
+                $bc = Banner::count();
 
-    public function reorderBanner(Request $request, $id)
-    {
-        try
-        {
-            $banners = Banner::all();
-            $b = Banner::find($id);
-            $bc = Banner::count();
+                $order = $request->input('order');
+                $flag = 0;
 
-            $order = $request->input('order');
-            $flag = 0;
-
-            foreach ($banners as $banner)
-            {
-                //search for similar order
-                if ($banner->banner_order == $order)
+                foreach ($banners as $banner)
                 {
-                    $banner->banner_order = $b->banner_order;
+                    //search for similar order
+                    if ($banner->banner_order == $order)
+                    {
+                        $banner->banner_order = $b->banner_order;
+                        $b->banner_order = $order;
+                        $banner->save();
+                        $b->save();
+
+                        $flag = 1;
+                    }
+                }
+
+                if ($flag == 0)
+                {
                     $b->banner_order = $order;
                     $b->save();
+                }
 
-                    $flag = 1;
+                if ($banner->save())
+                {
+                    return redirect()->back()->with('success', 'Banner Order Changed!');
                 }
             }
-
-            if ($flag == 0)
+            catch (\Exception $e)
             {
-                $b->banner_order = $order;
-                $b->save();
-            }
-
-            if ($banner->save())
-            {
-                return redirect()->back()->with('success', 'Banner Status Changed!');
+                return $e->getMessage();
             }
         }
-        catch (\Exception $e)
+        else if ($request->input('request') == 1)
         {
-            return $e->getMessage();
+            try
+            {
+                $banner = Banner::find($id);
+                    $banner->banner_status = $request->input('status');
+                    $banner->save();
+
+                if ($banner->save())
+                {
+                    return redirect()->back()->with('success', 'Banner Status Changed!');
+                }
+            }
+            catch (\Exception $e)
+            {
+                return $e->getMessage();
+            }
         }
     }
 
