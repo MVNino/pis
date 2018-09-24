@@ -13,7 +13,6 @@
 
 # Website
 Route::get('/', 'GuestController@viewIndex');
-Route::get('about', 'GuestController@viewAbout');
 Route::get('services','GuestController@viewServices')->name('services');
 Route::get('service/{id}', 'GuestController@showService');
 Route::get('other-service/{id}', 'GuestController@showOtherService');

@@ -29,14 +29,14 @@ class GuestController extends Controller
                 'news' => $news, 'otherServices' => $otherServices]);
     }
 
-    public function viewAbout()
-    {
-        $features = Feature::orderBy('features_id', 'desc')->get();
-        $about = $this->getAbout();
-        return view('guest.about', ['about' => $about, 
-                'features' => $features]);
+    // public function viewAbout()
+    // {
+    //     $features = Feature::orderBy('features_id', 'desc')->get();
+    //     $about = $this->getAbout();
+    //     return view('guest.about', ['about' => $about, 
+    //             'features' => $features]);
 
-    }
+    // }
 
     public function viewServices() {
         $otherServices = OtherService::orderBy('other_services_id', 'desc')
@@ -71,19 +71,18 @@ class GuestController extends Controller
     public function viewContact() 
     {
         $contact = $this->getClinicContact();
-        $about = $this->getAbout();
-        
+        // $about = $this->getAbout();
         $clinics = Clinic::all();
         if ($clinics->count() > 0)
-
         {
     		$clinicMaxId = Clinic::max('clinic_contact_id');
     		$clinic = Clinic::findOrFail($clinicMaxId);
-    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact, 'about' => $about]);
+    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact,
+                    'clinics' => $clinics]);
         }
         else
         {
-	        return view('guest.contact');
+	        return view('guest.contact', ['clinics' => $clinics]);
         }
     }
 

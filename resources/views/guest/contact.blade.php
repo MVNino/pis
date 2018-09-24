@@ -2,86 +2,36 @@
 
 @section('content')
     <section class="home-sm">
-        <!-- start slider section -->
-       <!--  <div class="Modern-Slider">
-            
-            <div class="item">
-                <div class="img-fill">
-                    <img src="/storage/images/about/{{$about->about_image}}" alt="banner" style="object-fit: cover; height: 700px; width: 100%;">
-                    <div class="info">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-6 slider-content-area text-left">
-                                    <div class="v3 welcome-text">
-                                        <h1>The Doctor is In!</h1>
-                                        <h2>Clinic Schedule</h2>
-                                        <h4>We're open from {{$clinic->clinic_days}} during {{$clinic->clinic_open_time}} to {{$clinic->clinic_close_time}}.<br/> You can visit us at {{$clinic->clinic_location}}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- end of slider section -->
+        
     </section>
     <section class="section-padding">
     <div class="row"> 
         <div class="col-md-6" style="padding-left: 10%; margin-top: 10%; margin-bottom: 10%">
             <h3>Clinic</h3>
             <h2><strong>Schedule</strong></h2>
-        </div>
+            <!-- <p>We are open from {{$clinic->clinic_days}} at {{$clinic->clinic_location}} between {{$clinic->clinic_open_time}} and {{$clinic->clinic_close_time}}</p>
+ -->        </div>
     <div class="col-md-5">
 <table class="table" style="width:120%;">
     <thead>
         <tr>
             <th>Location</th>
-            <th></th>
+            <th>Days</th>
             <th>Opening</th>
             <th>Closing</th>        
         </tr>
     </thead>
     <tbody>
+        @foreach($clinics as $clinic)
+        @if($clinic->status == 0)
         <tr class="warning">
-            <td>Makati</td>
-            <td>Week days</td>
-            <td></td>
-            <td></td>
+            <td>{{$clinic->clinic_location}}</td>
+            <td>{{$clinic->clinic_days}}</td>
+            <td>{{$clinic->clinic_open_time}}</td>
+            <td>{{$clinic->clinic_close_time}}</td>
         </tr>
-        <tr class="warning">
-            <td></td>
-            <td>Week end</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="info">
-            <td>Taguig</td>
-            <td>Week days</td>
-            <td></td>
-            <td></td>
-            
-        </tr>
-        <tr class="info">
-            <td></td>
-            <td>Week ends</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="success">
-            <td>Marikina</td>
-            <td>Week days</td>
-            <td></td>
-            <td></td>
-            
-        </tr>
-        <tr class="success">
-            <td></td>
-            <td>Week ends</td>
-            <td></td>
-            <td></td>
-        </tr>
-
+        @endif
+        @endforeach
     </tbody>
 </table>
 </div>
@@ -98,6 +48,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-sm-4">
                 <div class="contactv2address">
                     <div class="row single-contact">
@@ -113,7 +64,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_contact }}</h4>
+                            <h4>{{ $clinic->clinic_telephone }}</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -121,7 +72,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_email }}</h4>
+                            <h4>{{ $clinic->clinic_contact }}</h4>
                         </div>
                     </div>
                 </div>
