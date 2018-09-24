@@ -94,4 +94,24 @@ class NewsController extends Controller
                 ->with('success', 'News updated!');
         }
     }
+
+    public function activate($id)
+    {
+        $news = News::findOrFail($id);
+        $news->isActive = 1;
+        if ($news->save()) {
+            return redirect()->back()
+            ->with('success', 'The news record has been activated!');
+        }
+    }
+
+    public function deactivate($id)
+    {
+        $news = News::findOrFail($id);
+        $news->isActive = 0;
+        if ($news->save()) {
+            return redirect()->back()
+            ->with('error', 'The news record has been deactivated!');
+        }
+    }
 }

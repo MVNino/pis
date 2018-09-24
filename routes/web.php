@@ -60,16 +60,25 @@ Route::group(
 				Route::get('features/{id}', 'FeatureController@edit');
 				Route::put('features/{id}', 'FeatureController@editFeature');
 				Route::delete('features/{id}', 'FeatureController@deleteFeature');
-				// FAQ's
+				// FAQs
 				Route::get('faqs', 'FAQController@viewFAQs')
 					->name('maintenance.faqs');
 				Route::post('faqs', 'FAQController@addFAQs');
+				Route::get('faqs/{id}', 'FAQController@editFAQs');
+				Route::put('faqs/{id}', 'FAQController@updateFAQs');
+				Route::delete('faqs/{id}/delete', 'FAQController@deleteFAQs');
+				// FAQs - Activate Deactivate
+				Route::get('faqs/{id}/activate', 'FAQController@activate');
+				Route::get('faqs/{id}/deactivate', 'FAQController@deactivate');
 				// News
 				Route::get('news', 'NewsController@listNews')
 					->name('maintenance.news');
 				Route::post('news', 'NewsController@addNews');
 				Route::get('news/{id}', 'NewsController@viewNews');
 				Route::put('news/{id}', 'NewsController@updateNews');
+				// News - Activate Deactivate
+				Route::get('news/{id}/activate', 'NewsController@activate');
+				Route::get('news/{id}/deactivate', 'NewsController@deactivate');
 				// Services
 				Route::get('services', 'ServiceController@viewServices')
 					->name('maintenance.services');
