@@ -32,6 +32,7 @@
 				</thead>
 				<tbody>
 					@foreach($feature as $row)  
+						@if($row['status'] == 0)
 						<tr>
 							<td>{{$row['feature_title']}}</td>
 							<td>{{$row['feature_description']}}</td>
@@ -41,14 +42,15 @@
 								</a>
 							</td>
 							<td>
-								{!!Form::open(['action' => ['Maintenance\FeatureController@deleteFeature', $row['features_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
-								{{Form::hidden('_method', 'DELETE')}}
-									<a href="#" class="btn btn-sm btn-danger" role="button">
-										<i class="fa fa-times"></i>
-									</a>
-								{!!Form::close()!!}
-							</td>
+                                {!!Form::open(['action' => ['Maintenance\FeatureController@deleteFeature', $row['features_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Feature?')"])!!}
+                                    {{Form::hidden('_method', 'DELETE')}}
+                                    <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                {!!Form::close()!!}
+                            </td>
 						</tr>
+						@endif
 					@endforeach
 				</tbody>
 				<tfoot>

@@ -17,8 +17,10 @@ class BannerController extends Controller
     
     public function viewBanner()
     {
-        $banners = Banner::all();
-
+        $banners = Banner::
+            where('status', '=', 0)
+            ->orderBy('banner_order')
+            ->paginate(5);
         return view('admin.maintenance.banner', ['banners'=>$banners]);
     }
 
@@ -46,6 +48,7 @@ class BannerController extends Controller
                 $banner = new Banner;
                 $banner->banner_order = $request->input('order');
                 $banner->banner_status = 0;
+                $banner->status = 0;
                 $banner->banner_picture = $request->input('bannerImage');
                 // Handle file upload for news image
                 if($request->hasFile('bannerImage')){
@@ -142,8 +145,9 @@ class BannerController extends Controller
         try
         {
             $banner = Banner::find($id);
+            $banner->status = 1;
 
-            if ($banner->delete())
+            if ($banner->save())
             {
                 return redirect()->back()->with('success', 'Banner Removed Successfully!');
             }
