@@ -21,11 +21,6 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('admin.dashboard');
-    }
-
     public function viewDashboard()
     {
         return view('admin.dashboard');

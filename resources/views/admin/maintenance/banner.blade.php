@@ -41,8 +41,10 @@
 					@foreach($banners as $banner)
 						<tr>
 							<td>
+
 								<div class="ord{{$banner->banner_id}}">
 									<span class="label label-table label-primary" data-toggle="tooltip" data-original-title="Click to Change Order" onclick="editOrder('ord{{$banner->banner_id}}');" style="cursor: pointer;">
+
 										{{$banner->banner_order}}
 									</span>
 								</div>

@@ -6,7 +6,13 @@
         <div class="Modern-Slider">
             <!-- Item -->
             <div>
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="1500">
+                    <!--Indicators-->
+                    <!-- <ol class="carousel-indicators">
+                      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                      <li data-target="#myCarousel" data-slide-to="1"></li>
+                      <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol> -->
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         @foreach($banners as $banner)
@@ -17,6 +23,14 @@
                         @endforeach
                     </div>
                     <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
                 </div>
             </div>
             <!-- // Item -->
@@ -29,12 +43,12 @@
                 <div class="aboutUs-contant">
                     <div class="col-sm-6">
                         <div class=" about-title">
-                        <h1>The <span>Hospital Name</span></h1>
+                        <h1>Dra. <span>Joy Gali</span></h1>
                     </div>
                         <h4><span class="fa fa-check"></span>Handle With Professionalism</h4>
-                        <p>Maecenas scelerisque felis ornare placer tempus. In turpis nisi, viverra hendrerit dolo veal, auctor ablandit sapien. Aenean quis ven natis felis, adipiscing pretium nunc. Maecenas scelerisque felis ornare placer tempus. In turpis nisi, viverra hendrerit dolo veal.</p>
-                        <h4><span class="fa fa-check"></span>We Love What We Do</h4>
-                        <p>Which replenish a forth green, him every over subdue won't give them there them. Can't had upon. Which midst. Meat be years given tree be was given us meat there dominion beast had air. Said open land form moved air his signs moveth creepeth appear appear it. Said open land form moved air his signs moveth creepeth appear appear it.</p>
+                        <p> Consolidates invasive and non-invasive cardiovascular diagnostic testing into one cohesive and attractive space while integrating data management systems for maximum efficiency. I provide extensive patient teaching pre and post procedure.</p>
+                        <h4><span class="fa fa-check"></span>I Love What I Do</h4>
+                        <p> Demonstrating my commitment to provide the latest advances in patient care, our program in minimally invasive endovascular surgery offers a scope of diagnostic and treatment options </p>
 
                     <a href="{{ route('services') }}" class="about-btn">VIEW SERVICES</a>
                     </div>
@@ -83,7 +97,7 @@
                         <div class="features-icon">
                             <img src="/storage/images/service/other/{{ $otherService->other_image }}" alt="theimran.com">
                             <div class="hover-features">
-                                <img src="{{ asset('medicre/img/service-3.png') }}" alt="theimran.com">
+                                <img src="{{ asset('medicre/img/logo1.png') }}" alt="theimran.com">
                             </div>
                         </div>
                         <h4>{{ $otherService->other_title }}</h4>

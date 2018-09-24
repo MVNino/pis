@@ -28,7 +28,6 @@ class ServiceController extends Controller
 
     public function addSpecialty(Request $request)
     {
-        // return $request->file('fileServiceVid');
     	$this->validate($request, [
     		'txtTitle' => 'required',
     		'txtareaDescription' => 'required',
@@ -54,13 +53,6 @@ class ServiceController extends Controller
                 ->storeAs('public/images/service/specialty/', $serviceImgNameToStore);
             $service->spec_image_icon = $serviceImgNameToStore;
         }
-        
-        // if ($request->hasFile('fileServiceVid')) {
-        //     $file = $request->file('fileServiceVid');
-        //     $filename = $file->getClientOriginalName();
-        //     $file->move('public/images/service/specialty/', $filename);
-        //     $service->spec_video = $filename;
-        // }
 
         // Handle file upload for specialty service image
         if($request->hasFile('fileServiceVid')){
@@ -111,7 +103,7 @@ class ServiceController extends Controller
         // Save record
     	if ($service->save()) {
     		return redirect()->back()
-    			->with('success', 'Other service added!');
+    			->with('success', 'Main service added!');
     	}
     }
 
@@ -123,10 +115,131 @@ class ServiceController extends Controller
             ['specialtyService' => $specialtyService]);
     }
 
+    public function updateSpecialty(Request $request, $id)
+    {
+        $this->validate($request, [
+            'txtTitle' => 'required',
+            'txtareaDescription' => 'required',
+            'txtVideoLink' => 'required',
+            'fileServiceImg' => 'image|nullable|max:2000'
+        ]);
+
+        // Insert record to database
+        $service = SpecialtyService::findOrFail($id);
+        $service->spec_title = $request->txtTitle;
+        $service->spec_desc = $request->txtareaDescription;
+        $service->spec_vidlink = $request->txtVideoLink;
+        // Handle file upload for specialty service image
+        if($request->hasFile('fileServiceImg')){
+            // Get the file's extension
+            $fileExtension = $request->file('fileServiceImg')
+                ->getClientOriginalExtension();
+            // Create a filename to store(database)
+            $serviceImgNameToStore = $request->txtTitle
+                .'_'.'SpecialtyServiceImg'.'_'.time().'.'.$fileExtension;
+            // Upload file to system
+            $path = $request->file('fileServiceImg')
+                ->storeAs('public/images/service/specialty/', $serviceImgNameToStore);
+            $service->spec_image_icon = $serviceImgNameToStore;
+        }
+
+        // Handle file upload for specialty service image
+        if($request->hasFile('fileServiceVid')){
+            // Get the file's extension
+            $fileExtension = $request->file('fileServiceVid')
+                ->getClientOriginalExtension();
+            // Create a filename to store(database)
+            $serviceVidNameToStore = $request->txtTitle
+                .'_'.'SpecialtyServiceVid'.'_'.time().'.'.$fileExtension;
+            // Upload file to system
+            $path = $request->file('fileServiceVid')
+                ->storeAs('public/images/service/specialty/', $serviceVidNameToStore);
+            $service->spec_video = $serviceVidNameToStore;
+        }
+        if ($service->save()) {
+            return redirect()->back()
+                ->with('success', 'Specialty service has been updated!');
+        }
+    }
+
+    public function deleteSpecialty($id)
+    {
+        try
+        {
+            $specService = SpecialtyService::findOrFail($id);
+
+            if ($specService->delete())
+            {
+                return redirect()->back()->with('success', 
+                    'Specialty service removed successfully!');
+            }
+
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+
+    }
+
     public function editMainService($id)
     {
         $mainService = OtherService::findOrFail($id);
         return view('admin.maintenance.edit-main-service', 
             ['mainService' => $mainService]);
+    }
+
+    public function updateMainService(Request $request, $id)
+    {
+        $this->validate($request, [
+            'txtTitle' => 'required',
+            'txtareaDescription' => 'required',
+            'txtVideoLink' => 'required',
+            'fileServiceImg' => 'image|nullable|max:2000'
+        ]);
+
+        // Insert record to database
+        $service = OtherService::findOrFail($id);
+        $service->other_title = $request->txtTitle;
+        $service->other_desc = $request->txtareaDescription;
+        $service->other_vidlink = $request->txtVideoLink;
+        // Handle file upload for specialty service image
+        if($request->hasFile('fileServiceImg')){
+            // Get the file's extension
+            $fileExtension = $request->file('fileServiceImg')
+                ->getClientOriginalExtension();
+            // Create a filename to store(database)
+            $serviceImgNameToStore = $request->txtTitle
+                .'_'.'OtherServiceImg'.'_'.time().'.'.$fileExtension;
+            // Upload file to system
+            $path = $request->file('fileServiceImg')
+                ->storeAs('public/images/service/other/', $serviceImgNameToStore);
+            $service->other_image = $serviceImgNameToStore;
+        }
+        // Save record
+        if ($service->save()) {
+            return redirect()->back()
+                ->with('success', 'Main service has been updated!');
+        }
+    }
+
+    public function deleteMainService($id)
+    {
+        try
+        {
+            $mainService = OtherService::findOrFail($id);
+
+            if ($mainService->delete())
+            {
+                return redirect()->back()->with('success', 
+                    'Main service removed successfully!');
+            }
+
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+
     }
 }

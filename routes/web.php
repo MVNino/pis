@@ -34,9 +34,6 @@ Route::group(
 			'prefix' => 'maintenance'
 		], function(){
 			Route::namespace('Maintenance')->group(function () {
-				// About 
-				Route::get('about', 'AboutController@viewAbout')->name('maintenance.about');
-				Route::post('about', 'AboutController@addAbout');
 				// Banner 
 				Route::get('banner', 'BannerController@viewBanner')->name('maintenance.banner');
 				Route::post('banner', 'BannerController@addBanner');
@@ -64,7 +61,8 @@ Route::group(
 				Route::put('features/{id}', 'FeatureController@editFeature');
 				Route::delete('features/{id}', 'FeatureController@deleteFeature');
 				// FAQ's
-				Route::get('faqs', 'FAQController@viewFAQs')->name('maintenance.faqs');
+				Route::get('faqs', 'FAQController@viewFAQs')
+					->name('maintenance.faqs');
 				Route::post('faqs', 'FAQController@addFAQs');
 				// News
 				Route::get('news', 'NewsController@listNews')
@@ -75,12 +73,23 @@ Route::group(
 				// Services
 				Route::get('services', 'ServiceController@viewServices')
 					->name('maintenance.services');
-				Route::post('services/specialty', 'ServiceController@addSpecialty');
-				Route::post('services/other', 'ServiceController@addOtherService');
-				Route::get('specialty-service/{id}/edit', 'ServiceController@editSpecialty');
-				Route::get('main-service/{id}/edit', 'ServiceController@editMainService');
+				Route::post('services/specialty', 
+							'ServiceController@addSpecialty');
+				Route::post('services/other', 
+							'ServiceController@addOtherService');
+				Route::get('specialty-service/{id}/edit', 
+							'ServiceController@editSpecialty');
+				Route::put('specialty-service/{id}/edit', 
+							'ServiceController@updateSpecialty');
+				Route::delete('specialty-service/{id}/delete', 
+							'ServiceController@deleteSpecialty');
+				Route::get('main-service/{id}/edit', 
+							'ServiceController@editMainService');
+				Route::put('main-service/{id}/edit', 
+							'ServiceController@updateMainService');
+				Route::delete('main-service/{id}/delete', 
+							'ServiceController@deleteMainService');
 			});
-
 		});
 
 		# TRANSACTION
@@ -94,6 +103,5 @@ Route::group(
 			});
 		});
 });
-Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Auth::routes();

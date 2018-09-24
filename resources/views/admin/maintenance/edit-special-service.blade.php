@@ -26,7 +26,9 @@
         </div>
         <div class="card-body">
             <div class="container">
-                <form class="form-material">
+				{!! Form::open(['action' => ['Maintenance\ServiceController@updateSpecialty', $specialtyService->spec_service_id],
+				'class' => 'form-material' ,'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data']) !!}
+                @csrf
                 <div class="form-group">
 							<label class="col-sm-12">Image</label>
 							<div class="col-sm-12">
@@ -71,8 +73,9 @@
 								</div>
 							</div>
 						</div> --}}
-						<button type="submit" class="btn btn-info waves-effect waves-light m-r-10 float-right" disabled="">Submit</button>
-					</form>
+						{{ Form::hidden('_method', 'PUT') }}
+						<button type="submit" class="btn btn-info waves-effect waves-light m-r-10 float-right"><i class="fa fa-fw fa-lg fa-check-circle"></i> Submit</button>
+					{!! Form::close() !!}
             </div>
         </div>
     </div>
