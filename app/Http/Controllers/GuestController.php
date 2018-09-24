@@ -35,7 +35,6 @@ class GuestController extends Controller
         $about = $this->getAbout();
         return view('guest.about', ['about' => $about, 
                 'features' => $features]);
-
     }
 
     public function viewServices() {
@@ -43,6 +42,7 @@ class GuestController extends Controller
                 ->paginate(6);
         $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
                 ->paginate(6);
+
         return view('guest.services', ['otherServices' => $otherServices, 
                 'specialtyServices' => $specialtyServices]);
     }

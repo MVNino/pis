@@ -34,27 +34,45 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td> Why Maganda Leki? </td>
-						<td> Di ko din alam </td>
-						<td> Others </td>
-						<td><span class="label label-table label-success">Active</span></td>
-						<td>
-							<!-- for href="edit-faqs" -->
-							<a role="button" class="btn btn-sm btn-primary" href="">
-								<i class="fa fa-edit"></i>
-							</a>
-						</td>
-						<td>
-							<a role="button" class="btn btn-sm btn-danger">
-								<i class="fa fa-times"></i>
-							</a>
-						</td>
-					</tr>
+					@forelse($faqs as $faq)
+						<tr>
+							<td>{{ $faq->faq_question }}</td>
+							<td>{{ $faq->faq_answer }}</td>
+							<td>{{ $faq->faq_category }}</td>
+							<td>
+								@if($faq->status == 1)
+								<span class="label label-table label-success"><a href="/admin/maintenance/faqs/{{ $faq->faq_id }}/deactivate" class="text-light">Active</a></span>
+								@else
+								<span class="label label-table label-danger"><a href="/admin/maintenance/faqs/{{ $faq->faq_id }}/activate" class="text-light">Inactive</a></span>
+								@endif
+							</td>
+							<td>
+								<!-- for href="edit-faqs" -->
+								<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/faqs/{{ $faq->faq_id }}">
+									<i class="fa fa-edit"></i>
+								</a>
+							</td>
+							<td>
+								{!!Form::open(['action' => ['Maintenance\FAQController@deleteFAQs', $faq->faq_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove faq?')"])!!}
+									{{Form::hidden('_method', 'DELETE')}}
+									<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
+										<i class="fa fa-times" aria-hidden="true"></i>
+									</button>
+								{!!Form::close()!!}
+							</td>
+						</tr>
+					@empty
+						<div class="alert alert-warning">
+							There is no record yet.
+						</div>
+					@endforelse
 				</tbody>
 				<tfoot>
 				</tfoot>
 			</table>
+			<div align="center">
+				{{ $faqs->links() }}	
+			</div>
 		</div>
 	</div>
 </div>
@@ -68,8 +86,9 @@
 				</button>
 				<h4 class="modal-title" id="exampleModalLabel">Add Features</h4>
 			</div>
-			<div class="modal-body">	
-			<form class="form-material form-horizontal">
+			{!! Form::open(['action' => 'Maintenance\FAQController@addFAQs', 'method' => 'POST', 'class' => 'form-material form-horizontal']) !!}
+				@csrf
+				<div class="modal-body">
 					<div class="form-group">
 						<label class="col-md-12">Question</label>
 						<div class="col-md-12">
@@ -95,11 +114,11 @@
 							</select>
 						</div>
 					</div>
-				</form>	
-			</div>
-			<div class="modal-footer">
-				<button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
-			</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+				</div>
+			</form>	
 		</div>
 	</div>
 </div>

@@ -44,11 +44,11 @@
 						<td>
 							@if($new->isActive == 1)
 							<span class="label label-table label-success">
-								Active
+								<a href="/admin/maintenance/news/{{ $new->news_id }}/deactivate" class="text-light">Active</a>
 							</span>
 							@else
 							<span class="label label-table label-danger">
-								Inactive
+								<a href="/admin/maintenance/news/{{ $new->news_id }}/activate" class="text-light">Inactive</a>
 							</span>
 							@endif
 						</td>
