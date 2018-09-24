@@ -98,8 +98,9 @@ class FeatureController extends Controller
         try
         {
             $feature = Feature::find($id);
+            $feature->status = 1;
 
-            if ($feature->delete())
+            if ($feature->save())
             {
                 return redirect()->back()->with('success', 'Removed Successfully!');
             }

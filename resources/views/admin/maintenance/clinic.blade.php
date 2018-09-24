@@ -22,6 +22,7 @@
                     <i class="fa fa-plus"></i> Clinic Information
                 </button><br><br>
             </div>
+            
                 <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                     <thead>
                         <tr>
@@ -30,17 +31,22 @@
                             <th>Opening Time</th>
                             <th>Closing Time</th>
                             <th>Clinic Days</th>
+                            <th>Clinic Places</th>
+                            <th>Clinic Telephone</th>
                             <th colspan="2">Action</th>
                         <tr>
                     </thead>
                     <tbody>
                         @foreach($clinic as $row) 
+                        @if($row['status'] == 0)
                         <tr>
                             <td>{{$row['clinic_contact']}}</td>
                             <td>{{$row['clinic_location']}}</td>
                             <td>{{$row['clinic_open_time']}}</td>
                             <td>{{$row['clinic_close_time']}} </td>
                             <td>{{$row['clinic_days']}} </td>
+                            <td>{{$row['clinic_places']}} </td>
+                            <td>{{$row['clinic_telephone']}} </td>
 
                             <td>
                             <a href="{{action('Maintenance\ClinicController@edit', $row['clinic_contact_id'])}}" class="btn btn-sm btn-primary">
@@ -56,6 +62,7 @@
                                 {!!Form::close()!!}
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                     <tfoot>
@@ -68,6 +75,7 @@
 					</tr>
                     </tfoot>
                 </table>
+            
             </div>
         </div>
     </div>
@@ -83,7 +91,7 @@
                 <h4 class="modal-title" id="exampleModalLabel">Add Details</h4>
             </div>
             <div class="modal-body">
-                {!! Form::open(['action' => 'Maintenance\ClinicController@addClinic','class' => 'form-material' ,'autocomplete'=>'off' ,'method' => 'POST']) !!}
+                {!! Form::open(['action' => 'Maintenance\ClinicController@addClinic', 'method' => 'POST', 'enctype' => 'multipart/form-data','class' => 'form-material' ,'autocomplete' => 'off'])!!}
                     <div class="form-group">
                         <label class="col-md-12">Contact</span></label>
                         <div class="col-md-12">
@@ -118,11 +126,23 @@
                                 <div class="form-group">
                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                     <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-                                    <input type="file" name="fileNewsImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+                                    <input type="file" name="fileMapImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
                                 </div>
                             </div>
                     </div>
                     </div> 
+                    <div class="form-group">
+                        <label class="col-md-12">Clinic Places</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="places" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Telephone</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="telephone" class="form-control"/> 
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
