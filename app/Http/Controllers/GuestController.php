@@ -29,20 +29,20 @@ class GuestController extends Controller
                 'news' => $news, 'otherServices' => $otherServices]);
     }
 
-    // public function viewAbout()
-    // {
-    //     $features = Feature::orderBy('features_id', 'desc')->get();
-    //     $about = $this->getAbout();
-    //     return view('guest.about', ['about' => $about, 
-    //             'features' => $features]);
-
-    // }
+    public function viewAbout()
+    {
+        $features = Feature::orderBy('features_id', 'desc')->get();
+        $about = $this->getAbout();
+        return view('guest.about', ['about' => $about, 
+                'features' => $features]);
+    }
 
     public function viewServices() {
         $otherServices = OtherService::orderBy('other_services_id', 'desc')
                 ->paginate(6);
         $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
                 ->paginate(6);
+
         return view('guest.services', ['otherServices' => $otherServices, 
                 'specialtyServices' => $specialtyServices]);
     }
