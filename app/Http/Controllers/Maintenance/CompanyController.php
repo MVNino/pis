@@ -33,44 +33,32 @@ class CompanyController extends Controller
     	}
     }
 
-    public function addCompany(Request $request)
+    public function updateCompany(Request $request, $id)
     {
         $this->validate($request, [
     		'name' => 'required|string',
-            'description' => 'required|string',
-            'fileCompanyLogo' => 'required|image|mimes:png|nullable|max:3000',
+            'fileCompanyLogo' => 'nullable|image|mimes:png|max:3000',
+            'map' => 'image|nullable|max:3000'
             
-        ]);
- 
-        try
-        {
-            $company = new Company;
-            $company->company_name = $request->input('name');
-            $company->company_desc = $request->input('description');
-            $company->company_clinic_logo = $request->input('fileCompanyLogo');
-            // Handle file upload for company logo
-            if($request->hasFile('fileCompanyLogo')){
-                // Get the file's extension
-                $fileExtension = $request->file('fileCompanyLogo')
-                    ->getClientOriginalExtension();
-                // Create a filename to store(database)
-                $logoImgNameToStore = $request->title
-                    .'_'.'fileCompanyLogo'.'_'.time().'.'.$fileExtension;
-                // Upload file to system
-                $path = $request->file('fileCompanyLogo')
-                    ->storeAs('public/images/logo', $CompanyImgNameToStore);
-                $company->company_clinic_logo = $CompanyImgNameToStore;
-            }
-            $company->company_map = $request->input('map');
-
-            $company->save();
-            
-            return redirect()->back()->with('success', 'Company Details Updated!');
-
+        ]);      
+        $company = Company::findOrFail($id);
+        $company->company_name = $request->name;
+        $company->company_clinic_logo = $request->fileCompanyLogo;
+        // Handle file upload for company logo
+        if($request->hasFile('fileCompanyLogo')){
+            // Get the file's extension
+            $fileExtension = $request->file('fileCompanyLogo')
+                ->getClientOriginalExtension();
+            // Create a filename to store(database)
+            $companyImgNameToStore = $request->title
+                .'_'.'fileCompanyLogo'.'_'.time().'.'.$fileExtension;
+            // Upload file to system
+            $path = $request->file('fileCompanyLogo')
+                ->storeAs('public/images/logo', $companyImgNameToStore);
+            $company->company_clinic_logo = $companyImgNameToStore;
         }
-        catch (\Exception $e)
-        {
-            return $e->getMessage();
-        }
+        $company->company_map = $request->name;
+        $company->save();
+        return redirect()->back()->with('success', 'Company Details Updated!');
     }
 }

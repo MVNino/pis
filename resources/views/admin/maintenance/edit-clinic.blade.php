@@ -22,8 +22,9 @@
         </div>
         <div class="card-body">
             <div class="container">
-            {!!Form::open(['action' => ['Maintenance\ClinicController@editClinic', $clinic->clinic_contact_id], 'method' => 'POST', 'class' => 'form-material'])!!}
+            {!! Form::open(['action' => ['Maintenance\ClinicController@updateClinic', $clinic->clinic_contact_id], 'method' => 'POST', 'enctype' => 'multipart/form-data','class' => 'form-material' ,'autocomplete' => 'off'])!!}
             @csrf
+            {{Form::hidden('_method', 'PUT')}}
                 <div class="form-group">
                     <label class="col-md-12">Contact</span></label>
                     <div class="col-md-12">
@@ -59,19 +60,27 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-12">Map Image
-                    <small>Current Image: <a target="_blank" href="/storage/images/news/{{ $clinic->clinic_email }}">{{ $clinic->clinic_email }}</a></small>
+                    <small>Current Image: <a target="_blank" href="/storage/images/news/{{ $clinic->clinic_email }}">{{ $clinic->clinic_map }}</a></small>
                     </label>
-                    <div class="col-sm-12">
-                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                            <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                                <span class="fileinput-filename"></span>
-                            </div> 
-                            <span class="input-group-addon btn btn-default btn-file">
-                            <span class="fileinput-new">Select file</span> 
-                            <span class="fileinput-exists">Change</span>
-                                <input type="file" name="logo"> 
-                            </span> 
-                            <a href="#" class="input-group-addon btn btn-default fileinput-exists"data-dismiss="fileinput">Remove</a>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                                <input type="file" name="fileMapImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                        <label class="col-md-12">Clinic Places</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="places" class="form-control" value="{{$clinic->clinic_places}}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Telephone</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="telephone" class="form-control" value="{{$clinic->clinic_telephone}}" /> 
                         </div>
                     </div>
                 </div> 
