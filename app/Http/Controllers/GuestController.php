@@ -71,19 +71,18 @@ class GuestController extends Controller
     public function viewContact() 
     {
         $contact = $this->getClinicContact();
-        $about = $this->getAbout();
-        
+        // $about = $this->getAbout();
         $clinics = Clinic::all();
         if ($clinics->count() > 0)
-
         {
     		$clinicMaxId = Clinic::max('clinic_contact_id');
     		$clinic = Clinic::findOrFail($clinicMaxId);
-    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact, 'about' => $about]);
+    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact,
+                    'clinics' => $clinics]);
         }
         else
         {
-	        return view('guest.contact');
+	        return view('guest.contact', ['clinics' => $clinics]);
         }
     }
 
