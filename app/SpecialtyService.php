@@ -13,8 +13,9 @@ class SpecialtyService extends Model
 	// timestamp
 	public $timestamps = false;
 
-	public function specialtyServiceVid()
+	public function specialtyServiceVids()
 	{
-		return $this->hasMany('App\SpecialtyServiceVideo', 'specialty_service_id', 'spec_service_id');
+		return $this->hasMany('App\SpecialtyServiceVideo', 
+			'specialty_service_id', 'spec_service_id');
 	}
 }

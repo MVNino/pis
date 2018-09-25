@@ -37,7 +37,8 @@ class GuestController extends Controller
                 'features' => $features]);
     }
 
-    public function viewServices() {
+    public function viewServices() 
+    {
         $otherServices = OtherService::orderBy('other_services_id', 'desc')
                 ->paginate(6);
         $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')

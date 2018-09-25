@@ -51,12 +51,14 @@
 								</textarea>
 							</div>
 						</div>
+						@foreach($specialtyService->specialtyServiceVids as $haha)
 						<div class="form-group">
 							<label class="col-md-12">Video Link</label>
 							<div class="col-md-12">
-								<input type="text" name="txtVideoLink" class="form-control" value="{{ $specialtyService->spec_vidlink }}"> 
+								<input type="text" name="txtVideoLink" class="form-control" value="{{ $haha->video }}"> 
 							</div>
 						</div>
+						@endforeach
 						{{-- <div class="form-group">
 							<div class="col-sm-12">
 								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
