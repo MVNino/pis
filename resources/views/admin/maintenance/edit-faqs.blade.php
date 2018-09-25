@@ -55,10 +55,9 @@
                     <button id="btnSave" type="button" class="btn btn-info">
                         <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
                     </button>
-                    <button id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
+                    <a href="{{ route('maintenance.faqs') }}" role="button" id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
                         <i class="fa fa-close"></i> Cancel
-                        <a href="#"></a>
-                    </button>
+                    </a>
                 </div>
 			{!! Form::close() !!}
             </div>
