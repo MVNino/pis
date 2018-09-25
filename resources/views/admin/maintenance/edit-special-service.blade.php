@@ -99,19 +99,21 @@
 				</button>
 				<h4 class="modal-title" id="exampleModalLabel">VIDEO LINKS</h4>
 			</div>
+			{!! Form::open(['action' => ['Maintenance\ServiceController@addSpecialtyServiceVideo', $specialtyService->spec_service_id], 'method' => 'POST', 
+				'class' => 'form-material', 'autocomplete' => 'off']) !!}
+			@csrf
 			<div class="modal-body">
-				<form class="form-material">
 					<div class="form-group">
 						<label class="col-md-12">Video Link</label>
 						<div class="col-md-12">
-							<input type="text" name="videoLink" class="form-control" >	
+							<input type="text" name="txtVideoLink" class="form-control">	
 						</div>
 					</div>
 			</div>
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
 			</div>
-			</form>
+			{!! Form::close() !!}
 		</div>
 	</div>
 </div>

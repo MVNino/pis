@@ -107,6 +107,10 @@ Route::group(
 					'ServiceController@editOtherServiceVid');
 				Route::put('other-service/{id}/edit-video', 
 					'ServiceController@updateOtherServiceVid');
+				Route::post('main-service/add-video/{id}', 
+					'ServiceController@addSpecialtyServiceVideo');
+				Route::post('other-service/add-video/{id}', 
+					'ServiceController@addOtherServiceVideo');
 			});
 		});
 
