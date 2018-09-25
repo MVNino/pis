@@ -10,8 +10,7 @@
 			<li>Maintenance</li>
 			<li><a href="{{ route('maintenance.services') }}">Services</a></li>
 			<li class="active">
-				<a class="active" href="/admin/maintenance/specialty-service/{{ $specialtyService->spec_service_id }}/edit">
-					{{ $specialtyService->spec_title }}
+				<a class="active" href="">
 				</a>
 			</li>
 		</ol>
@@ -32,11 +31,19 @@
                             <label class="col-md-12">Current Video</label>
                             <div>
                                 <!-- Division for video -->
-                            </div>
+                            </div><br>
                             <label class="col-md-12">Video Link</label>
                             <div class="col-md-12">
                                 <input type="text" name="txtVideoLink" class="form-control"> 
                             </div>
+                            <div align="right">
+                                <button id="btnSave" type="button" class="btn btn-info">
+                                    <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
+                                </button>
+                                <a href="#" role="button" id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
+                                    <i class="fa fa-close"></i> Cancel
+                                </a>
+					        </div>
                         </div>
                     </form>
                 </div>
