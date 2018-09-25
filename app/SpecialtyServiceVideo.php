@@ -15,6 +15,7 @@ class SpecialtyServiceVideo extends Model
 
 	public function specialtyService()
 	{
-		return $this->belongsTo('App\SpecialtyService', 'specialty_service_id', 'spec_service_id');
+		return $this->belongsTo('App\SpecialtyService', 
+			'specialty_service_id', 'spec_service_id');
 	}
 }
