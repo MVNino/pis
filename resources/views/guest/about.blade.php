@@ -70,8 +70,6 @@
 
 
 </div>
-
-
     <!-- end of client say section -->
     <section class="client-say-area section-padding">
     <div class="container">

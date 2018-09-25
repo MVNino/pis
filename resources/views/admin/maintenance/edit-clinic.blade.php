@@ -22,63 +22,71 @@
         </div>
         <div class="card-body">
             <div class="container">
-            {!!Form::open(['action' => ['Maintenance\ClinicController@editClinic', $clinic->clinic_contact_id], 'method' => 'POST', 'class' => 'form-material'])!!}
+            {!! Form::open(['action' => ['Maintenance\ClinicController@updateClinic', $clinic->clinic_contact_id], 'method' => 'POST', 'enctype' => 'multipart/form-data','class' => 'form-material' ,'autocomplete' => 'off'])!!}
             @csrf
+            {{Form::hidden('_method', 'PUT')}}
                 <div class="form-group">
-                    <label class="col-md-12">Contact</span></label>
                     <div class="col-md-12">
-                        <input type="text" name="contact" class="form-control" value="{{$clinic->clinic_contact}}" />
+                        <label>Contact</span></label>
+                        <div>
+                            <input type="text" name="contact" class="form-control" value="{{$clinic->clinic_contact}}" />
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-12">Location</span></label>
                     <div class="col-md-12">
-                        <input type="text" name="location" class="form-control" value="{{$clinic->clinic_location}}" /> 
+                        <label>Location</span></label>
+                        <div>
+                            <input type="text" name="location" class="form-control" value="{{$clinic->clinic_location}}" /> 
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-md-6">Clinic Opening Time</span></label>
-                    <label class="col-md-6">Clinic Closing Time</span></label>
-                    <div class="col-md-6">
+                <div class="row form-group">
+                    <div class="col-md-4">
+                        <label>Clinic Opening Time</label>
                         <input type="time" name="open" class="form-control" value="{{$clinic->clinic_open_time}}">
                     </div>
-                    <div class="col-md-6">
-                        <input type="time" name="close" class="form-control" value="{{$clinic->clinic_close_time}}" >
+                    <div class="col-md-4">
+                        <label>Clinic Closing Time</label>
+                        <input type="time" name="close" class="form-control" value="{{$clinic->clinic_close_time}}">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-12">Clinic Days</span></label>
-                    <div class="col-md-12">
+                    <div class="col-md-4">
+                        <label class="col-md-12">Clinic Days</span></label>
                         <input type="text" name="days" class="form-control" value="{{$clinic->clinic_days}}"  /> 
                     </div>
                 </div>
                 <div class="form-group">
                     <!-- Existing image na nasa database -->    
                     <label class="col-md-12">Uploaded Map</span></label>
-                    <img src="">
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-12">Map Image
-                    <small>Current Image: <a target="_blank" href="/storage/images/news/{{ $clinic->clinic_email }}">{{ $clinic->clinic_email }}</a></small>
-                    </label>
-                    <div class="col-sm-12">
-                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                            <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                                <span class="fileinput-filename"></span>
-                            </div> 
-                            <span class="input-group-addon btn btn-default btn-file">
-                            <span class="fileinput-new">Select file</span> 
-                            <span class="fileinput-exists">Change</span>
-                                <input type="file" name="logo"> 
-                            </span> 
-                            <a href="#" class="input-group-addon btn btn-default fileinput-exists"data-dismiss="fileinput">Remove</a>
+                    <div class="col-md-4">
+                        <div align="center">
+                            <a target="_blank" href="/storage/images/map/{{$clinic->clinic_map}}">
+                                <img src="/storage/images/map/{{$clinic->clinic_map}}" style="width: 150px">
+                            </a>
                         </div>
                     </div>
+                    <div class="col-md-8">
+                        <label class="col-sm-6">Map Image
+                            <small>Current Image: <a target="_blank" href="/storage/images/map/{{$clinic->clinic_map}}">{{ $clinic->clinic_map }}</a></small>
+                        </label>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                                    <input type="file" name="fileMapImg"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div> 
                 {{Form::hidden('_method', 'PUT')}}
                 <div align="right">
                     <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
-				</div>
+                    <a href="{{ route('maintenance.clinic') }}" role="button" id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
+                        <i class="fa fa-close"></i> Cancel
+                    </a>
+                </div>
             {!! Form::close() !!}
             </div>
         </div>

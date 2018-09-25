@@ -44,11 +44,11 @@
 						<td>
 							@if($new->isActive == 1)
 							<span class="label label-table label-success">
-								Active
+								<a href="/admin/maintenance/news/{{ $new->news_id }}/deactivate" class="text-light">Active</a>
 							</span>
 							@else
 							<span class="label label-table label-danger">
-								Inactive
+								<a href="/admin/maintenance/news/{{ $new->news_id }}/activate" class="text-light">Inactive</a>
 							</span>
 							@endif
 						</td>
@@ -58,7 +58,7 @@
 							</a>
 						</td>
 						<td>
-							<a role="button" class="btn btn-sm btn-danger" >
+							<a role="button" class="btn btn-sm btn-danger" href="/admin/maintenance/news/{{ $new->news_id }}/soft-delete">
 								<i class="fa fa-times"></i>
 							</a>
 						</td>

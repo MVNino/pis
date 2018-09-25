@@ -1,40 +1,37 @@
 @extends('guest.layouts.app')
 
 @section('content')
-    <section class="home-sm">
-        <!-- start slider section -->
-       <!--  <div class="Modern-Slider">
-            
-             -->
-        <!-- end of slider section -->
-    </section>
+
     <section class="section-padding">
     <div class="row"> 
         <div class="col-md-6" style="padding-left: 10%; margin-top: 10%; margin-bottom: 10%">
             <h3>Clinic</h3>
             <h2><strong>Schedule</strong></h2>
-        </div>
+            <!-- <p>We are open from {{$clinic->clinic_days}} at {{$clinic->clinic_location}} between {{$clinic->clinic_open_time}} and {{$clinic->clinic_close_time}}</p>
+ -->        </div>
     <div class="col-md-5">
-    <table class="table table-striped" style="width:120%;">
-        <thead>
-            <tr>
-                <th>Location</th>
-                <th>Days Open</th>
-                <th>Opening</th>
-                <th>Closing</th>        
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($clinic as $row)
-                <tr>
-                    <td>{{$row->clinic_location}}</td>
-                    <td>{{$row->clinic_days}}</td>
-                    <td>{{$row->clinic_open_time}}</td>
-                    <td>{{$row->clinic_close_time}}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+<table class="table" style="width:120%;">
+    <thead>
+        <tr>
+            <th>Location</th>
+            <th>Days</th>
+            <th>Opening</th>
+            <th>Closing</th>        
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($clinics as $clinic)
+        @if($clinic->status == 0)
+        <tr class="warning">
+            <td>{{$clinic->clinic_location}}</td>
+            <td>{{$clinic->clinic_days}}</td>
+            <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$clinic->clinic_open_time)->format('g:i A')}}</td>
+            <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$clinic->clinic_close_time)->format('g:i A')}}</td>
+        </tr>
+        @endif
+        @endforeach
+    </tbody>
+</table>
 </div>
     </div>
     </section>
@@ -49,6 +46,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-sm-4">
                 <div class="contactv2address">
                     <div class="row single-contact">
@@ -64,7 +62,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_contact }}</h4>
+                            <h4>{{ $clinic->clinic_telephone }}</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -72,7 +70,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_email }}</h4>
+                            <h4>{{ $clinic->clinic_contact }}</h4>
                         </div>
                     </div>
                 </div>
@@ -112,5 +110,28 @@
 @section('pg-specific-js')
 <script>
 $("#navlink-contact").addClass("current-menu-item");
+</script>
+@endsection
+
+@section('pg-specific-js')
+<!-- wysuhtml5 Plugin JavaScript -->
+<script src="{{ asset('elite/js/tinymce.min.js') }}"></script>
+<script>
+$(document).ready(function() {
+
+    if ($("#mymce").length > 0) {
+        tinymce.init({
+            selector: "textarea#mymce",
+            theme: "modern",
+            height: 300,
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+        });
+    }
+});
 </script>
 @endsection

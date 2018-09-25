@@ -17,13 +17,12 @@ class ClinicController extends Controller
     
     public function viewClinic()
     {
-
-     $clinic = Clinic::
+        $clinics = Clinic::
         where('status', '=', 0)
         ->orderBy('clinic_location')
         ->paginate(5);
         
-     return view('admin.maintenance.clinic', ['clinic'=>$clinic]);   
+     return view('admin.maintenance.clinic', ['clinics'=>$clinics]);   
      //    $clinics = Clinic::all();
      //    if ($clinics->count() > 0)
      //    {
@@ -42,38 +41,33 @@ class ClinicController extends Controller
         $this->validate($request, [
             'contact' => 'required|string',
             'location' => 'required|string',
+            'days' => 'required',
             'open' => 'required',
             'close' => 'required',
-            'days' => 'required',
-            'map' => 'image|nullable|max:3000',
-
+            'fileMapImg' => 'image|required|max:3000',
         ]);
 
         // save contact to database
         $clinic = new Clinic;
-
         $clinic->clinic_contact = $request->contact;
         $clinic->clinic_location = $request->location;
+        $clinic->clinic_days = $request->days;
         $clinic->clinic_open_time = $request->open;
         $clinic->clinic_close_time = $request->close;
-        $clinic->clinic_days = $request->days;
-        $clinic->clinic_map = $request->input('fileMapImg');
-        $clinic->clinic_places = $request->input('places');
-        $clinic->clinic_telephone = $request->input('telephone');
-        $clinic->status = 0;
-        if($request->hasFile('fileMapImg'))
-        {
+
+        if($request->hasFile('fileMapImg')){
             // Get the file's extension
             $fileExtension = $request->file('fileMapImg')
                 ->getClientOriginalExtension();
             // Create a filename to store(database)
             $mapImgNameToStore = $request->title
-                .'_'.'MapImg'.'_'.time().'.'.$fileExtension;
+                .'_'.'fileMapImg'.'_'.time().'.'.$fileExtension;
             // Upload file to system
             $path = $request->file('fileMapImg')
                 ->storeAs('public/images/map', $mapImgNameToStore);
             $clinic->clinic_map = $mapImgNameToStore;
         }
+        $clinic->status = 0;
         
         if($clinic->save()){
             return redirect()->back()->with('success', 'Clinic Info added!');
@@ -86,7 +80,7 @@ class ClinicController extends Controller
         return view('admin.maintenance.edit-clinic', compact('clinic', 'id'));
     }
 
-    public function editClinic(Request $request, $id)
+    public function updateClinic(Request $request, $id)
     {
         $this->validate($request, [
             'contact' => 'required|string',
@@ -94,7 +88,7 @@ class ClinicController extends Controller
             'open' => 'required',
             'close' => 'required',
             'days' => 'required',
-            'map' => 'image|nullable|max:3000',
+            'fileMapImg' => 'image|nullable|max:3000',
         ]);
 
         // save clinic to database
@@ -102,10 +96,10 @@ class ClinicController extends Controller
         $clinic = Clinic::findOrFail($id);
         $clinic->clinic_contact = $request->input('contact');
         $clinic->clinic_location = $request->input('location');
+        $clinic->clinic_days = $request->input('days');
         $clinic->clinic_open_time = $request->input('open');
         $clinic->clinic_close_time = $request->input('close');
-        $clinic->clinic_days = $request->input('days');
-        $clinic->clinic_map = $request->input('fileMapImg');
+        
         if($request->hasFile('fileMapImg')){
             // Get the file's extension
             $fileExtension = $request->file('fileMapImg')
@@ -118,14 +112,10 @@ class ClinicController extends Controller
                 ->storeAs('public/images/map', $mapImgNameToStore);
             $clinic->clinic_map = $mapImgNameToStore;
         }
-
-        $clinic->save();
-
+        
         if ($clinic->save())
         {
-            
-                return redirect()->back()->with('success', 'Updated Successfully!');
-            
+            return redirect()->back()->with('success', 'Updated Successfully!');
         }
     }
 
