@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="col-sm-4">
                 <div class="contactv2address">
                     <div class="row single-contact">
@@ -112,5 +112,28 @@
 @section('pg-specific-js')
 <script>
 $("#navlink-contact").addClass("current-menu-item");
+</script>
+@endsection
+
+@section('pg-specific-js')
+<!-- wysuhtml5 Plugin JavaScript -->
+<script src="{{ asset('elite/js/tinymce.min.js') }}"></script>
+<script>
+$(document).ready(function() {
+
+    if ($("#mymce").length > 0) {
+        tinymce.init({
+            selector: "textarea#mymce",
+            theme: "modern",
+            height: 300,
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+        });
+    }
+});
 </script>
 @endsection
