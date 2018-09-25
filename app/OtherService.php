@@ -13,8 +13,9 @@ class OtherService extends Model
 	// timestamp
 	public $timestamps = false;
 
-	public function otherServiceVid()
+	public function otherServiceVids()
 	{
-		return $this->hasMany('App\OtherServiceVideo', 'other_service_id', 'other_services_id');
+		return $this->hasMany('App\OtherServiceVideo', 
+			'other_service_id', 'other_services_id');
 	}
 }

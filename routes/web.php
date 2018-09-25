@@ -98,13 +98,15 @@ Route::group(
 							'ServiceController@updateMainService');
 				Route::delete('main-service/{id}/delete', 
 							'ServiceController@deleteMainService');
-				// Route Temp
-				Route::get('main-service/edit/temp', function(){
-					return view('admin.maintenance.edit-special-service-video');
-				});
-				Route::get('other-service/edit/temp',function(){
-					return view('admin.maintenance.edit-other-service-video');
-				});
+				// Show & update video link
+				Route::get('main-service/{id}/edit-video', 
+					'ServiceController@editSpecialtyServiceVid');
+				Route::put('main-service/{id}/edit-video', 
+					'ServiceController@updateSpecialtyServiceVid');
+				Route::get('other-service/{id}/edit-video', 
+					'ServiceController@editOtherServiceVid');
+				Route::put('other-service/{id}/edit-video', 
+					'ServiceController@updateOtherServiceVid');
 			});
 		});
 
@@ -123,5 +125,4 @@ Route::group(
 			});
 		});
 });
-
 Auth::routes();

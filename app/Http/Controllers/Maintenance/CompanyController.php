@@ -37,13 +37,12 @@ class CompanyController extends Controller
     {
         $this->validate($request, [
     		'name' => 'required|string',
-            'fileCompanyLogo' => 'nullable|image|mimes:png|max:3000',
+            'fileCompanyLogo' => 'image|nullable|mimes:png|max:3000',
             'map' => 'image|nullable|max:3000'
             
         ]);      
         $company = Company::findOrFail($id);
         $company->company_name = $request->name;
-        $company->company_clinic_logo = $request->fileCompanyLogo;
         // Handle file upload for company logo
         if($request->hasFile('fileCompanyLogo')){
             // Get the file's extension
@@ -51,13 +50,13 @@ class CompanyController extends Controller
                 ->getClientOriginalExtension();
             // Create a filename to store(database)
             $companyImgNameToStore = $request->title
-                .'_'.'fileCompanyLogo'.'_'.time().'.'.$fileExtension;
+                .'_'.'CompanyLogo'.'_'.time().'.'.$fileExtension;
             // Upload file to system
             $path = $request->file('fileCompanyLogo')
                 ->storeAs('public/images/logo', $companyImgNameToStore);
             $company->company_clinic_logo = $companyImgNameToStore;
         }
-        $company->company_map = $request->name;
+        $company->company_map = $request->map;
         $company->save();
         return redirect()->back()->with('success', 'Company Details Updated!');
     }
