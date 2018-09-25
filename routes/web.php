@@ -117,6 +117,7 @@ Route::group(
 					->name('transaction.patients');
 				Route::get('editPatients', 'PatientController@editPatients'); //change it
 				Route::get('billing','PaymentController@billing'); //change it
+					
 			});
 		});
 });
