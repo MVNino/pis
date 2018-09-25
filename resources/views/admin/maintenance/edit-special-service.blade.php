@@ -20,6 +20,7 @@
 
 @section('content')
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div class="container">
     <div class="card">
         <div class="card-header bg-primary">
@@ -74,6 +75,8 @@
 									</span> 
 									<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
 =======
+=======
+>>>>>>> 31c85ed0c9d10ad35e6a0fcdee8925c190770449
 <div class="row">
 	<div class="col-md-8">
 		<div class="container">
@@ -107,7 +110,10 @@
 										<textarea name="txtareaDescription" class="form-control" rows="5">{{ $specialtyService->spec_desc }}
 										</textarea>
 									</div>
+<<<<<<< HEAD
 >>>>>>> f4820d7cf470def8991811188b6ab336913a8675
+=======
+>>>>>>> 31c85ed0c9d10ad35e6a0fcdee8925c190770449
 								</div>
 								<div class="form-group">
 									<label class="col-md-12">Video Link</label>
