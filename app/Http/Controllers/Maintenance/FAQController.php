@@ -67,7 +67,6 @@ class FAQController extends Controller
         try
         {
             $faq = FAQ::findOrFail($id);
-
             if ($faq->delete())
             {
                 return redirect()->back()->with('success', 
@@ -78,26 +77,6 @@ class FAQController extends Controller
         catch (\Exception $e)
         {
             return $e->getMessage();
-        }
-    }
-
-    public function activate($id)
-    {
-        $faq = FAQ::findOrFail($id);
-        $faq->isActive = 1;
-        if ($faq->save()) {
-            return redirect()->back()
-            ->with('success', 'The FAQs record has been activated!');
-        }
-    }
-
-    public function deactivate($id)
-    {
-        $faq = FAQ::findOrFail($id);
-        $faq->isActive = 0;
-        if ($faq->save()) {
-            return redirect()->back()
-            ->with('error', 'The FAQs record has been deactivated!');
         }
     }
 
