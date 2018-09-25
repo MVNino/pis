@@ -28,12 +28,12 @@
                             <div class="col-md-4">
                                 
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="color: #fff;">
                                  <p style="font-size: 150%;"><strong>Visit my Social Media sites</strong></p>
-                                <a href="http://facebook.com"><i class="fa fa-facebook-square" style="font-size: 300%;"></i></a>&ensp;
-                                <a href="http://twitter.com"> <i class="fa fa-twitter-square" style="font-size: 300%;"></i></a>&ensp;
-                                <a href="http://ph.linkedin.com/in/joy-gali-73894364"> <i class="fa fa-linkedin-square" style="font-size: 300%;"></i></a>  
-                                <a href="https://www.researchgate.net/profile/Joy_Gali2"> <i class="fa fa-file-text " style="font-size: 300%;"></i></a>    
+                                <a href="http://facebook.com"><i class="fa fa-facebook-square" style="font-size: 300%;color: #22B4B8;"></i></a>&ensp;
+                                <a href="http://twitter.com"> <i class="fa fa-twitter-square" style="font-size: 300%;color: #22B4B8;"></i></a>&ensp;
+                                <a href="http://ph.linkedin.com/in/joy-gali-73894364"> <i class="fa fa-linkedin-square" style="font-size: 300%;color: #22B4B8;"></i></a>&ensp;
+                                <a href="https://www.researchgate.net/profile/Joy_Gali2"> <i class="fa fa-file-text" style="font-size: 255%;color: #22B4B8;"></i></a>    
                             </div>
                         </div>
                     </div>

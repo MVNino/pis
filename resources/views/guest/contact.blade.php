@@ -2,40 +2,36 @@
 
 @section('content')
     <section class="home-sm">
-        
     </section>
-    <section class="section-padding">
-    <div class="row"> 
-        <div class="col-md-6" style="padding-left: 10%; margin-top: 10%; margin-bottom: 10%">
-            <h3>Clinic</h3>
-            <h2><strong>Schedule</strong></h2>
-            <!-- <p>We are open from {{$clinic->clinic_days}} at {{$clinic->clinic_location}} between {{$clinic->clinic_open_time}} and {{$clinic->clinic_close_time}}</p>
- -->        </div>
-    <div class="col-md-5">
-<table class="table" style="width:120%;">
-    <thead>
-        <tr>
-            <th>Location</th>
-            <th>Days</th>
-            <th>Opening</th>
-            <th>Closing</th>        
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($clinics as $clinic)
-        @if($clinic->status == 0)
-        <tr class="warning">
-            <td>{{$clinic->clinic_location}}</td>
-            <td>{{$clinic->clinic_days}}</td>
-            <td>{{$clinic->clinic_open_time}}</td>
-            <td>{{$clinic->clinic_close_time}}</td>
-        </tr>
-        @endif
-        @endforeach
-    </tbody>
-</table>
-</div>
+    <section class="section-padding"> 
+    <div align= "center">
+     <div style="color: #fff; background-color: #F05B57; height: 100%; width: 40%; font-size: 300%; font-weight: 900; margin-bottom: 3%; margin-top: 3%">
+         The Doctor is In!
+     </div>
+        <table class="table" style="width:60%;" style="font-family: helvetica;">
+            <thead style="background-color: #22B4B8; color: #fff;">
+                <tr>
+                    <th>Location</th>
+                    <th>Days</th>
+                    <th>Opening</th>
+                    <th>Closing</th>        
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($clinics as $clinic)
+                @if($clinic->status == 0)
+                <tr class="info">
+                    <td>{{$clinic->clinic_location}}</td>
+                    <td>{{$clinic->clinic_days}}</td>
+                    <td>{{$clinic->clinic_open_time}}</td>
+                    <td>{{$clinic->clinic_close_time}}</td>
+                </tr>
+                @endif
+                @endforeach
+            </tbody>
+         </table>
     </div>
+
     </section>
     <section class="section-padding v3-contact v2contact-page">
         <div class="container">

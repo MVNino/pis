@@ -205,7 +205,7 @@ nav.navbar {
 }
 
 .navbar-area {
-    position: absolute;
+    position: fixed;
     width: 100%;
     left: 0;
     z-index: 55;
@@ -1974,7 +1974,7 @@ button.NextArrowbrand:hover {
 }
 
 .home-area.v3 nav.navbar-area {
-    background: #495F76;
+    background: #5B6E83;
     border-top: 0;
     box-shadow: 3px 5px 10px rgba(0, 0, 0, .07);
 }
