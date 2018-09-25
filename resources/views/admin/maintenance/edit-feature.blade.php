@@ -38,6 +38,10 @@
                         </div>
                     <div align="right">
                         <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+                        <button id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
+                            <i class="fa fa-close"></i> Cancel
+                            <a href="#"></a>
+                        </button>
                     </div>
                 {!!Form::close()!!}
             </div>

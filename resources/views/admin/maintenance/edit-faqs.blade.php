@@ -51,9 +51,15 @@
 					</div>
 				</div>
 				{{ Form::hidden('_method', 'PUT') }}
-				<button type="submit" class="btn btn-info waves-effect waves-light m-r-10 float-right">
-					<i class="fa fa-fw fa-lg fa-check-circle"></i> Submit
-				</button>
+				<div align="right">
+                    <button id="btnSave" type="button" class="btn btn-info">
+                        <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
+                    </button>
+                    <button id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
+                        <i class="fa fa-close"></i> Cancel
+                        <a href="#"></a>
+                    </button>
+                </div>
 			{!! Form::close() !!}
             </div>
         </div>

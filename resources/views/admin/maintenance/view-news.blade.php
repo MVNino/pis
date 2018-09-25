@@ -36,29 +36,6 @@
 								{{ Form::number('numOrder', $news->news_order, ['class' => 'form-control', 'min' => '1']) }}					
 							</div>
 						</div>
-						<div class="col-md-6">
-							{{ Form::label('lblStatus', 'Status of news') }}<br>
-							<div class="form-check form-check-inline">
-								@if($news->isActive == 1)
-								<input class="form-check-input" type="radio" name="radioStatus" id="exampleRadios1" value="1" checked>
-								@else
-								<input class="form-check-input" type="radio" name="radioStatus" id="exampleRadios1" value="1">
-								@endif
-								<label class="form-check-label" for="exampleRadios1">
-									Active
-								</label>
-							</div>
-							<div class="form-check form-check-inline">
-								@if($news->isActive == 0)
-								<input class="form-check-input" type="radio" name="radioStatus" id="exampleRadios2" value="0" checked>
-								@else
-								<input class="form-check-input" type="radio" name="radioStatus" id="exampleRadios2" value="0">
-								@endif
-								<label class="form-check-label" for="exampleRadios2">
-									Inactive
-								</label>
-							</div>
-						</div>
 					</div>
 					<div class="form-group">
 						{{ Form::label('lblNewsTitle', 'News Title') }}
@@ -70,7 +47,7 @@
 					</div>
 					<div class="form-group">
 						<!-- Existing image na nasa database -->    
-						<label class="col-md-12">Uploaded News Image</span></label>
+						<label class="col-md-12">Current News Image</span></label>
 						<img src="">
 					</div>
 					<div class="form-group">
@@ -94,8 +71,14 @@
 					</div>				
 					{{ Form::hidden('_method', 'PUT') }}
 					<div align="right">
-                        <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
-					</div>
+						<button id="btnSave" type="button" class="btn btn-info">
+							<i class="fa fa-fw fa-lg fa-check-circle"></i> Save
+						</button>
+						<button id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
+							<i class="fa fa-close"></i> Cancel
+							<a href="#"></a>
+						</button>
+                	</div>
 					{!! Form::close() !!}
 				</div>	
 			</div>

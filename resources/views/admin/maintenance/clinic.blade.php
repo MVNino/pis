@@ -31,8 +31,6 @@
                             <th>Opening Time</th>
                             <th>Closing Time</th>
                             <th>Clinic Days</th>
-                            <th>Clinic Places</th>
-                            <th>Clinic Telephone</th>
                             <th colspan="2">Action</th>
                         <tr>
                     </thead>
@@ -40,13 +38,11 @@
                         @forelse($clinics as $clinic) 
                         @if($clinic->status == 0)
                         <tr>
-                            <td>{{$clinic->clinic_contact}}</td>
-                            <td>{{$clinic->clinic_location}}</td>
-                            <td>{{$clinic->clinic_open_time}}</td>
-                            <td>{{$clinic->clinic_close_time}} </td>
-                            <td>{{$clinic->clinic_days}} </td>
-                            <td>{{$clinic->clinic_places}} </td>
-                            <td>{{$clinic->clinic_telephone}} </td>
+                            <td>{{$row['clinic_contact']}}</td>
+                            <td>{{$row['clinic_location']}}</td>
+                            <td>{{$row['clinic_open_time']}}</td>
+                            <td>{{$row['clinic_close_time']}} </td>
+                            <td>{{$row['clinic_days']}} </td>
 
                             <td>
                             <a href="{{action('Maintenance\ClinicController@edit', $clinic->clinic_contact_id)}}" class="btn btn-sm btn-primary">
@@ -70,13 +66,6 @@
                         @endforelse
                     </tbody>
                     <tfoot>
-                    <tr>
-						<td colspan="8">
-							<div class="text-right">
-								<ul class="pagination"> </ul>
-							</div>
-						</td>
-					</tr>
                     </tfoot>
                 </table>
                 <div align="center">
