@@ -5,25 +5,7 @@
         <!-- start slider section -->
        <!--  <div class="Modern-Slider">
             
-            <div class="item">
-                <div class="img-fill">
-                    <img src="/storage/images/about/{{$about->about_image}}" alt="banner" style="object-fit: cover; height: 700px; width: 100%;">
-                    <div class="info">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-6 slider-content-area text-left">
-                                    <div class="v3 welcome-text">
-                                        <h1>The Doctor is In!</h1>
-                                        <h2>Clinic Schedule</h2>
-                                        <h4>We're open from {{$clinic->clinic_days}} during {{$clinic->clinic_open_time}} to {{$clinic->clinic_close_time}}.<br/> You can visit us at {{$clinic->clinic_location}}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+             -->
         <!-- end of slider section -->
     </section>
     <section class="section-padding">
@@ -33,57 +15,26 @@
             <h2><strong>Schedule</strong></h2>
         </div>
     <div class="col-md-5">
-<table class="table" style="width:120%;">
-    <thead>
-        <tr>
-            <th>Location</th>
-            <th></th>
-            <th>Opening</th>
-            <th>Closing</th>        
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="warning">
-            <td>Makati</td>
-            <td>Week days</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="warning">
-            <td></td>
-            <td>Week end</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="info">
-            <td>Taguig</td>
-            <td>Week days</td>
-            <td></td>
-            <td></td>
-            
-        </tr>
-        <tr class="info">
-            <td></td>
-            <td>Week ends</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr class="success">
-            <td>Marikina</td>
-            <td>Week days</td>
-            <td></td>
-            <td></td>
-            
-        </tr>
-        <tr class="success">
-            <td></td>
-            <td>Week ends</td>
-            <td></td>
-            <td></td>
-        </tr>
-
-    </tbody>
-</table>
+    <table class="table table-striped" style="width:120%;">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Days Open</th>
+                <th>Opening</th>
+                <th>Closing</th>        
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($clinic as $row)
+                <tr>
+                    <td>{{$row->clinic_location}}</td>
+                    <td>{{$row->clinic_days}}</td>
+                    <td>{{$row->clinic_open_time}}</td>
+                    <td>{{$row->clinic_close_time}}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
     </div>
     </section>
