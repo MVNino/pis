@@ -12,6 +12,7 @@
                 </div>
                 <h4>{{ $service->spec_title }}</h4>
                 <p>{{ $service->spec_desc }}</p>
+                 <p><a href="/services"> <i class="fa fa-chevron-circle-left"></i>Go back to Services</a></p>
             </div>
         </div>
         <div class="col-md-8">
