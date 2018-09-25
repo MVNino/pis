@@ -13,7 +13,8 @@
         <div class="col-md-6" style="padding-left: 10%; margin-top: 10%; margin-bottom: 10%">
             <h3>Clinic</h3>
             <h2><strong>Schedule</strong></h2>
-        </div>
+            <!-- <p>We are open from {{$clinic->clinic_days}} at {{$clinic->clinic_location}} between {{$clinic->clinic_open_time}} and {{$clinic->clinic_close_time}}</p>
+ -->        </div>
     <div class="col-md-5">
     <table class="table table-striped" style="width:120%;">
         <thead>
@@ -49,6 +50,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-sm-4">
                 <div class="contactv2address">
                     <div class="row single-contact">
@@ -64,7 +66,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_contact }}</h4>
+                            <h4>{{ $clinic->clinic_telephone }}</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -72,7 +74,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_email }}</h4>
+                            <h4>{{ $clinic->clinic_contact }}</h4>
                         </div>
                     </div>
                 </div>
@@ -112,5 +114,28 @@
 @section('pg-specific-js')
 <script>
 $("#navlink-contact").addClass("current-menu-item");
+</script>
+@endsection
+
+@section('pg-specific-js')
+<!-- wysuhtml5 Plugin JavaScript -->
+<script src="{{ asset('elite/js/tinymce.min.js') }}"></script>
+<script>
+$(document).ready(function() {
+
+    if ($("#mymce").length > 0) {
+        tinymce.init({
+            selector: "textarea#mymce",
+            theme: "modern",
+            height: 300,
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+        });
+    }
+});
 </script>
 @endsection

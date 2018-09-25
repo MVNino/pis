@@ -17,7 +17,6 @@ class ClinicController extends Controller
     
     public function viewClinic()
     {
-
      $clinic = Clinic::
         where('status', '=', 0)
         ->orderBy('clinic_location')
@@ -42,18 +41,19 @@ class ClinicController extends Controller
         $this->validate($request, [
             'contact' => 'required|string',
             'location' => 'required|string',
+            'days' => 'required',
             'open' => 'required',
             'close' => 'required',
-            'days' => 'required',
-            'map' => 'image|nullable|max:3000',
-
+            'fileMapImg' => 'image|required|max:3000',
+            'places' => 'nullable',
+            'telephone' => 'nullable'
         ]);
 
         // save contact to database
         $clinic = new Clinic;
-
         $clinic->clinic_contact = $request->contact;
         $clinic->clinic_location = $request->location;
+        $clinic->clinic_days = $request->days;
         $clinic->clinic_open_time = $request->open;
         $clinic->clinic_close_time = $request->close;
         $clinic->clinic_days = $request->days;
@@ -74,6 +74,7 @@ class ClinicController extends Controller
                 ->storeAs('public/images/map', $mapImgNameToStore);
             $clinic->clinic_map = $mapImgNameToStore;
         }
+        $clinic->status = 0;
         
         if($clinic->save()){
             return redirect()->back()->with('success', 'Clinic Info added!');
@@ -86,7 +87,7 @@ class ClinicController extends Controller
         return view('admin.maintenance.edit-clinic', compact('clinic', 'id'));
     }
 
-    public function editClinic(Request $request, $id)
+    public function updateClinic(Request $request, $id)
     {
         $this->validate($request, [
             'contact' => 'required|string',
@@ -94,7 +95,9 @@ class ClinicController extends Controller
             'open' => 'required',
             'close' => 'required',
             'days' => 'required',
-            'map' => 'image|nullable|max:3000',
+            'fileMapImg' => 'image|nullable|max:3000',
+            'places' => 'nullable',
+            'telephone' => 'nullable'
         ]);
 
         // save clinic to database
@@ -102,6 +105,7 @@ class ClinicController extends Controller
         $clinic = Clinic::findOrFail($id);
         $clinic->clinic_contact = $request->input('contact');
         $clinic->clinic_location = $request->input('location');
+        $clinic->clinic_days = $request->input('days');
         $clinic->clinic_open_time = $request->input('open');
         $clinic->clinic_close_time = $request->input('close');
         $clinic->clinic_days = $request->input('days');
@@ -118,14 +122,9 @@ class ClinicController extends Controller
                 ->storeAs('public/images/map', $mapImgNameToStore);
             $clinic->clinic_map = $mapImgNameToStore;
         }
-
-        $clinic->save();
-
         if ($clinic->save())
-        {
-            
-                return redirect()->back()->with('success', 'Updated Successfully!');
-            
+        {   
+                return redirect()->back()->with('success', 'Updated Successfully!');   
         }
     }
 

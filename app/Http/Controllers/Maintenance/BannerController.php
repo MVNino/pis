@@ -158,4 +158,8 @@ class BannerController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function editBanner() {
+        return view('admin.maintenance.edit-banner');
+    }
 }

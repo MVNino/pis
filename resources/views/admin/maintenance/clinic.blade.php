@@ -22,6 +22,7 @@
                     <i class="fa fa-plus"></i> Clinic Information
                 </button><br><br>
             </div>
+            
                 <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                     <thead>
                         <tr>
@@ -34,21 +35,22 @@
                         <tr>
                     </thead>
                     <tbody>
-                        @foreach($clinic as $row) 
+                        @forelse($clinics as $clinic) 
+                        @if($clinic->status == 0)
                         <tr>
-                            <td>{{$row['clinic_contact']}}</td>
-                            <td>{{$row['clinic_location']}}</td>
-                            <td>{{$row['clinic_open_time']}}</td>
-                            <td>{{$row['clinic_close_time']}} </td>
-                            <td>{{$row['clinic_days']}} </td>
+                            <td>{{$clinic->clinic_contact}}</td>
+                            <td>{{$clinic->clinic_location}}</td>
+                            <td>{{$clinic->clinic_open_time}}</td>
+                            <td>{{$clinic->clinic_close_time}} </td>
+                            <td>{{$clinic->clinic_days}} </td>
 
                             <td>
-                            <a href="{{action('Maintenance\ClinicController@edit', $row['clinic_contact_id'])}}" class="btn btn-sm btn-primary">
+                            <a href="{{action('Maintenance\ClinicController@edit', $clinic->clinic_contact_id)}}" class="btn btn-sm btn-primary">
                                 <i class="fa fa-edit"></i>
                             </a>
                             </td>
                             <td>
-                                {!!Form::open(['action' => ['Maintenance\ClinicController@deleteClinic', $row['clinic_contact_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Clinic Details?')"])!!}
+                                {!!Form::open(['action' => ['Maintenance\ClinicController@deleteClinic', $clinic->clinic_contact_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Clinic Details?')"])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
                                         <i class="fa fa-times"></i>
@@ -56,20 +58,18 @@
                                 {!!Form::close()!!}
                             </td>
                         </tr>
-                        @endforeach
+                        @endif
+                        @empty
+                            <div class="alert alert-warning">
+                                There is no record yet.
+                            </div>
+                        @endforelse
                     </tbody>
                     <tfoot>
-                    <tr>
-						<td colspan="8">
-							<div class="text-right">
-								<ul class="pagination"> </ul>
-							</div>
-						</td>
-					</tr>
                     </tfoot>
                 </table>
                 <div align="center">
-                    {{ $clinic->links() }}
+                {{ $clinic->links() }}
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
                 <h4 class="modal-title" id="exampleModalLabel">Add Details</h4>
             </div>
             <div class="modal-body">
-                {!! Form::open(['action' => 'Maintenance\ClinicController@addClinic','class' => 'form-material' ,'autocomplete'=>'off' ,'method' => 'POST']) !!}
+                {!! Form::open(['action' => 'Maintenance\ClinicController@addClinic', 'method' => 'POST', 'enctype' => 'multipart/form-data','class' => 'form-material' ,'autocomplete' => 'off'])!!}
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
@@ -151,4 +151,27 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('pg-specific-js')
+<!-- wysuhtml5 Plugin JavaScript -->
+<script src="{{ asset('elite/js/tinymce.min.js') }}"></script>
+<script>
+$(document).ready(function() {
+
+    if ($("#mymce").length > 0) {
+        tinymce.init({
+            selector: "textarea#mymce",
+            theme: "modern",
+            height: 300,
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+        });
+    }
+});
+</script>
 @endsection

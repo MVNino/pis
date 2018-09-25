@@ -37,11 +37,13 @@ class GuestController extends Controller
                 'features' => $features]);
     }
 
-    public function viewServices() {
+    public function viewServices() 
+    {
         $otherServices = OtherService::orderBy('other_services_id', 'desc')
                 ->paginate(6);
         $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
                 ->paginate(6);
+
         return view('guest.services', ['otherServices' => $otherServices, 
                 'specialtyServices' => $specialtyServices]);
     }
@@ -70,12 +72,11 @@ class GuestController extends Controller
     public function viewContact() 
     {
         $contact = $this->getClinicContact();
-        
         $clinic = Clinic::
             where('status', '=', 0)
             ->orderBy('clinic_location');
-    		
     	return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact]);
+
     }
 
     public function getContact()
