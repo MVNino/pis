@@ -38,11 +38,11 @@
                         @forelse($clinics as $clinic) 
                         @if($clinic->status == 0)
                         <tr>
-                            <td>{{$row['clinic_contact']}}</td>
-                            <td>{{$row['clinic_location']}}</td>
-                            <td>{{$row['clinic_open_time']}}</td>
-                            <td>{{$row['clinic_close_time']}} </td>
-                            <td>{{$row['clinic_days']}} </td>
+                            <td>{{$clinic->clinic_contact}}</td>
+                            <td>{{$clinic->clinic_location}}</td>
+                            <td>{{$clinic->clinic_open_time}}</td>
+                            <td>{{$clinic->clinic_close_time}} </td>
+                            <td>{{$clinic->clinic_days}} </td>
 
                             <td>
                             <a href="{{action('Maintenance\ClinicController@edit', $clinic->clinic_contact_id)}}" class="btn btn-sm btn-primary">
@@ -126,18 +126,6 @@
                             </div>
                     </div>
                     </div> 
-                    <div class="form-group">
-                        <label class="col-md-12">Clinic Places</span></label>
-                        <div class="col-md-12">
-                            <input type="text" name="places" class="form-control"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-12">Telephone</span></label>
-                        <div class="col-md-12">
-                            <input type="text" name="telephone" class="form-control"/> 
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>

@@ -45,7 +45,7 @@
                             </div>
 
                         </div> 
-                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
+                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>
                     </form>
                 </div>
             </div>

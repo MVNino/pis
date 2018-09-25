@@ -65,8 +65,6 @@ class ClinicController extends Controller
                 ->storeAs('public/images/map', $mapImgNameToStore);
             $clinic->clinic_map = $mapImgNameToStore;
         }
-        $clinic->clinic_places = $request->places;
-        $clinic->clinic_telephone = $request->telephone;
         $clinic->status = 0;
         
         if($clinic->save()){
@@ -114,8 +112,6 @@ class ClinicController extends Controller
                 ->storeAs('public/images/map', $mapImgNameToStore);
             $clinic->clinic_map = $mapImgNameToStore;
         }
-        $clinic->clinic_places = $request->input('places');
-        $clinic->clinic_telephone = $request->input('telephone');
 
         
         if ($clinic->save())
