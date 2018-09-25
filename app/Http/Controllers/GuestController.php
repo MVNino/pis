@@ -37,7 +37,8 @@ class GuestController extends Controller
                 'features' => $features]);
     }
 
-    public function viewServices() {
+    public function viewServices() 
+    {
         $otherServices = OtherService::orderBy('other_services_id', 'desc')
                 ->paginate(6);
         $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
@@ -71,19 +72,11 @@ class GuestController extends Controller
     public function viewContact() 
     {
         $contact = $this->getClinicContact();
-        // $about = $this->getAbout();
-        $clinics = Clinic::all();
-        if ($clinics->count() > 0)
-        {
-    		$clinicMaxId = Clinic::max('clinic_contact_id');
-    		$clinic = Clinic::findOrFail($clinicMaxId);
-    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact,
-                    'clinics' => $clinics]);
-        }
-        else
-        {
-	        return view('guest.contact', ['clinics' => $clinics]);
-        }
+        $clinic = Clinic::
+            where('status', '=', 0)
+            ->orderBy('clinic_location');
+    	return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact]);
+
     }
 
     public function getContact()

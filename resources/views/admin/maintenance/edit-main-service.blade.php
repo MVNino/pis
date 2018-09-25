@@ -32,6 +32,7 @@
 						'class' => 'form-material' ,'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data']) !!}
 						@csrf
 						<div class="form-group">
+<<<<<<< HEAD
 									<label class="col-sm-12">Image</label>
 									<div class="col-sm-12">
 										<div class="fileinput fileinput-new input-group" data-provides="fileinput">
@@ -50,7 +51,6 @@
 									<label class="col-md-12">Service Description</label>
 									<div class="col-md-12">
 										<textarea name="txtareaDescription" class="form-control" rows="5">{{ $mainService->other_desc }}</textarea>
-									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-12">Video Link</label>

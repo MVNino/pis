@@ -69,7 +69,7 @@
                     </tfoot>
                 </table>
                 <div align="center">
-                {{ $clinics->links() }}
+                {{ $clinic->links() }}
                 </div>
             </div>
         </div>
@@ -88,15 +88,31 @@
             <div class="modal-body">
                 {!! Form::open(['action' => 'Maintenance\ClinicController@addClinic', 'method' => 'POST', 'enctype' => 'multipart/form-data','class' => 'form-material' ,'autocomplete' => 'off'])!!}
                     <div class="form-group">
-                        <label class="col-md-12">Contact</span></label>
-                        <div class="col-md-12">
-                            <input type="text" name="contact" class="form-control"/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="col-md-12">Contact</span></label>
+                                <div class="col-md-12">
+                                    <input type="text" name="contact" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-md-12">Telephone Number</span></label>
+                                <div class="col-md-12">
+                                    <input type="text" name="telephone" class="form-control"/> 
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-12">Location</span></label>
-                        <div class="col-md-12">
-                            <input type="text" name="location" class="form-control"/> 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="col-md-12">Location</span></label>
+                                <input type="text" name="location" class="form-control"/> 
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-md-12">Clinic Place</span></label>
+                                <input type="text" name="places" class="form-control"/> 
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -110,7 +126,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-12">Clinic Day</span></label>
+                        <label class="col-md-12">Clinic Open Days</span></label>
                         <div class="col-md-12">
                             <input type="text" name="days" class="form-control"/> 
                         </div>
