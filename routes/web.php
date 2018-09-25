@@ -13,7 +13,7 @@
 
 # Website
 Route::get('/', 'GuestController@viewIndex');
-Route::get('about', 'GuestController@viewAbout');
+Route::get('/about','GuestController@viewAbout');
 Route::get('services','GuestController@viewServices')->name('services');
 Route::get('service/{id}', 'GuestController@showService');
 Route::get('other-service/{id}', 'GuestController@showOtherService');
@@ -39,6 +39,7 @@ Route::group(
 				Route::post('banner', 'BannerController@addBanner');
 				Route::put('banner/{id}', 'BannerController@updateBanner');
 				Route::delete('banner/{id}', 'BannerController@deleteBanner');
+				Route::get('bannerEdit', 'BannerController@editBanner');
 				// Clinic 
 				Route::get('clinic', 'ClinicController@viewClinic')->name('maintenance.clinic');
 				Route::post('clinic', 'ClinicController@addClinic');
@@ -97,6 +98,10 @@ Route::group(
 							'ServiceController@updateMainService');
 				Route::delete('main-service/{id}/delete', 
 							'ServiceController@deleteMainService');
+				// Route Temp
+				Route::get('main-service/edit/temp', function(){
+					return view('admin.maintenance.edit-special-service-video');
+				});
 			});
 		});
 
@@ -108,6 +113,7 @@ Route::group(
 				Route::get('patients', 'PatientController@listPatients')
 					->name('transaction.patients');
 				Route::get('editPatients', 'PatientController@editPatients'); //change it
+				Route::get('billing','PaymentController@billing'); //change it
 			});
 		});
 });

@@ -18,8 +18,8 @@ class ClinicController extends Controller
     public function viewClinic()
     {
 
-     $clinic = Clinic::all()->toArray();
-     return view('admin.maintenance.clinic', compact('clinic'));   
+     $clinics = Clinic::orderBy('clinic_contact_id')->paginate(5);
+    return view('admin.maintenance.clinic', ['clinics' => $clinics]);  
      //    $clinics = Clinic::all();
      //    if ($clinics->count() > 0)
      //    {
@@ -65,8 +65,7 @@ class ClinicController extends Controller
                 ->storeAs('public/images/map', $mapImgNameToStore);
             $clinic->clinic_map = $mapImgNameToStore;
         }
-        $clinic->clinic_places = $request->places;
-        $clinic->clinic_telephone = $request->telephone;
+        $clinic->status = 0;
         
         if($clinic->save()){
             return redirect()->back()->with('success', 'Clinic Info added!');
@@ -87,7 +86,7 @@ class ClinicController extends Controller
             'open' => 'required',
             'close' => 'required',
             'days' => 'required',
-            'fileMapImg' => 'image|required|max:3000',
+            'fileMapImg' => 'image|nullable|max:3000',
             'places' => 'nullable',
             'telephone' => 'nullable'
         ]);
@@ -100,7 +99,7 @@ class ClinicController extends Controller
         $clinic->clinic_days = $request->input('days');
         $clinic->clinic_open_time = $request->input('open');
         $clinic->clinic_close_time = $request->input('close');
-
+        
         if($request->hasFile('fileMapImg')){
             // Get the file's extension
             $fileExtension = $request->file('fileMapImg')
@@ -113,8 +112,7 @@ class ClinicController extends Controller
                 ->storeAs('public/images/map', $mapImgNameToStore);
             $clinic->clinic_map = $mapImgNameToStore;
         }
-        $clinic->clinic_places = $request->input('places');
-        $clinic->clinic_telephone = $request->input('telephone');
+
         
         if ($clinic->save())
         {

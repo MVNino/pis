@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+    @extends('admin.layouts.app')
 
 @section('breadcrumb')
 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -29,6 +29,10 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-md-12">Current Logo</label>
+                            <img src ="">
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-12">Company Logo
                                 <small>Current Image: <a target="_blank" href="/storage/images/company/{{ $company->company_clinic_logo }}">{{ $company->company_clinic_logo }}</a></small>
                             </label>
@@ -41,7 +45,7 @@
                             </div>
 
                         </div> 
-                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
+                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>
                     </form>
                 </div>
             </div>
