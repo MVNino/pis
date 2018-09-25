@@ -16,8 +16,9 @@ class FeatureController extends Controller
     
     public function viewFeatures()
     {
-    	$feature = Feature::all()->toArray();
-        return view('admin.maintenance.features', compact('feature'));
+        $features = Feature::orderBy('features_id')->paginate(5);
+        return view('admin.maintenance.features', ['features' => $features]);
+    	
     }
 
     public function storeFeature(Request $request)
@@ -25,7 +26,8 @@ class FeatureController extends Controller
         $this->validate($request, [
   			'title' => 'required',
   			'description' => 'required',
-  			'fileFeatureImg' => 'image|nullable|max:3000'
+  			'fileFeatureImg' => 'image|nullable|max:3000',
+            'order' => 'nullable'
   		]);
 
       try 
@@ -33,19 +35,9 @@ class FeatureController extends Controller
   		$feature = new Feature;
   		$feature->feature_title = $request->title;
   		$feature->feature_description = $request->description;
-        // Handle file upload for feature image
-        if($request->hasFile('fileFeatureImg')){
-            // Get the file's extension
-            $fileExtension = $request->file('fileFeatureImg')
-                ->getClientOriginalExtension();
-            // Create a filename to store(database)
-            $featureImgNameToStore = $request->title
-                .'_'.'FeatureImg'.'_'.time().'.'.$fileExtension;
-            // Upload file to system
-            $path = $request->file('fileFeatureImg')
-                ->storeAs('public/images/feature', $featureImgNameToStore);
-            $feature->feature_image = $featureImgNameToStore;
-        }
+        $feature->status = 0;
+        $feature->feature_order = $request->order;
+
         if ($feature->save()) {
         	return redirect()->back()->with('success', 'feature added!');
         }
