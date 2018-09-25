@@ -15,7 +15,8 @@ use App\SpecialtyService;
 
 class GuestController extends Controller 
 {   
-    public function _construct() {
+    public function _construct() 
+    {
     }
 
     public function viewIndex()

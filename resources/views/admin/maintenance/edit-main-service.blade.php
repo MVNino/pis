@@ -27,7 +27,9 @@
 					<h4 class="text-light">Edit </h4>
 				</div>
 				<div class="card-body">
-					<form class="form-material">
+					{!! Form::open(['action' => ['Maintenance\ServiceController@updateMainService', $mainService->other_services_id],
+					'class' => 'form-material' ,'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data']) !!}
+					@csrf
 						<label class="col-sm-12">Image</label>
 						<div class="col-sm-12">
 							<div class="fileinput fileinput-new input-group" data-provides="fileinput">
@@ -38,19 +40,13 @@
 						<div class="form-group">
 							<label class="col-md-12">Services Title</label>
 							<div class="col-md-12">
-								<input type="text" name="txtTitle" class="form-control">	
+								<input type="text" name="txtTitle" class="form-control" value="{{ $mainService->other_title }}">	
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-12">Services Description</label>
 							<div class="col-md-12">
-								<textarea name="txtAreaDescription" class="form-control" rows="5"></textarea>	
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-12">Video Link</label>
-							<div class="col-md-12">
-								<input type="text" name="txtVideoLink" class="form-control">	
+								<textarea name="txtAreaDescription" class="form-control" rows="5">{{ $mainService->other_desc }}</textarea>	
 							</div>
 						</div>
 						<div align="right">
@@ -59,7 +55,7 @@
 								<i class="fa fa-close"></i> Cancel
 							</a>
                     	</div>
-					</form>
+					{!! Form::close() !!}
 				</div>
 			</div>
 		</div>
@@ -72,10 +68,10 @@
 				</div>
 				<div class="card-body">
 					<br>
-					<a href="">Vid Link</a>
+					@foreach($mainService->otherServiceVids as $otherServiceVid)
+					<a href="/admin/maintenance/other-service/{{ $otherServiceVid->video_id }}/edit-video">{{ $otherServiceVid->video }}</a>
 					<hr>
-					<a href="">SVid Link</a>
-					<hr>
+					@endforeach
 				</div>
 			</div>
 		</div>

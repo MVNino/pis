@@ -24,10 +24,15 @@
 		<div class="container">
 			<div class="card">
 				<div class="card-header bg-primary">
-					<h4 class="text-light">Edit </h4>
+					<h4 class="text-light">Edit Service</h4>
 				</div>
 				<div class="card-body">
-					<form class="form-material">
+					{!! Form::open(['action' => ['Maintenance\ServiceController@updateSpecialty', $specialtyService->spec_service_id],
+					'class' => 'form-material' ,'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data']) !!}
+	                	@csrf
+						<div>
+							<img src="/storage/images/service/specialty/{{ $specialtyService->spec_image_icon }}" width="300" height="200">
+						</div>
 						<label class="col-sm-12">Image</label>
 						<div class="col-sm-12">
 							<div class="fileinput fileinput-new input-group" data-provides="fileinput">
@@ -38,22 +43,18 @@
 						<div class="form-group">
 							<label class="col-md-12">Services Title</label>
 							<div class="col-md-12">
-								<input type="text" name="txtTitle" class="form-control">	
+								<input type="text" name="txtTitle" class="form-control" value="{{ $specialtyService->spec_title }}">	
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-12">Services Description</label>
 							<div class="col-md-12">
-								<textarea name="txtAreaDescription" class="form-control" rows="5"></textarea>	
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-12">Video Link</label>
-							<div class="col-md-12">
-								<input type="text" name="txtVideoLink" class="form-control">	
+								<textarea name="txtAreaDescription" class="form-control" rows="5">{{ $specialtyService->spec_desc }}
+								</textarea>	
 							</div>
 						</div>
 						<div align="right">
+							{{ Form::hidden('_method', 'PUT') }}
 							<button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
 							<a href="#" role="button" id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
 								<i class="fa fa-close"></i> Cancel
@@ -72,10 +73,10 @@
 				</div>
 				<div class="card-body">
 					<br>
-					<a href="">Vid Link</a>
+					@foreach($specialtyService->specialtyServiceVids as $specialtyServiceVid)
+					<a href="/admin/maintenance/main-service/{{ $specialtyServiceVid->video_id }}/edit-video">{{ $specialtyServiceVid->video }}</a>
 					<hr>
-					<a href="">SVid Link</a>
-					<hr>
+					@endforeach
 				</div>
 			</div>
 		</div>

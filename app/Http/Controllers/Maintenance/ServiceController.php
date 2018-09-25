@@ -130,16 +130,14 @@ class ServiceController extends Controller
     {
         $this->validate($request, [
             'txtTitle' => 'required',
-            'txtareaDescription' => 'required',
-            'txtVideoLink' => 'required',
+            'txtAreaDescription' => 'required',
             'fileServiceImg' => 'image|nullable|max:2000'
         ]);
 
         // Insert record to database
         $service = SpecialtyService::findOrFail($id);
         $service->spec_title = $request->txtTitle;
-        $service->spec_desc = $request->txtareaDescription;
-        $service->spec_vidlink = $request->txtVideoLink;
+        $service->spec_desc = $request->txtAreaDescription;
         // Handle file upload for specialty service image
         if($request->hasFile('fileServiceImg')){
             // Get the file's extension
@@ -184,7 +182,6 @@ class ServiceController extends Controller
                 return redirect()->back()->with('success', 
                     'Specialty service removed successfully!');
             }
-
         }
         catch (\Exception $e)
         {
@@ -204,7 +201,6 @@ class ServiceController extends Controller
         $this->validate($request, [
             'txtTitle' => 'required',
             'txtareaDescription' => 'required',
-            'txtVideoLink' => 'required',
             'fileServiceImg' => 'image|nullable|max:2000'
         ]);
 
@@ -212,7 +208,6 @@ class ServiceController extends Controller
         $service = OtherService::findOrFail($id);
         $service->other_title = $request->txtTitle;
         $service->other_desc = $request->txtareaDescription;
-        $service->other_vidlink = $request->txtVideoLink;
         // Handle file upload for specialty service image
         if($request->hasFile('fileServiceImg')){
             // Get the file's extension
@@ -251,5 +246,43 @@ class ServiceController extends Controller
             return $e->getMessage();
         }
 
+    }
+
+    public function editSpecialtyServiceVid($id)
+    {
+        $specialtyServiceVid = SpecialtyServiceVideo::findOrFail($id);
+        return view('admin.maintenance.edit-special-service-video', 
+            ['specialtyServiceVid' => $specialtyServiceVid]);
+    }
+
+    public function updateSpecialtyServiceVid(Request $request, $id)
+    {
+        $this->validate($request, [
+            'txtVideoLink' => 'required'
+        ]);
+        $specialtyServiceVid = SpecialtyServiceVideo::findOrFail($id);
+        $specialtyServiceVid->video = $request->txtVideoLink;
+        if ($specialtyServiceVid->save()) {
+            return redirect()->back()->with('success', 'The video has been updated!');
+        }
+    }
+
+    public function editOtherServiceVid($id)
+    {
+        $otherServiceVid = OtherServiceVideo::findOrFail($id);
+        return view('admin.maintenance.edit-other-service-video', 
+            ['otherServiceVid' => $otherServiceVid]);
+    }
+
+    public function updateOtherServiceVid(Request $request, $id)
+    {
+        $this->validate($request, [
+            'txtVideoLink' => 'required'
+        ]);
+        $otherServiceVid = OtherServiceVideo::findOrFail($id);
+        $otherServiceVid->video = $request->txtVideoLink;
+        if ($otherServiceVid->save()) {
+            return redirect()->back()->with('success', 'The video has been updated!');
+        }
     }
 }
