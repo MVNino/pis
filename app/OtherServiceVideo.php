@@ -15,6 +15,7 @@ class OtherServiceVideo extends Model
 
 	public function otherService()
 	{
-		return $this->belongsTo('App\OtherService', 'other_service_id', 'other_services_id');
+		return $this->belongsTo('App\OtherService', 
+			'other_service_id', 'other_services_id');
 	}
 }

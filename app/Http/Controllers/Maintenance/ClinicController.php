@@ -61,7 +61,7 @@ class ClinicController extends Controller
                 ->getClientOriginalExtension();
             // Create a filename to store(database)
             $mapImgNameToStore = $request->title
-                .'_'.'fileMapImg'.'_'.time().'.'.$fileExtension;
+                .'_'.'MapImg'.'_'.time().'.'.$fileExtension;
             // Upload file to system
             $path = $request->file('fileMapImg')
                 ->storeAs('public/images/map', $mapImgNameToStore);

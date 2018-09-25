@@ -10,8 +10,8 @@
             <div class="row">
                 <div class="col-sm-8 text-left">
                     <div class="get-quate-content"><br><br><br>
-                        <h2>{{$about->about_title}}</h2>
-                        <p>{{$about->about_desc}}</p>
+                        <h2>Dra. Joy Gali</h2>
+                        <p>Dra. Joy Gali is Dra. Joy Gali lololol Dra. Joy Gali AHAHHAHAHAHHA</p>
                     </div>
                 </div>
             </div>

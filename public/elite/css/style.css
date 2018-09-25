@@ -39,6 +39,7 @@ File: css
   top: calc(50% - 3.5px);
   left: calc(50% - 3.5px);
 }
+
 /* This is for popins font for firefox */
 @font-face {
   font-family: 'Poppins';

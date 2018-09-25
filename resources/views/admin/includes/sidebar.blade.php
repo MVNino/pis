@@ -33,8 +33,8 @@
                     <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-inr p-r-10"></i> <span class="hide-menu">
                             Payments <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="payments.html">Billing</a></li>
-                            <li> <a href="patient-invoice.html">Official Receipt</a></li>
+                            <li> <a href="{{ route('transaction.billing') }}">Billing</a></li>
+                            <li> <a href="{{ route('transaction.receipt') }}">Official Receipt</a></li>
                         </ul>
                     </li>
                     </li>

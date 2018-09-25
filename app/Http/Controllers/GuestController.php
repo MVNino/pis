@@ -15,7 +15,8 @@ use App\SpecialtyService;
 
 class GuestController extends Controller 
 {   
-    public function _construct() {
+    public function _construct() 
+    {
     }
 
     public function viewIndex()
@@ -32,9 +33,8 @@ class GuestController extends Controller
     public function viewAbout()
     {
         $features = Feature::orderBy('features_id', 'desc')->get();
-        $about = $this->getAbout();
-        return view('guest.about', ['about' => $about, 
-                'features' => $features]);
+        //$about = $this->getAbout();
+        return view('guest.about', ['features' => $features]);
     }
 
     public function viewServices() 
