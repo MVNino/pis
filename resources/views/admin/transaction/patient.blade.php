@@ -24,26 +24,21 @@
                 <thead>
                     <tr>
                         <th>Patient Name</th>
-                        <th>Medical History Date</th>
-                        <th>Action</th>
+                        <th>Birthday</th>
+                        <th>Contact</th>
+                        <th>Medical History</th>
                     </tr>
                 </thead>
                 <tbody>
                         <td>Leki Romero</td>
                         <td> October 02, 2009</td>
+                        <td>09452066903</td>
                         <td>
                             <a role="button" href="{{action('Transaction\PatientController@editPatients')}}" class="btn btn-sm btn-info">
                             <i class="fa fa-eye"></i>
                             </a>
                         </td>
                 <tfoot>
-                    <tr>
-                        <td colspan="6">
-                            <div class="text-right">
-                                <ul class="pagination"> </ul>
-                            </div>
-                        </td>
-                    </tr>
                 </tfoot>
 			</table>
         </div>

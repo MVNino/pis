@@ -8,7 +8,8 @@
 	<ol class="breadcrumb">
 		<li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home"></i></a></li>
 		<li>Maintenance</li>
-		<li><a class="active" href="{{ route('maintenance.faqs') }}">FAQs</a></li>
+		<li><a href="{{ route('maintenance.faqs') }}">FAQs</a></li>
+		<li><a class="active" href="{{ $faq->faq_id }}">View FAQs</a></li>
 	</ol>
 </div>
 @endsection
@@ -21,33 +22,45 @@
         </div>
         <div class="card-body">
             <div class="container">
-			<form class="form-material form-horizontal">
-					<div class="form-group">
-						<label class="col-md-12">Question</label>
-						<div class="col-md-12">
-							<input type="text" name="question" class="form-control"> </div>
+			{!! Form::open(['action' => ['Maintenance\FAQController@updateFAQs', $faq->faq_id], 'method' => 'POST', 'class' => 'form-material form-horizontal']) !!}
+				@csrf
+				<div class="form-group">
+					<label class="col-md-12">Question</label>
+					<div class="col-md-12">
+						<input type="text" name="question" class="form-control" value="{{ $faq->faq_question }}"> 
 					</div>
-					<div class="form-group">
-						<label class="col-md-12">Answer</label>
-						<div class="col-md-12">
-							<textarea name = "answer" class="form-control" rows="3"></textarea>
-						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-12">Answer</label>
+					<div class="col-md-12">
+						<textarea name = "answer" class="form-control" rows="3">{{ $faq->faq_answer }}</textarea>
 					</div>
-					<div class="form-group">
-						<label class="col-md-12">Category</label>
-						<div class="col-md-12">
-							<select class="custom-select" name="category">
-								<option selected>Select category</option>
-								<option value="surgery">Surgery</option>
-								<option value="service">Service</option>
-								<option value="recovery">Recovery</option>
-								<option value="appointment">Appointments</option>
-								<option value="payments">Payments</option>
-								<option value="others">Others</option>
-							</select>
-						</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-12">Category</label>
+					<div class="col-md-12">
+						<select class="custom-select" name="category">
+							<option value="$faq->faq_category" selected>{{ $faq->faq_category }}</option>
+							<option value="surgery">Surgery</option>
+							<option value="service">Service</option>
+							<option value="recovery">Recovery</option>
+							<option value="appointment">Appointments</option>
+							<option value="payments">Payments</option>
+							<option value="others">Others</option>
+						</select>
 					</div>
-				</form>	
+				</div>
+				{{ Form::hidden('_method', 'PUT') }}
+				<div align="right">
+                    <button id="btnSave" type="button" class="btn btn-info">
+                        <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
+                    </button>
+                    <button id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
+                        <i class="fa fa-close"></i> Cancel
+                        <a href="#"></a>
+                    </button>
+                </div>
+			{!! Form::close() !!}
             </div>
         </div>
     </div>

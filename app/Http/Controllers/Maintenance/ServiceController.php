@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\OtherService;
+use App\OtherServiceVideo;
 use App\SpecialtyService;
+use App\SpecialtyServiceVideo;
 
 class ServiceController extends Controller
 {
@@ -39,7 +41,6 @@ class ServiceController extends Controller
     	$service = new SpecialtyService;
     	$service->spec_title = $request->txtTitle;
     	$service->spec_desc = $request->txtareaDescription;
-    	$service->spec_vidlink = $request->txtVideoLink;
     	// Handle file upload for specialty service image
         if($request->hasFile('fileServiceImg')){
             // Get the file's extension
@@ -68,8 +69,13 @@ class ServiceController extends Controller
             $service->spec_video = $serviceVidNameToStore;
         }
     	if ($service->save()) {
-    		return redirect()->back()
-                ->with('success', 'Specialty service added!');
+            $latestSpecId = SpecialtyService::max('spec_service_id');
+            $specialtyServiceVid = new SpecialtyServiceVideo;
+            $specialtyServiceVid->specialty_service_id = $latestSpecId;
+            $specialtyServiceVid->video = $request->txtVideoLink;
+            if ($specialtyServiceVid->save()) {
+                return redirect()->back()->with('success', 'Service successfully added!');
+            }
     	}
     }
 
@@ -86,7 +92,6 @@ class ServiceController extends Controller
     	$service = new OtherService;
     	$service->other_title = $request->txtTitle;
     	$service->other_desc = $request->txtareaDescription;
-    	$service->other_vidlink = $request->txtVideoLink;
     	// Handle file upload for specialty service image
         if($request->hasFile('fileServiceImg')){
             // Get the file's extension
@@ -102,8 +107,14 @@ class ServiceController extends Controller
         }
         // Save record
     	if ($service->save()) {
-    		return redirect()->back()
-    			->with('success', 'Main service added!');
+
+            $latestOtherId = OtherService::max('other_services_id');
+            $otherServiceVid = new OtherServiceVideo;
+            $otherServiceVid->other_service_id = $latestOtherId;
+            $otherServiceVid->video = $request->txtVideoLink;
+            if ($otherServiceVid->save()) {
+                return redirect()->back()->with('success', 'Service successfully added!');
+            }
     	}
     }
 
@@ -179,7 +190,6 @@ class ServiceController extends Controller
         {
             return $e->getMessage();
         }
-
     }
 
     public function editMainService($id)

@@ -35,7 +35,6 @@ class GuestController extends Controller
         $about = $this->getAbout();
         return view('guest.about', ['about' => $about, 
                 'features' => $features]);
-
     }
 
     public function viewServices() {
@@ -43,6 +42,7 @@ class GuestController extends Controller
                 ->paginate(6);
         $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
                 ->paginate(6);
+
         return view('guest.services', ['otherServices' => $otherServices, 
                 'specialtyServices' => $specialtyServices]);
     }
@@ -71,19 +71,18 @@ class GuestController extends Controller
     public function viewContact() 
     {
         $contact = $this->getClinicContact();
-        $about = $this->getAbout();
-        
+        // $about = $this->getAbout();
         $clinics = Clinic::all();
         if ($clinics->count() > 0)
-
         {
     		$clinicMaxId = Clinic::max('clinic_contact_id');
     		$clinic = Clinic::findOrFail($clinicMaxId);
-    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact, 'about' => $about]);
+    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact,
+                    'clinics' => $clinics]);
         }
         else
         {
-	        return view('guest.contact');
+	        return view('guest.contact', ['clinics' => $clinics]);
         }
     }
 

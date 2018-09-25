@@ -8,6 +8,7 @@
         </div>
             <ul class="nav menu navbar-right navbar-nav">
                 <li id ="navlink-index"><a href="/"> Home </a></li>
+                <li id ="navlink-about"><a href="/about"> About </a></li>
                 <li id ="navlink-services"><a href="/services"> Services </a></li>
                 <li id ="navlink-news"><a href="/news"> News </a></li>
                 <li id ="navlink-contact"><a href="/contact"> Contact </a></li>

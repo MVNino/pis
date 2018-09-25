@@ -53,7 +53,7 @@
                     </div>
                     @endforeach
                     {{ $news->links() }}
-                   <!--  <div class="row">
+                    <!-- <div class="row">
                         <div class="col-xs-12 text-center">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination">
@@ -68,16 +68,6 @@
                             </nav>
                         </div>
                     </div> -->
-                    <div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a class="active" href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
-</div>
                 </div>
                 <div class="col-sm-5 col-md-4">
                     <div class="sidebar-area">

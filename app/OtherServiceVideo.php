@@ -12,4 +12,9 @@ class OtherServiceVideo extends Model
 	protected $primaryKey = 'video_id';
 	// timestamp
 	public $timestamps = false;
+
+	public function otherService()
+	{
+		return $this->belongsTo('App\OtherService', 'other_service_id', 'other_services_id');
+	}
 }

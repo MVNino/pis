@@ -40,25 +40,13 @@
 				<tbody>
 					@foreach($banners as $banner)
 						<tr>
-							<td>
-								<div id="orig{{$banner->banner_id}}">
-									<span class="label label-table label-primary" data-toggle="tooltip" data-original-title="Click to Change Order" onclick="editOrder('{{$banner->banner_id}}');" style="cursor: pointer;">
-										{{$banner->banner_order}}
-									</span>
-								</div>
-								<div id="edit{{$banner->banner_id}}" class="form-group" style="display: none;">
-									{!!Form::open(['action' => ['Maintenance\BannerController@reorderBanner', $banner->banner_id], 'method' => 'POST'])!!}
-										{{Form::hidden('_method', 'PUT')}}
-										<input type="number" id="order" name="order" min="1" class="form-control" value="{{$banner->banner_order}}">
-										<input type="submit" style="display: none;">
-									{!!Form::close()!!}
-								</div>
-							</td>
+							<td>{{$banner->banner_id}}</td>
 							<td>{{$banner->banner_picture}}</td>
 							<td>
 								@if($banner->banner_status == 0)
 									{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 										{{Form::hidden('_method', 'PUT')}}
+										<input style="display: none" name="request" value="1">
 										<input type="text" name="status" value="1" style="display: none;">
 										<span class="label label-table label-danger" data-toggle="tooltip" data-original-title="Click to Activate" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Not Active</span>
 										<button id="{{$banner->banner_id}}" type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" style="display: none;">
@@ -68,6 +56,7 @@
 								@else
 									{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 										{{Form::hidden('_method', 'PUT')}}
+										<input style="display: none" name="request" value="1">
 										<input type="text" name="status" value="0" style="display: none;">
 										<span class="label label-table label-success" data-toggle="tooltip" data-original-title="Click to Deactivate" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Active</span>
 										<button id="{{$banner->banner_id}}" type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" style="display: none;">
@@ -77,16 +66,19 @@
 								@endif
 							</td>
 							<td>
-								{!!Form::open(['action' => ['Maintenance\BannerController@deleteBanner', $banner->banner_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
-									{{Form::hidden('_method', 'DELETE')}}
-									<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
-										<i class="ti-close" aria-hidden="true"></i>
-									</button>
-								{!!Form::close()!!}
+								<a href="{{action('Maintenance\BannerController@editBanner')}}" class="btn btn-sm btn-primary">
+                                	<i class="fa fa-edit"></i>
+                            	</a>
 							</td>
 							<td>
-								<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#viewBanner">
-								<i class="fa fa-eye"></i></button>
+								<div align="center">
+									{!!Form::open(['action' => ['Maintenance\BannerController@deleteBanner', $banner->banner_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Banner?')"])!!}
+										{{Form::hidden('_method', 'DELETE')}}
+										<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
+											<i class="ti-close" aria-hidden="true"></i>
+										</button>
+									{!!Form::close()!!}
+								</div>
 							</td>
 						</tr>
 					@endforeach
@@ -94,10 +86,62 @@
 				<tfoot>
 				</tfoot>
 			</table>
+			<div align="center">
+				{{ $banners->links() }}
+			</div>
 		</div>
 	</div>
 </div>
 
+<!-- Modal for Viewing Banner -->
+<div class="modal fade" id="viewBanner{{$banner->banner_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="exampleModalLabel">BANNER</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-material">
+					<div class="form-group">
+						<label class="col-md-12">File Name</label>
+						<p class="col-md-12">{{$banner->banner_picture}}</p>
+						<div class="col-md-12">
+							<div>
+								<a target="_blank" href="/storage/images/banner/{{$banner->banner_picture}}">
+									<img src="/storage/images/banner/{{$banner->banner_picture}}" style="width: 100%;">
+								</a>
+							</div>
+						</div><br>
+						<div class="col-md-12">
+								<!-- If the status is active to the table the /a/ must be Click to Deactivate
+								else Click to Activate -->
+							@if($banner->banner_status == 0)
+								{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
+									{{Form::hidden('_method', 'PUT')}}
+									<input style="display: none" name="request" value="1">
+									<input type="text" name="status" value="1" style="display: none;">
+									<a class="text-success" data-toggle="tooltip" data-original-title="Activate Banner" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Click to Activate</a>
+									<button id="{{$banner->banner_id}}" type="submit" style="display: none;"></button>
+								{!!Form::close()!!}
+							@else
+								{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
+									{{Form::hidden('_method', 'PUT')}}
+									<input style="display: none" name="request" value="1">
+									<input type="text" name="status" value="0" style="display: none;">
+									<a class="text-warning" data-toggle="tooltip" data-original-title="Deactivate Banner" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Click to Deactivate</a>
+									<button id="{{$banner->banner_id}}" type="submit" style="display: none;"></button>
+								{!!Form::close()!!}
+							@endif
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- Modal for Adding Banner -->
 <div class="modal fade" id="addBanner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -139,47 +183,15 @@
 	</div>
 </div>
 
-<!-- Modal for Viewing Banner -->
-<div class="modal fade" id="viewBanner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="exampleModalLabel">BANNER</h4>
-			</div>
-			<div class="modal-body">
-				<form class="form-material">
-					<div class="form-group">
-						<label class="col-md-12">File Name</label>
-						<p class="col-md-12">NAME OF THE FILE</p>
-						<div class="col-md-12">
-							<img src="">IMAGE HERE
-						</div><br>
-						<div class="col-md-12">
-								<!-- If the status is active to the table the /a/ must be Click to Deactivate
-								else Click to Activate -->
-							<a href="#" class="text-success">Click to Activate</a><br>
-							<a href="#" class="text-warning">Click to Deactivate</a>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
 @endsection
 
 @section('pg-specific-js')
 	<script>
-		public function editOrder(id)
+		function editOrder(id)
 		{
-			var inp = document.getElementById('edit'+id);
-			inp.style.display = "block;";
-
-			var org = document.getElementById('orig'+id);
-			org.style.display = "none";
+			var c = document.getElementsByClassName(id);
+			c[0].style.display = "none";
+			c[1].style.display = "block";
 		}
 	</script>
 @endsection

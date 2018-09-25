@@ -84,5 +84,8 @@
 
 @section('pg-specific-js')
 <script>
+	// $(document).ready(function(){
+	// 	$('a[href="/admin/maintenance/"]')
+	// });
 </script>
 @endsection

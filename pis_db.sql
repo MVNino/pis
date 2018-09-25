@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2018 at 02:30 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Sep 24, 2018 at 11:26 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pis_db`
+-- Database: `pis_db2`
 --
 
 -- --------------------------------------------------------
@@ -47,7 +49,7 @@ CREATE TABLE `banner_tbl` (
   `banner_picture` varchar(160) NOT NULL,
   `banner_order` int(11) NOT NULL,
   `banner_status` int(11) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -105,7 +107,7 @@ CREATE TABLE `clinic_contact_tbl` (
   `clinic_map` text NOT NULL,
   `clinic_places` text NOT NULL,
   `clinic_telephone` varchar(15) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -129,7 +131,7 @@ CREATE TABLE `company_tbl` (
   `company_desc` text,
   `company_clinic_logo` varchar(150) NOT NULL,
   `company_map` text NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -151,7 +153,7 @@ CREATE TABLE `contact_us_tbl` (
   `contact_email` varchar(80) NOT NULL,
   `contact_phone` varchar(15) NOT NULL,
   `contact_inquiry` text NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -191,7 +193,7 @@ CREATE TABLE `faq_tbl` (
   `faq_question` text NOT NULL,
   `faq_answer` text NOT NULL,
   `faq_category` varchar(60) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -221,7 +223,7 @@ CREATE TABLE `features_tbl` (
   `feature_image` varchar(150) DEFAULT NULL,
   `feature_video` text,
   `feature_order` int(11) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -280,6 +282,26 @@ CREATE TABLE `medical_records_tbl` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `news_tbl`
 --
 
@@ -290,7 +312,7 @@ CREATE TABLE `news_tbl` (
   `news_picture` varchar(190) NOT NULL,
   `news_order` int(11) NOT NULL,
   `isActive` tinyint(1) NOT NULL DEFAULT '1',
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -330,17 +352,8 @@ CREATE TABLE `other_services_tbl` (
   `other_image` varchar(190) DEFAULT NULL,
   `other_title` varchar(160) NOT NULL,
   `other_desc` text NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `other_services_tbl`
---
-
-INSERT INTO `other_services_tbl` (`other_services_id`, `other_image`, `other_title`, `other_desc`, `status`) VALUES
-(1, '_OtherServiceImg_1537458623.jpg', 'Patent Service', 'Service description for Patent.', 0),
-(2, '_OtherServiceImg_1537511505.png', 'Law service title', 'Law is a system of rules that are created and enforced through social or governmental institutions to regulate behavior. Law is a system that regulates and ensures that individuals or a community adhere to the will of the state.', 0),
-(3, '_OtherServiceImg_1537511865.png', 'CAFA Service Title', 'The College of Architecture and Fine Arts of the Polytechnic University of the Philippines is defined as a supportive and complementing academic unit in this institution  contributory to its aspirations of offering varied and quality academic programs available to deserving youths whose families come from the lower income bracket in our society.', 0);
 
 -- --------------------------------------------------------
 
@@ -353,6 +366,18 @@ CREATE TABLE `other_service_vid_tbl` (
   `other_service_id` int(11) NOT NULL,
   `video` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -414,20 +439,8 @@ CREATE TABLE `specialty_service_tbl` (
   `spec_title` varchar(160) NOT NULL,
   `spec_desc` text NOT NULL,
   `price` decimal(8,2) DEFAULT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `specialty_service_tbl`
---
-
-INSERT INTO `specialty_service_tbl` (`spec_service_id`, `spec_image_icon`, `spec_title`, `spec_desc`, `price`, `status`) VALUES
-(1, '_SpecialtyServiceImg_1537458116.jpg', 'Copyright Service', 'This is to describe copyright service.', NULL, 0),
-(2, '_SpecialtyServiceImg_1537458547.jpg', 'Patent Service', 'Other description for Patent', NULL, 0),
-(3, '_SpecialtyServiceImg_1537501797.jpg', 'CCIS Title', 'CCIS Service Description', NULL, 0),
-(4, '_SpecialtyServiceImg_1537505645.png', 'PUP Service Title', 'Polytechnic University of the Philippines is a research and coeducational state university in the Philippines. It was founded on October 19, 1904 as the Manila Business School and as part of Manila\'s public school system.', NULL, 0),
-(5, '_SpecialtyServiceImg_1537511605.png', 'COC Service Title', 'Clash of Clans is a freemium mobile strategy video game developed and published by Finnish game developer Supercell. The game was released for iOS platforms on August 2, 2012, and on Google Play for Android on October 7, 2013.', NULL, 0),
-(6, '_SpecialtyServiceImg_1537517185.PNG', 'Car Service', 'Car Service Description', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -440,6 +453,30 @@ CREATE TABLE `specialty_service_vid_tbl` (
   `specialty_service_id` int(11) NOT NULL,
   `video` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Marlon Villa Niño', 'marlon_nino@yahoo.com', NULL, '$2y$10$5o8j9iU1lSA0uR1QIc2Bl.tFWmoZjR6LjrOUmniKSWzCLyr98PCii', NULL, '2018-09-24 01:07:02', '2018-09-24 01:07:02');
 
 -- --------------------------------------------------------
 
@@ -555,6 +592,12 @@ ALTER TABLE `medical_records_tbl`
   ADD KEY `patient_id` (`patient_id`);
 
 --
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `news_tbl`
 --
 ALTER TABLE `news_tbl`
@@ -579,6 +622,12 @@ ALTER TABLE `other_services_tbl`
 ALTER TABLE `other_service_vid_tbl`
   ADD PRIMARY KEY (`video_id`),
   ADD KEY `other_service_id` (`other_service_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
 
 --
 -- Indexes for table `patient_information_tbl`
@@ -613,6 +662,13 @@ ALTER TABLE `specialty_service_vid_tbl`
   ADD KEY `specialty_service_id` (`specialty_service_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
 -- Indexes for table `user_tbl`
 --
 ALTER TABLE `user_tbl`
@@ -627,111 +683,145 @@ ALTER TABLE `user_tbl`
 --
 ALTER TABLE `appointment_tbl`
   MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `banner_tbl`
 --
 ALTER TABLE `banner_tbl`
   MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `billing_details_tbl`
 --
 ALTER TABLE `billing_details_tbl`
   MODIFY `billing_details_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `billing_tbl`
 --
 ALTER TABLE `billing_tbl`
   MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `clinic_contact_tbl`
 --
 ALTER TABLE `clinic_contact_tbl`
   MODIFY `clinic_contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `company_tbl`
 --
 ALTER TABLE `company_tbl`
   MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `contact_us_tbl`
 --
 ALTER TABLE `contact_us_tbl`
   MODIFY `contact_us_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `expense_tbl`
 --
 ALTER TABLE `expense_tbl`
   MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `faq_tbl`
 --
 ALTER TABLE `faq_tbl`
   MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `features_tbl`
 --
 ALTER TABLE `features_tbl`
   MODIFY `features_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `holiday_tbl`
 --
 ALTER TABLE `holiday_tbl`
   MODIFY `holiday_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `medical_file_record_tbl`
 --
 ALTER TABLE `medical_file_record_tbl`
   MODIFY `medical_file_record_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `medical_records_tbl`
 --
 ALTER TABLE `medical_records_tbl`
   MODIFY `medical_record_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `news_tbl`
 --
 ALTER TABLE `news_tbl`
   MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `official_receipt_tbl`
 --
 ALTER TABLE `official_receipt_tbl`
   MODIFY `or_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `other_services_tbl`
 --
 ALTER TABLE `other_services_tbl`
   MODIFY `other_services_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `other_service_vid_tbl`
 --
 ALTER TABLE `other_service_vid_tbl`
   MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `patient_information_tbl`
 --
 ALTER TABLE `patient_information_tbl`
   MODIFY `patient_info_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `patient_tbl`
 --
 ALTER TABLE `patient_tbl`
   MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `profile_tbl`
 --
 ALTER TABLE `profile_tbl`
   MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `specialty_service_tbl`
 --
 ALTER TABLE `specialty_service_tbl`
   MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `user_tbl`
 --
 ALTER TABLE `user_tbl`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Constraints for dumped tables
 --
@@ -797,6 +887,7 @@ ALTER TABLE `patient_information_tbl`
 --
 ALTER TABLE `specialty_service_vid_tbl`
   ADD CONSTRAINT `specialty_service_vid_tbl_ibfk_1` FOREIGN KEY (`specialty_service_id`) REFERENCES `specialty_service_tbl` (`spec_service_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
