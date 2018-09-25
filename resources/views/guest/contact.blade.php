@@ -2,7 +2,11 @@
 
 @section('content')
     <section class="home-sm">
-        
+        <!-- start slider section -->
+       <!--  <div class="Modern-Slider">
+            
+             -->
+        <!-- end of slider section -->
     </section>
     <section class="section-padding">
     <div class="row"> 
@@ -12,28 +16,26 @@
             <!-- <p>We are open from {{$clinic->clinic_days}} at {{$clinic->clinic_location}} between {{$clinic->clinic_open_time}} and {{$clinic->clinic_close_time}}</p>
  -->        </div>
     <div class="col-md-5">
-<table class="table" style="width:120%;">
-    <thead>
-        <tr>
-            <th>Location</th>
-            <th>Days</th>
-            <th>Opening</th>
-            <th>Closing</th>        
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($clinics as $clinic)
-        @if($clinic->status == 0)
-        <tr class="warning">
-            <td>{{$clinic->clinic_location}}</td>
-            <td>{{$clinic->clinic_days}}</td>
-            <td>{{$clinic->clinic_open_time}}</td>
-            <td>{{$clinic->clinic_close_time}}</td>
-        </tr>
-        @endif
-        @endforeach
-    </tbody>
-</table>
+    <table class="table table-striped" style="width:120%;">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Days Open</th>
+                <th>Opening</th>
+                <th>Closing</th>        
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($clinic as $row)
+                <tr>
+                    <td>{{$row->clinic_location}}</td>
+                    <td>{{$row->clinic_days}}</td>
+                    <td>{{$row->clinic_open_time}}</td>
+                    <td>{{$row->clinic_close_time}}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
     </div>
     </section>
