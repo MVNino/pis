@@ -27,7 +27,7 @@ class FeatureController extends Controller
   			'title' => 'required',
   			'description' => 'required',
   			'fileFeatureImg' => 'image|nullable|max:3000',
-            'order' => 'nullable'
+            
   		]);
 
       try 
@@ -36,7 +36,7 @@ class FeatureController extends Controller
   		$feature->feature_title = $request->title;
   		$feature->feature_description = $request->description;
         $feature->status = 0;
-        $feature->feature_order = $request->order;
+        
 
         if ($feature->save()) {
         	return redirect()->back()->with('success', 'feature added!');
@@ -81,7 +81,7 @@ class FeatureController extends Controller
             $feature->feature_image = $featureImgNameToStore;
         }
         if ($feature->save()) {
-            return redirect()->back()->with('success', 'feature added!');
+            return redirect()->back()->with('success', 'feature Updated!');
         }
     }
 

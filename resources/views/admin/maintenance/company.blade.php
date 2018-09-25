@@ -29,21 +29,24 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12">Current Logo</label>
+                            <label class="col-md-12">Company Logo</label>
                             <img src ="">
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-12">Company Logo
+                            <label class="col-sm-12">
+                                <img src="/storage/images/logo/{{ $company->company_clinic_logo }}">
+                                <br/>
                                 <small>Current Image: <a target="_blank" href="/storage/images/company/{{ $company->company_clinic_logo }}">{{ $company->company_clinic_logo }}</a></small>
                             </label>
                             <div class="col-md-12">
                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                     <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-                                    <input type="file" name="fileCompanyLogo"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+                                    <input type="file" name="fileCompanyLogo" data-default-file="/storage/summary/copyright/{{$company->company_clinic_logo}}"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
                                 </div>
-                                <small class="col-sm-12">only accepts .png</small>
+                                <small class="form-text text-muted" id="fileHelp">Accepted file types: png only</
+                                
                             </div>
-
+                            <br/>
                         </div> 
                         <button type="submit" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>
                     </form>
