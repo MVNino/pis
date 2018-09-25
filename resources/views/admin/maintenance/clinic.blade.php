@@ -31,8 +31,6 @@
                             <th>Opening Time</th>
                             <th>Closing Time</th>
                             <th>Clinic Days</th>
-                            <th>Clinic Places</th>
-                            <th>Clinic Telephone</th>
                             <th colspan="2">Action</th>
                         <tr>
                     </thead>
@@ -45,8 +43,6 @@
                             <td>{{$row['clinic_open_time']}}</td>
                             <td>{{$row['clinic_close_time']}} </td>
                             <td>{{$row['clinic_days']}} </td>
-                            <td>{{$row['clinic_places']}} </td>
-                            <td>{{$row['clinic_telephone']}} </td>
 
                             <td>
                             <a href="{{action('Maintenance\ClinicController@edit', $row['clinic_contact_id'])}}" class="btn btn-sm btn-primary">
@@ -66,16 +62,8 @@
                         @endforeach
                     </tbody>
                     <tfoot>
-                    <tr>
-						<td colspan="8">
-							<div class="text-right">
-								<ul class="pagination"> </ul>
-							</div>
-						</td>
-					</tr>
                     </tfoot>
                 </table>
-            
             </div>
         </div>
     </div>

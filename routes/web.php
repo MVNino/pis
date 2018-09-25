@@ -13,6 +13,7 @@
 
 # Website
 Route::get('/', 'GuestController@viewIndex');
+Route::get('/about','GuestController@viewAbout');
 Route::get('services','GuestController@viewServices')->name('services');
 Route::get('service/{id}', 'GuestController@showService');
 Route::get('other-service/{id}', 'GuestController@showOtherService');
@@ -38,6 +39,7 @@ Route::group(
 				Route::post('banner', 'BannerController@addBanner');
 				Route::put('banner/{id}', 'BannerController@updateBanner');
 				Route::delete('banner/{id}', 'BannerController@deleteBanner');
+				Route::get('bannerEdit', 'BannerController@editBanner');
 				// Clinic 
 				Route::get('clinic', 'ClinicController@viewClinic')->name('maintenance.clinic');
 				Route::post('clinic', 'ClinicController@addClinic');
