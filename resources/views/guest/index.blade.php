@@ -97,7 +97,7 @@
                         <div class="features-icon">
                             <img src="/storage/images/service/other/{{ $otherService->other_image }}" alt="theimran.com">
                             <div class="hover-features">
-                                <img src="{{ asset('medicre/img/logo1.png') }}" alt="theimran.com">
+                                <img src="{{ asset('medicre/img/service-3.png') }}" alt="theimran.com">
                             </div>
                         </div>
                         <h4>{{ $otherService->other_title }}</h4>
