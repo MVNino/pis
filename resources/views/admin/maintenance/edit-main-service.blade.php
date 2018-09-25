@@ -53,7 +53,7 @@
 						<div class="form-group">
 							<label class="col-md-12">Video Link</label>
 							<div class="col-md-12">
-								<input type="text" name="txtVideoLink" class="form-control" value="{{ $mainService->otherServiceVid->video }}"> 
+								<input type="text" name="txtVideoLink" class="form-control"> 
 							</div>
 						</div>
 						 {{-- <div class="form-group">
