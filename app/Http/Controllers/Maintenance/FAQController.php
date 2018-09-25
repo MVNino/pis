@@ -15,7 +15,9 @@ class FAQController extends Controller
 
     public function viewFAQs()
     { 
-        $faqs = FAQ::orderBy('faq_id', 'desc')->paginate(5);
+        $faqs = FAQ::where('status', 1)
+            ->orderBy('faq_id', 'desc')
+            ->paginate(5);
     	return view('admin.maintenance.faqs', ['faqs' => $faqs]);
     }
 
@@ -82,7 +84,7 @@ class FAQController extends Controller
     public function activate($id)
     {
         $faq = FAQ::findOrFail($id);
-        $faq->status = 1;
+        $faq->isActive = 1;
         if ($faq->save()) {
             return redirect()->back()
             ->with('success', 'The FAQs record has been activated!');
@@ -92,10 +94,20 @@ class FAQController extends Controller
     public function deactivate($id)
     {
         $faq = FAQ::findOrFail($id);
-        $faq->status = 0;
+        $faq->isActive = 0;
         if ($faq->save()) {
             return redirect()->back()
             ->with('error', 'The FAQs record has been deactivated!');
+        }
+    }
+
+    public function softDelete(Request $request, $id)
+    {
+        $faqs = FAQ::findOrFail($id);
+        $faqs->status = 0;
+        if ($faqs->save()) {
+            return redirect()->back()->with('error', 
+                'The faqs has been deleted!');
         }
     }
 }

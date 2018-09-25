@@ -58,7 +58,7 @@
 							</a>
 						</td>
 						<td>
-							<a role="button" class="btn btn-sm btn-danger" >
+							<a role="button" class="btn btn-sm btn-danger" href="/admin/maintenance/news/{{ $new->news_id }}/soft-delete">
 								<i class="fa fa-times"></i>
 							</a>
 						</td>
