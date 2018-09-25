@@ -102,6 +102,9 @@ Route::group(
 				Route::get('main-service/edit/temp', function(){
 					return view('admin.maintenance.edit-special-service-video');
 				});
+				Route::get('other-service/edit/temp',function(){
+					return view('admin.maintenance.edit-other-service-video');
+				});
 			});
 		});
 
