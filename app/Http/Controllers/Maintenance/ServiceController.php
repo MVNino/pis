@@ -311,4 +311,20 @@ class ServiceController extends Controller
             return redirect()->back()->with('success', 'The video has been added!');
         }
     }
+
+    public function deleteSpecialtyServiceVid($id)
+    {
+        $specialtyServiceVid = SpecialtyServiceVideo::findOrFail($id);
+        if ($specialtyServiceVid->delete()) {
+            return redirect()->back()->with('success', 'The video has been removed!');
+        }
+    }
+
+    public function deleteOtherServiceVid($id)
+    {
+        $otherServiceVid = OtherServiceVideo::findOrFail($id);
+        if ($otherServiceVid->delete()) {
+            return redirect()->back()->with('success', 'The video has been removed!');
+        }
+    }
 }

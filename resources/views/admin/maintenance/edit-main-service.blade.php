@@ -75,7 +75,7 @@
 					<br>
 					@foreach($mainService->otherServiceVids as $otherServiceVid)
 					<a href="/admin/maintenance/other-service/{{ $otherServiceVid->video_id }}/edit-video">{{ $otherServiceVid->video }}</a>
-					<a href="#" role="button" id="btnCancel" type="button" class="btn btn-sm btn-danger pull-right" style="display: inline-block;">
+					<a href="/admin/maintenance/other-service/{{ $otherServiceVid->video_id }}/delete" role="button" id="btnCancel" type="button" class="btn btn-sm btn-danger pull-right" style="display: inline-block;">
 						<i class="fa fa-close"></i>
 					</a>
 					<hr>
