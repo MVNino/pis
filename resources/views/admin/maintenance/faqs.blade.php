@@ -29,7 +29,6 @@
 						<th>Questions</th>
 						<th>Answer</th>
 						<th>Category</th>
-						<th>Status</th>
 						<th colspan="2" class="text-center">Action</th>
 					</tr>
 				</thead>
@@ -39,13 +38,7 @@
 							<td>{{ $faq->faq_question }}</td>
 							<td>{{ $faq->faq_answer }}</td>
 							<td>{{ $faq->faq_category }}</td>
-							<td>
-								@if($faq->status == 1)
-								<span class="label label-table label-success"><a href="/admin/maintenance/faqs/{{ $faq->faq_id }}/deactivate" class="text-light">Active</a></span>
-								@else
-								<span class="label label-table label-danger"><a href="/admin/maintenance/faqs/{{ $faq->faq_id }}/activate" class="text-light">Inactive</a></span>
-								@endif
-							</td>
+			
 							<td>
 								<!-- for href="edit-faqs" -->
 								<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/faqs/{{ $faq->faq_id }}">
@@ -53,8 +46,8 @@
 								</a>
 							</td>
 							<td>
-								{!!Form::open(['action' => ['Maintenance\FAQController@deleteFAQs', $faq->faq_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove faq?')"])!!}
-									{{Form::hidden('_method', 'DELETE')}}
+								{!!Form::open(['action' => ['Maintenance\FAQController@softDelete', $faq->faq_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove faq?')"])!!}
+									{{Form::hidden('_method', 'PUT')}}
 									<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
 										<i class="fa fa-times" aria-hidden="true"></i>
 									</button>

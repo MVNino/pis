@@ -15,7 +15,9 @@ class NewsController extends Controller
     }
     
     public function listNews() {
-        $news = News::orderBy('news_order')->paginate(5);
+        $news = News::where('status', 1)
+            ->orderBy('news_order')
+            ->paginate(5);
     	return view('admin.maintenance.news', ['news' => $news]);
     }
 
@@ -112,6 +114,16 @@ class NewsController extends Controller
         if ($news->save()) {
             return redirect()->back()
             ->with('error', 'The news record has been deactivated!');
+        }
+    }
+
+    public function softDelete($id)
+    {
+        $news = News::findOrFail($id);
+        $news->status = 0;
+        if ($news->save()) {
+            return redirect()->back()->with('error', 
+                'The news has been deleted!');
         }
     }
 }
