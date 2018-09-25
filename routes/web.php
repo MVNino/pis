@@ -67,19 +67,18 @@ Route::group(
 				Route::post('faqs', 'FAQController@addFAQs');
 				Route::get('faqs/{id}', 'FAQController@editFAQs');
 				Route::put('faqs/{id}', 'FAQController@updateFAQs');
-				Route::delete('faqs/{id}/delete', 'FAQController@deleteFAQs');
-				// FAQs - Activate Deactivate
-				Route::get('faqs/{id}/activate', 'FAQController@activate');
-				Route::get('faqs/{id}/deactivate', 'FAQController@deactivate');
+				// FAQs - Soft Delete
+				Route::put('faqs/{id}/soft-delete', 'FAQController@softDelete');
 				// News
 				Route::get('news', 'NewsController@listNews')
 					->name('maintenance.news');
 				Route::post('news', 'NewsController@addNews');
 				Route::get('news/{id}', 'NewsController@viewNews');
 				Route::put('news/{id}', 'NewsController@updateNews');
-				// News - Activate Deactivate
+				// News - Activate | Deactivate | Soft Delete
 				Route::get('news/{id}/activate', 'NewsController@activate');
 				Route::get('news/{id}/deactivate', 'NewsController@deactivate');
+				Route::get('news/{id}/soft-delete', 'NewsController@softDelete');
 				// Services
 				Route::get('services', 'ServiceController@viewServices')
 					->name('maintenance.services');

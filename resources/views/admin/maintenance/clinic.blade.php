@@ -35,8 +35,8 @@
                         <tr>
                     </thead>
                     <tbody>
-                        @foreach($clinic as $row) 
-                        @if($row['status'] == 0)
+                        @forelse($clinics as $clinic) 
+                        @if($clinic->status == 0)
                         <tr>
                             <td>{{$row['clinic_contact']}}</td>
                             <td>{{$row['clinic_location']}}</td>
@@ -45,12 +45,12 @@
                             <td>{{$row['clinic_days']}} </td>
 
                             <td>
-                            <a href="{{action('Maintenance\ClinicController@edit', $row['clinic_contact_id'])}}" class="btn btn-sm btn-primary">
+                            <a href="{{action('Maintenance\ClinicController@edit', $clinic->clinic_contact_id)}}" class="btn btn-sm btn-primary">
                                 <i class="fa fa-edit"></i>
                             </a>
                             </td>
                             <td>
-                                {!!Form::open(['action' => ['Maintenance\ClinicController@deleteClinic', $row['clinic_contact_id']],'method' => 'POST', 'onsubmit' => "return confirm('Remove Clinic Details?')"])!!}
+                                {!!Form::open(['action' => ['Maintenance\ClinicController@deleteClinic', $clinic->clinic_contact_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Clinic Details?')"])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
                                         <i class="fa fa-times"></i>
@@ -59,11 +59,18 @@
                             </td>
                         </tr>
                         @endif
-                        @endforeach
+                        @empty
+                            <div class="alert alert-warning">
+                                There is no record yet.
+                            </div>
+                        @endforelse
                     </tbody>
                     <tfoot>
                     </tfoot>
                 </table>
+                <div align="center">
+                {{ $clinics->links() }}
+                </div>
             </div>
         </div>
     </div>
@@ -140,4 +147,27 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('pg-specific-js')
+<!-- wysuhtml5 Plugin JavaScript -->
+<script src="{{ asset('elite/js/tinymce.min.js') }}"></script>
+<script>
+$(document).ready(function() {
+
+    if ($("#mymce").length > 0) {
+        tinymce.init({
+            selector: "textarea#mymce",
+            theme: "modern",
+            height: 300,
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+        });
+    }
+});
+</script>
 @endsection
