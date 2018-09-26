@@ -40,13 +40,12 @@
 				<tbody>
 					@foreach($banners as $banner)
 						<tr>
-							<td>{{$banner->banner_id}}</td>
+							<td>{{$banner->banner_order}}</td>
 							<td>{{$banner->banner_picture}}</td>
 							<td>
 								@if($banner->banner_status == 0)
 									{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 										{{Form::hidden('_method', 'PUT')}}
-										<input style="display: none" name="request" value="1">
 										<input type="text" name="status" value="1" style="display: none;">
 										<span class="label label-table label-danger" data-toggle="tooltip" data-original-title="Click to Activate" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Not Active</span>
 										<button id="{{$banner->banner_id}}" type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" style="display: none;">
@@ -56,7 +55,6 @@
 								@else
 									{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 										{{Form::hidden('_method', 'PUT')}}
-										<input style="display: none" name="request" value="1">
 										<input type="text" name="status" value="0" style="display: none;">
 										<span class="label label-table label-success" data-toggle="tooltip" data-original-title="Click to Deactivate" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Active</span>
 										<button id="{{$banner->banner_id}}" type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" style="display: none;">
@@ -65,8 +63,8 @@
 									{!!Form::close()!!}
 								@endif
 							</td>
-							<td>
-								<a href="{{action('Maintenance\BannerController@editBanner')}}" class="btn btn-sm btn-primary">
+							<td align="center">
+								<a href="/admin/maintenance/bannerEdit/{{$banner->banner_id}}" class="btn btn-sm btn-primary" role="button">
                                 	<i class="fa fa-edit"></i>
                             	</a>
 							</td>
@@ -121,7 +119,6 @@
 							@if($banner->banner_status == 0)
 								{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 									{{Form::hidden('_method', 'PUT')}}
-									<input style="display: none" name="request" value="1">
 									<input type="text" name="status" value="1" style="display: none;">
 									<a class="text-success" data-toggle="tooltip" data-original-title="Activate Banner" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Click to Activate</a>
 									<button id="{{$banner->banner_id}}" type="submit" style="display: none;"></button>
@@ -129,7 +126,6 @@
 							@else
 								{!!Form::open(['action' => ['Maintenance\BannerController@updateBanner', $banner->banner_id], 'method' => 'POST'])!!}
 									{{Form::hidden('_method', 'PUT')}}
-									<input style="display: none" name="request" value="1">
 									<input type="text" name="status" value="0" style="display: none;">
 									<a class="text-warning" data-toggle="tooltip" data-original-title="Deactivate Banner" onclick="document.getElementById('{{$banner->banner_id}}').click();" style="cursor: pointer;">Click to Deactivate</a>
 									<button id="{{$banner->banner_id}}" type="submit" style="display: none;"></button>
@@ -142,6 +138,7 @@
 		</div>
 	</div>
 </div>
+
 <!-- Modal for Adding Banner -->
 <div class="modal fade" id="addBanner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">

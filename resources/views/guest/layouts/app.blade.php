@@ -9,6 +9,7 @@
     <section class="home-sm home-area v3">
         <!-- navbare area -->
         @include('guest.includes.navbar')
+        @include('guest.includes.messages')
         <!-- end of navbare area -->
         @yield('content')
     <footer class="footer-area section-padding">
@@ -16,22 +17,25 @@
         
                     <div class="footer-content">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="footer-logo">
                                     <img src="{{ asset('medicre/img/logo1.png') }}" alt="logo" style="width: 300px; height: 50px;">
                                 </div>
                                 <div class="footer-about">
-                                    <p>A <strong>Vascular Surgery Consultant</strong> at the National Kidney and Transplant Institute. She is currently pursuing her MS in Physiology at the University of the Philippines - College of Medicine.</p>
+                                    <p align="justify">A <strong>Vascular Surgery Consultant</strong> at the National Kidney and Transplant Institute. She is currently pursuing her MS in Physiology at the University of the Philippines - College of Medicine.</p>
                                     <p><a href="/about">Read More <i class="fa fa-chevron-circle-right"></i></a></p>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                               
-                                 <p style="font-size: 200%;"><strong>Visit my Social Media sites</strong></p>
+                            <div class="col-md-4">
+                                
+                            </div>
+                            <div class="col-md-4" style="color: #fff;">
+                                 <p style="font-size: 150%;"><strong>Visit my Social Media sites</strong></p>
                                  <hr/>
-                                <a href="http://facebook.com"><i class="fa fa-facebook-square" style="font-size: 300%;"></i></a>&ensp;
-                                <a href="http://twitter.com"> <i class="fa fa-twitter-square" style="font-size: 300%;"></i></a>&ensp;
-                                <a href="http://ph.linkedin.com/in/joy-gali-73894364"> <i class="fa fa-linkedin-square" style="font-size: 300%;"></i></a>   
+                                <a href="http://facebook.com"><i class="fa fa-facebook-square" tooltip="Facebook" style="font-size: 300%;color: #22B4B8;"></i></a>
+                                <a href="http://twitter.com"> <i class="fa fa-twitter-square" style="font-size: 300%;color: #22B4B8;"></i></a>&ensp;
+                                <a href="http://ph.linkedin.com/in/joy-gali-73894364"> <i class="fa fa-linkedin-square" style="font-size: 300%;color: #22B4B8;"></i></a>&ensp;
+                                <a href="https://www.researchgate.net/profile/Joy_Gali2"> <i class="fa fa-file-text" style="font-size: 255%;color: #22B4B8;"></i></a>    
                             </div>
                         </div>
                     </div>

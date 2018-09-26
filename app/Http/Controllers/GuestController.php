@@ -12,9 +12,20 @@ use App\Feature;
 use App\News;
 use App\OtherService;
 use App\SpecialtyService;
+use App\Http\Controllers\Controller;
+use DB;
 
 class GuestController extends Controller 
+<<<<<<< HEAD
 { 
+=======
+{   
+    public function _construct() 
+    {
+        $this->middleware('auth');
+    }
+
+>>>>>>> 94caf3b269b2cae89a3dc0306e1ef4314cec1dd5
     public function viewIndex()
     {
         $otherServices = OtherService::where('status', 1)
@@ -35,9 +46,8 @@ class GuestController extends Controller
     public function viewAbout()
     {
         $features = Feature::orderBy('features_id', 'desc')->get();
-        $about = $this->getAbout();
-        return view('guest.about', ['about' => $about, 
-                'features' => $features]);
+        //$about = $this->getAbout();
+        return view('guest.about', ['features' => $features]);
     }
 
     public function viewServices() 
@@ -75,11 +85,39 @@ class GuestController extends Controller
     public function viewContact() 
     {
         $contact = $this->getClinicContact();
-        $clinic = Clinic::
-            where('status', '=', 0)
-            ->orderBy('clinic_location');
-    	return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact]);
+        // $about = $this->getAbout();
+        $clinics = Clinic::all();
+        if ($clinics->count() > 0)
+        {
+    		$clinicMaxId = Clinic::max('clinic_contact_id');
+    		$clinic = Clinic::findOrFail($clinicMaxId);
+    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact,
+                    'clinics' => $clinics]);
+        }
+        else
+        {
+	        return view('guest.contact', ['clinics' => $clinics]);
+        }
+    }
 
+    public function storeContact(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'phone' => 'required',
+            'inquiry' => 'required'
+        ]);
+        $contact = new Contact;
+        $contact->contact_name = $request->name;
+        $contact->contact_email = $request->email;
+        $contact->contact_phone = $request->phone;
+        $contact->contact_inquiry = $request->inquiry;
+        $contact->status = 0;
+
+        if($contact->save()){
+            return redirect()->back()->with('success', 'Contact added!');
+        }
     }
 
     public function getContact()

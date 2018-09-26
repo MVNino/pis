@@ -19,6 +19,7 @@ Route::get('service/{id}', 'GuestController@showService');
 Route::get('other-service/{id}', 'GuestController@showOtherService');
 Route::get('news','GuestController@viewNews')->name('news');
 Route::get('contact','GuestController@viewContact');
+Route::post('contact', 'GuestController@storeContact');
 Route::get('faqs','GuestController@viewFaqs');
 
 
@@ -39,7 +40,8 @@ Route::group(
 				Route::post('banner', 'BannerController@addBanner');
 				Route::put('banner/{id}', 'BannerController@updateBanner');
 				Route::delete('banner/{id}', 'BannerController@deleteBanner');
-				Route::get('bannerEdit', 'BannerController@editBanner');
+				Route::get('bannerEdit/{id}', 'BannerController@editBanner');
+				Route::put('bannerModify/{id}', 'BannerController@modifyBanner');
 				// Clinic 
 				Route::get('clinic', 'ClinicController@viewClinic')->name('maintenance.clinic');
 				Route::post('clinic', 'ClinicController@addClinic');
@@ -128,10 +130,15 @@ Route::group(
 				Route::get('patients', 'PatientController@listPatients')
 					->name('transaction.patients');
 				Route::get('editPatients', 'PatientController@editPatients'); //change it
-				Route::get('billing','PaymentController@billing') //change it
+				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('receipt','PaymentController@receipt')
 					->name('transaction.receipt');
+				Route::get('expenses','ReportController@expenses')
+					->name('transaction.expenses');
+				Route::get('editExpenses','ReportController@editExpenses'); //change it
+				Route::get('report','ReportController@report')
+					->name('transaction.report');
 			});
 		});
 });

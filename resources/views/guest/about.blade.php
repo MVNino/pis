@@ -2,23 +2,8 @@
 
 @section('content')
 
-<div class="single-page-title">
-    <section class="home-sm v3">
-    </section>
-    <section class="get-quote-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 text-left">
-                    <div class="get-quate-content"><br><br><br>
-                        <h2>{{$about->about_title}}</h2>
-                        <p>{{$about->about_desc}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- end of get quote area -->
-    <section class="mediacare-whychoose-us ">
+    <section class="mediacare-whychoose-us" style="padding-top: 10%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -29,18 +14,22 @@
                     <div class="whychoose-us-content">
                         <div class="single-chose">
                             <h4><span class="fa fa-heart-o"></span>HANDLE WITH PROFESSIONALISM</h4>
-                            <p>It has always been a debate whether to buy new or used construction equipment. Small fleets prefer to buy used construction equipment as they attract less capital and what to investments.</p>
+                            <p>
+                                As a doctor, my task is always to put up patients’ needs first and our jobs comes at second, and this will always be dedicated to the people who needs my expertise.
+                            </p>
                         </div>
                         <div class="single-chose">
-                            <h4><span class="fa fa-heart-o"></span>WE LOVE WHAT WE DO</h4>
-                            <p>It has always been a debate whether to buy new or used construction equipment. Smaller fleets prefer to buy used construction equipment as they attract less capital how to do investments.</p>
+                            <h4><span class="fa fa-heart-o"></span>I LOVE WHAT I DO</h4>
+                            <p>
+                                Treating people drives my wheel and curing them will always be my pleasure because helping people in need of my expertise puts my education and skills into good use.
+                            </p>
                         </div>
                         
                     </div>
                 </div>
                 <div class="col-sm-6 text-left">
                     <div class="best-feature-title">
-                        <h2 class="text-uppercase">best <span>features</span></h2>
+                        <h2 class="text-uppercase">our <span>features</span></h2>
                     </div>
                     <div class="best-features-accoudion">
                         @foreach($features as $feature)
@@ -68,8 +57,6 @@
     </section>
     <!-- end of about us section -->
 
-
-</div>
     <!-- end of client say section -->
     <section class="client-say-area section-padding">
     <div class="container">
