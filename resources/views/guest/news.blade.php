@@ -79,7 +79,7 @@
                             <div class="widget-sider">
                             @foreach($recentNews as $news)
                                 <div class="widget-single-slider">
-                                    <a href="single.html">
+                                    <a href="#" style="cursor:default">
                                         <img src="/storage/images/news/{{ $news->news_picture }}" alt="{{ $news->news_picture }}"
                                             >
                                         <div class="widget-post-title">
