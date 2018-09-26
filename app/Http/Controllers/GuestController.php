@@ -105,9 +105,9 @@ class GuestController extends Controller
         $contact->contact_inquiry = $request->inquiry;
         $contact->status = 0;
 
-        if($contact->save()){
-            return redirect()->back()->with('success', 'Contact added!');
-        }
+        $contact->save();
+        return redirect()->back()->with('success', 'Contact added!');
+        
     }
 
     public function getContact()
