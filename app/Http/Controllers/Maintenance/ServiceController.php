@@ -32,9 +32,9 @@ class ServiceController extends Controller
     {
     	$this->validate($request, [
     		'txtTitle' => 'required',
-    		'txtareaDescription' => 'required',
+    		'txtareaDescription' => 'required|string|max:5000',
     		'txtVideoLink' => 'required',
-            'fileServiceImg' => 'image|nullable|max:2000'
+            'fileServiceImg' => 'image|nullable|max:10000'
     	]);
 
         // Insert record to database
@@ -83,9 +83,9 @@ class ServiceController extends Controller
     {
     	$this->validate($request, [
     		'txtTitle' => 'required',
-    		'txtareaDescription' => 'required',
+    		'txtareaDescription' => 'required|string|max:5000',
     		'txtVideoLink' => 'required',
-            'fileServiceImg' => 'image|nullable|max:2000'
+            'fileServiceImg' => 'image|nullable|max:10000'
     	]);
 
         // Insert record to database
@@ -130,8 +130,8 @@ class ServiceController extends Controller
     {
         $this->validate($request, [
             'txtTitle' => 'required',
-            'txtAreaDescription' => 'required',
-            'fileServiceImg' => 'image|nullable|max:2000'
+            'txtAreaDescription' => 'required|string|max:5000',
+            'fileServiceImg' => 'image|nullable|max:10000'
         ]);
 
         // Insert record to database
@@ -200,8 +200,8 @@ class ServiceController extends Controller
     {
         $this->validate($request, [
             'txtTitle' => 'required',
-            'txtareaDescription' => 'required',
-            'fileServiceImg' => 'image|nullable|max:2000'
+            'txtareaDescription' => 'required|string|max:5000',
+            'fileServiceImg' => 'image|nullable|max:10000'
         ]);
 
         // Insert record to database
