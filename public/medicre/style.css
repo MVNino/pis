@@ -205,7 +205,7 @@ nav.navbar {
 }
 
 .navbar-area {
-    position: absolute;
+    position: fixed;
     width: 100%;
     left: 0;
     z-index: 55;
@@ -1974,7 +1974,7 @@ button.NextArrowbrand:hover {
 }
 
 .home-area.v3 nav.navbar-area {
-    background: #495F76;
+    background: #5B6E83;
     border-top: 0;
     box-shadow: 3px 5px 10px rgba(0, 0, 0, .07);
 }
@@ -3681,3 +3681,76 @@ blockquote {
     margin-bottom: 23px;
 }
 /*---------------------*/
+.modal {
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-header {
+  border-bottom: 1px solid #505050;
+  padding: 12px 16px 6px 16px;
+  .modal-title {
+    color: #ccc;
+   
+    margin: 0;
+  }
+  .close {
+    font-size: 32px;
+    opacity: 1.0;
+    color: #ccc;
+    text-shadow: none;
+    outline: none;
+  }
+}
+.modal-content {  
+  border-radius:0;
+  border: 0;
+  background-color: #323232;
+}
+.img-responsive { width: 100%; }
+button.btn-play {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+  margin-left: -15px;
+  border: 0;
+  border-radius: 0;
+  outline: 0 !important;
+  width: 100%;
+  background-color: transparent;
+  color: rgba(245, 245, 245, 0.8);
+  &:hover, &:active, &:visited, &:focus {
+    color: rgba(255, 255, 255, 1.0);
+  }
+  .glyphicon {
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    background-color: inherit;
+    font-size: 64px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  button.btn-play {
+    .glyphicon {
+      font-size: 56px;
+    }
+  } 
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  button.btn-play {
+    .glyphicon {
+      font-size: 46px;
+    }
+  } 
+}
+@media (max-width: 767px) {
+  a.video {
+    display: block;
+  }
+   button.btn-play {
+    .glyphicon {
+      font-size: 56px;
+    }
+  }  
+}
