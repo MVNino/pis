@@ -5,6 +5,7 @@
                 <div class="site-logo" style="padding-top: 8px; padding-bottom: 5px;">
                 <img src="{{ asset('medicre/img/logo1.png') }}" style=" width: 300px; height: 50px;">
             </div>
+        </div>
             <ul class="nav menu navbar-right navbar-nav">
                 <li id ="navlink-index"><a href="/"> Home </a></li>
                 <li id ="navlink-about"><a href="/about"> About </a></li>
