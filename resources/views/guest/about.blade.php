@@ -44,7 +44,7 @@
                                 </div>
                                 <div id="AbcollapseOne{{ $feature->features_id }}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="AbheadingOne{{ $feature->features_id }}">
                                     <div class="panel-body">
-                                        <p>{{ str_limit($feature->feature_description, $limit = 80, $end = '...') }}</p>
+                                        <p>{{ $feature->feature_description }}</p>
                                     </div>
                                 </div>
                             </div>
