@@ -27,7 +27,6 @@
             if ($categoryClass)
                 copiedEventObject['className'] = [$categoryClass];
             // render the event on the calendar
-            $this.$calendar.fullCalendar('renderEvent', copiedEventObject, true);
             // is the "remove after drop" checkbox checked?
             if ($('#drop-remove').is(':checked')) {
                 // if so, remove the element from the "Draggable Events" list
@@ -65,16 +64,16 @@
             var form = $("<form></form>");
             form.append("<div class='row'></div>");
             form.find(".row")
-                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' placeholder='Insert Event Name' type='text' name='title'/></div></div>")
-                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Category</label><select class='form-control' name='category'></select></div></div>")
-                .find("select[name='category']")
-                .append("<option value='bg-danger'>Danger</option>")
-                .append("<option value='bg-success'>Success</option>")
-                .append("<option value='bg-purple'>Purple</option>")
-                .append("<option value='bg-primary'>Primary</option>")
-                .append("<option value='bg-pink'>Pink</option>")
-                .append("<option value='bg-info'>Info</option>")
-                .append("<option value='bg-warning'>Warning</option></div></div>");
+                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Income&nbsp;&nbsp;&nbsp;&nbsp; :</label>")
+                .append("<div class='col-md-6'><p>10,000 PHP</p></div></div>")
+                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Expense&nbsp&nbsp;&nbsp; :</label>")
+                .append("<div class='col-md-6'><p>2,000 PHP</p></div></div>")
+                .append("<div class='col-md-12'><hr>")
+                .append("<div class='col-md-6'><p></p></div></div>")
+                .append("<div class='col-md-6'><h3 class='text-danger'><b>2,000 PHP</b></h3></div></div>")
+                .append("<div class='col-md-6'><p></p></div></div>")
+                .append("<div class='col-md-6'><p>Net Income</p></div></div>")
+                
             $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                 form.submit();
             });
@@ -85,11 +84,6 @@
                 var categoryClass = form.find("select[name='category'] option:checked").val();
                 if (title !== null && title.length != 0) {
                     $this.$calendarObj.fullCalendar('renderEvent', {
-                        title: title,
-                        start:start,
-                        end: end,
-                        allDay: false,
-                        className: categoryClass
                     }, true);  
                     $this.$modal.modal('hide');
                 }
@@ -131,7 +125,7 @@
         var today = new Date($.now());
 
         var defaultEvents =  [{
-                title: 'Released Ample Admin!',
+                title: 'Released!',
                 start: new Date($.now() + 506800000),
                 className: 'bg-info'
             }, {
@@ -182,7 +176,6 @@
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            events: defaultEvents,
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
