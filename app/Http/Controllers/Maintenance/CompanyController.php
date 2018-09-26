@@ -37,7 +37,7 @@ class CompanyController extends Controller
     {
         $this->validate($request, [
     		'name' => 'required|string',
-            'fileCompanyLogo' => 'image|nullable|mimes:png|max:3000',
+            'fileCompanyLogo' => 'image|nullable|mimes:png|max:10000',
             
             
         ]);      
