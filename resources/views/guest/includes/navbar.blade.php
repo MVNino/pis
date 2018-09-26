@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-area">
     <div class="container">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -13,12 +12,7 @@
                 <li id ="navlink-services"><a href="/services"> Services </a></li>
                 <li id ="navlink-news"><a href="/news"> News </a></li>
                 <li id ="navlink-contact"><a href="/contact"> Contact </a></li>
-                <li id ="navlink-faqs">
-                    <a href="/faqs" title="FAQs">
-                        <i class="fa fa-question-circle" style="font-size: 20px;"> 
-                        </i> 
-                    </a>
-                </li>
+                <li id ="navlink-faqs"><a href="/faqs" title="FAQs"><i class="fa fa-question-circle" style="font-size: 20px;"> </i> </a></li>
             </ul>
         </div>
     </div>
