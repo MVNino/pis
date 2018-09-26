@@ -2,7 +2,7 @@
 
 @section('breadcrumb')
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h4 class="page-title">Billing Section</h4>
+		<h4 class="page-title">Official Receipt</h4>
 	</div>
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
@@ -20,6 +20,20 @@
     <div class="col-md-12">
         <div class="white-box">
             <h3><b>BILLING ID</b> <span class="pull-right">#5669626</span></h3>
+            <form class="form-material">
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-md-12">Official Receipt Number:</label>    
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <input id="OR" class="form-control" name="ORNumber" placeholder="Enter here">
+                        </div>
+                    </div>
+                </div>
+            </form>
             <hr>
             <div class="row">
                 <div class="col-md-12">
@@ -61,15 +75,56 @@
                 </div>
                 <div class="col-md-12">
                     <div class="pull-right m-t-30 text-right">
-                        <h3><b>Total :</b> 2200 PHP</h3> </div>
+                        <h3><b>Total :</b> 2200 PHP</h3> 
+                    </div>
                     <div class="clearfix"></div>
                     <hr>
+                    <form class="form-material">
+                        <div class="row">
+                            <div class="col-md-6">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-md-12">Payment Amount:</label>    
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <input type="number" id="PA" class="form-control" name="paymentAmount" placeholder="Enter here">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-md-12">Change:</label>    
+                            </div>
+                            <div class="col-md-3">
+                                <p>10 PHP</p>
+                            </div>
+                        </div>
+                    </form>
                     <div class="text-right">
-                        <button onclick="javascript:window.print();" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+                        <button onclick="toCheckOut()" id="checkOut" type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i>Check Out</button>
+                        <button id="print" onclick="javascript:window.print();" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('pg-specific-js')
+<script>
+$(document).ready(function() {
+    $("#print").hide();
+});
+
+function toCheckOut() {
+    $("#checkOut").hide();
+    $("#print").show();
+    $("#OR").attr('disabled','""');
+    $("#PA").attr('disabled','""');
+}
+</script>
 @endsection
