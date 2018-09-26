@@ -33,7 +33,6 @@ class GuestController extends Controller
                 ->limit(3)
                 ->get();
         $banners = Banner::where('banner_status', 1)
-                ->where('status', 1)
                 ->get();
         return view('guest.index', ['banners'=>$banners, 
                 'news' => $news, 'otherServices' => $otherServices]);
