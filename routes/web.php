@@ -19,6 +19,7 @@ Route::get('service/{id}', 'GuestController@showService');
 Route::get('other-service/{id}', 'GuestController@showOtherService');
 Route::get('news','GuestController@viewNews')->name('news');
 Route::get('contact','GuestController@viewContact');
+Route::post('contact', 'GuestController@storeContact');
 Route::get('faqs','GuestController@viewFaqs');
 
 
@@ -108,6 +109,16 @@ Route::group(
 					'ServiceController@editOtherServiceVid');
 				Route::put('other-service/{id}/edit-video', 
 					'ServiceController@updateOtherServiceVid');
+				// Add video link
+				Route::post('main-service/add-video/{id}', 
+					'ServiceController@addSpecialtyServiceVideo');
+				Route::post('other-service/add-video/{id}', 
+					'ServiceController@addOtherServiceVideo');
+				// Remove service video
+				Route::get('main-service/{id}/delete', 
+					'ServiceController@deleteSpecialtyServiceVid');
+				Route::get('other-service/{id}/delete', 
+					'ServiceController@deleteOtherServiceVid');
 			});
 		});
 
@@ -119,10 +130,15 @@ Route::group(
 				Route::get('patients', 'PatientController@listPatients')
 					->name('transaction.patients');
 				Route::get('editPatients', 'PatientController@editPatients'); //change it
-				Route::get('billing','PaymentController@billing') //change it
+				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('receipt','PaymentController@receipt')
 					->name('transaction.receipt');
+				Route::get('expenses','ReportController@expenses')
+					->name('transaction.expenses');
+				Route::get('editExpenses','ReportController@editExpenses'); //change it
+				Route::get('report','ReportController@report')
+					->name('transaction.report');
 			});
 		});
 });

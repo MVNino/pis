@@ -57,12 +57,12 @@
 								<td>{{ $specialtyService->spec_service_id }}</td>
 								<td>{{ $specialtyService->spec_title }}</td>
 								<td>{{ $specialtyService->spec_desc }}</td>
-								<td>
+								<td class="text-center">
 									<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/specialty-service/{{ $specialtyService->spec_service_id }}/edit">
 										<i class="fa fa-edit"></i>
 									</a>
 								</td>
-								<td>
+								<td class="text-center">
 									{!!Form::open(['action' => ['Maintenance\ServiceController@deleteSpecialty', $specialtyService->spec_service_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove service?')"])!!}
 										{{Form::hidden('_method', 'DELETE')}}
 										<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
@@ -108,12 +108,12 @@
 								<td>{{ $otherService->other_services_id }}</td>
 								<td>{{ $otherService->other_title }}</td>
 								<td>{{ $otherService->other_desc }}</td>
-								<td>
+								<td class="text-center">
 									<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/main-service/{{ $otherService->other_services_id }}/edit">
 										<i class="fa fa-edit"></i>
 									</a>
 								</td>
-								<td>
+								<td class="text-center">
 									{!!Form::open(['action' => ['Maintenance\ServiceController@deleteMainService', $otherService->other_services_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove service?')"])!!}
 										{{Form::hidden('_method', 'DELETE')}}
 										<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">

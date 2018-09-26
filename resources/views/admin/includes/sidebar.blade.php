@@ -14,20 +14,14 @@
                                 class="hide-menu">Dr. {{ Auth::user()->name }}</span>
                         </a>
                     </li>
-                    <li class="nav-small-cap m-t-10">--- Professional</li>
+                    <!-- <li class="nav-small-cap m-t-10">--- Professional</li>
                     <li> <a href="doctor-schedule.html" class="waves-effect"><i class="ti-calendar p-r-10"></i> <span class="hide-menu">
                             Appointment </span></a>
-                    </li>
+                    </li> -->
                     <li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-people p-r-10"></i> <span class="hide-menu">
                             Patients <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
                             <li> <a href="{{ route('transaction.patients') }}">All Patients</a> </li>
-                        </ul>
-                    </li>
-                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-chart p-r-10"></i> <span class="hide-menu">
-                            Reports <span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li> <a href="payment-report.html">Daily Cash Position</a></li>
                         </ul>
                     </li>
                     <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-inr p-r-10"></i> <span class="hide-menu">
@@ -35,6 +29,16 @@
                         <ul class="nav nav-second-level">
                             <li> <a href="{{ route('transaction.billing') }}">Billing</a></li>
                             <li> <a href="{{ route('transaction.receipt') }}">Official Receipt</a></li>
+                        </ul>
+                    </li>
+                    <li> <a href="{{ route('transaction.expenses') }}" class="waves-effect"><i class="fa fa-inr p-r-10"></i> <span class="hide-menu">
+                            Clinic Expenses </span></a>
+                    </li>
+
+                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-chart p-r-10"></i> <span class="hide-menu">
+                            Reports <span class="fa arrow"></span></span></a>
+                        <ul class="nav nav-second-level">
+                            <li> <a href="{{ route('transaction.report') }}">Daily Cash Position</a></li>
                         </ul>
                     </li>
                     </li>

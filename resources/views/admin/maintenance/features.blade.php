@@ -36,12 +36,12 @@
 							@if($feature->status == 0)
 							<td>{{$feature->feature_title}}</td>
 							<td>{{$feature->feature_description}}</td>
-							<td>
+							<td class="text-center">
 								<a role="button" href="{{action('Maintenance\FeatureController@edit', $feature->features_id)}}" class="btn btn-sm btn-primary">
 									<i class="fa fa-edit"></i>
 								</a>
 							</td>
-							<td>
+							<td class="text-center">
                                 {!!Form::open(['action' => ['Maintenance\FeatureController@deleteFeature', $feature->features_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Feature?')"])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">

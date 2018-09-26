@@ -285,4 +285,46 @@ class ServiceController extends Controller
             return redirect()->back()->with('success', 'The video has been updated!');
         }
     }
+
+    public function addSpecialtyServiceVideo(Request $request, $id)
+    {
+        $this->validate($request, [
+            'txtVideoLink' => 'required'
+        ]);
+        $specialtyServiceVid = new SpecialtyServiceVideo;
+        $specialtyServiceVid->specialty_service_id = $id;
+        $specialtyServiceVid->video = $request->txtVideoLink;
+        if ($specialtyServiceVid->save()) {
+            return redirect()->back()->with('success', 'The video has been added!');
+        }
+    }
+
+    public function addOtherServiceVideo(Request $request, $id)
+    {
+        $this->validate($request, [
+            'txtVideoLink' => 'required'
+        ]);
+        $otherServiceVid = new OtherServiceVideo;
+        $otherServiceVid->other_service_id = $id;
+        $otherServiceVid->video = $request->txtVideoLink;
+        if ($otherServiceVid->save()) {
+            return redirect()->back()->with('success', 'The video has been added!');
+        }
+    }
+
+    public function deleteSpecialtyServiceVid($id)
+    {
+        $specialtyServiceVid = SpecialtyServiceVideo::findOrFail($id);
+        if ($specialtyServiceVid->delete()) {
+            return redirect()->back()->with('success', 'The video has been removed!');
+        }
+    }
+
+    public function deleteOtherServiceVid($id)
+    {
+        $otherServiceVid = OtherServiceVideo::findOrFail($id);
+        if ($otherServiceVid->delete()) {
+            return redirect()->back()->with('success', 'The video has been removed!');
+        }
+    }
 }

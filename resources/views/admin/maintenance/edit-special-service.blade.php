@@ -80,7 +80,7 @@
 					<br>
 					@foreach($specialtyService->specialtyServiceVids as $specialtyServiceVid)
 					<a href="/admin/maintenance/main-service/{{ $specialtyServiceVid->video_id }}/edit-video">{{ $specialtyServiceVid->video }}</a>
-					<a href="#" role="button" id="btnCancel" type="button" class="btn btn-sm btn-danger pull-right" style="display: inline-block;">
+					<a href="/admin/maintenance/main-service/{{ $specialtyServiceVid->video_id }}/delete" role="button" id="btnCancel" type="button" class="btn btn-sm btn-danger pull-right" style="display: inline-block;">
 						<i class="fa fa-close"></i>
 					</a>
 					<hr>
@@ -99,19 +99,21 @@
 				</button>
 				<h4 class="modal-title" id="exampleModalLabel">VIDEO LINKS</h4>
 			</div>
+			{!! Form::open(['action' => ['Maintenance\ServiceController@addSpecialtyServiceVideo', $specialtyService->spec_service_id], 'method' => 'POST', 
+				'class' => 'form-material', 'autocomplete' => 'off']) !!}
+			@csrf
 			<div class="modal-body">
-				<form class="form-material">
 					<div class="form-group">
 						<label class="col-md-12">Video Link</label>
 						<div class="col-md-12">
-							<input type="text" name="videoLink" class="form-control" >	
+							<input type="text" name="txtVideoLink" class="form-control">	
 						</div>
 					</div>
 			</div>
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
 			</div>
-			</form>
+			{!! Form::close() !!}
 		</div>
 	</div>
 </div>
