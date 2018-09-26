@@ -33,7 +33,7 @@ class NewsController extends Controller
             'numOrder' => 'required',  
             'title' => 'required',
   			'description' => 'required|string|max:5000',
-            'fileNewsImg' => 'image|nullable|max:3000'
+            'fileNewsImg' => 'image|nullable|max:10000'
   		]);
         // Insert record to database
         $news = new News;
@@ -64,8 +64,8 @@ class NewsController extends Controller
         $this->validate($request, [
             'numOrder' => 'required',
             'title' => 'required',
-  			'description' => 'required',
-            'fileNewsImg' => 'image|nullable|max:3000'
+  			'description' => 'required|string|max:5000',
+            'fileNewsImg' => 'image|nullable|max:10000'
         ]);
         
         // Update record in database
