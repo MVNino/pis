@@ -24,9 +24,9 @@ class FeatureController extends Controller
     public function storeFeature(Request $request)
     {	
         $this->validate($request, [
-  			'title' => 'required',
-  			'description' => 'required',
-  			'fileFeatureImg' => 'image|nullable|max:3000',
+  			'title' => 'required|string|max:5000',
+  			'description' => 'required|string|max:5000',
+  			'fileFeatureImg' => 'image|nullable|max:10000',
             
   		]);
 
@@ -59,9 +59,9 @@ class FeatureController extends Controller
     {
         // return $request;
        $this->validate($request, [
-            'title' => 'required',
-            'description' => 'required',
-            'fileFeatureImg' => 'nullable|max:3000'
+            'title' => 'required|string|max:5000',
+            'description' => 'required|string|max:5000',
+            'fileFeatureImg' => 'nullable|max:10000'
         ]);
 
         $feature = Feature::findOrFail($id);
