@@ -12,11 +12,14 @@ use App\Feature;
 use App\News;
 use App\OtherService;
 use App\SpecialtyService;
+use App\Http\Controllers\Controller;
+use DB;
 
 class GuestController extends Controller 
 {   
     public function _construct() 
     {
+        $this->middleware('auth');
     }
 
     public function viewIndex()
@@ -84,6 +87,26 @@ class GuestController extends Controller
         else
         {
 	        return view('guest.contact', ['clinics' => $clinics]);
+        }
+    }
+
+    public function storeContact(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'phone' => 'required',
+            'inquiry' => 'required'
+        ]);
+        $contact = new Contact;
+        $contact->contact_name = $request->name;
+        $contact->contact_email = $request->email;
+        $contact->contact_phone = $request->phone;
+        $contact->contact_inquiry = $request->inquiry;
+        $contact->status = 0;
+
+        if($contact->save()){
+            return redirect()->back()->with('success', 'Contact added!');
         }
     }
 
