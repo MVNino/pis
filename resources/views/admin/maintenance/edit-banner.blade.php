@@ -20,39 +20,56 @@
             <h3 class="text-light">Edit Banner</h3>
         </div>
         <div class="card-body"><br>
-            <form class="form-material">
-                <div class="row">
+            {!! Form::open(['action' => ['Maintenance\BannerController@modifyBanner', $banner->banner_id], 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
+                {{Form::hidden('_method', 'PUT')}}
+                <div class="row form-group">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-md-12">Order of Viewing</label>
-                            <div class="col-md-12">
-                                <input type="number" name="height" class="form-control">
-                            </div>
+                        <a target="_blank" href="/storage/images/banner/{{$banner->banner_picture}}">
+                            <img src="/storage/images/banner/{{$banner->banner_picture}}" style="width: 100%;">
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Order of Viewing</label>
+                        <input type="number" name="order" class="form-control" min="1" value="{{$banner->banner_order}}">
+
+                        <br/>
+
+                        <label>Status</label>
+                        <p>
+                            @if($banner->banner_status == 0)
+                                Not Active
+                            @else
+                                Active
+                            @endif
+                        </p>
+
+                        <br/>
+
+                        <label>Uploaded Banner</label>
+                        <p>{{$banner->banner_picture}}</p>
+
+                        <br/>
+
+                        <label>Banner Image</label>
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                            <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
+                            <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                            <input type="file" name="bannerImage" accept=".jpg,.jpeg,.png"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists"
+                                data-dismiss="fileinput">Remove</a>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-md-12">Uploaded Banner</label>
-                    <img src="">
-                </div>
-                <div class="form-group">
-                    <label class="col-md-12">Banner Image</label>
-                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                        <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                            <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
-                        <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-                        <input type="hidden"><input type="file" name="bannerImage" accept=".jpg,.jpeg,.png"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                    </div>
-                </div>
+
                 <div align="right">
-                    <button id="btnSave" type="button" class="btn btn-info">
+                    <button id="btnSave" type="submit" class="btn btn-info">
                         <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
                     </button>
                     <a href="{{ route('maintenance.banner') }}" role="button" id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
                         <i class="fa fa-close"></i> Cancel
                     </a>
                 </div>
-            </form>
+            {!!Form::close()!!}
         </div>
     </div>
 </div>

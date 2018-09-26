@@ -1,42 +1,61 @@
 @extends('guest.layouts.app')
 
 @section('content')
-    <section class="home-sm">
-        <!-- start slider section -->
-       <!--  <div class="Modern-Slider">
-            
-             -->
-        <!-- end of slider section -->
-    </section>
     <section class="section-padding">
     <div class="row"> 
         <div class="col-md-6" style="padding-left: 10%; margin-top: 10%; margin-bottom: 10%">
             <h3>Clinic</h3>
             <h2><strong>Schedule</strong></h2>
             <!-- <p>We are open from {{$clinic->clinic_days}} at {{$clinic->clinic_location}} between {{$clinic->clinic_open_time}} and {{$clinic->clinic_close_time}}</p>
- -->        </div>
-    <div class="col-md-5">
-    <table class="table table-striped" style="width:120%;">
-        <thead>
-            <tr>
-                <th>Location</th>
-                <th>Days Open</th>
-                <th>Opening</th>
-                <th>Closing</th>        
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($clinic as $row)
-                <tr>
-                    <td>{{$row->clinic_location}}</td>
-                    <td>{{$row->clinic_days}}</td>
-                    <td>{{$row->clinic_open_time}}</td>
-                    <td>{{$row->clinic_close_time}}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+ -->    </div>
+        <div class="col-md-5">
+            <table class="table table-stripe" style="width:120%;">
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Days</th>
+                        <th>Opening</th>
+                        <th>Closing</th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($clinics as $clinic)
+                        @if($clinic->status == 0)
+                            <tr id="row{{$clinic->clinic_contact_id}}" data-toggle="modal" data-target="#viewClinic{{$clinic->clinic_contact_id}}" style="cursor: pointer;" onmouseover="highlight('row{{$clinic->clinic_contact_id}}')" onmouseout="back('row{{$clinic->clinic_contact_id}}')">
+                                <td>{{$clinic->clinic_location}}</td>
+                                <td>{{$clinic->clinic_days}}</td>
+                                <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$clinic->clinic_open_time)->format('g:i A')}}</td>
+                                <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$clinic->clinic_close_time)->format('g:i A')}}</td>
+                            </tr>
+                            <!-- Modal for Viewing Banner -->
+                            <div class="modal fade" id="viewClinic{{$clinic->clinic_contact_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title" id="exampleModalLabel">CLINIC</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label>Clinic Location</label>
+                                                <p>{{$clinic->clinic_location}}</p>
+                                                <div>
+                                                    <a target="_blank" href="/storage/images/map/{{$clinic->clinic_map}}">
+                                                        <img src="/storage/images/map/{{$clinic->clinic_map}}" style="width: 100%;">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
     </section>
     <section class="section-padding v3-contact v2contact-page">
@@ -66,7 +85,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_telephone }}</h4>
+                            <h4>{{ $clinic->clinic_contact }}</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -109,6 +128,20 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('pg-specific-js')
+    <script>
+        function highlight(id)
+        {
+            document.getElementById(id).classList.add("info");
+        }
+
+        function back(id)
+        {
+            document.getElementById(id).classList.remove("info");
+        }
+    </script>
 @endsection
 
 @section('pg-specific-js')

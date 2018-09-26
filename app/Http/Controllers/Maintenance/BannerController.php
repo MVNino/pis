@@ -78,7 +78,7 @@ class BannerController extends Controller
 
     public function updateBanner(Request $request, $id)
     {
-        //if update to reorder
+        /*if update to reorder
         if ($request->input('request') == 0)
         {
             try
@@ -121,7 +121,7 @@ class BannerController extends Controller
             }
         }
         else if ($request->input('request') == 1)
-        {
+        {*/
             try
             {
                 $banner = Banner::find($id);
@@ -137,7 +137,7 @@ class BannerController extends Controller
             {
                 return $e->getMessage();
             }
-        }
+        //}
     }
 
     public function deleteBanner($id)
@@ -159,7 +159,54 @@ class BannerController extends Controller
         }
     }
 
-    public function editBanner() {
-        return view('admin.maintenance.edit-banner');
+    public function editBanner($id)
+    {
+        try
+        {
+            $banner = Banner::find($id);
+
+            return view('admin.maintenance.edit-banner', ['banner'=>$banner]);
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
+
+    public function modifyBanner(Request $request, $id)
+    {
+        $this->validate($request, [
+            'order' => 'numeric',
+            'bannerImage' => 'image|nullable|max:3000',
+        ]);
+        
+        try
+        {
+            $banner = Banner::find($id);
+            $banner->banner_order = $request->input('order');
+
+            // Handle file upload for banner image
+            if($request->hasFile('bannerImage')){
+                // Get the file's extension
+                $fileExtension = $request->file('bannerImage')
+                    ->getClientOriginalExtension();
+                // Create a filename to store(database)
+                $bannerImgNameToStore = $request->title
+                    .'_'.'bannerImage'.'_'.time().'.'.$fileExtension;
+                // Upload file to system
+                $path = $request->file('bannerImage')
+                    ->storeAs('public/images/banner', $bannerImgNameToStore);
+                $banner->banner_picture = $bannerImgNameToStore;
+            }
+
+            if ($banner->save())
+            {
+                return redirect()->back()->with('success', 'Banner Updates Successfully!');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
     }
 }

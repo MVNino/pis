@@ -33,9 +33,8 @@ class GuestController extends Controller
     public function viewAbout()
     {
         $features = Feature::orderBy('features_id', 'desc')->get();
-        $about = $this->getAbout();
-        return view('guest.about', ['about' => $about, 
-                'features' => $features]);
+        //$about = $this->getAbout();
+        return view('guest.about', ['features' => $features]);
     }
 
     public function viewServices() 
@@ -73,11 +72,19 @@ class GuestController extends Controller
     public function viewContact() 
     {
         $contact = $this->getClinicContact();
-        $clinic = Clinic::
-            where('status', '=', 0)
-            ->orderBy('clinic_location');
-    	return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact]);
-
+        // $about = $this->getAbout();
+        $clinics = Clinic::all();
+        if ($clinics->count() > 0)
+        {
+    		$clinicMaxId = Clinic::max('clinic_contact_id');
+    		$clinic = Clinic::findOrFail($clinicMaxId);
+    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact,
+                    'clinics' => $clinics]);
+        }
+        else
+        {
+	        return view('guest.contact', ['clinics' => $clinics]);
+        }
     }
 
     public function getContact()

@@ -39,7 +39,8 @@ Route::group(
 				Route::post('banner', 'BannerController@addBanner');
 				Route::put('banner/{id}', 'BannerController@updateBanner');
 				Route::delete('banner/{id}', 'BannerController@deleteBanner');
-				Route::get('bannerEdit', 'BannerController@editBanner');
+				Route::get('bannerEdit/{id}', 'BannerController@editBanner');
+				Route::put('bannerModify/{id}', 'BannerController@modifyBanner');
 				// Clinic 
 				Route::get('clinic', 'ClinicController@viewClinic')->name('maintenance.clinic');
 				Route::post('clinic', 'ClinicController@addClinic');

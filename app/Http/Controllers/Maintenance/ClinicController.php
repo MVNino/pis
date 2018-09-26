@@ -17,12 +17,12 @@ class ClinicController extends Controller
     
     public function viewClinic()
     {
-     $clinic = Clinic::
+        $clinics = Clinic::
         where('status', '=', 0)
         ->orderBy('clinic_location')
         ->paginate(5);
         
-     return view('admin.maintenance.clinic', ['clinic'=>$clinic]);   
+     return view('admin.maintenance.clinic', ['clinics'=>$clinics]);   
      //    $clinics = Clinic::all();
      //    if ($clinics->count() > 0)
      //    {
@@ -45,8 +45,6 @@ class ClinicController extends Controller
             'open' => 'required',
             'close' => 'required',
             'fileMapImg' => 'image|required|max:3000',
-            'places' => 'nullable',
-            'telephone' => 'nullable'
         ]);
 
         // save contact to database
@@ -56,13 +54,8 @@ class ClinicController extends Controller
         $clinic->clinic_days = $request->days;
         $clinic->clinic_open_time = $request->open;
         $clinic->clinic_close_time = $request->close;
-        $clinic->clinic_days = $request->days;
-        $clinic->clinic_map = $request->input('fileMapImg');
-        $clinic->clinic_places = $request->input('places');
-        $clinic->clinic_telephone = $request->input('telephone');
-        $clinic->status = 0;
-        if($request->hasFile('fileMapImg'))
-        {
+
+        if($request->hasFile('fileMapImg')){
             // Get the file's extension
             $fileExtension = $request->file('fileMapImg')
                 ->getClientOriginalExtension();
@@ -96,8 +89,6 @@ class ClinicController extends Controller
             'close' => 'required',
             'days' => 'required',
             'fileMapImg' => 'image|nullable|max:3000',
-            'places' => 'nullable',
-            'telephone' => 'nullable'
         ]);
 
         // save clinic to database
@@ -108,8 +99,7 @@ class ClinicController extends Controller
         $clinic->clinic_days = $request->input('days');
         $clinic->clinic_open_time = $request->input('open');
         $clinic->clinic_close_time = $request->input('close');
-        $clinic->clinic_days = $request->input('days');
-        $clinic->clinic_map = $request->input('fileMapImg');
+        
         if($request->hasFile('fileMapImg')){
             // Get the file's extension
             $fileExtension = $request->file('fileMapImg')
@@ -122,9 +112,10 @@ class ClinicController extends Controller
                 ->storeAs('public/images/map', $mapImgNameToStore);
             $clinic->clinic_map = $mapImgNameToStore;
         }
+        
         if ($clinic->save())
-        {   
-                return redirect()->back()->with('success', 'Updated Successfully!');   
+        {
+            return redirect()->back()->with('success', 'Updated Successfully!');
         }
     }
 
