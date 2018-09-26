@@ -118,10 +118,15 @@ Route::group(
 				Route::get('patients', 'PatientController@listPatients')
 					->name('transaction.patients');
 				Route::get('editPatients', 'PatientController@editPatients'); //change it
-				Route::get('billing','PaymentController@billing') //change it
+				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('receipt','PaymentController@receipt')
 					->name('transaction.receipt');
+				Route::get('expenses','ReportController@expenses')
+					->name('transaction.expenses');
+				Route::get('editExpenses','ReportController@editExpenses'); //change it
+				Route::get('report','ReportController@report')
+					->name('transaction.report');
 			});
 		});
 });
