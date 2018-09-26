@@ -93,6 +93,7 @@
 			{!! Form::open(['action' => 'Maintenance\NewsController@addNews', 'method' => 'POST', 
 			'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
 			<div class="modal-body">
+				@csrf
 					<div class="form-group">
 						{{ Form::label('lblOrder', 'Order of viewing', ['class' => 'col-md-12']) }}
 						<div class="col-md-12">

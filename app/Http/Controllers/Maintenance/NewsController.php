@@ -30,12 +30,11 @@ class NewsController extends Controller
     public function addNews(Request $request) 
     {	
   		$this->validate($request, [
-            'numOrder' => 'required|unique:news_tbl',  
+            'numOrder' => 'required',  
             'title' => 'required',
   			'description' => 'required',
             'fileNewsImg' => 'image|nullable|max:3000'
   		]);
-
         // Insert record to database
         $news = new News;
         $news->news_order = $request->numOrder;
@@ -64,7 +63,6 @@ class NewsController extends Controller
     {
         $this->validate($request, [
             'numOrder' => 'required',
-            'radioStatus' => 'required',  
             'title' => 'required',
   			'description' => 'required',
             'fileNewsImg' => 'image|nullable|max:3000'
@@ -74,7 +72,6 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         // !order must be unique
         $news->news_order = $request->numOrder;
-        $news->isActive = $request->radioStatus;
         $news->news_title = $request->title;
         $news->news_desc = $request->description;
         // Handle file upload for news image
