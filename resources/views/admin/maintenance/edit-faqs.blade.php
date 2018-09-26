@@ -52,7 +52,7 @@
 				</div>
 				{{ Form::hidden('_method', 'PUT') }}
 				<div align="right">
-                    <button id="btnSave" type="button" class="btn btn-info">
+                    <button id="btnSave" type="submit" class="btn btn-info">
                         <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
                     </button>
                     <a href="{{ route('maintenance.faqs') }}" role="button" id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
