@@ -32,7 +32,7 @@ class NewsController extends Controller
   		$this->validate($request, [
             'numOrder' => 'required',  
             'title' => 'required',
-  			'description' => 'required',
+  			'description' => 'required|string|max:5000',
             'fileNewsImg' => 'image|nullable|max:3000'
   		]);
         // Insert record to database

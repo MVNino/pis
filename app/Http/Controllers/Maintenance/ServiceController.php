@@ -32,7 +32,7 @@ class ServiceController extends Controller
     {
     	$this->validate($request, [
     		'txtTitle' => 'required',
-    		'txtareaDescription' => 'required',
+    		'txtareaDescription' => 'required|string|max:5000',
     		'txtVideoLink' => 'required',
             'fileServiceImg' => 'image|nullable|max:2000'
     	]);
