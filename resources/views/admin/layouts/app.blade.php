@@ -58,6 +58,12 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('elite/js/custom.min.js') }}"></script>
     <script src="{{ asset('elite/js/dashboard1.js') }}"></script>
+    <!-- Calendar JavaScript -->
+    <script src="{{ asset('elite/plugins/bower_components/calendar/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('elite/plugins/bower_components/moment/moment.js') }}"></script>
+    <script src="{{ asset('elite/plugins/bower_components/calendar/dist/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('elite/plugins/bower_components/calendar/dist/jquery.fullcalendar.js') }}"></script>
+    <script src="{{ asset('elite/plugins/bower_components/calendar/dist/cal-init.js') }}"></script>
     <!--Style Switcher -->
     <script src="{{ asset('elite/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
 

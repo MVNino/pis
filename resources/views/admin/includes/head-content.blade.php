@@ -12,6 +12,8 @@
     <link href="{{ asset('elite/plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css') }}" rel="stylesheet">
     <!-- Menu CSS -->
     <link href="{{ asset('elite/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css') }}" rel="stylesheet">
+    <!-- Calendar CSS -->
+    <link href="{{ asset('elite/plugins/bower_components/calendar/dist/fullcalendar.css') }}" rel="stylesheet" />
     <!-- morris CSS -->
     <link href="{{ asset('elite/plugins/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
     <!-- animation CSS -->
