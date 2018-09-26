@@ -93,15 +93,6 @@ class GuestController extends Controller
         return $contact = Contact::findOrFail($MaxId);
     }
 
-    public function addAppointment()
-    {
-        $this->validate($request, [
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'message' => 'required|string',
-        ]);
-    }
-
     //Get about
     public function getAbout()
     {
