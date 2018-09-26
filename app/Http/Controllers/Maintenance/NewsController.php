@@ -67,7 +67,7 @@ class NewsController extends Controller
   			'description' => 'required|string|max:5000',
             'fileNewsImg' => 'image|nullable|max:10000'
         ]);
-        
+                
         // Update record in database
         $news = News::findOrFail($id);
         // !order must be unique

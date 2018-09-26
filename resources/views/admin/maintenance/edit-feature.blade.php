@@ -33,7 +33,7 @@
                     <div class="form-group">
                             <label class="col-md-12">Description</label>
                             <div class="col-md-12">
-                                <input name ="description" class="form-control"  value="{{$feature->feature_description}}" rows="3"/>
+                                <textarea name ="description" class="form-control"  value="{{$feature->feature_description}}" rows="3"/>
                             </div>
                         </div>
                     <div align="right">

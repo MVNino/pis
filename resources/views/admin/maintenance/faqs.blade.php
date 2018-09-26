@@ -77,7 +77,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="exampleModalLabel">Add Features</h4>
+				<h4 class="modal-title" id="exampleModalLabel">Add FAQs</h4>
 			</div>
 			{!! Form::open(['action' => 'Maintenance\FAQController@addFAQs', 'method' => 'POST', 'class' => 'form-material form-horizontal']) !!}
 				@csrf
