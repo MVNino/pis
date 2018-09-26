@@ -4,27 +4,6 @@
 
 <section class="speacial-services-area section-padding">
 <div class="row">
-<<<<<<< HEAD
-  <div class="container">
-      <div class="col-sm-4">
-          <div class="speacila-single-service">
-              <div class="service-thumb">
-                  <img src="/storage/images/service/specialty/{{ $service->spec_image_icon }}" alt="Pic" width="300" height="250">
-              </div>
-              <h4>{{ $service->spec_title }}</h4>
-              <p>{{ $service->spec_desc }}</p>
-          </div>
-      </div>
-      <div class="col-md-8">
-          @foreach($service->specialtyServiceVids as $specialtyServiceVid)
-          <iframe width="100%" height="400" 
-          src="{{ $specialtyServiceVid->video }}" 
-          frameborder="0" allowfullscreen>
-          </iframe>
-          @endforeach
-      </div>
-  </div>
-=======
     <div class="container">
         <div class="col-sm-4">
             <div class="speacila-single-service">
@@ -38,12 +17,11 @@
         </div>
         <div class="col-md-8">
             <iframe width="100%" height="400" 
-            src="{{ $service->specialtyServiceVid->video }}" 
+            src="{{ $specialtyServiceVid->video }}" 
             frameborder="0" allowfullscreen>
             </iframe>
         </div>
     </div>
->>>>>>> 94caf3b269b2cae89a3dc0306e1ef4314cec1dd5
 </div>
 <div class="container">
   <h3 class="page-header" id="youtube-gallery">Watch more videos</h3>

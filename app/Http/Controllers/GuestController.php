@@ -15,17 +15,13 @@ use App\SpecialtyService;
 use App\Http\Controllers\Controller;
 use DB;
 
-class GuestController extends Controller 
-<<<<<<< HEAD
-{ 
-=======
+class GuestController extends Controller
 {   
     public function _construct() 
     {
         $this->middleware('auth');
     }
 
->>>>>>> 94caf3b269b2cae89a3dc0306e1ef4314cec1dd5
     public function viewIndex()
     {
         $otherServices = OtherService::where('status', 1)
