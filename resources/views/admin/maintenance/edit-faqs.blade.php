@@ -40,7 +40,7 @@
 					<label class="col-md-12">Category</label>
 					<div class="col-md-12">
 						<select class="custom-select" name="category">
-							<option value="$faq->faq_category" selected>{{ $faq->faq_category }}</option>
+							<option value="{{ $faq->faq_category }}" selected>{{ $faq->faq_category }}</option>
 							<option value="surgery">Surgery</option>
 							<option value="service">Service</option>
 							<option value="recovery">Recovery</option>
