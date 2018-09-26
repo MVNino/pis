@@ -16,19 +16,29 @@ use App\Http\Controllers\Controller;
 use DB;
 
 class GuestController extends Controller 
+<<<<<<< HEAD
+{ 
+=======
 {   
     public function _construct() 
     {
         $this->middleware('auth');
     }
 
+>>>>>>> 94caf3b269b2cae89a3dc0306e1ef4314cec1dd5
     public function viewIndex()
     {
-        $otherServices = OtherService::orderBy('other_services_id', 'desc')
+        $otherServices = OtherService::where('status', 1)
+                ->orderBy('other_services_id', 'desc')
                 ->limit(3)
                 ->get();
-        $news = News::orderBy('news_id', 'desc')->limit(3)->get();
-        $banners = Banner::where('banner_status', '=', 1)->get();
+        $news = News::where('status', 1)
+                ->orderBy('news_id', 'desc')
+                ->limit(3)
+                ->get();
+        $banners = Banner::where('banner_status', 1)
+                ->where('status', 1)
+                ->get();
         return view('guest.index', ['banners'=>$banners, 
                 'news' => $news, 'otherServices' => $otherServices]);
     }
