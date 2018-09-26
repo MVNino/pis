@@ -19,6 +19,7 @@ Route::get('service/{id}', 'GuestController@showService');
 Route::get('other-service/{id}', 'GuestController@showOtherService');
 Route::get('news','GuestController@viewNews')->name('news');
 Route::get('contact','GuestController@viewContact');
+Route::post('contact', 'GuestController@addAppointment');
 Route::get('faqs','GuestController@viewFaqs');
 
 
