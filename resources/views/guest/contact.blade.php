@@ -100,30 +100,23 @@
             </div>
             <div class="col-sm-8">
                 <div class="about-form contact-formv2">
+                    {!! Form::open(['action' => 'GuestController@storeContact', 'method' => 'POST', 'class' => 'form-material' ,'autocomplete' => 'off'])!!}
                     <div class="v2-about-input">
-                        <input type="text" placeholder="Name">
+                        <input type="text" name="name" placeholder="Name">
                     </div>
                     <div class="v2-about-input mr0">
-                        <input type="email" placeholder="Email">
+                        <input type="email" name="email" placeholder="Email">
                     </div>
                     <div class="v2-about-input">
-                        <input type="text" placeholder="Phone">
-                    </div>
-                    <div class="v2-about-input mr0">
-                        <div class="v2-about-select">
-                            <select>
-                                <option value="Preferred Date & Time">Preferred Date & Time</option>
-                                <option value="Preferred Date & Time">Preferred Date & Time</option>
-                                <option value="Preferred Date & Time">Preferred Date & Time</option>
-                            </select>
-                        </div>
+                        <input type="text" name="phone" placeholder="Phone">
                     </div>
                     <div class="v2-about-textarea">
-                        <textarea name="message" id="message" cols="30" rows="10" placeholder="Write your comment here..."></textarea>
+                        <textarea name="inquiry" id="message" cols="30" rows="10" placeholder="Write your comment here..."></textarea>
                     </div>
                     <div class="v2-about-submit">
                         <input type="submit" value="SUBMIT NOW">
                     </div>
+                    {!!Form::close()!!}
                 </div>
             </div>
         </div>

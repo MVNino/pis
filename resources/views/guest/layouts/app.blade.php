@@ -9,6 +9,7 @@
     <section class="home-sm home-area v3">
         <!-- navbare area -->
         @include('guest.includes.navbar')
+        @include('guest.includes.messages')
         <!-- end of navbare area -->
         @yield('content')
     <footer class="footer-area section-padding">
