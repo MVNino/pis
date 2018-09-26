@@ -44,7 +44,7 @@ class ClinicController extends Controller
             'days' => 'required',
             'open' => 'required',
             'close' => 'required',
-            'fileMapImg' => 'image|required|max:3000',
+            'fileMapImg' => 'image|required|max:10000',
         ]);
 
         // save contact to database
@@ -88,7 +88,7 @@ class ClinicController extends Controller
             'open' => 'required',
             'close' => 'required',
             'days' => 'required',
-            'fileMapImg' => 'image|nullable|max:3000',
+            'fileMapImg' => 'image|nullable|max:10000',
         ]);
 
         // save clinic to database
