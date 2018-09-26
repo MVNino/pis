@@ -15,7 +15,7 @@ use App\SpecialtyService;
 use App\Http\Controllers\Controller;
 use DB;
 
-class GuestController extends Controller 
+class GuestController extends Controller
 {   
     public function _construct() 
     {
@@ -24,11 +24,17 @@ class GuestController extends Controller
 
     public function viewIndex()
     {
-        $otherServices = OtherService::orderBy('other_services_id', 'desc')
+        $otherServices = OtherService::where('status', 1)
+                ->orderBy('other_services_id', 'desc')
                 ->limit(3)
                 ->get();
-        $news = News::orderBy('news_id', 'desc')->limit(3)->get();
-        $banners = Banner::where('banner_status', '=', 1)->get();
+        $news = News::where('status', 1)
+                ->orderBy('news_id', 'desc')
+                ->limit(3)
+                ->get();
+        $banners = Banner::where('banner_status', 1)
+                ->where('status', 1)
+                ->get();
         return view('guest.index', ['banners'=>$banners, 
                 'news' => $news, 'otherServices' => $otherServices]);
     }
@@ -105,9 +111,9 @@ class GuestController extends Controller
         $contact->contact_inquiry = $request->inquiry;
         $contact->status = 0;
 
-        if($contact->save()){
-            return redirect()->back()->with('success', 'Contact added!');
-        }
+        $contact->save();
+        return redirect()->back()->with('success', 'Contact added!');
+        
     }
 
     public function getContact()
@@ -115,7 +121,7 @@ class GuestController extends Controller
         $MaxId = Contact::max('contact_us_id');
         return $contact = Contact::findOrFail($MaxId);
     }
-
+ 
     //Get about
     public function getAbout()
     {

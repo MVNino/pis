@@ -9,7 +9,7 @@
          The Doctor is In!
      </div>
      
-        <table class="table" style="width:60%;" style="font-family: helvetica;">
+        <table class="table table-hover" style="width:60%;" style="font-family: helvetica;">
             <thead style="background-color: #22B4B8; color: #fff;">
                 <tr>
                     <th>Location</th>
@@ -20,14 +20,40 @@
             </thead>
             <tbody>
                 @foreach($clinics as $clinic)
-                @if($clinic->status == 0)
-                <tr class="info">
-                    <td>{{$clinic->clinic_location}}</td>
-                    <td>{{$clinic->clinic_days}}</td>
-                    <td>{{$clinic->clinic_open_time}}</td>
-                    <td>{{$clinic->clinic_close_time}}</td>
-                </tr>
-                @endif
+                    @if($clinic->status == 0)
+                        <tr data-toggle="modal" data-target="#row{{$clinic->clinic_contact_id}}" class="info" style="cursor: pointer;">
+                            <td>{{$clinic->clinic_location}}</td>
+                            <td>{{$clinic->clinic_days}}</td>
+                            <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$clinic->clinic_open_time)->format('g:i A')}}</td>
+                            <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$clinic->clinic_close_time)->format('g:i A')}}</td>
+                        </tr>
+
+                        
+                        <!-- Modal for Viewing Banner -->
+                        <div class="modal fade" id="row{{$clinic->clinic_contact_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="exampleModalLabel">CLINIC</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label>Clinic Location</label>
+                                        <p>{{$clinic->clinic_location}}</p>
+                                        <label>Clinic Map</label>
+                                        <div>
+                                            <a target="_blank" href="/storage/images/map/{{$clinic->clinic_map}}">
+                                                <img src="/storage/images/map/{{$clinic->clinic_map}}" style="width: 100%;">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endif
                 @endforeach
             </tbody>
          </table>

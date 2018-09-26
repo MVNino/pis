@@ -3,7 +3,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <div class="col-sm-3 col-md-4">
                 <div class="site-logo" style="padding-top: 8px; padding-bottom: 5px;">
-                <img src="{{ asset('medicre/img/logo1.png') }}" style=" width: 300px; height: 50px;">
+                <img src="/public/images/logo/{{ Auth::user()->company_clinic_logo }}" style=" width: 300px; height: 50px;">
             </div>
         </div>
             <ul class="nav menu navbar-right navbar-nav">

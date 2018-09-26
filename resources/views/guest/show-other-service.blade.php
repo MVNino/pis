@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-8">
             <iframe width="100%" height="400" 
-            src="{{ $service->other_vidlink }}" 
+            src="{{ $service->otherServiceVid->video }}" 
             frameborder="0" allowfullscreen>
             </iframe>
         </div>
