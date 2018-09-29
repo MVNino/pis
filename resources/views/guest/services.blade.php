@@ -19,7 +19,7 @@
                         </div>
                         <h4><a href="/other-service/{{ $service->other_services_id }}">{{ $service->other_title }}</a></h4>
                         <p>{{ str_limit($service->other_desc, $limit = 80, $end = '...') }}</p>
-                        <a href="#" class="service-link">READ MORE +</a>
+                        <!--<a href="#" class="service-link">READ MORE +</a>-->
                     </div>
                 </div>      
             @empty

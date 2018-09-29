@@ -46,9 +46,9 @@
                         <h1>Dra. <span>Joy Gali</span></h1>
                     </div>
                         <h4><span class="fa fa-check"></span>Handle With Professionalism</h4>
-                        <p> Consolidates invasive and non-invasive cardiovascular diagnostic testing into one cohesive and attractive space while integrating data management systems for maximum efficiency. I provide extensive patient teaching pre and post procedure.</p>
+                        <p>As a doctor, my task is always to put up patients’ needs first and our jobs comes at second, and this will always be dedicated to the people who needs my expertise.</p>
                         <h4><span class="fa fa-check"></span>I Love What I Do</h4>
-                        <p> Demonstrating my commitment to provide the latest advances in patient care, our program in minimally invasive endovascular surgery offers a scope of diagnostic and treatment options </p>
+                        <p> Treating people drives my wheel and curing them will always be my pleasure because helping people in need of my expertise puts my education and skills into good use. </p>
 
                     <a href="{{ route('services') }}" class="about-btn">VIEW SERVICES</a>
                     </div>
