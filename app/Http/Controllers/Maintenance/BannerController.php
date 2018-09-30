@@ -37,6 +37,7 @@ class BannerController extends Controller
             $b = Banner::
                 all()
                 ->where('banner_order',  $request->input('order'))
+                ->where('status', 0)
                 ->count();
 
             if($b > 0)
