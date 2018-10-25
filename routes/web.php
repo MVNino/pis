@@ -139,6 +139,10 @@ Route::group(
 				Route::get('editExpenses','ReportController@editExpenses'); //change it
 				Route::get('report','ReportController@report')
 					->name('transaction.report');
+				Route::get('appointment','AppointmentController@appointment') 
+					->name('transaction.appointment');
+				Route::get('approvedAppointment','AppointmentController@approvedAppointment') 
+					->name('transaction.approvedAppointment');
 			});
 		});
 });
