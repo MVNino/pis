@@ -14,15 +14,16 @@
                                 class="hide-menu">Dr. {{ Auth::user()->name }}</span>
                         </a>
                     </li>
-                    <!-- <li class="nav-small-cap m-t-10">--- Professional</li>
-                    <li> <a href="doctor-schedule.html" class="waves-effect"><i class="ti-calendar p-r-10"></i> <span class="hide-menu">
-                            Appointment </span></a>
-                    </li> -->
-                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-people p-r-10"></i> <span class="hide-menu">
-                            Patients <span class="fa arrow"></span></span></a>
+                    <li class="nav-small-cap m-t-10">--- Professional</li>
+                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="ti-calendar p-r-10"></i> <span class="hide-menu">
+                            Schedule <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="{{ route('transaction.patients') }}">All Patients</a> </li>
+                            <li> <a href="{{ route('transaction.appointment') }}">Appointment</a></li>
+                            <li> <a href="{{ route('transaction.approvedAppointment') }}">Approved Appointment</a></li>
                         </ul>
+                    </li>
+                    <li> <a href="{{ route('transaction.patients') }}" class="waves-effect"><i class="icon-people p-r-10"></i> <span class="hide-menu">
+                            Patients </span></a>
                     </li>
                     <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-inr p-r-10"></i> <span class="hide-menu">
                             Payments <span class="fa arrow"></span></span></a>
