@@ -17,28 +17,28 @@
 
 @section('content')
 
-      <div class="row">
-          <div class="col-md-12">
-              <div class="white-box">
-                  <div id="calendar"></div>
-              </div>
-          </div>
-	  </div>
-      <!-- BEGIN MODAL -->
-      <div class="modal fade" id="my-event">
-          <div class="modal-dialog modal-dialog-centered" style="padding-top: 150px">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title"><strong>Daily Cash Position</strong></h4>
-                  </div>
-                  <div class="modal-body">
-				  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Okay</button>
-                  </div>
-              </div>
-          </div>
-      </div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="white-box">
+            <div id="calendar"></div>
+        </div>
+    </div>
+</div>
+<!-- BEGIN MODAL -->
+<div class="modal fade" id="my-event">
+    <div class="modal-dialog modal-dialog-centered" style="padding-top: 150px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><strong>Daily Cash Position</strong></h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
