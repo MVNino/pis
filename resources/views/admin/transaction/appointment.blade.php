@@ -31,18 +31,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <td>Leki Romero</td>
-                        <td>lhexyromero@gmail.com</td>
-                        <td>09452066903</td>
-                        <td>October 25, 2018 - 8AM</td>
-                        <td class="text-center">
-                            <!-- <a role="button" href="{{action('Transaction\PatientController@editPatients')}}" class="btn btn-sm btn-info">
-                            <i class="fa fa-eye"></i>
-                            </a> -->
-                            <a role="button" href="#" class="btn btn-sm btn-success">Approve</a>
-                            <a role="button" href="#" class="btn btn-sm btn-warning">Re-schedule</a>
-				</button>
-                        </td>
+                    <td>Leki Romero</td>
+                    <td>lhexyromero@gmail.com</td>
+                    <td>09452066903</td>
+                    <td>October 25, 2018 - 8AM</td>
+                    <td class="text-center">
+                        <!-- <a role="button" href="{{action('Transaction\PatientController@editPatients')}}" class="btn btn-sm btn-info">
+                        <i class="fa fa-eye"></i>
+                        </a> -->
+                        <a role="button" href="#" class="btn btn-sm btn-success">Approve</a>
+                        <a role="button" href="#" class="btn btn-sm btn-warning">Re-schedule</a>
+                    </td>
+                </tbody>
                 <tfoot>
                 </tfoot>
 			</table>
