@@ -64,15 +64,22 @@
             var form = $("<form></form>");
             form.append("<div class='row'></div>");
             form.find(".row")
-                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Income&nbsp;&nbsp;&nbsp;&nbsp; :</label>")
-                .append("<div class='col-md-6'><p>10,000 PHP</p></div></div>")
-                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Expense&nbsp&nbsp;&nbsp; :</label>")
-                .append("<div class='col-md-6'><p>2,000 PHP</p></div></div>")
-                .append("<div class='col-md-12'><hr>")
-                .append("<div class='col-md-6'><p></p></div></div>")
-                .append("<div class='col-md-6'><h3 class='text-danger'><b>2,000 PHP</b></h3></div></div>")
-                .append("<div class='col-md-6'><p></p></div></div>")
-                .append("<div class='col-md-6'><p>Net Income</p></div></div>")
+            .append("<div class='col-md-12'><h5><b>Revenues</b></h5></div>")
+            .append("<div class='col-md-6'><div class='form-group'><p>Clinic Income</p></div>")
+            .append("<div class='col-md-6'><p>10,000 PHP</p></div></div>")
+            .append("<div class='col-md-6'><div class='form-group'><div class='form-group'><label class='control-label'>Total Revenues</label></div>")
+            .append("<div class='col-md-6'><h5><b>10,000 PHP</b></h5></div></div>")
+            .append("<div class='col-md-12'><h5><b>Expenses</b></h5></div>")
+            .append("<div class='col-md-6'><div class='form-group'><p>Medicine</p></div>")
+            .append("<div class='col-md-6'><p>2,000 PHP</p></div></div>")
+            .append("<div class='col-md-6'><div class='form-group'><div class='form-group'><label class='control-label'>Total Expenses</label></div>")
+            .append("<div class='col-md-6'><h5><b>2,000 PHP</b></h5></div></div>")
+            .append("<div class='col-md-12'><hr>")
+            .append("<div class='col-md-6'><p></p></div></div>")
+            .append("<div class='col-md-6'><h3 class='text-danger'><b>8,000 PHP</b></h3></div></div>")
+            .append("<div class='col-md-6'><p></p></div></div>")
+            .append("<div class='col-md-6'><p>Gross Income</p></div></div>")
+
                 
             $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                 form.submit();

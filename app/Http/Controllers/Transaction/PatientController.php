@@ -19,4 +19,8 @@ class PatientController extends Controller
     public function editPatients() {
         return view('admin.transaction.edit-patient');
     }
+
+    public function patientMedical() {
+        return view('admin.transaction.medical-patient');
+    }
 }

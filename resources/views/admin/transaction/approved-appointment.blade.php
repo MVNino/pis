@@ -22,7 +22,7 @@
             <h3 class="text-center"><b>LIST OF APPROVED APPOINTMENT</b></h3>
             <div class="row">
                 <div class = "offset-md-1 col-md-10">
-                    <h4 class="text-center text-danger"><b>October 25, 2018</b></h4>
+                    <h5 class="text-right text-danger"><b>October 25, 2018</b></h5>
                     <div class="table-responsive m-t-40">
                         <table class="table table-hover">
                             <thead>
@@ -34,7 +34,7 @@
                             <tbody>
                                 <tr>
                                     <td class="text-left">8:00 AM</td>
-                                    <td>LhexyKhrystelle B. Romero</td>
+                                    <td><a href="{{action('Transaction\PatientController@patientMedical')}}">LhexyKhrystelle B. Romero</a></td>
                                 </tr>
                                 <tr>
                                     <td class="text-left">9:00 AM</td>
@@ -43,9 +43,9 @@
                             </tbody>
                         </table><hr>
                     </div>
-                    <h4 class="text-center text-danger"><b>October 26, 2018</b></h4>
+                    <h5 class="text-right text-danger"><b>October 26, 2018</b></h5>
                     <div class="table-responsive m-t-40">
-                        <table class="table table-hover">
+                        <table class="table table-hover">   
                             <thead>
                                 <tr>
                                     <th style="width:150px;"class="text-left">Time</th>
