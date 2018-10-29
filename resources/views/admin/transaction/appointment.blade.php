@@ -31,20 +31,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <td>Leki Romero</td>
-                        <td>lhexyromero@gmail.com</td>
-                        <td>09452066903</td>
-                        <td>October 25, 2018 - 8AM</td>
+                @forelse($appointments as $appointment)
+                <tr>
+                        <td>{{ $appointment->full_name }}</td>
+                        <td>{{ $appointment->email }}</td>
+                        <td>{{ $appointment->contact_no }}</td>
+                        <td>{{ $appointment->appointment_date.' - '.$appointment->time }}</td>
                         <td class="text-center">
                             <!-- <a role="button" href="{{action('Transaction\PatientController@editPatients')}}" class="btn btn-sm btn-info">
                             <i class="fa fa-eye"></i>
                             </a> -->
                             <a role="button" href="#" class="btn btn-sm btn-success">Approve</a>
                             <a role="button" href="#" class="btn btn-sm btn-warning">Re-schedule</a>
-				</button>
                         </td>
+                </tr>
+                @empty
+                <div class="alert alert-warning">
+                        There is no record yet.
+                </div>
                 <tfoot>
                 </tfoot>
+                @endforelse
+                </tbody>
 			</table>
         </div>
     </div>
