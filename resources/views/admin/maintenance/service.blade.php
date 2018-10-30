@@ -27,7 +27,7 @@
 		<li class="nav-item"> 
 			<a class="nav-link" data-toggle="tab" href="#profile2" role="tab">
 				<span class="hidden-sm-up"><i class="ti-user"></i></span> 
-				<span class="hidden-xs-down">Other Services</span>
+				<span class="hidden-xs-down">Main Services</span>
 			</a> 
 		</li>
 	</ul>
@@ -87,10 +87,10 @@
 			</div>
 			<div class="tab-pane" id="profile2" role="tabpanel">
 				<div>
-				<h3 class="box-title">Other Services</h3>
+				<h3 class="box-title">Main Services</h3>
 					<div align="right">
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#otherServiceModal">
-							<i class="fa fa-plus"></i> Add Other Service
+							<i class="fa fa-plus"></i> Add Main Service
 						</button><br><br>
 					</div>
 					<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">

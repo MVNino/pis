@@ -19,4 +19,8 @@ class PaymentController extends Controller
     public function receipt() {
         return view('admin.transaction.receipt');
     }
+
+    public function balance() {
+        return view('admin.transaction.balance');
+    }
 }

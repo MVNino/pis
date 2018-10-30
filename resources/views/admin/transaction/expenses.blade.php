@@ -18,42 +18,42 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-		<div class="container">
-			<div class="white-box">
-			
-				<div align="right">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-						<i class="fa fa-plus"></i> Add Expenses
-					</button>
-				</div><br>
-				<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
-					<thead>
-						<tr>
-							<th>Date</th>
-							<th>Purpose of Expense</th>
-							<th colspan="2" class="text-center">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>    
-							<td>10/12/1998</td>
-							<td>Buying new Medicine Equipment</td>
-							<td class="text-center">
-								<a href="{{action('Transaction\ReportController@editExpenses')}}" class="btn btn-sm btn-primary">
-									<i class="fa fa-edit"></i>
-								</a>
-							</td>
-							<td class="text-center">
-								<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
-									<i class="ti-close" aria-hidden="true"></i>
-								</button>
-							</td>
-						</tr>
-					</tbody>
-					<tfoot>
-					</tfoot>
-				</table>
-			</div>
+		<div class="white-box">
+		
+			<div align="right">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+					<i class="fa fa-plus"></i> Add Expenses
+				</button>
+			</div><br>
+			<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Purpose of Expense</th>
+						<th>Amount</th>
+						<th colspan="2" class="text-center">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>    
+						<td>10/12/1998</td>
+						<td>Buying new Medicine Equipment</td>
+						<td>PHP 100.00</td>
+						<td class="text-center">
+							<a href="{{action('Transaction\ReportController@editExpenses')}}" class="btn btn-sm btn-primary">
+								<i class="fa fa-edit"></i>
+							</a>
+						</td>
+						<td class="text-center">
+							<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
+								<i class="ti-close" aria-hidden="true"></i>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+				</tfoot>
+			</table>
 		</div>
 	</div>
 </div>
