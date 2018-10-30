@@ -135,6 +135,8 @@ Route::group(
 					->name('transaction.billing');
 				Route::get('receipt','PaymentController@receipt')
 					->name('transaction.receipt');
+				Route::get('balance','PaymentController@balance')
+					->name('transaction.balance');
 				Route::get('expenses','ReportController@expenses')
 					->name('transaction.expenses');
 				Route::get('editExpenses','ReportController@editExpenses'); //change it

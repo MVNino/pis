@@ -29,7 +29,7 @@
                             Payments <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
                             <li> <a href="{{ route('transaction.billing') }}">Billing</a></li>
-                            <li> <a href="{{ route('transaction.receipt') }}">Official Receipt</a></li>
+                            <li> <a href="{{ route('transaction.balance') }}">Balance</a></li>
                         </ul>
                     </li>
                     <li> <a href="{{ route('transaction.expenses') }}" class="waves-effect"><i class="fa fa-inr p-r-10"></i> <span class="hide-menu">

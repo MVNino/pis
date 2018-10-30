@@ -17,59 +17,116 @@
 
 @section('content')
 <div class="row">
-            <div class="col-md-12">
-                <div class="white-box">
-                    <h3 class="box-title">Billing</h3>
-                    <form class="form-material form-horizontal" method="POST">
-                        <div class="form-group">
-                            <label class="col-md-12">Patient Name</span></label>
-                            <div class="col-md-12">
-                                <input type="text" name="name"  class="form-control">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-group">
-                                <label class="col-md-12">Special Services</label>
-                            </div>
-                            <div class="col-md-12">
-                                <select multiple="multiple" class="form-control">
-                                    <option value="1">Xray</option>
-                                    <option value="12">Laboratory</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- <div class="feeTxt">
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label>Additional Fee</label>
-                                    <input class="form-control" name="fee" type="text">
-                                </div>
-                                <div class="col-md-4">
-                                    <label>Amount</label>
-                                    <input class="form-control" name="amountFee" type="number">
-                                </div>
-                                <div class="col-md-2">
-                                    <button type='button' onclick="addFees()" 
-                                        style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div><br><br> -->
-                        <div align="right">
-                            <a style="margin-top:20px;" href="{{ route('transaction.receipt') }}" role="button" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-fw fa-lg fa-check-circle"></i>Proceed to Payment</a>
-                        </div>
-                    </form>
+    <div class="col-md-8">
+        <div class="white-box">
+            <div class="bill"></div>
+            <form class="form-material form-horizontal" method="POST">
+                <div class="form-group">
+                    <label class="col-md-12">Patient Name</span></label>
+                    <div class="col-md-12">
+                        <input type="text" name="name"  class="form-control">
+                    </div>
                 </div>
-            </div>
+                <div>
+                    <div class="form-group">
+                        <label class="col-md-12">Special Services</label>
+                    </div>
+                    <div class="col-md-12">
+                        <select id="selectServices" multiple="multiple" class="form-control">
+                            <option value="1">Xray</option>
+                            <option value="12">Laboratory</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- <div class="feeTxt">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label>Additional Fee</label>
+                            <input class="form-control" name="fee" type="text">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Amount</label>
+                            <input class="form-control" name="amountFee" type="number">
+                        </div>
+                        <div class="col-md-2">
+                            <button type='button' onclick="addFees()" 
+                                style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div><br><br> -->
+                <p style="margin-top:158px;"></p>
+            </form>
         </div>
+    </div>
+    <div class="col-md-4">
+        <div class="white-box">
+            <form class="form-material">
+                <div class="form-group">
+                    <label class="col-md-12">Discount</label>
+                    <input style="margin-left:50px;" type="radio" name="discount" value="0" id="perDiscount">&nbsp;Percentage<br>
+                    <input style="margin-left:50px;" type="radio" name="discount" value="1" id="amtDiscount">&nbsp;Amount<br>
+                    <div id="textbox"></div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="col-md-12">Discount Price</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>PHP 900.00</p>
+                            <label style="padding-left:0px;"class="col-md-12">Mode of Payment</label>
+                            <select class="form-control" name="selectMode">
+                                <option>...</option>
+                                <option value="0"> Half Payment </option>
+                                <option value="1"> Full Payment </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <br><label class="col-md-12">Total Amount</label>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="text-danger"><b> 900 PHP</b></h3>
+                        </div>
+                    </div>
+                </div>
+                <div align="right">
+                    <a style="margin-top:20px;" href="{{ route('transaction.receipt') }}" role="button" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-fw fa-lg fa-check-circle"></i>Proceed to Payment</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('pg-specific-js')
 <script>
-$("select").multipleSelect({
+$(function(){
+    let randomNumber =  Math.round(Math.random() * 100000);
+    let billNo = '<p style="margin-bottom:0px;" class="text-right">Billing Number</p><p class="text-right box-title text-danger"><font size="5px">#'+randomNumber+'</font></p>';
+    $(".bill").html(billNo);
+});
+
+$( "#perDiscount" ).click(function() {
+  let radioValue = $("input[name='discount']:checked").val();
+  let txt = '<div class="row"><div class="col-md-6"><input class="form-control" style="margin-left:50px;" type="text" name="amount"></div><div class="col-md-6"><label class="col-md-12">%</label></div></div>';
+  $("#textbox").html(txt);
+});
+
+$( "#amtDiscount" ).click(function() {
+  let radioValue = $("input[name='discount']:checked").val();
+  let txt = '<div class="row"><div class="col-md-6"><input class="form-control" style="margin-left:50px;" type="text" name="amount"></div><div class="col-md-6"><label class="col-md-12">PHP</label></div></div>';
+  $("#textbox").html(txt);
+});
+
+$("#selectServices").multipleSelect({
     filter: true
 });
 
