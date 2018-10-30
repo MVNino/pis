@@ -71,12 +71,19 @@
 					<div class="form-group">
 						<label class="col-md-12">Date</label>
 						<div class="col-md-12">
-							<input type="date" name="date" class="form-control"> </div>
+							<input type="date" name="date" class="form-control"> 
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-12">Purpose of Expenses</label>
 						<div class="col-md-12">
 							<textarea name ="expenses" class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-12">Amount</label>
+						<div class="col-md-12">
+							<input type="number" name="amount" class="form-control"> 
 						</div>
 					</div>
 				</div>

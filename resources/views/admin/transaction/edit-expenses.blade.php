@@ -34,6 +34,12 @@
                             <textarea name = "expenses" class="form-control" rows="3"></textarea>
                         </div>
                     </div>
+                    <div class="form-group">
+						<label class="col-md-12">Amount</label>
+						<div class="col-md-12">
+							<input type="number" name="amount" class="form-control"> 
+						</div>
+					</div>
                     <div align="right">
                         <button id="btnSave" type="button" class="btn btn-info">
                             <i class="fa fa-fw fa-lg fa-check-circle"></i> Save

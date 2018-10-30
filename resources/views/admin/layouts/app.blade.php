@@ -68,7 +68,7 @@
     <script src="{{ asset('elite/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
 
     <script src="{{ asset('elite/js/jasny-bootstrap.js') }}"></script>
-
+    <script src="{{ asset('elite/js/multiple-select.js') }}"></script>
     @yield('pg-specific-js')
 </body>
 </html>

@@ -65,14 +65,31 @@
                             <input type="email" placeholder="Email">
                         </div>
                         <div class="v2-about-input">
-                            <input type="text" placeholder="Phone">
+                            <input type="text" placeholder="Contact Number">
                         </div>
                         <div class="v2-about-input mr0">
                             <div class="v2-about-select">
                                 <select>
-                                    <option value="Preferred Date & Time">Preferred Date & Time</option>
-                                    <option value="Preferred Date & Time">Preferred Date & Time</option>
-                                    <option value="Preferred Date & Time">Preferred Date & Time</option>
+                                    <option value="">Location</option>
+                                    <option value="">Quezon City</option>
+                                    <option value="">Marikina City</option>
+                                    <option value="">Makati City</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="v2-about-input">
+                            <div class="v2-about-select">
+                                <select>
+                                    <option value="">Preferred Date</option>
+                                    <option value="">November 1, 2018</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="v2-about-input mr0">
+                            <div class="v2-about-select">
+                                <select>
+                                    <option value="">Preferred Time</option>
+                                    <option value="">8:00AM - 9:00AM</option>
                                 </select>
                             </div>
                         </div>
