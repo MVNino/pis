@@ -27,27 +27,29 @@
                         <th>Email</th>
                         <th>Contact</th>
                         <th>Date and Time</th>
-                        <th class="text-center">Action</th>
+                        <th class="text-center" colspan="2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 @forelse($appointments as $appointment)
                 <tr>
-                        <td>{{ $appointment->full_name }}</td>
-                        <td>{{ $appointment->email }}</td>
-                        <td>{{ $appointment->contact_no }}</td>
-                        <td>{{ $appointment->appointment_date.' - '.$appointment->time }}</td>
-                        <td class="text-center">
-                            <!-- <a role="button" href="{{action('Transaction\PatientController@editPatients')}}" class="btn btn-sm btn-info">
-                            <i class="fa fa-eye"></i>
-                            </a> -->
-                            <a role="button" href="#" class="btn btn-sm btn-success">Approve</a>
-                            <a role="button" href="#" class="btn btn-sm btn-warning">Re-schedule</a>
-                        </td>
+                    <td>{{ $appointment->full_name }}</td>
+                    <td>{{ $appointment->email }}</td>
+                    <td>{{ $appointment->contact_no }}</td>
+                    <td>{{ $appointment->custom_appointment_date.' - '.$appointment->time }}</td>
+                    <td class="text-center">
+                        {!! Form::open(['action' => ['Transaction\AppointmentController@approveAppointment', $appointment->id], 'method' => 'POST', 'onsubmit' => "return confirm('Approve appointment?')"]) !!}
+                            {{ Form::hidden('_method', 'PUT') }}
+                            <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                        {!! Form::close() !!}
+                    </td>
+                    <td class="text-center">
+                        <a role="button" href="#" class="btn btn-sm btn-warning">Reschedule</a>
+                    </td>
                 </tr>
                 @empty
                 <div class="alert alert-warning">
-                        There is no record yet.
+                    There is no record yet.
                 </div>
                 <tfoot>
                 </tfoot>

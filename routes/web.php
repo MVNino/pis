@@ -12,7 +12,12 @@
 */
 
 # Website
+// Landing page(banners, request appointment, service, news & events)
 Route::get('/', 'GuestController@viewIndex');
+Route::post('schedule-appointment', 
+	'Transaction\AppointmentController@scheduleAppointment');
+
+// About page
 Route::get('/about','GuestController@viewAbout');
 Route::get('services','GuestController@viewServices')->name('services');
 Route::get('service/{id}', 'GuestController@showService');
@@ -127,25 +132,31 @@ Route::group(
 			'prefix' => 'transaction'
 		], function() {
 			Route::namespace('Transaction')->group(function () {
+				// Schedule
+				Route::get('appointment','AppointmentController@listAppointments') 
+					->name('transaction.appointments');
+				Route::get('approved-appointment','AppointmentController@listApprovedAppointments') 
+					->name('transaction.approvedAppointments');
+				Route::put('appointment/{id}', 'AppointmentController@approveAppointment');
+				// Patients
 				Route::get('patients', 'PatientController@listPatients')
 					->name('transaction.patients');
 				Route::get('editPatients', 'PatientController@editPatients'); //change it
 				Route::get('medicalPatients','PatientController@patientMedical');
+				// Payments
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('receipt','PaymentController@receipt')
 					->name('transaction.receipt');
 				Route::get('balance','PaymentController@balance')
 					->name('transaction.balance');
+				// Clinical Expenses
 				Route::get('expenses','ReportController@expenses')
 					->name('transaction.expenses');
 				Route::get('editExpenses','ReportController@editExpenses'); //change it
+				// Reports
 				Route::get('report','ReportController@report')
 					->name('transaction.report');
-				Route::get('appointment','AppointmentController@appointment') 
-					->name('transaction.appointment');
-				Route::get('approvedAppointment','AppointmentController@approvedAppointment') 
-					->name('transaction.approvedAppointment');
 			});
 		});
 });
