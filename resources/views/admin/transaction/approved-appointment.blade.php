@@ -22,7 +22,8 @@
             <h3 class="text-center"><b>LIST OF APPROVED APPOINTMENT</b></h3>
             <div class="row">
                 <div class = "offset-md-1 col-md-10">
-                    <h5 class="text-right text-danger"><b>October 25, 2018</b></h5>
+                    {{-- Today --}}
+                    <h5 class="text-right text-danger"><b>Today: {{ Carbon\Carbon::now()->format('F d, Y') }}</b></h5>
                     <div class="table-responsive m-t-40">
                         <table class="table table-hover">
                             <thead>
@@ -32,20 +33,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="text-left">8:00 AM</td>
-                                    <td><a href="{{action('Transaction\PatientController@patientMedical')}}">LhexyKhrystelle B. Romero</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left">9:00 AM</td>
-                                    <td>Marlon V. Nino</td>
-                                </tr>
+                            @foreach($appointments as $appointment)
+                                @if($appointment->custom_appointment_date == Carbon\Carbon::now()->format('F d, Y'))
+                                    <tr>
+                                        <td class="text-left">{{ $appointment->time }}</td>
+                                        <td><a href="{{action('Transaction\PatientController@patientMedical')}}">{{ $appointment->full_name }}</a></td>
+                                    </tr>
+                                @endif
+                            @endforeach
                             </tbody>
                         </table><hr>
                     </div>
-                    <h5 class="text-right text-danger"><b>October 26, 2018</b></h5>
+
+                    {{-- Tomorrow --}}
+                    <h5 class="text-right text-danger"><b>Tomorrow: {{ Carbon\Carbon::now()->addDay()->format('F d, Y') }}</b></h5>
                     <div class="table-responsive m-t-40">
-                        <table class="table table-hover">   
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th style="width:150px;"class="text-left">Time</th>
@@ -53,17 +56,159 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="text-left">8:00 AM</td>
-                                    <td>LhexyKhrystelle B. Romero</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left">9:00 AM</td>
-                                    <td>Marlon V. Nino</td>
-                                </tr>
+                            @foreach($appointments as $appointment)
+                                @if($appointment->custom_appointment_date == Carbon\Carbon::now()->addDay()->format('F d, Y'))
+                                    <tr>
+                                        <td class="text-left">{{ $appointment->time }}</td>
+                                        <td><a href="{{action('Transaction\PatientController@patientMedical')}}">{{ $appointment->full_name }}</a></td>
+                                    </tr>
+                                @endif
+                            @endforeach
                             </tbody>
                         </table><hr>
                     </div>
+
+                    {{-- 3rd day --}}
+                    <h5 class="text-right text-danger"><b>{{ Carbon\Carbon::now()->addDays(2)->format('l: F d, Y') }}</b></h5>
+                    <div class="table-responsive m-t-40">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:150px;"class="text-left">Time</th>
+                                    <th>Patient Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($appointments as $appointment)
+                                @if($appointment->custom_appointment_date == Carbon\Carbon::now()->addDays(2)->format('F d, Y'))
+                                    <tr>
+                                        <td class="text-left">{{ $appointment->time }}</td>
+                                        <td><a href="{{action('Transaction\PatientController@patientMedical')}}">{{ $appointment->full_name }}</a></td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table><hr>
+                    </div>
+
+                    {{-- 4th day --}}
+                    <h5 class="text-right text-danger"><b>{{ Carbon\Carbon::now()->addDays(3)->format('l: F d, Y') }}</b></h5>
+                    <div class="table-responsive m-t-40">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:150px;"class="text-left">Time</th>
+                                    <th>Patient Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($appointments as $appointment)
+                                @if($appointment->custom_appointment_date == Carbon\Carbon::now()->addDays(3)->format('F d, Y'))
+                                    <tr>
+                                        <td class="text-left">{{ $appointment->time }}</td>
+                                        <td><a href="{{action('Transaction\PatientController@patientMedical')}}">{{ $appointment->full_name }}</a></td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table><hr>
+                    </div>
+
+                    {{-- 5th day --}}
+                    <h5 class="text-right text-danger"><b>{{ Carbon\Carbon::now()->addDays(4)->format('l: F d, Y') }}</b></h5>
+                    <div class="table-responsive m-t-40">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:150px;"class="text-left">Time</th>
+                                    <th>Patient Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($appointments as $appointment)
+                                @if($appointment->custom_appointment_date == Carbon\Carbon::now()->addDays(4)->format('F d, Y'))
+                                    <tr>
+                                        <td class="text-left">{{ $appointment->time }}</td>
+                                        <td><a href="{{action('Transaction\PatientController@patientMedical')}}">{{ $appointment->full_name }}</a></td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table><hr>
+                    </div>
+
+                    {{-- 6th day --}}
+                    <h5 class="text-right text-danger"><b>{{ Carbon\Carbon::now()->addDays(5)->format('l: F d, Y') }}</b></h5>
+                    <div class="table-responsive m-t-40">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:150px;"class="text-left">Time</th>
+                                    <th>Patient Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($appointments as $appointment)
+                                @if($appointment->custom_appointment_date == Carbon\Carbon::now()->addDays(5)->format('F d, Y'))
+                                    <tr>
+                                        <td class="text-left">{{ $appointment->time }}</td>
+                                        <td><a href="{{action('Transaction\PatientController@patientMedical')}}">{{ $appointment->full_name }}</a></td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table><hr>
+                    </div>
+
+                    {{-- 7th day --}}
+                    <h5 class="text-right text-danger"><b>{{ Carbon\Carbon::now()->addDays(6)->format('l: F d, Y') }}</b></h5>
+                    <div class="table-responsive m-t-40">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:150px;"class="text-left">Time</th>
+                                    <th>Patient Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($appointments as $appointment)
+                                @if($appointment->custom_appointment_date == Carbon\Carbon::now()->addDays(6)->format('F d, Y'))
+                                    <tr>
+                                        <td class="text-left">{{ $appointment->time }}</td>
+                                        <td><a href="{{action('Transaction\PatientController@patientMedical')}}">{{ $appointment->full_name }}</a></td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table><hr>
+                    </div>
+
+                    <h3>Future Appointments</h3>
+                    <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Patient Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @forelse($appointments as $appointment)
+                            @if($appointment->appointment_date->diffInDays(Carbon\Carbon::now()) >= 6)
+                                <td>{{ $appointment->custom_appointment_date }}</td>
+                                <td>{{ $appointment->time }}</td>
+                                <td>{{ $appointment->full_name }}</td>
+                            @endif
+                        @empty
+                        <div class="alert alert-warning">
+                                There is no record yet.
+                        </div>
+                        <tfoot>
+                        </tfoot>
+                        @endforelse
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
