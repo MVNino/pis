@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Transaction;
 
+use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use PDF;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -22,5 +25,10 @@ class ReportController extends Controller
 
     public function report() {
         return view('admin.transaction.report');
+    }
+
+    public function generatePDF(){
+        $pdf = PDF::loadView('admin.transaction.generatedReport');
+        return $pdf->stream('report.pdf');
     }
 }

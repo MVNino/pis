@@ -160,6 +160,8 @@ Route::group(
 				// Reports
 				Route::get('report','ReportController@report')
 					->name('transaction.report');
+				Route::get('generatePDF','ReportController@generatePDF')
+					->name('transaction.generatedReport');
 			});
 		});
 });
