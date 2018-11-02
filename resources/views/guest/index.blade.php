@@ -59,7 +59,13 @@
                             <h2>SCHEDULE AN APPOINTMENT</h2>
                         </div>
                         <div class="v2-about-input">
-                            <input type="text"  placeholder="Patient's Name" >
+                            <input type="text" placeholder="First Name">
+                        </div>
+                        <div class="v2-about-input mr0">
+                            <input type="text" placeholder="Middle Name">
+                        </div>
+                        <div class="v2-about-input">
+                            <input type="text"  placeholder="Last Name" >
                         </div>
                         <div class="v2-about-input mr0">
                             <input type="email" placeholder="Email">
