@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2018 at 10:43 AM
+-- Generation Time: Nov 02, 2018 at 04:36 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -36,13 +36,6 @@ CREATE TABLE `appointment_tbl` (
   `patient_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
---
--- Dumping data for table `appointment_tbl`
---
-
-INSERT INTO `appointment_tbl` (`appointment_id`, `doctor_id`, `time`, `day`, `appointment_date`, `status`, `patient_id`) VALUES
-(1, NULL, '10:00:00', 'Monday', '2018-11-12', 0, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -63,7 +56,7 @@ CREATE TABLE `banner_tbl` (
 
 INSERT INTO `banner_tbl` (`banner_id`, `banner_picture`, `banner_order`, `banner_status`, `status`) VALUES
 (6, '_bannerImage_1537949778.jpg', 1, 0, 1),
-(7, '_bannerImage_1537951954.jpg', 1, 1, 1),
+(7, '_bannerImage_1537951954.jpg', 1, 1, 0),
 (8, '_bannerImage_1537952016.png', 2, 1, 0),
 (11, '_bannerImage_1537952119.jpg', 6, 0, 1),
 (12, '_bannerImage_1537952131.jpg', 7, 0, 1),
@@ -71,8 +64,385 @@ INSERT INTO `banner_tbl` (`banner_id`, `banner_picture`, `banner_order`, `banner
 (14, '_bannerImage_1537968955.jpg', 9, 0, 0),
 (15, '_bannerImage_1538287153.jpg', 3, 1, 0),
 (17, '_bannerImage_1538288227.jpg', 4, 1, 0),
-(18, '_bannerImage_1538289568.jpg', 5, 1, 0),
-(19, '_bannerImage_1538294621.jpg', 1, 1, 0);
+(18, '_bannerImage_1538289568.jpg', 5, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `barangay_tbl`
+--
+
+CREATE TABLE `barangay_tbl` (
+  `barangay_id` int(11) NOT NULL,
+  `barangay_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `zip_code` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `city_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `barangay_tbl`
+--
+
+INSERT INTO `barangay_tbl` (`barangay_id`, `barangay_name`, `zip_code`, `city_id`) VALUES
+(1, 'Barangay 287', '1006', 6),
+(2, 'Barangay 288', '1006', 6),
+(3, 'Barangay 289', '1006', 6),
+(4, 'Barangay 290', '1006', 6),
+(5, 'Barangay 291', '1006', 6),
+(6, 'Barangay 292', '1006', 6),
+(7, 'Barangay 293', '1006', 6),
+(8, 'Barangay 294', '1006', 6),
+(9, 'Barangay 295', '1006', 6),
+(10, 'Barangay 296', '1006', 6),
+(11, 'Barangay 659', '1000', 7),
+(12, 'Barangay 659-A', '1000', 7),
+(13, 'Barangay 660', '1000', 7),
+(14, 'Barangay 660-A', '1000', 7),
+(15, 'Barangay 661', '1000', 7),
+(16, 'Barangay 663', '1000', 7),
+(17, 'Barangay 663-A', '1000', 7),
+(18, 'Barangay 664', '1000', 7),
+(19, 'Barangay 666', '1000', 7),
+(20, 'Barangay 667', '1000', 7),
+(21, 'Barangay 668', '1000', 7),
+(22, 'Barangay 669', '1000', 7),
+(23, 'Barangay 670', '1000', 7),
+(24, 'Barangay 654', '1002', 8),
+(25, 'Barangay 655', '1002', 8),
+(26, 'Barangay 656', '1002', 8),
+(27, 'Barangay 657', '1002', 8),
+(28, 'Barangay 658', '1002', 8),
+(59, 'Barangay 662', '1007', 10),
+(60, 'Barangay 664-A', '1007', 10),
+(61, 'Barangay 671', '1007', 10),
+(62, 'Barangay 672', '1007', 10),
+(63, 'Barangay 673', '1007', 10),
+(64, 'Barangay 674', '1007', 10),
+(65, 'Barangay 675', '1007', 10),
+(66, 'Barangay 676', '1007', 10),
+(67, 'Barangay 677', '1007', 10),
+(68, 'Barangay 678', '1007', 10),
+(69, 'Barangay 679', '1007', 10),
+(70, 'Barangay 680', '1007', 10),
+(71, 'Barangay 681', '1007', 10),
+(72, 'Barangay 682', '1007', 10),
+(73, 'Barangay 683', '1007', 10),
+(74, 'Barangay 833', '1011', 11),
+(75, 'Barangay 834', '1011', 11),
+(76, 'Barangay 835', '1011', 11),
+(77, 'Barangay 836', '1011', 11),
+(78, 'Barangay 837', '1011', 11),
+(79, 'Barangay 838', '1011', 11),
+(80, 'Barangay 839', '1011', 11),
+(81, 'Barangay 840', '1011', 11),
+(82, 'Barangay 841', '1011', 11),
+(83, 'Barangay 842', '1011', 11),
+(84, 'Barangay 843', '1011', 11),
+(85, 'Barangay 844', '1011', 11),
+(86, 'Barangay 845', '1011', 11),
+(87, 'Barangay 846', '1011', 11),
+(88, 'Barangay 847', '1011', 11),
+(89, 'Barangay 649', '1018', 12),
+(90, 'Barangay 650', '1018', 12),
+(91, 'Barangay 651', '1018', 12),
+(92, 'Barangay 652', '1018', 12),
+(93, 'Barangay 653', '1018', 12),
+(94, 'Barangay 306', '1001', 13),
+(95, 'Barangay 307', '1001', 13),
+(96, 'Barangay 308', '1001', 13),
+(97, 'Barangay 309', '1001', 13),
+(98, 'Barangay 383', '1001', 13),
+(99, 'Barangay 384', '1001', 13),
+(100, 'Barangay 385', '1001', 13),
+(101, 'Barangay 386', '1001', 13),
+(102, 'Barangay 387', '1001', 13),
+(103, 'Barangay 388', '1001', 13),
+(104, 'Barangay 395', '1008', 14),
+(105, 'Barangay 396', '1008', 14),
+(106, 'Barangay 397', '1008', 14),
+(107, 'Barangay 398', '1008', 14),
+(108, 'Barangay 399', '1008', 14),
+(109, 'Barangay 400', '1008', 14),
+(110, 'Barangay 401', '1008', 14),
+(111, 'Barangay 402', '1008', 14),
+(112, 'Barangay 403', '1008', 14),
+(113, 'Barangay 404', '1008', 14),
+(114, 'Barangay 405', '1008', 14),
+(115, 'Barangay 406', '1008', 14),
+(116, 'Barangay 407', '1008', 14),
+(117, 'Barangay 408', '1008', 14),
+(118, 'Barangay 409', '1008', 14),
+(119, 'Barangay 637', '1005', 16),
+(120, 'Barangay 638', '1005', 16),
+(121, 'Barangay 639', '1005', 16),
+(122, 'Barangay 640', '1005', 16),
+(123, 'Barangay 641', '1005', 16),
+(124, 'Barangay 642', '1005', 16),
+(125, 'Barangay 643', '1005', 16),
+(126, 'Barangay 644', '1005', 16),
+(127, 'Barangay 645', '1005', 16),
+(128, 'Barangay 646', '1005', 16),
+(129, 'Barangay 647', '1005', 16),
+(130, 'Barangay 648', '1005', 16),
+(131, 'Barangay 268', '1010', 17),
+(132, 'Barangay 269', '1010', 17),
+(133, 'Barangay 270', '1010', 17),
+(134, 'Barangay 271', '1010', 17),
+(135, 'Barangay 272', '1010', 17),
+(136, 'Barangay 273', '1010', 17),
+(137, 'Barangay 274', '1010', 17),
+(138, 'Barangay 275', '1010', 17),
+(139, 'Barangay 276', '1010', 17),
+(140, 'Barangay 277', '1010', 17),
+(141, 'Barangay 278', '1010', 17),
+(142, 'Barangay 279', '1010', 17),
+(143, 'Barangay 280', '1010', 17),
+(144, 'Barangay 281', '1010', 17),
+(145, 'Barangay 282', '1010', 17),
+(146, 'Barangay 745', '1009', 18),
+(147, 'Barangay 746', '1009', 18),
+(148, 'Barangay 747', '1009', 18),
+(149, 'Barangay 748', '1009', 18),
+(150, 'Barangay 749', '1009', 18),
+(151, 'Barangay 750', '1009', 18),
+(152, 'Barangay 751', '1009', 18),
+(153, 'Barangay 752', '1009', 18),
+(154, 'Barangay 753', '1009', 18),
+(155, 'Barangay 754', '1009', 18),
+(156, 'Barangay 755', '1009', 18),
+(157, 'Barangay 756', '1009', 18),
+(158, 'Barangay 757', '1009', 18),
+(159, 'Barangay 758', '1009', 18),
+(160, 'Barangay 759', '1009', 18),
+(176, 'Barangay 1', '1013', 21),
+(177, 'Barangay 2', '1013', 21),
+(178, 'Barangay 3', '1013', 21),
+(179, 'Barangay 4', '1013', 21),
+(180, 'Barangay 5', '1013', 21),
+(181, 'Barangay 6', '1013', 21),
+(182, 'Barangay 7', '1013', 21),
+(183, 'Barangay 8', '1013', 21),
+(184, 'Barangay 9', '1013', 21),
+(185, 'Barangay 10', '1013', 21),
+(186, 'Barangay 11', '1013', 21),
+(187, 'Barangay 12', '1013', 21),
+(188, 'Barangay 13', '1013', 21),
+(189, 'Barangay 14', '1013', 21),
+(190, 'Barangay 15', '1013', 21),
+(191, 'Barangay 587', '1016', 20),
+(192, 'Barangay 587-A', '1016', 20),
+(193, 'Barangay 588', '1016', 20),
+(194, 'Barangay 589', '1016', 20),
+(195, 'Barangay 590', '1016', 20),
+(196, 'Barangay 591', '1016', 20),
+(197, 'Barangay 592', '1016', 20),
+(198, 'Barangay 593', '1016', 20),
+(199, 'Barangay 594', '1016', 20),
+(200, 'Barangay 595', '2016', 20),
+(201, 'Barangay 596', '1016', 20),
+(202, 'Barangay 597', '1016', 20),
+(203, 'Barangay 598', '1016', 20),
+(204, 'Barangay 599', '1016', 20),
+(205, 'Barangay 600', '1016', 20),
+(206, 'Amparo', '1425', 1),
+(207, 'Baesa', '1401', 1),
+(208, 'Bagong Silang', '1428', 1),
+(209, 'Bagumbong', '1421', 1),
+(210, 'Deparo', '1420', 1),
+(211, 'Grace Park East', '1403', 1),
+(212, 'Grace Park West', '1406', 1),
+(213, 'Kanluran Village', '1409', 1),
+(214, 'Maypajo', '1410', 1),
+(215, 'Sangandaan', '1408', 1),
+(216, 'Sta. Quiteria', '1402', 1),
+(217, 'University Hills', '1407', 1),
+(218, 'Almanza', '1750', 2),
+(219, 'Manuyo', '1744', 2),
+(220, 'Pulang Lupa', '1742', 2),
+(221, 'Zapote', '1742', 2),
+(222, 'Bangkal', '1233', 3),
+(223, 'Bel-Air', '1209', 3),
+(224, 'Cembo', '1214', 3),
+(225, 'Comembo', '1217', 3),
+(226, 'Dasmarinas Village', '1221', 3),
+(227, 'Forbes Park', '1219', 3),
+(228, 'Guadalupe Nuevo', '1212', 3),
+(229, 'Guadalupe Viejo', '1211', 3),
+(230, 'La Paz', '1204', 3),
+(231, 'Singkamas', '1204', 3),
+(232, 'Tejeros', '1204', 3),
+(233, 'Carmona', '1207', 3),
+(234, 'Pasong Tamo', '1231', 3),
+(235, 'Pembo', '1218', 3),
+(236, 'Pinagkaisahan', '1213', 3),
+(237, 'Poblacion', '1210', 3),
+(238, 'East Rembo', '1216', 3),
+(239, 'West Rembo', '1215', 3),
+(240, 'Rizal', '1208', 3),
+(241, 'Urdaneta', '1225', 3),
+(242, 'Acacia', '1474', 4),
+(243, 'Dampalit', '1480', 4),
+(244, 'Flores', '1471', 4),
+(245, 'Longos', '1472', 4),
+(246, 'Maysilo', '1477', 4),
+(247, 'Muzon', '1479', 4),
+(248, 'Potrero', '1475', 4),
+(249, 'Santolan', '1478', 4),
+(250, 'Tonsuya', '1473', 4),
+(251, 'Addition Hills', '1550', 5),
+(252, 'Bagong Silang', '1550', 5),
+(253, 'Barangka Ilaya', '1550', 5),
+(254, 'Daang Bakal', '1550', 5),
+(255, 'Hangdang Bato Itaas', '1550', 5),
+(256, 'Hulo', '1550', 5),
+(257, 'Highway Hills', '1550', 5),
+(258, 'Namayan', '1550', 5),
+(259, 'San Jose', '1550', 5),
+(260, 'Pleasant Hills', '1550', 5),
+(261, 'Poblacion', '1550', 5),
+(262, 'Burol', '1550', 5),
+(263, 'Barangka', '1803', 22),
+(264, 'Dela Pena', '1804', 22),
+(265, 'Malanday', '1805', 22),
+(266, 'Dangka', '1808', 22),
+(267, 'Parang', '1809', 22),
+(268, 'San Roque', '1801', 22),
+(269, 'Calumpang', '1801', 22),
+(270, 'Tanongo', '1803', 22),
+(271, 'Concepcion', '1807', 22),
+(272, 'Marikina Heights', '1810', 22),
+(273, 'Alabang', '1780', 23),
+(274, 'Ayala Alabang', '1799', 23),
+(275, 'Bayanan', '1772', 23),
+(276, 'Buli', '1771', 23),
+(277, 'Kupang', '1771', 23),
+(278, 'Pearl Heights', '1775', 23),
+(279, 'Pleasant Village', '1777', 23),
+(280, 'Poblacion', '1776', 23),
+(281, 'Putatan', '1772', 23),
+(282, 'Sucat', '1770', 23),
+(283, 'Suzana Heights', '1774', 23),
+(284, 'Tunasan', '1773', 23),
+(285, 'Daanghari', '1409', 24),
+(286, 'San Jose', '1409', 24),
+(287, 'San Rafael Village', '1409', 24),
+(288, 'San Roque', '1409', 24),
+(289, 'Sipac-Almacen', '1409', 24),
+(290, 'Tangos', '1489', 24),
+(291, 'Tanza', '1490', 24),
+(292, 'Bangculasi', '1409', 24),
+(293, 'Bagumbayan North', '1409', 24),
+(294, 'Bagumbayan South', '1409', 24),
+(295, 'Baclaran', '1702', 25),
+(296, 'Don Bosco', '1700', 25),
+(297, 'Don Galo', '1700', 25),
+(298, 'La Huerta', '1700', 25),
+(299, 'Merville', '1700', 25),
+(300, 'Moonwalk', '1709', 25),
+(301, 'Pulo', '1706', 25),
+(302, 'San Antonio', '1707', 25),
+(303, 'San Dionisio', '1700', 25),
+(304, 'San Isidro', '1700', 25),
+(305, 'San Martin de Porres', '1700', 25),
+(306, 'Sun Valley', '1700', 25),
+(307, 'Tambo', '1701', 25),
+(308, 'Vitalez', '1700', 25),
+(309, 'United Subdivision', '1713', 25),
+(310, 'Barangay 1', '1300', 26),
+(311, 'Barangay 10', '1300', 26),
+(312, 'Barangay 20', '1300', 26),
+(313, 'Barangay 30', '1300', 26),
+(314, 'Barangay 40', '1300', 26),
+(315, 'Barangay 50', '1300', 26),
+(316, 'Barangay 60', '1300', 26),
+(317, 'Barangay 70', '1300', 26),
+(318, 'Barangay 80', '1300', 26),
+(319, 'Barangay 90', '1300', 26),
+(320, 'Barangay 100', '1300', 26),
+(321, 'Barangay 110', '1300', 26),
+(322, 'Barangay 120', '1300', 26),
+(323, 'Barangay 130', '1300', 26),
+(324, 'Barangay 140', '1300', 26),
+(325, 'Bagong Ilog', '1600', 27),
+(326, 'Bagong Katipunan', '1600', 27),
+(327, 'Buting', '1600', 27),
+(328, 'Dela Paz', '1600', 27),
+(329, 'Kalawaan', '1600', 27),
+(330, 'Kapasigan ', '1600', 27),
+(331, 'Kapitolyo', '1603', 27),
+(332, 'Malinao', '1600', 27),
+(333, 'Manggahan', '1611', 27),
+(334, 'Maybunga', '1607', 27),
+(335, 'Pinagbuhatan', '1602', 27),
+(336, 'Pineda', '1600', 27),
+(337, 'Rosario', '1609', 27),
+(338, 'San Joaquin', '1601', 27),
+(339, 'San Miguel', '1600', 27),
+(340, 'Aguho', '1620', 28),
+(341, 'Sta. Ana', '1621', 28),
+(342, 'Holy Spirit', '1127', 29),
+(343, 'Fairview', '1118', 29),
+(344, 'Batasan Hills', '1126', 29),
+(345, 'Commonwealth', '1121', 29),
+(346, 'Damayan', '1104', 29),
+(347, 'Katipunan', '1105', 29),
+(348, 'Loyola Heights', '1108', 29),
+(349, 'Maharlika', '1114', 29),
+(350, 'Mangga', '1109', 29),
+(351, 'Milagrosa', '1109', 29),
+(352, 'Pansol', '1108', 29),
+(353, 'Pinagkaisahan', '1111', 29),
+(354, 'Tandang Sora', '1116', 29),
+(355, 'Ugong Norte', '1110', 29),
+(356, 'Valencia', '1112', 29),
+(357, 'Batis', '1500', 30),
+(358, 'Eisenhower-Crame', '1504', 30),
+(359, 'Greenhills', '1502', 30),
+(360, 'Halo-Halo', '1500', 30),
+(361, 'Isabelita', '1500', 30),
+(362, 'Little Baguio', '1500', 30),
+(363, 'Maytunas', '1500', 30),
+(364, 'Pedro Cruz', '1500', 30),
+(365, 'Rivera', '1500', 30),
+(366, 'Salapan', '1500', 30),
+(367, 'Sta. Lucia', '1500', 30),
+(368, 'Tibagan', '1500', 30),
+(369, 'West Crame', '1500', 30),
+(370, 'Bagumbayan', '1630', 31),
+(371, 'Bambang', '1630', 31),
+(372, 'Bicutan', '1631', 31),
+(373, 'Central Signal Village', '1637', 31),
+(374, 'Hagonoy', '1630', 31),
+(375, 'Katuparan', '1637', 31),
+(376, 'Lower Bicutan', '1637', 31),
+(377, 'Nichols-McKinley', '1634', 31),
+(378, 'Pinagsama', '1637', 31),
+(379, 'Signal Village', '1630', 31),
+(380, 'Tuktukan', '1637', 31),
+(381, 'Ususan', '1632', 31),
+(382, 'Wawa', '1630', 31),
+(383, 'Magtanggol', '1620', 28),
+(384, 'Poblacion', '1620', 28),
+(385, 'San Pedro', '1620', 28),
+(386, 'Sta. Ana', '1621', 28),
+(387, 'Santo Rosario-Kanluran', '1620', 28),
+(388, 'Santo Rosario-Silangan', '1620', 28),
+(389, 'Tabacalera', '1620', 28),
+(390, 'Balangkas', '1445', 32),
+(391, 'Bignay', '1440', 32),
+(392, 'Bisig', '1440', 32),
+(393, 'Caloong', '1445', 32),
+(394, 'Dalandanan', '1443', 32),
+(395, 'Isla', '1440', 32),
+(396, 'Karuhatan', '1441', 32),
+(397, 'Laoag Bato', '1447', 32),
+(398, 'Malanday', '1444', 32),
+(399, 'Maysan', '1440', 32),
+(400, 'Palasan', '1440', 32),
+(401, 'Parada', '1440', 32),
+(402, 'Pasolo', '1444', 32),
+(403, 'Pulo', '1444', 32),
+(404, 'Punturin', '1447', 32);
 
 -- --------------------------------------------------------
 
@@ -95,13 +465,61 @@ CREATE TABLE `billing_details_tbl` (
 
 CREATE TABLE `billing_tbl` (
   `billing_id` int(11) NOT NULL,
-  `billing_date` date NOT NULL,
-  `total_amount` decimal(8,2) NOT NULL,
+  `billing_date` date DEFAULT NULL,
+  `total_amount` decimal(8,2) DEFAULT NULL,
   `patient_id` int(11) NOT NULL,
-  `discounted` decimal(8,2) NOT NULL,
-  `balance` decimal(8,2) NOT NULL,
-  `isPaid` int(11) NOT NULL
+  `discounted` decimal(8,2) DEFAULT NULL,
+  `balance` decimal(8,2) DEFAULT NULL,
+  `isPaid` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `city_tbl`
+--
+
+CREATE TABLE `city_tbl` (
+  `city_id` int(11) NOT NULL,
+  `city_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `city_tbl`
+--
+
+INSERT INTO `city_tbl` (`city_id`, `city_name`) VALUES
+(1, 'Caloocan'),
+(2, 'Las Pinas'),
+(3, 'Makati'),
+(4, 'Malabon'),
+(5, 'Mandaluyong'),
+(6, 'Manila (Binondo)'),
+(7, 'Manila (Ermita)'),
+(8, 'Manila (Intramuros)'),
+(9, 'Manila (Malate)'),
+(10, 'Manila (Paco)'),
+(11, 'Manila (Pandacan)'),
+(12, 'Manila (Port Area)'),
+(13, 'Manila (Quiapo)'),
+(14, 'Manila (Sampaloc)'),
+(16, 'Manila (San Miguel)'),
+(17, 'Manila (San Nicolas)'),
+(18, 'Manila (Santa Ana)'),
+(19, 'Manila (Santa Cruz)'),
+(20, 'Manila (Santa Mesa)'),
+(21, 'Manila (Tondo)'),
+(22, 'Marikina'),
+(23, 'Muntinlupa'),
+(24, 'Navotas'),
+(25, 'Paranaque'),
+(26, 'Pasay'),
+(27, 'Pasig'),
+(28, 'Pateros'),
+(29, 'Quezon City'),
+(30, 'San Juan'),
+(31, 'Taguig'),
+(32, 'Valenzuela');
 
 -- --------------------------------------------------------
 
@@ -394,6 +812,7 @@ CREATE TABLE `other_services_tbl` (
 --
 
 INSERT INTO `other_services_tbl` (`other_services_id`, `other_image`, `other_title`, `other_desc`, `status`) VALUES
+(5, 'Electrocardiogram_OtherServiceImg_1537956915.jpg', 'Electrocardiogram', 'The electrocardiogram (ECG or EKG) is a diagnostic tool that is routinely used to assess the electrical and muscular functions of the heart. While it is a relatively simple test to perform, the interpretation of the ECG tracing requires significant amounts of training.', 1),
 (6, 'Plethysmography_OtherServiceImg_1537957053.jpg', 'Plethysmography', 'Plethysmography measures changes in volume in different areas of your body. It measures these changes with blood pressure cuffs or other sensors. These are attached to a machine called a plethysmograph.\r\n\r\nPlethysmography is especially effective in detecting changes caused by blood flow. It can help your doctor determine if you have a blood clot in your arm or leg. It can also help your doctor calculate the volume of air your lungs can hold.', 0),
 (7, 'Doppler Ultrasound_OtherServiceImg_1537957123.png', 'Doppler Ultrasound', 'A Doppler ultrasound is a test that uses high-frequency sound waves to measure the amount of blood flow through your arteries and veins, usually those that supply blood to your arms and legs. Vascular flow studies, also known as blood flow studies, can detect abnormal flow within an artery or blood vessel.', 0),
 (8, 'Duplex Ultrasound_OtherServiceImg_1537957199.jpg', 'Duplex Ultrasound', 'In addition to reconstruction of blood vessel, the vascular surgery service is responsible for the medical care of patients with wide variety of vascular disorders including vasospastic diseases, hypercoagulable syndromes, large artery vasculitis, and other nonsurgical ischemic syndromes. Outpatients services are available and has been instrumental in centralizing the growing referral practice of complex vascular problems, coordinating multi-disciplinary management and treatment of patients? vascular disease and co-morbid conditions, and providing longitudinal follow-up. To serve the needs of vascular disease patients, state-of-the art, non-invasive examinations are directed by the vascular service at the Cardiac and Non-Invasive Vascular Laboratory and are staffed with vascular nurse technologists and ultrasonographers. These individuals perform variety of tests based on Doppler ultrasound plethysmography and duplex ultrasonography with color imaging. Nearly 1,000 studies are performed yearly in the laboratory, which is fully compliant with the standards set by the Intersocietal Commission for the Accreditation of Vascular Laboratories.', 1),
@@ -418,6 +837,7 @@ CREATE TABLE `other_service_vid_tbl` (
 --
 
 INSERT INTO `other_service_vid_tbl` (`video_id`, `other_service_id`, `video`) VALUES
+(2, 5, 'https://www.youtube.com/embed/v3b-YhZmQu8'),
 (3, 6, 'https://www.youtube.com/embed/zac7OBsTNdE'),
 (4, 7, 'https://www.youtube.com/embed/tQn8jKtwk6o'),
 (5, 8, 'https://www.youtube.com/embed/eZp-AFVKQ6A'),
@@ -436,6 +856,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('ibrahimsamson05@gmail.com', '$2y$10$r.kgh3G5xMzUrJ269JfTS.NvBXjoM8nQ6G5zq7N6i5TiR7An10aQS', '2018-09-30 16:20:49');
 
 -- --------------------------------------------------------
 
@@ -468,13 +895,6 @@ CREATE TABLE `patient_tbl` (
   `contact_no` varchar(15) NOT NULL,
   `email` varchar(160) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `patient_tbl`
---
-
-INSERT INTO `patient_tbl` (`patient_id`, `lname`, `fname`, `mname`, `contact_no`, `email`) VALUES
-(1, 'Buena', 'Marie', 'Nanez', '09485044516', 'annthoniteb@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -512,6 +932,7 @@ CREATE TABLE `specialty_service_tbl` (
 --
 
 INSERT INTO `specialty_service_tbl` (`spec_service_id`, `spec_image_icon`, `spec_title`, `spec_desc`, `price`, `status`) VALUES
+(9, '2D & 3D Echocardiography/Doppler_SpecialtyServiceImg_1537955777.jpg', '2D & 3D Echocardiography/Doppler', 'Echocardiography (echo) is a painless test that uses sound waves to create pictures of your heart. This test gives your doctor information about the size and shape of your heart and how well your heart\'s chambers and valves are working.\r\n\r\n2-D (two-dimensional) echocardiogram. This technique is used to see the actual structures and motion of the heart structures. A 2-D echo view looks cone-shaped on the monitor, and the real-time motion of the heart\'s structures can be seen. This allows the doctor to see the various heart structures at work and evaluate them.\r\n\r\n3-D (three-dimensional) echocardiogram. 3-D echo technique captures 3-D views of the heart structures with greater depth than 2-D echo. The live or \"real time\" images allow for a more accurate assessment of heart function by using measurements taken while the heart is beating. 3-D echo shows enhanced views of the heart\'s anatomy and can be used to determine best treatment plan.', NULL, 1),
 (10, 'Dobutamine Stress Echocardiography_SpecialtyServiceImg_1537956209.jpg', 'Dobutamine Stress Echocardiography', 'A dobutamine stress echocardiogram (DSE) may be used if you are unable to exercise. Dobutamine is put in a vein and causes the heart to beat faster. It mimics the effects of exercise on the heart.\r\n\r\nDuring an echo, a transducer (like a microphone) sends out ultrasonic sound waves at a frequency too high to be heard. When the transducer is placed on the chest at certain locations and angles, the ultrasonic sound waves move through the skin and other body tissues to the heart tissues, where the waves bounce or \"echo\" off of the heart structures. The transducer picks up the reflected waves and sends them to a computer. The computer displays the echoes as images of the heart walls and valves.', NULL, 1),
 (11, 'Stress Test and Treadmill Test_SpecialtyServiceImg_1537956570.jpg', 'Stress Test and Treadmill Test', 'The exercise stress test also known as an exercise electrocardiogram, treadmill test, graded exercise test, or stress EKG -- is used most often. It lets your doctor know how your heart responds to being pushed. You\'ll walk on a treadmill or pedal a stationary bike. It\'ll get more difficult as you go. Your electrocardiogram, heart rate, and blood pressure will be tracked throughout.', NULL, 0),
 (12, 'Anesthesia_SpecialtyServiceImg_1538182462.jpg', 'Anesthesia', 'The Department provides valuable services from monitored anesthesia care to anesthesia for major surgery, including transplant and vascular surgeries, urologic cases, orthopedic cases, ENT cases, general surgery and cardiothoracic surgery. It also caters to providing anesthesia outside of the operating room set-up. These procedures include the following: endoscopies, nuclear scans, CT scans and extracorporeal shock wave lithotripsy. Further, the Department answers to calls for patient resuscitation and referrals for acute and chronic pain management services.', NULL, 1);
@@ -533,6 +954,7 @@ CREATE TABLE `specialty_service_vid_tbl` (
 --
 
 INSERT INTO `specialty_service_vid_tbl` (`video_id`, `specialty_service_id`, `video`) VALUES
+(2, 9, 'https://www.youtube.com/embed/_ozpd1BhSMY'),
 (3, 10, 'https://www.youtube.com/embed/UqRqQak-0pw'),
 (4, 11, 'https://www.youtube.com/embed/WD75wZgNpTc'),
 (8, 12, 'https://www.youtube.com/embed/B_tTymvDWXk');
@@ -560,10 +982,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Marlon Villa Niño', 'marlon_nino@yahoo.com', NULL, '$2y$10$5o8j9iU1lSA0uR1QIc2Bl.tFWmoZjR6LjrOUmniKSWzCLyr98PCii', NULL, '2018-09-24 01:07:02', '2018-09-24 01:07:02'),
-(2, 'Annthonite Buena', 'annthoniteb@gmail.com', NULL, '$2y$10$w6env5aXq4ifOG6EYVRPG.f8jR42Sw39gMkdRQmNHQGT/N1XAurpO', 'zLwft2uYrCiHjenxvOWodmowFwKYGJ8DzZLWDJtT91p2teibPoiU69v5GejC', '2018-09-25 21:15:44', '2018-09-25 21:15:44'),
+(2, 'Annthonite Buena', 'annthoniteb@gmail.com', NULL, '$2y$10$w6env5aXq4ifOG6EYVRPG.f8jR42Sw39gMkdRQmNHQGT/N1XAurpO', 'Kgpndy4c8uPzsOW38PCVLAdlPJ1SKU4HeAdVZx8DAkpGTVHcwaC5ODYZe0b1', '2018-09-25 21:15:44', '2018-09-25 21:15:44'),
 (3, 'Marlon Villa Niño', 'ninomarlonvilla@gmail.com', NULL, '$2y$10$c9GrmXmpyoVxZy18HeraW.hCSZxpHamLXBNAeBKVFBZV6qkiONPia', 'D21oLdHOeRgstyBbHRKLOZlWImD9NN0VfrmvSMtEYxKrdZD3JG8P3VwCahpr', '2018-09-26 03:39:15', '2018-09-26 03:39:15'),
 (4, 'Ibrahim Samson', 'ibrahimsamson05@gmail.com', NULL, '$2y$10$da13sq0Z71Dz7LTaKqny8ea1wjgq4yEBIKL49LjbTYnJ0a4jzh1xi', NULL, '2018-09-26 13:32:20', '2018-09-26 13:32:20'),
-(5, 'Lhexy Romero', 'lhexyromero@gmail.com', NULL, '$2y$10$DHePi3Lczvw1KfObvdqRfuJeeCRUEUYK9wGXqd4ItKeVIvg0vIt0O', NULL, '2018-09-29 00:44:30', '2018-09-29 00:44:30');
+(5, 'Lhexy Romero', 'lhexyromero@gmail.com', NULL, '$2y$10$DHePi3Lczvw1KfObvdqRfuJeeCRUEUYK9wGXqd4ItKeVIvg0vIt0O', NULL, '2018-09-29 00:44:30', '2018-09-29 00:44:30'),
+(6, 'paul', 'christianpaultupas@gmail.com', NULL, '$2y$10$oUkqAlCBNriYi12v26eAIOnPnPLaAl288YTvjhznkaRAROjSTwega', NULL, '2018-09-30 14:32:02', '2018-09-30 14:32:02');
 
 -- --------------------------------------------------------
 
@@ -607,6 +1030,13 @@ ALTER TABLE `banner_tbl`
   ADD PRIMARY KEY (`banner_id`);
 
 --
+-- Indexes for table `barangay_tbl`
+--
+ALTER TABLE `barangay_tbl`
+  ADD PRIMARY KEY (`barangay_id`),
+  ADD KEY `city_id` (`city_id`);
+
+--
 -- Indexes for table `billing_details_tbl`
 --
 ALTER TABLE `billing_details_tbl`
@@ -620,6 +1050,12 @@ ALTER TABLE `billing_details_tbl`
 ALTER TABLE `billing_tbl`
   ADD PRIMARY KEY (`billing_id`),
   ADD KEY `patient_id` (`patient_id`);
+
+--
+-- Indexes for table `city_tbl`
+--
+ALTER TABLE `city_tbl`
+  ADD PRIMARY KEY (`city_id`);
 
 --
 -- Indexes for table `clinic_contact_tbl`
@@ -769,22 +1205,32 @@ ALTER TABLE `user_tbl`
 -- AUTO_INCREMENT for table `appointment_tbl`
 --
 ALTER TABLE `appointment_tbl`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `banner_tbl`
 --
 ALTER TABLE `banner_tbl`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `barangay_tbl`
+--
+ALTER TABLE `barangay_tbl`
+  MODIFY `barangay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=405;
 --
 -- AUTO_INCREMENT for table `billing_details_tbl`
 --
 ALTER TABLE `billing_details_tbl`
   MODIFY `billing_details_id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `city_tbl`
+--
+ALTER TABLE `city_tbl`
+  MODIFY `city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+--
 -- AUTO_INCREMENT for table `clinic_contact_tbl`
 --
 ALTER TABLE `clinic_contact_tbl`
-  MODIFY `clinic_contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `clinic_contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `company_tbl`
 --
@@ -809,7 +1255,7 @@ ALTER TABLE `faq_tbl`
 -- AUTO_INCREMENT for table `features_tbl`
 --
 ALTER TABLE `features_tbl`
-  MODIFY `features_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `features_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `holiday_tbl`
 --
@@ -859,7 +1305,7 @@ ALTER TABLE `patient_information_tbl`
 -- AUTO_INCREMENT for table `patient_tbl`
 --
 ALTER TABLE `patient_tbl`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `profile_tbl`
 --
@@ -869,17 +1315,17 @@ ALTER TABLE `profile_tbl`
 -- AUTO_INCREMENT for table `specialty_service_tbl`
 --
 ALTER TABLE `specialty_service_tbl`
-  MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `specialty_service_vid_tbl`
 --
 ALTER TABLE `specialty_service_vid_tbl`
-  MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `user_tbl`
 --
@@ -895,6 +1341,12 @@ ALTER TABLE `user_tbl`
 ALTER TABLE `appointment_tbl`
   ADD CONSTRAINT `appointment_tbl_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient_tbl` (`patient_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `appointment_tbl_ibfk_2` FOREIGN KEY (`doctor_id`) REFERENCES `user_tbl` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `barangay_tbl`
+--
+ALTER TABLE `barangay_tbl`
+  ADD CONSTRAINT `barangay_tbl_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `city_tbl` (`city_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `billing_details_tbl`
