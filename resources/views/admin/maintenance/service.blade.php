@@ -48,6 +48,7 @@
 								<th>Service ID</th>
 								<th>Service</th>
 								<th>Service Description</th>
+								<th>Price</th>
 								<th colspan="2" class = "text-center">Action</th>
 							</tr>
 						</thead>
@@ -57,6 +58,7 @@
 								<td>{{ $specialtyService->spec_service_id }}</td>
 								<td>{{ $specialtyService->spec_title }}</td>
 								<td>{{ $specialtyService->spec_desc }}</td>
+								<td>PHP 100.00</td>
 								<td class="text-center">
 									<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/specialty-service/{{ $specialtyService->spec_service_id }}/edit">
 										<i class="fa fa-edit"></i>
@@ -175,6 +177,12 @@
 					<label class="col-md-12">Video Link</label>
 					<div class="col-md-12">
 						<input type="text" name="txtVideoLink" class="form-control"> </div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-12">Price</label>
+					<div class="col-md-12">
+						<input type="number" name="price" class="form-control">
+					</div>
 				</div>
 				{{-- <div class="form-group">
 					<div class="col-sm-12">

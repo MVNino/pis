@@ -53,6 +53,12 @@
 								</textarea>	
 							</div>
 						</div>
+						<div class="form-group">
+							<label class="col-md-12">Price</label>
+							<div class="col-md-12">
+								<input type="number" name="price" class="form-control">
+							</div>
+						</div>
 						<div align="right">
 							{{ Form::hidden('_method', 'PUT') }}
 							<button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
