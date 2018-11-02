@@ -37,7 +37,7 @@
                                 @if($appointment->custom_appointment_date == Carbon\Carbon::now()->format('F d, Y'))
                                     <tr>
                                         <td class="text-left">{{ $appointment->time }}</td>
-                                        <td><a href="{{action('Transaction\PatientController@patientMedical')}}">{{ $appointment->full_name }}</a></td>
+                                        <td><a href="/admin/transaction/billing/{{ $appointment->patient_id }}">{{ $appointment->full_name }}</a></td>
                                     </tr>
                                 @endif
                             @endforeach
@@ -60,7 +60,7 @@
                                 @if($appointment->custom_appointment_date == Carbon\Carbon::now()->addDay()->format('F d, Y'))
                                     <tr>
                                         <td class="text-left">{{ $appointment->time }}</td>
-                                        <td><a href="{{action('Transaction\PatientController@patientMedical')}}">{{ $appointment->full_name }}</a></td>
+                                        <td><a href="/admin/transaction/billing/{{ $appointment->patient_id }}">{{ $appointment->full_name }}</a></td>
                                     </tr>
                                 @endif
                             @endforeach

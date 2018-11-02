@@ -56,7 +56,7 @@
 						<div class="form-group">
 							<label class="col-md-12">Price</label>
 							<div class="col-md-12">
-								<input type="number" name="price" class="form-control">
+								<input type="number" name="price" class="form-control" value="{{ $specialtyService->price }}">
 							</div>
 						</div>
 						<div align="right">
