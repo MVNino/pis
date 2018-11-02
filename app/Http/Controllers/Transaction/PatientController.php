@@ -34,29 +34,17 @@ class PatientController extends Controller
         }
     }
 
-    public function editRecord(Request $request) {
-
-        $this->validate($request, [
-    		'patient' => 'required',
-            'record_id' => 'required'
-        ]);
-
+    public function editRecord(Request $request, $id)
+    {
         try
         {
-            $patient_id = $request->input('patient');
-            $medical_record_id = $request->input('record_id');
-            
             $patient = Patient::
-                find($patient_id);
+                find($id);
 
-            $mrSelected = MedicalRecord::
-                find($medical_record_id);
+            $mr = MedicalRecord::
+                all();
 
-            $mrAll = MedicalRecord::
-                all()
-                ->where('medical_record_id', '=', $medical_record_id);
-
-            return view('admin.transaction.edit-patient', ['patient'=>$patient, 'mrSelected'=>$mrSelected, 'mrAll'=>$mrAll]);
+            return view('admin.transaction.edit-patient', ['patient'=>$patient, 'mr'=>$mr]);
         }
         catch (\Exception $e)
         {
@@ -66,10 +54,27 @@ class PatientController extends Controller
 
     public function updatePatient(Request $request, $id)
     {
+        $this->validate($request, [
+    		'lastName' => 'required',
+            'firstName' => 'required',
+            'middleName' => 'required',
+            'contactNumber' => 'required'
+        ]);
+
         try
         {
-            $patient = Patient::
-                find($id);
+            $patient = Patient::find($id);
+
+            $patient->lname = $request->input('lastName');
+            $patient->fname = $request->input('firstName');
+            $patient->mname = $request->input('middleName');
+            $patient->contact_no = $request->input('contactNumber');
+            $patient->save();
+
+            if ($patient->save())
+            {
+                return redirect()->back()->with('success', 'Patient Record Updated!');
+            }
         }
         catch (\Exception $e)
         {

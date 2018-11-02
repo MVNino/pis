@@ -129,7 +129,8 @@ Route::group(
 			Route::namespace('Transaction')->group(function () {
 				Route::get('patients', 'PatientController@listPatients')
 					->name('transaction.patients');
-				Route::get('editRecord', 'PatientController@editRecord');
+				Route::put('patients/{id}', 'PatientController@updatePatient');
+				Route::get('editRecord/{id}', 'PatientController@editRecord');
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('receipt','PaymentController@receipt')

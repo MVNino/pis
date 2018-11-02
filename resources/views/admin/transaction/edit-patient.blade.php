@@ -28,76 +28,80 @@
                     <label class="col-md-12">Medical Treatment History</label>
                     <div class="col-md-12">
                         <select name="mr" class="form-control" rows="5">
-                            @foreach($mrAll as $mr)
-                                @if($patient->patient_id == $mr->patient_id)
-                                    <option value="{{$mr->medical_record_id}}">{{\Carbon\Carbon::createFromFormat('Y-m-d', $mr->med_hist_date)->format('F j, Y')}}</option>
+                            @foreach($mr as $r)
+                                @if($patient->patient_id == $r->patient_id)
+                                    <option value="{{$r->medical_record_id}}">{{\Carbon\Carbon::createFromFormat('Y-m-d', $r->med_hist_date)->format('F j, Y')}}</option>
                                 @endif
                             @endforeach
                         </select>
                     </div>
                 </div><br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="col-md-12">Last Name</label>
-                            <div class="col-md-12">
-                                <input type="text" name="lastName" class="form-control" value="{{$patient->lname}}" disabled>
+                {!!Form::open(['action' => ['Transaction\PatientController@updatePatient', $patient->patient_id], 'method' => 'POST'])!!}
+					{{Form::hidden('_method', 'PUT')}}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-12">Last Name</label>
+                                <div class="col-md-12">
+                                    <input type="text" name="lastName" class="form-control" value="{{$patient->lname}}" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-12">First Name</label>
+                                <div class="col-md-12">
+                                    <input type="text" name="firstName" class="form-control" value="{{$patient->fname}}" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-12">Middle Name</label>
+                                <div class="col-md-12">
+                                    <input type="text" name="middleName" class="form-control" value="{{$patient->mname}}" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-12">Birthdate</label>
+                                <div class="col-md-12">
+                                    <input type="date" name="birthdate" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-12">Contact Number</label>
+                                <div class="col-md-12">
+                                    <input type="text" name="contactNumber" class="form-control" value="{{$patient->contact_no}}" disabled>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="col-md-12">First Name</label>
-                            <div class="col-md-12">
-                                <input type="text" name="firstName" class="form-control" value="{{$patient->fname}}" disabled>
-                            </div>
-                        </div>
+                    <div align="right">
+                        <button id="btnEdit" type="button" onclick="able()" class="btn btn-primary">
+                            <i class="fa fa-edit"></i> Edit
+                        </button>
+                        <button id="btnSave" type="submit" class="btn btn-info">
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
+                        </button>
+                        <button id="btnCancel" type="button" onclick="unable()" class="btn btn-inverse">
+                            <i class="fa fa-close"></i> Cancel
+                        </button>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="col-md-12">Middle Name</label>
-                            <div class="col-md-12">
-                                <input type="text" name="middleName" class="form-control" value="{{$patient->mname}}" disabled>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-md-12">Birthdate</label>
-                            <div class="col-md-12">
-                                <input type="date" name="birthdate" class="form-control" disabled>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-md-12">Contact Number</label>
-                            <div class="col-md-12">
-                                <input type="text" name="contactNumber" class="form-control" value="{{$patient->contact_no}}" disabled>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div align="right">
-                    <button id="btnEdit" type="button" onclick="able()" class="btn btn-primary">
-                        <i class="fa fa-edit"></i> Edit
-                    </button>
-                    <button id="btnSave" type="button" class="btn btn-info">
-                        <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
-                    </button>
-                    <button id="btnCancel" type="button" onclick="unable()" class="btn btn-inverse">
-                        <i class="fa fa-close"></i> Cancel
-                    </button>
-                </div><br><hr>
+                {!!Form::close()!!} 
+                <br><hr>
                 <div class="row">
                     <div class=col-md-4>
                         <div class="form-group">
                             <label class="col-md-12">Height</label>
                             <div class="col-md-12">
-                                <input type="text" name="height" class="form-control" value="{{$mrSelected->height}}">
+                                <input type="text" name="height" class="form-control" >
                             </div>
                         </div>
                     </div>
@@ -105,7 +109,7 @@
                         <div class="form-group">
                             <label class="col-md-12">Weight</label>
                             <div class="col-md-12">
-                                <input type="text" name="height" class="form-control" value="{{$mrSelected->weight}}">
+                                <input type="text" name="height" class="form-control" >
                             </div>
                         </div>
                     </div>
@@ -113,7 +117,7 @@
                         <div class="form-group">
                             <label class="col-md-12">Temperature</label>
                             <div class="col-md-12">
-                                <input type="text" name="height" class="form-control" value="{{$mrSelected->temperature}}">
+                                <input type="text" name="height" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -121,13 +125,13 @@
                 <div class="form-group">
                     <label class="col-md-12">Treatment</label>
                     <div class="col-md-12">
-                        <textarea name="treatment" class="form-control" rows="5" value="{{$mrSelected->treatment}}"></textarea>
+                        <textarea name="treatment" class="form-control" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-12">Procedure</label>
                     <div class="col-md-12">
-                        <textarea name="procudere" class="form-control" rows="5" value="{{$mrSelected->med_hist_procedure}}"></textarea>
+                        <textarea name="procudere" class="form-control" rows="5" ></textarea>
                     </div>
                 </div>
                 <div align="right">
