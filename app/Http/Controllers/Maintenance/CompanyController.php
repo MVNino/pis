@@ -37,9 +37,7 @@ class CompanyController extends Controller
     {
         $this->validate($request, [
     		'name' => 'required|string',
-            'fileCompanyLogo' => 'image|nullable|mimes:png|max:3000',
-            
-            
+            'fileCompanyLogo' => 'image|nullable|mimes:png|max:3000'
         ]);      
         $company = Company::findOrFail($id);
         $company->company_name = $request->name;
@@ -56,7 +54,7 @@ class CompanyController extends Controller
                 ->storeAs('public/images/logo', $companyImgNameToStore);
             $company->company_clinic_logo = $companyImgNameToStore;
         }
-        
+
         $company->save();
         return redirect()->back()->with('success', 'Company Details Updated!');
     }

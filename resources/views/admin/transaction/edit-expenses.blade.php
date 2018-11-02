@@ -25,15 +25,21 @@
                     <div class="form-group">
                         <label class="col-md-12">Date</label>
                         <div class="col-md-12">
-                            <input type="date" name="date" class="form-control"> 
+                            <input type="date" name="date" class="form-control" value="{{$expense->expense_date}}"> 
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Purpose of Expense</label>
                         <div class="col-md-12">
-                            <textarea name = "expenses" class="form-control" rows="3"></textarea>
+                            <textarea name = "expenses" class="form-control" rows="3">{{$expense->name}}</textarea>
                         </div>
                     </div>
+                    <div class="form-group">
+						<label class="col-md-12">Amount</label>
+						<div class="col-md-12">
+							<input type="number" name="amount" class="form-control" value="{{$expense->cost}}"> 
+						</div>
+					</div>
                     <div align="right">
                         <button id="btnSave" type="button" class="btn btn-info">
                             <i class="fa fa-fw fa-lg fa-check-circle"></i> Save

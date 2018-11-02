@@ -40,7 +40,7 @@
 					<label class="col-md-12">Category</label>
 					<div class="col-md-12">
 						<select class="custom-select" name="category">
-							<option value="$faq->faq_category" selected>{{ $faq->faq_category }}</option>
+							<option value="{{ $faq->faq_category }}" selected>{{ $faq->faq_category }}</option>
 							<option value="surgery">Surgery</option>
 							<option value="service">Service</option>
 							<option value="recovery">Recovery</option>
@@ -52,7 +52,7 @@
 				</div>
 				{{ Form::hidden('_method', 'PUT') }}
 				<div align="right">
-                    <button id="btnSave" type="button" class="btn btn-info">
+                    <button id="btnSave" type="submit" class="btn btn-info">
                         <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
                     </button>
                     <a href="{{ route('maintenance.faqs') }}" role="button" id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">

@@ -12,7 +12,12 @@
 */
 
 # Website
+// Landing page(banners, request appointment, service, news & events)
 Route::get('/', 'GuestController@viewIndex');
+Route::post('schedule-appointment', 
+	'Transaction\AppointmentController@scheduleAppointment');
+
+// About page
 Route::get('/about','GuestController@viewAbout');
 Route::get('services','GuestController@viewServices')->name('services');
 Route::get('service/{id}', 'GuestController@showService');
@@ -127,17 +132,33 @@ Route::group(
 			'prefix' => 'transaction'
 		], function() {
 			Route::namespace('Transaction')->group(function () {
+				// Schedule
+				Route::get('appointment','AppointmentController@listAppointments') 
+					->name('transaction.appointments');
+				Route::get('approved-appointment','AppointmentController@listApprovedAppointments') 
+					->name('transaction.approvedAppointments');
+				Route::put('appointment-reschedule/{id}', 'AppointmentController@rescheduleAppointment');
+				Route::put('appointment/{id}', 'AppointmentController@approveAppointment');
+				// Patients
 				Route::get('patients', 'PatientController@listPatients')
 					->name('transaction.patients');
 				Route::put('patients/{id}', 'PatientController@updatePatient');
-				Route::get('editRecord/{id}', 'PatientController@editRecord');
+				Route::put('updateRecord/{id}', 'PatientController@updateMedical');
+				Route::get('editRecord', 'PatientController@editRecord');
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
+				Route::post('avail-service', 'PaymentController@availService');
 				Route::get('receipt','PaymentController@receipt')
 					->name('transaction.receipt');
+				Route::get('balance','PaymentController@balance')
+					->name('transaction.balance');
+				// Clinical Expenses
 				Route::get('expenses','ReportController@expenses')
 					->name('transaction.expenses');
-				Route::get('editExpenses','ReportController@editExpenses'); //change it
+				Route::get('editExpenses/{id}','ReportController@editExpenses'); //change it
+				Route::post('addExpense', 'ReportController@addExpense');
+				Route::delete('expense/{id}', 'ReportController@deleteExpense');
+				// Reports
 				Route::get('report','ReportController@report')
 					->name('transaction.report');
 			});

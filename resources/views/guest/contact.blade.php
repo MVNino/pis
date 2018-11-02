@@ -86,7 +86,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_telephone }}</h4>
+                            <h4>{{ $clinic->clinic_contact }}</h4>
                         </div>
                     </div>
                     <div class="row single-contact">
@@ -94,7 +94,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ $clinic->clinic_contact }}</h4>
+                            <h4>dra-joy-gali@pupbsit4-1.tech</h4>
                         </div>
                     </div>
                 </div>

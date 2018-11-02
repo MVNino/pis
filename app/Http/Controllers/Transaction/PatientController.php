@@ -34,21 +34,26 @@ class PatientController extends Controller
         }
     }
 
-    public function editRecord(Request $request, $id)
+    public function editRecord(Request $request)
     {
+        $this->validate($request, [
+            'id' => 'required',
+        ]);
+
         try
         {
             $patient = Patient::
-                find($id);
+                find($request->input('id'));
 
             $mr = MedicalRecord::
-                all();
+                all()
+                ->where('patient_id', '=', $request->input('id'));
 
             return view('admin.transaction.edit-patient', ['patient'=>$patient, 'mr'=>$mr]);
         }
         catch (\Exception $e)
         {
-            return view('admin.transaction.edit-patient')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -74,6 +79,36 @@ class PatientController extends Controller
             if ($patient->save())
             {
                 return redirect()->back()->with('success', 'Patient Record Updated!');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function updateMedical(Request $request, $id)
+    {
+        $this->validate($request, [
+            'height' => 'required',
+            'weight' => 'required',
+            'temperature' => 'required',
+            'procedure' => 'required'
+        ]);
+
+        try
+        {
+            $mr = MedicalRecord::
+                find($id);
+
+            $mr->height = $request->input('height');
+            $mr->weight = $request->input('weight');
+            $mr->temperature = $request->input('temperature');
+            $mr->med_hist_procedure = $request->input('procedure');
+
+            if ($mr->save())
+            {
+                return redirect()->back()->with('success', 'Medical Record Updated!');
             }
         }
         catch (\Exception $e)

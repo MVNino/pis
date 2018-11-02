@@ -39,7 +39,8 @@
                             <td>{{$patient->email}}</td>
                             <td>
                                 <center>
-                                    {!! Form::open(['action' => ['Transaction\PatientController@editRecord', $patient->patient_id], 'method' => 'GET', 'class' => 'form-material form-horizontal'])!!}
+                                    {!! Form::open(['action' => 'Transaction\PatientController@editRecord', 'method' => 'GET', 'class' => 'form-material form-horizontal'])!!}
+                                        <input name="id" value="{{$patient->patient_id}}" style="display: none;">
                                         <button role="submit" class="btn btn-sm btn-info">
                                             <i class="fa fa-eye"></i>
                                         </button>

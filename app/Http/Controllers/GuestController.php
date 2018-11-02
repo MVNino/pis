@@ -33,7 +33,6 @@ class GuestController extends Controller
                 ->limit(3)
                 ->get();
         $banners = Banner::where('banner_status', 1)
-                ->where('status', 1)
                 ->get();
         return view('guest.index', ['banners'=>$banners, 
                 'news' => $news, 'otherServices' => $otherServices]);
@@ -48,9 +47,11 @@ class GuestController extends Controller
 
     public function viewServices() 
     {
-        $otherServices = OtherService::orderBy('other_services_id', 'desc')
+        $otherServices = OtherService::where('status', 1)
+                ->orderBy('other_services_id', 'desc')
                 ->paginate(6);
-        $specialtyServices = SpecialtyService::orderBy('spec_service_id', 'desc')
+        $specialtyServices = SpecialtyService::where('status', 1)
+                ->orderBy('spec_service_id', 'desc')
                 ->paginate(6);
 
         return view('guest.services', ['otherServices' => $otherServices, 
@@ -71,8 +72,12 @@ class GuestController extends Controller
 
     # News
     public function viewNews() {
-        $recentNews = News::orderBy('news_order')->get();
-        $news = News::orderBy('news_order')->paginate(2);
+        $recentNews = News::where('status', 1)
+            ->orderBy('news_order')
+            ->get();
+        $news = News::where('status', 1)
+            ->orderBy('news_order')
+            ->paginate(2);
         return view('guest.news', ['news' => $news, 
             'recentNews' => $recentNews]);
     }
@@ -111,9 +116,9 @@ class GuestController extends Controller
         $contact->contact_inquiry = $request->inquiry;
         $contact->status = 0;
 
-        $contact->save();
-        return redirect()->back()->with('success', 'Contact added!');
-        
+        if($contact->save()){
+            return redirect()->back()->with('success', 'Contact added!');
+        }
     }
 
     public function getContact()
@@ -121,7 +126,7 @@ class GuestController extends Controller
         $MaxId = Contact::max('contact_us_id');
         return $contact = Contact::findOrFail($MaxId);
     }
- 
+
     //Get about
     public function getAbout()
     {
@@ -137,8 +142,10 @@ class GuestController extends Controller
     }
 
     # FAQs
-    public function viewFaqs() {
-        $faqs = FAQ::all();
+    public function viewFaqs() 
+    {
+        $faqs = FAQ::where('status', 1)
+                ->get();
         $clinic = $this->getClinicContact();
         return view('guest.faqs', ['faqs' => $faqs, 
             'clinic' => $clinic]);

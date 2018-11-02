@@ -20,7 +20,7 @@
     <link href="{{ asset('elite/css/animate.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('elite/css/style.min.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('elite/css/multiple-select.css') }}" rel="stylesheet">
     <!-- color CSS -->
     <link href="{{ asset('elite/css/colors/megna.css') }}" id="theme" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('elite/css/icons/themify-icons/themify-icons.css') }}">

@@ -28,7 +28,7 @@ class BannerController extends Controller
     {
         $this->validate($request, [
     		'order' => 'required|numeric',
-            'bannerImage' => 'image|nullable|max:3000'
+            'bannerImage' => 'image|nullable|max:10000'
         ]);
 
         try
@@ -37,6 +37,7 @@ class BannerController extends Controller
             $b = Banner::
                 all()
                 ->where('banner_order',  $request->input('order'))
+                ->where('status', 0)
                 ->count();
 
             if($b > 0)
@@ -177,7 +178,7 @@ class BannerController extends Controller
     {
         $this->validate($request, [
             'order' => 'numeric',
-            'bannerImage' => 'image|nullable|max:3000',
+            'bannerImage' => 'image|nullable|max:10000',
         ]);
         
         try

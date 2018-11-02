@@ -24,8 +24,8 @@ class FAQController extends Controller
     public function addFAQs(Request $request)
     {
     	$this->validate($request, [
-    		'question' => 'required|string|max:191',
-    		'answer' => 'required|string|max:191',
+    		'question' => 'required|string|max:5000',
+    		'answer' => 'required|string|max:5000',
     		'category' => 'required'
     	]);
 
@@ -48,8 +48,8 @@ class FAQController extends Controller
     public function updateFAQs(Request $request, $id)
     {
         $this->validate($request, [
-            'question' => 'required|string|max:191',
-            'answer' => 'required|string|max:191',
+            'question' => 'required|string|max:5000',
+            'answer' => 'required|string|max:5000',
             'category' => 'required'
         ]);
 

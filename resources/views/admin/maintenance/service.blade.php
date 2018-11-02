@@ -27,7 +27,7 @@
 		<li class="nav-item"> 
 			<a class="nav-link" data-toggle="tab" href="#profile2" role="tab">
 				<span class="hidden-sm-up"><i class="ti-user"></i></span> 
-				<span class="hidden-xs-down">Other Services</span>
+				<span class="hidden-xs-down">Main Services</span>
 			</a> 
 		</li>
 	</ul>
@@ -48,6 +48,7 @@
 								<th>Service ID</th>
 								<th>Service</th>
 								<th>Service Description</th>
+								<th>Price</th>
 								<th colspan="2" class = "text-center">Action</th>
 							</tr>
 						</thead>
@@ -57,6 +58,7 @@
 								<td>{{ $specialtyService->spec_service_id }}</td>
 								<td>{{ $specialtyService->spec_title }}</td>
 								<td>{{ $specialtyService->spec_desc }}</td>
+								<td>PHP 100.00</td>
 								<td class="text-center">
 									<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/specialty-service/{{ $specialtyService->spec_service_id }}/edit">
 										<i class="fa fa-edit"></i>
@@ -87,10 +89,10 @@
 			</div>
 			<div class="tab-pane" id="profile2" role="tabpanel">
 				<div>
-				<h3 class="box-title">Other Services</h3>
+				<h3 class="box-title">Main Services</h3>
 					<div align="right">
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#otherServiceModal">
-							<i class="fa fa-plus"></i> Add Other Service
+							<i class="fa fa-plus"></i> Add Main Service
 						</button><br><br>
 					</div>
 					<table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
@@ -175,6 +177,12 @@
 					<label class="col-md-12">Video Link</label>
 					<div class="col-md-12">
 						<input type="text" name="txtVideoLink" class="form-control"> </div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-12">Price</label>
+					<div class="col-md-12">
+						<input type="number" name="price" class="form-control">
+					</div>
 				</div>
 				{{-- <div class="form-group">
 					<div class="col-sm-12">
