@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Transaction;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Patient;
 use App\SpecialtyService;
 
 class PaymentController extends Controller
@@ -13,11 +14,19 @@ class PaymentController extends Controller
         $this->middleware('auth');
     }
 
-    public function billing() 
+    public function billing($id = NULL) 
     {
-        $specialServices = SpecialtyService::all();
-        return view('admin.transaction.billing', 
-            ['specialServices' => $specialServices]);
+        if ($id == NULL) {
+            $specialServices = SpecialtyService::all();
+            return view('admin.transaction.billing', 
+                ['specialServices' => $specialServices]);
+        } else {
+            $patient = Patient::findOrFail($id);
+            $specialServices = SpecialtyService::all();
+            return view('admin.transaction.patient-billing', 
+                ['specialServices' => $specialServices, 
+                'patient' => $patient]);
+        }
     }
 
     public function availService(Request $request)

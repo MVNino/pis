@@ -147,6 +147,7 @@ Route::group(
 				// Payments
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
+				Route::get('billing/{id}', 'PaymentController@billing');
 				Route::post('avail-service', 'PaymentController@availService');
 				Route::get('receipt','PaymentController@receipt')
 					->name('transaction.receipt');

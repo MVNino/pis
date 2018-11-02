@@ -25,8 +25,7 @@ class Appointment extends Model
 	public function listAppointments($status)
 	{
 		return $this->join('patient_tbl', 'appointment_tbl.patient_id', '=', 'patient_tbl.patient_id')
-        	->selectRaw('appointment_id as id, CONCAT(lname,", ",fname, " ", mname) as full_name, contact_no, email, appointment_date, 
-        		DATE_FORMAT(appointment_date, "%M %d, %Y")as custom_appointment_date, 
+        	->selectRaw('appointment_id as id, patient_tbl.patient_id, CONCAT(lname,", ",fname, " ", mname) as full_name, contact_no, email, appointment_date, DATE_FORMAT(appointment_date, "%M %d, %Y")as custom_appointment_date, 
         		DATE_FORMAT(time, "%h:%i %p") as time')
             ->where('status', $status)
             ->get();
