@@ -132,6 +132,59 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div style="padding-top: 650px;" class="modal fade bd-example-modal-lg" id="manualClinic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Clinic</b></h4>
+			<p style="margin-top:0;">This part will discuss the Clinic module. It will show you how to manage the clinic information in the system.</p>
+			<div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under “WEBSITE MAINTENANCE”, click [1] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/clinic/clinic.jpg')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to add a Clinic?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To add a new Clinic, click [2] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/clinic/clinic.jpg')}}"><br><br>
+				
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Input the contact, location, operating hours, and opening days of the new clinic.<br><br>
+
+				<label><b>Step 3 :</b>&nbsp;</label>
+				Select an image for your map. After selecting an image, you will be given an option to change or remove the image.<br><br>
+
+				<label><b>Step 4 :</b>&nbsp;</label>
+				To add your new clinic, click [5]. A message [6] will be shown that the adding of clinic is successful.<br><br>
+				<img class="dynamic" src="{{asset('img/clinic/clinic2.jpg')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to delete a Clinic?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+                To delete a clinic, click [4]. Once you clicked the button, a confirmation message will appear to confirm your action.
+
+				<img class="dynamic" src="{{asset('img/clinic/clinic3.jpg')}}"><br><br>
+				<label><b>Step 2 :</b>&nbsp;</label>
+			    Click [10] To remove the clinic. Click [11]. To disregard any changes. Once you deleted the clinic, a message [12] will appear that the clinic is removed successfully.<br><br>
+				<img class="dynamic" src="{{asset('img/clinic/clinic4.jpg')}}"><br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('pg-specific-js')
@@ -154,5 +207,16 @@ $(document).ready(function() {
         });
     }
 });
+
+window.onhelp = function() {
+    return false;
+};
+window.onkeydown = evt => {
+    if (evt.keyCode == 112){
+        $("#manualClinic").modal("show");
+        
+    }
+    return false;
+};
 </script>
 @endsection

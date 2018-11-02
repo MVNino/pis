@@ -83,6 +83,45 @@
 		</div>
 	</div>
 </div>
+
+<div style="padding-top: 400px;" class="modal fade bd-example-modal-lg" id="manualEditNews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>News</b></h4>
+			<p style="margin-top:0;">This part will discuss the News module. It consists of new information or report about current events. It will show you how to manage the News that will be displayed in the website.</p>
+			<div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under “WEBSITE MAINTENANCE”, click [1] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/news/news.jpg')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to edit a News?</em></b>&nbsp;</p>
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To edit an existing News, click [3] which will direct you to this page.
+				<img class="dynamic" src="{{asset('img/news/news5.jpg')}}"><br><br>
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Step 2:	You will now be able to change the order of viewing, news title, news description, and image. To commit any changes, click [8]. To disregard any changes, click [9].<br><br>
+				
+				<label><b>Step 3 :</b>&nbsp;</label>
+				Once you edited the News, a message [10] will appear that the changes were made successfully.
+				<img class="dynamic" src="{{asset('img/news/news6.jpg')}}"><br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('pg-specific-js')
@@ -104,5 +143,16 @@ $(document).ready(function() {
 		});
 	}
 });
+
+window.onhelp = function() {
+	return false;
+};
+window.onkeydown = evt => {
+	if (evt.keyCode == 112){
+		$("#manualEditNews").modal("show");
+		
+	}
+	return false;
+};
 </script>
 @endsection

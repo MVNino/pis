@@ -106,6 +106,59 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div style="padding-top: 750px;" class="modal fade bd-example-modal-lg" id="manualFeatures" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Features</b></h4>
+			<p style="margin-top:0;">This part will discuss the Features module. It will show you how to manage the features of the test or tools used that will be shown in the website.</p>
+			<div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under “WEBSITE MAINTENANCE”, click [1] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/features/features.jpg')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to add a Feature?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To add a new Feature, click [2] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/features/features1.jpg')}}"><br><br>
+				
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Input the title of the feature.<br><br>
+
+				<label><b>Step 3 :</b>&nbsp;</label>
+				Input the description of the feature.<br><br>
+
+				<label><b>Step 4 :</b>&nbsp;</label>
+				To save the new feature, click [5]. A message [6] will be shown that the adding of feature is successful.<br><br>
+				<img class="dynamic" src="{{asset('img/features/features2.jpg')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to delete a Feature?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To delete a feature, click [4]. Once you clicked the button, a confirmation message will appear to confirm your action.<br><br>
+				
+				<img class="dynamic" src="{{asset('img/features/features3.jpg')}}"><br><br>
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Click [10] to remove the feature. Click [11] to disregard any changes. Once you deleted the feature, a message [12] will appear that the feature is removed successfully.<br><br>
+				<img class="dynamic" src="{{asset('img/features/features4.jpg')}}"><br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('pg-specific-js')
@@ -128,5 +181,15 @@ $(document).ready(function() {
 		});
 	}
 });
+window.onhelp = function() {
+	return false;
+};
+window.onkeydown = evt => {
+	if (evt.keyCode == 112){
+		$("#manualFeatures").modal("show");
+		
+	}
+	return false;
+};
 </script>
 @endsection
