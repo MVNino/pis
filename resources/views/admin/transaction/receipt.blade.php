@@ -39,43 +39,45 @@
                 <div class="col-md-12">
                     <div class="pull-left"> 
                         <address>
-                            <h3> &nbsp;<b class="text-danger">Hospital</b></h3>
+                            <h3><b class="text-danger">Dra. Joy Gali</b></h3>
+                            <h5>Address of the Hospital based on the branch selected</h5><br>
                         </address> 
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p><b>Received From</b></p>
+                                <p><b>Date</b>
+                            </div>
+                            <div class="col-md-2">
+                                <p>:</p>
+                                <p>:</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><u>LhexyKhrystelle B. Romero</u></p>
+                                <i class="fa fa-calendar"></i> September 25, 2018</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pull-right text-right"> <address>
-                        <h3>To,</h3>
-                        <h4 class="font-bold">Edward D. Cullen</h4>
-                        <p class="m-t-30"><b>Date :</b> <i class="fa fa-calendar"></i> September 25,2018</p>
-                        </address> </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="table-responsive m-t-40">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th>Item Name</th>
-                                    <th class="text-right">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>Medicines</td>
-                                    <td class="text-right">1000 PHP</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>X-ray Reports</td>
-                                    <td class="text-right">1200 PHP</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-md-12"><br>
+                <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Item Name</th>
+                        <th class="text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <td>1</td>
+                        <td>X-ray</td>
+                        <td class="text-right">PHP 1.00</td>
+                <tfoot>
+                </tfoot>
+			</table>
                 </div>
                 <div class="col-md-12">
                     <div class="pull-right m-t-30 text-right">
-                        <h3><b>Total :</b> 2200 PHP</h3> 
+                        <h3><b>Total :</b>PHP 2200</h3> 
                     </div>
                     <div class="clearfix"></div>
                     <hr>
@@ -105,7 +107,6 @@
                     </form>
                     <div class="text-right">
                         <button onclick="toCheckOut()" id="checkOut" type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i>Check Out</button>
-                        <button id="print" onclick="javascript:window.print();" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
                     </div>
                 </div>
             </div>
@@ -115,7 +116,7 @@
 @endsection
 
 @section('pg-specific-js')
-<script>
+<!-- <script>
 $(document).ready(function() {
     $("#print").hide();
 });
@@ -126,5 +127,5 @@ function toCheckOut() {
     $("#OR").attr('disabled','""');
     $("#PA").attr('disabled','""');
 }
-</script>
+</script> -->
 @endsection
