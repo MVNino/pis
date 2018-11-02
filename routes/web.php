@@ -137,6 +137,7 @@ Route::group(
 					->name('transaction.appointments');
 				Route::get('approved-appointment','AppointmentController@listApprovedAppointments') 
 					->name('transaction.approvedAppointments');
+				Route::put('appointment-reschedule/{id}', 'AppointmentController@rescheduleAppointment');
 				Route::put('appointment/{id}', 'AppointmentController@approveAppointment');
 				// Patients
 				Route::get('patients', 'PatientController@listPatients')
@@ -146,6 +147,7 @@ Route::group(
 				// Payments
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
+				Route::post('avail-service', 'PaymentController@availService');
 				Route::get('receipt','PaymentController@receipt')
 					->name('transaction.receipt');
 				Route::get('balance','PaymentController@balance')

@@ -44,7 +44,10 @@
                         {!! Form::close() !!}
                     </td>
                     <td class="text-center">
-                        <a role="button" href="#" class="btn btn-sm btn-warning">Reschedule</a>
+                        {!! Form::open(['action' => ['Transaction\AppointmentController@rescheduleAppointment', $appointment->id], 'method' => 'POST', 'onsubmit' => "return confirm('Reschedule appointment?')"]) !!}
+                            {{ Form::hidden('_method', 'PUT') }}
+                            <button type="submit" class="btn btn-sm btn-warning">Reschedule</button>
+                        {!! Form::close() !!}
                     </td>
                 </tr>
                 @empty

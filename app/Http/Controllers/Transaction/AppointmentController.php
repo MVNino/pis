@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Notifications\AppointmentApproved;
+use App\Notifications\AppointmentRescheduled;
 use App\Appointment;
 use App\Patient;
 
@@ -32,7 +33,16 @@ class AppointmentController extends Controller
                 ['appointments' => $appointments]);
     }
 
-    // Reschedule appointment
+    public function rescheduleAppointment(Request $request, $id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        if ($appointment->save()) {
+            \Notification::route('mail', $appointment->patient->email)
+                ->notify(new AppointmentRescheduled());
+            return redirect()->back()->with('success', 'The appointment has been rescheduled!');
+        }
+    }
+
     public function approveAppointment(Request $request, $id)
     {
         $appointment = Appointment::findOrFail($id);
