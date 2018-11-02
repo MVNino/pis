@@ -25,7 +25,9 @@
                     <div class="form-group">
                         <label class="col-md-12">Patient Name</span></label>
                         <div class="col-md-12">
-                            <input type="text" name="name"  class="form-control">
+                            <select name="name"  class="form-control">
+                                <option>Leki Romero</option>
+                            </select>
                         </div>
                     </div>
                     <div>
@@ -68,26 +70,44 @@
         <div class="col-md-4">
             <div class="white-box">
                     <div class="form-group">
-                        <label class="col-md-12">Discount</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="col-md-12">Initial Amount</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>PHP 900.00</p>
+                                <button type="button" id="add" onclick="addDiscount()" class="btn btn-sm btn-info">Add Discount</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="addDiscount"> 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="col-md-12">Discount</label>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" onclick="cancelDiscount()" class="pull-right btn btn-sm btn-danger">x</button><br>
+                            </div>
+                        </div>
                         <input style="margin-left:50px;" type="radio" name="discount" value="0" id="perDiscount">&nbsp;Percentage<br>
                         <input style="margin-left:50px;" type="radio" name="discount" value="1" id="amtDiscount">&nbsp;Amount<br>
-                        <div id="textbox"></div>
-                    </div>
-                    <div class="form-group">
+                        <div id="textbox"></div><br>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="col-md-12">Discount Price</label>
                             </div>
                             <div class="col-md-6">
                                 <p>PHP 900.00</p>
-                                <label style="padding-left:0px;"class="col-md-12">Mode of Payment</label>
-                                <select class="form-control" name="selectMode">
-                                    <option>...</option>
-                                    <option value="0"> Half Payment </option>
-                                    <option value="1"> Full Payment </option>
-                                </select>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Mode of Payment</label>
+                        <select class="form-control" name="selectMode">
+                            <option>...</option>
+                            <option value="0"> Half Payment </option>
+                            <option value="1"> Full Payment </option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <div class="row">
@@ -111,10 +131,21 @@
 @section('pg-specific-js')
 <script>
 $(function(){
+    $("#addDiscount").hide();
     let randomNumber =  Math.round(Math.random() * 100000);
     let billNo = '<p style="margin-bottom:0px;" class="text-right">Billing Number</p><p class="text-right box-title text-danger"><font size="5px">#'+randomNumber+'</font></p>';
     $(".bill").html(billNo);
 });
+
+function addDiscount(){
+    $("#addDiscount").show();
+    $("#add").hide();
+}
+
+function cancelDiscount(){
+    $("#addDiscount").hide();
+    $("#add").show();
+}
 
 $( "#perDiscount" ).click(function() {
   let radioValue = $("input[name='discount']:checked").val();
