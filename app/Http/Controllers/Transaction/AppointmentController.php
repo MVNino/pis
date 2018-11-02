@@ -36,6 +36,7 @@ class AppointmentController extends Controller
     public function rescheduleAppointment(Request $request, $id)
     {
         $appointment = Appointment::findOrFail($id);
+        $appointment->status = 2;
         if ($appointment->save()) {
             \Notification::route('mail', $appointment->patient->email)
                 ->notify(new AppointmentRescheduled());
