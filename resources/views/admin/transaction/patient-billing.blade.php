@@ -95,6 +95,7 @@
                         </div>
                     </div>
                     <div class="form-group">
+
                         <label class="col-md-12">Mode of Payment</label>
                         <select class="form-control" name="selectMode">
                             <option>...</option>
@@ -126,6 +127,7 @@
 $(function(){
     let randomNumber =  Math.round(Math.random() * 100000);
     let billNo = '<p style="margin-bottom:0px;" class="text-right">Billing Number</p><p class="text-right box-title text-danger"><font size="5px">#'+randomNumber+'</font></p>';
+
     $("#billNumber").val(randomNumber);
 });
 
