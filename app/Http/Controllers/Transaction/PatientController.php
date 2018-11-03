@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Patient;
 use App\MedicalRecord;
+use App\MedicalFileRecord;
 
 class PatientController extends Controller
 {
@@ -25,8 +26,6 @@ class PatientController extends Controller
                 ->select('patient_tbl.*', 'patient_information_tbl.birthday')
                 ->join('patient_information_tbl','patient_information_tbl.patient_id','=','patient_tbl.patient_id')
                 ->get();
-
-                
 
             $medicalRecords = MedicalRecord::
                 all();
@@ -57,8 +56,11 @@ class PatientController extends Controller
             $mr = MedicalRecord::
                 all()
                 ->where('patient_id', '=', $request->input('id'));
+            
+            $mfr = MedicalFileRecord::
+                all();
 
-            return view('admin.transaction.edit-patient', ['patient'=>$patient, 'mr'=>$mr]);
+            return view('admin.transaction.edit-patient', ['patient'=>$patient, 'mr'=>$mr, 'mfr'=>$mfr]);
         }
         catch (\Exception $e)
         {
@@ -83,7 +85,6 @@ class PatientController extends Controller
             $patient->fname = $request->input('firstName');
             $patient->mname = $request->input('middleName');
             $patient->contact_no = $request->input('contactNumber');
-            $patient->save();
 
             if ($patient->save())
             {
@@ -118,6 +119,48 @@ class PatientController extends Controller
             if ($mr->save())
             {
                 return redirect()->back()->with('success', 'Medical Record Updated!');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function addMedicalFileRecord(Request $request)
+    {
+        $this->validate($request, [
+            'mrid' => 'required',
+            'testResultImage' => 'image|nullable|max:10000'
+        ]);
+
+        try
+        {
+            $mfr = new MedicalFileRecord;
+
+            // Handle file upload for file image
+            if($request->hasFile('testResultImage')){
+                // Get the file's extension
+                $fileExtension = $request->file('testResultImage')
+                    ->getClientOriginalExtension();
+                // Create a filename to store(database)
+                $fileImgNameToStore = $request->input('fileName')
+                    .'_'.time().'.'.$fileExtension;
+                // Upload file to system
+                $path = $request->file('testResultImage')
+                    ->storeAs('public/images/testResults', $fileImgNameToStore);
+
+                $mfr->file_title = $fileImgNameToStore;
+                $mfr->file = $fileExtension;
+                $mfr->medical_record_id = $request->input('mrid');
+            }
+
+            if($request->hasFile('testResultImage'))
+            {
+                if ($mfr->save())
+                {
+                    return redirect()->back()->with('success', 'Medical Record Updated!');
+                }
             }
         }
         catch (\Exception $e)

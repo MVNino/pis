@@ -58,7 +58,7 @@
 								<td>{{ $specialtyService->spec_service_id }}</td>
 								<td>{{ $specialtyService->spec_title }}</td>
 								<td>{{ $specialtyService->spec_desc }}</td>
-								<td>PHP 100.00</td>
+								<td>{{ $specialtyService->price }}</td>
 								<td class="text-center">
 									<a role="button" class="btn btn-sm btn-primary" href="/admin/maintenance/specialty-service/{{ $specialtyService->spec_service_id }}/edit">
 										<i class="fa fa-edit"></i>

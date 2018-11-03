@@ -69,6 +69,8 @@
 
     <script src="{{ asset('elite/js/jasny-bootstrap.js') }}"></script>
     <script src="{{ asset('elite/js/multiple-select.js') }}"></script>
+    <script src="{{ asset('elite/js/shortcuts.js') }}"></script>
+
     @yield('pg-specific-js')
 </body>
 </html>

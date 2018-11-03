@@ -103,9 +103,11 @@
                         </div>
                     </div>
 				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Generate Reports</button>
-				</div>
+                <div class="modal-footer">
+                    <a role="button" target="_blank" href="{{ route('transaction.generatedReport') }}" class="btn btn-primary float-right">
+                        <i class="fa fa-file"> Generate PDF</i>
+                    </a>
+                </div>
 			</form>	
         </div>
     </div>

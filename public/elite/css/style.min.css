@@ -10,6 +10,10 @@
     background: #fff
 }
 
+.dynamic{
+    width: 100%;
+    height: auto;
+}
 .preloader .cssload-speeding-wheel {
     position: absolute;
     top: calc(50% - 3.5px);

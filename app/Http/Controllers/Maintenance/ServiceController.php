@@ -31,7 +31,8 @@ class ServiceController extends Controller
     public function addSpecialty(Request $request)
     {
     	$this->validate($request, [
-    		'txtTitle' => 'required',
+            'txtTitle' => 'required',
+    		'price' => 'required',
     		'txtareaDescription' => 'required|string|max:5000',
     		'txtVideoLink' => 'required',
             'fileServiceImg' => 'image|nullable|max:10000'
@@ -41,6 +42,7 @@ class ServiceController extends Controller
     	$service = new SpecialtyService;
     	$service->spec_title = $request->txtTitle;
     	$service->spec_desc = $request->txtareaDescription;
+        $service->price = $request->price;
     	// Handle file upload for specialty service image
         if($request->hasFile('fileServiceImg')){
             // Get the file's extension
@@ -130,6 +132,7 @@ class ServiceController extends Controller
     {
         $this->validate($request, [
             'txtTitle' => 'required',
+            'price' => 'required',
             'txtAreaDescription' => 'required|string|max:5000',
             'fileServiceImg' => 'image|nullable|max:10000'
         ]);
@@ -138,6 +141,7 @@ class ServiceController extends Controller
         $service = SpecialtyService::findOrFail($id);
         $service->spec_title = $request->txtTitle;
         $service->spec_desc = $request->txtAreaDescription;
+        $service->price = $request->price;
         // Handle file upload for specialty service image
         if($request->hasFile('fileServiceImg')){
             // Get the file's extension
