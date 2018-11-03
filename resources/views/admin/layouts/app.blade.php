@@ -30,7 +30,41 @@
                 <!-- /.right-sidebar -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2017 &copy; Elite Admin brought to you by themedesigner.in </footer>
+            <footer class="footer text-center"> </footer>
+            <!-- Modal -->
+            <div class="modal fade" id="composeMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h3 id="exampleModalLabel">Compose a Message</h3>
+                        </div>
+                        <form style="padding:20px;"class=" form-horizontal">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <input type ="text" name="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type ="text" name="subject" class="form-control" placeholder="Subject">
+                                </div>
+                                <div class="form-group">
+                                    <textarea type ="text" name="subject" class="form-control" rows="10 "placeholder="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btnSend" type="submit" class="btn btn-primary">
+                                    <i class="fa fa-fw fa-lg fa-check-circle"></i> Send
+                                </button>
+                                <button type="button" class="btn btn-inverse" style="display: inline-block;" data-dismiss="modal">
+                                    <i class="fa fa-close"></i> Cancel
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /#page-wrapper -->
     </div>
@@ -69,6 +103,8 @@
 
     <script src="{{ asset('elite/js/jasny-bootstrap.js') }}"></script>
     <script src="{{ asset('elite/js/multiple-select.js') }}"></script>
+    <script src="{{ asset('elite/js/shortcuts.js') }}"></script>
+
     @yield('pg-specific-js')
 </body>
 </html>

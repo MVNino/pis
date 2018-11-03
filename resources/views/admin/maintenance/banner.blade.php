@@ -132,15 +132,80 @@
 	</div>
 </div>
 
+<!-- Modal -->
+<div style="padding-top: 750px;" class="modal fade bd-example-modal-lg" id="manualBanner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Banner</b></h4>
+			<p style="margin-top:0;">This part will discuss the Banner module. It will show you how to manage the banners for the website.</p>
+			<div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under “WEBSITE MAINTENANCE”, click [1] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/banner/banner1.jpg')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to add a Banner?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To add a new Banner, click [2] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/banner/banner1.jpg')}}"><br><br>
+				
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Input the number of order of your banner.<br><br>
+
+				<label><b>Step 3 :</b>&nbsp;</label>
+				Select an image for your banner. After selecting an image, you will be given an option to change or remove the image.<br><br>
+
+				<label><b>Step 4 :</b>&nbsp;</label>
+				To add your new banner, click [5]. A message [6] will be shown that the adding of banner is successful.<br><br>
+
+				<label><b>Step 5 :</b>&nbsp;</label>
+				To set the status of a banner (active or inactive), click [7].<br><br>
+				<img class="dynamic" src="{{asset('img/banner/banner2.jpg')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to delete a Banner?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To delete a banner, click [4]. Once you clicked the button, a confirmation message will appear to confirm your action.<br><br>
+				
+				<img class="dynamic" src="{{asset('img/banner/banner5.jpg')}}"><br><br>
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Step 2:	Click [11] To remove the banner. Click [12]. To disregard any changes. Once you deleted the banner, a message [13] will appear that the banner is removed successfully.<br><br>
+				<img class="dynamic" src="{{asset('img/banner/banner6.jpg')}}"><br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('pg-specific-js')
-	<script>
-		function editOrder(id)
-		{
-			var c = document.getElementsByClassName(id);
-			c[0].style.display = "none";
-			c[1].style.display = "block";
+<script>
+	function editOrder(id)
+	{
+		var c = document.getElementsByClassName(id);
+		c[0].style.display = "none";
+		c[1].style.display = "block";
+	}
+	window.onhelp = function() {
+		return false;
+	};
+	window.onkeydown = evt => {
+		if (evt.keyCode == 112){
+			$("#manualBanner").modal("show");
+			
 		}
-	</script>
+		return false;
+	};
+</script>
 @endsection

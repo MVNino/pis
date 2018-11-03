@@ -28,7 +28,6 @@
                             <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$clinic->clinic_close_time)->format('g:i A')}}</td>
                         </tr>
 
-                        
                         <!-- Modal for Viewing Banner -->
                         <div class="modal fade" id="row{{$clinic->clinic_contact_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -108,9 +107,6 @@
                     </div>
                     <div class="v2-about-input mr0">
                         <input type="email" name="email" placeholder="Email">
-                    </div>
-                    <div class="v2-about-input">
-                        <input type="text" name="phone" placeholder="Phone">
                     </div>
                     <div class="v2-about-textarea">
                         <textarea name="inquiry" id="message" cols="30" rows="10" placeholder="Write your comment here..."></textarea>
