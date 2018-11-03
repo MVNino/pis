@@ -14,8 +14,12 @@
 # Website
 // Landing page(banners, request appointment, service, news & events)
 Route::get('/', 'GuestController@viewIndex');
+Route::post('/', 'GuestController@createAppointment');
+Route::post('/fetch', 'GuestController@fetch')
+		->name('guestcontroller.fetch');
 Route::post('schedule-appointment', 
 	'Transaction\AppointmentController@scheduleAppointment');
+
 
 // About page
 Route::get('/about','GuestController@viewAbout');
