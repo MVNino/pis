@@ -141,7 +141,7 @@
 				
 				<label><b>Step 1 :</b>&nbsp;</label>
 				Under “WEBSITE MAINTENANCE”, click [1] which will direct you to this page.<br><br>
-				<img class="dynamic" src="{{asset('img/services/services.JPG')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/services/services2.JPG')}}"><br><br>
 
 				<p class="text-danger"><b><em>How to edit a Specialty Services?</em></b>&nbsp;</p>
 
@@ -154,11 +154,11 @@
 
 				<label><b>Step 3 :</b>&nbsp;</label>
 				To add another video link, click [6], which will direct you to this page.<br><br>
-				<img class="dynamic" src="{{asset('img/services/services5.JPG')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/services/services6.JPG')}}"><br><br>
 
 				<label><b>Step 4 :</b>&nbsp;</label>
 				To add the additional video, click [7]. A message [8] will be shown that the additional video was added successfully.<br><br>
-				<img class="dynamic" src="{{asset('img/services/services6.JPG')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/services/services11.JPG')}}"><br><br>
 
 				<label><b>Step 5 :</b>&nbsp;</label>
 				To edit a video, click [9] which will direct you to this page.<br><br>
