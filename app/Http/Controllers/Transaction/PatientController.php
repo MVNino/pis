@@ -7,10 +7,6 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Patient;
-
-
-use DB;
-use App\Patient;
 use App\MedicalRecord;
 
 class PatientController extends Controller
