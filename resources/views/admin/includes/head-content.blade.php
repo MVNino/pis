@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('elite/plugins/images/favicon.png') }}">
-    <title>Elite Hospital</title>
+    <title>Clinic</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('elite/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
