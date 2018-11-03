@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Transaction;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Billing;
-use App\BillingDetail;
-use App\OfficialReceipt;
 use App\Patient;
 use App\SpecialtyService;
 use PDF;
@@ -22,15 +19,9 @@ class PaymentController extends Controller
     {
         if ($id == NULL) {
             $specialServices = SpecialtyService::all();
-            $patients = Patient::join('appointment_tbl', 
-                    'patient_tbl.patient_id', '=', 'appointment_tbl.patient_id')
-                ->selectRaw('patient_tbl.patient_id, 
-                    CONCAT(lname,", ",fname, " ", mname) as full_name')
-                ->where('status', 1)
-                ->get();
+
             return view('admin.transaction.billing', 
-                ['specialServices' => $specialServices, 
-                'patients' => $patients]);
+                ['specialServices' => $specialServices]);
         } else {
             $patient = Patient::findOrFail($id);
             $specialServices = SpecialtyService::all();

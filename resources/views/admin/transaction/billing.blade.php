@@ -100,6 +100,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="col-md-12">Initial Amount</label>
+
                                 <input type="number" id="initAmount" value="0" hidden>
                             </div>
                             <div class="col-md-6">
