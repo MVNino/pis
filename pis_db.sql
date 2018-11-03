@@ -905,6 +905,7 @@ CREATE TABLE `patient_tbl` (
   `email` varchar(160) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+
 --
 -- Dumping data for table `patient_tbl`
 --
@@ -1221,7 +1222,7 @@ ALTER TABLE `user_tbl`
 -- AUTO_INCREMENT for table `appointment_tbl`
 --
 ALTER TABLE `appointment_tbl`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `banner_tbl`
 --
@@ -1321,7 +1322,7 @@ ALTER TABLE `patient_information_tbl`
 -- AUTO_INCREMENT for table `patient_tbl`
 --
 ALTER TABLE `patient_tbl`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `profile_tbl`
 --

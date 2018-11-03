@@ -19,7 +19,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="white-box">
-            <h3 class="box-title">Balance Record???</h3>
+            <h3 class="box-title">Balance Record</h3>
             <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                 <thead>
                     <tr>
@@ -29,11 +29,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <td>Leki Romero</td>
-                        <td>PHP 1.00</td>
-                        <td class="text-center">
-                            <a role="button" href="#" class="btn btn-sm btn-info">Pay Balance</a>
-                        </td>
+                    @foreach($patients as $patient)
+                        @if($patient->billing && $patient->billing->isPaid == 0)
+                            <tr>
+                                <td>{{ $patient->fname.' '.$patient->lname }}</td>
+                                <td>PHP {{ $patient->billing->balance }}</td>
+                                <td class="text-center">
+                                    <a role="button" href="/admin/transaction/balance-receipt/{{ $patient->billing->billing_id }}/patient={{ $patient->fname }}" class="btn btn-sm btn-info">
+                                        Pay Balance
+                                    </a>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
                 <tfoot>
                 </tfoot>
 			</table>

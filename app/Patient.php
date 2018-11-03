@@ -12,4 +12,9 @@ class Patient extends Model
     protected $primaryKey = 'patient_id';
     // timestamp
 	public $timestamps = false;
+
+	public function billing()
+	{
+		return $this->hasOne('App\Billing', 'patient_id', 'patient_id');
+	}
 }

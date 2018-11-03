@@ -66,6 +66,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
+
                             {!!Form::open(['action' => ['Transaction\PatientController@updateMedical', $r->medical_record_id], 'method' => 'POST', 'class' => 'form-material form-horizontal'])!!}
                                 {{Form::hidden('_method', 'PUT')}}<br>
                                 <h5>
@@ -89,6 +90,7 @@
                                                 <input type="text" name="firstName" class="form-control" value="{{$patient->fname}}" disabled>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -118,6 +120,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
+
                                     <div class=col-md-4>
                                         <div class="form-group">
                                             <label class="col-md-12">Height</label>
