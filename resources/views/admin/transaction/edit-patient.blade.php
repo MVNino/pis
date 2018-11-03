@@ -41,7 +41,7 @@
                                 <i class="fa fa-fw fa-lg fa-check-circle"></i> View Record
                             </button>
                         </div>
-                    </div>
+                    </div>       
                 <div style="display: none;">
                     @foreach($mr as $r)
                         <button class="btn btn-info" type="button" id="{{$r->medical_record_id}}" data-toggle="collapse" data-target="#collapseRecord{{$r->medical_record_id}}" aria-expanded="false" aria-controls="collapseRecord">button</button>
@@ -105,7 +105,7 @@
                                         <div class="form-group">
                                             <label class="col-md-12">Birthdate</label>
                                             <div class="col-md-12">
-                                                <input type="text" name="birthdate" class="form-control" disabled>
+                                                <input type="text" name="birthdate" class="form-control" value="{{\Carbon\Carbon::createFromFormat('Y-m-d', $patient->birthday)->format('F j, Y')}}" disabled>
                                             </div>
                                         </div>
                                     </div>

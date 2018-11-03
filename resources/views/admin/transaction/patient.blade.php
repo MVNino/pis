@@ -34,7 +34,7 @@
                     @foreach($patients as $patient)
                         <tr>
                             <td>{{$patient->fname}} {{$patient->mname}} {{$patient->lname}}</td>
-                            <td>{{$patient->birthday}}</td>
+                            <td class="text-center">{{\Carbon\Carbon::parse($patient->birthday)->diff(\Carbon\Carbon::now())->format('%y')}}</td>
                             <td>{{$patient->contact_no}}</td>
                             <td>{{$patient->email}}</td>
                             <td>

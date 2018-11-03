@@ -20,8 +20,13 @@ class PatientController extends Controller
     public function listPatients() {
         try
         {
-            $patients = Patient::
-                all();
+            $patients = DB::
+                table('patient_tbl')
+                ->select('patient_tbl.*', 'patient_information_tbl.birthday')
+                ->join('patient_information_tbl','patient_information_tbl.patient_id','=','patient_tbl.patient_id')
+                ->get();
+
+                
 
             $medicalRecords = MedicalRecord::
                 all();
@@ -42,8 +47,12 @@ class PatientController extends Controller
 
         try
         {
-            $patient = Patient::
-                find($request->input('id'));
+            $patient = DB::
+                table('patient_tbl')
+                ->select('patient_tbl.*', 'patient_information_tbl.birthday')
+                ->join('patient_information_tbl','patient_information_tbl.patient_id','=','patient_tbl.patient_id')
+                ->where('patient_tbl.patient_id', '=', $request->input('id'))
+                ->first();
 
             $mr = MedicalRecord::
                 all()

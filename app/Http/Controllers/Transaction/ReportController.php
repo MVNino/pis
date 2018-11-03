@@ -23,7 +23,7 @@ class ReportController extends Controller
             $expenses = Expense::
                 where('status', '=', 0)
                 ->orderBy('expense_date')
-                ->paginate(10);
+                ->paginate(5);
 
             return view('admin.transaction.expenses', ['expenses'=>$expenses]);
         }
@@ -86,6 +86,33 @@ class ReportController extends Controller
                 return redirect()->back()->with('success', 'Expense Removed Successfully!');
             }
 
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
+
+    public function updateExpense(Request $request, $id)
+    {
+        $this->validate($request, [
+    		'date' => 'required|date',
+            'expenses' => 'required|string',
+            'amount' => 'required|numeric'
+        ]);
+
+        try
+        {
+            $expense = Expense::find($id);
+
+            $expense->name = $request->input('expenses');
+            $expense->cost = $request->input('amount');
+            $expense->expense_date = $request->input('date');
+
+            if ($expense->save())
+            {
+                return redirect()->back()->with('success', 'Expense Record Updated!');
+            }
         }
         catch (\Exception $e)
         {

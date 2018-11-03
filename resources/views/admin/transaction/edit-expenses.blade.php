@@ -21,7 +21,8 @@
         </div>
         <div class="card-body">
             <div class="container">
-                <form class="form-material">
+                {!!Form::open(['action' => ['Transaction\ReportController@updateExpense', $expense->expense_id], 'method' => 'POST', 'class' => 'form-material form-horizontal'])!!}
+                    {{Form::hidden('_method', 'PUT')}}
                     <div class="form-group">
                         <label class="col-md-12">Date</label>
                         <div class="col-md-12">
@@ -41,14 +42,14 @@
 						</div>
 					</div>
                     <div align="right">
-                        <button id="btnSave" type="button" class="btn btn-info">
+                        <button id="btnSave" type="submit" class="btn btn-info">
                             <i class="fa fa-fw fa-lg fa-check-circle"></i> Save
                         </button>
                         <a href="{{ route('transaction.expenses') }}" role="button" id="btnCancel" type="button" class="btn btn-inverse" style="display: inline-block;">
                             <i class="fa fa-close"></i> Cancel
                         </a>
                     </div>
-                </form>
+                {!!Form::close()!!}
             </div>
         </div>
     </div>

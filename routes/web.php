@@ -158,6 +158,7 @@ Route::group(
 				Route::get('editExpenses/{id}','ReportController@editExpenses'); //change it
 				Route::post('addExpense', 'ReportController@addExpense');
 				Route::delete('expense/{id}', 'ReportController@deleteExpense');
+				Route::put('updateExpense/{id}', 'ReportController@updateExpense');
 				// Reports
 				Route::get('report','ReportController@report')
 					->name('transaction.report');
