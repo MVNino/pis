@@ -40,6 +40,10 @@ Route::group(
 			'prefix' => 'maintenance'
 		], function(){
 			Route::namespace('Maintenance')->group(function () {
+				//Profile
+				Route::get('profile', 'ProfileController@viewProfile')->name('maintenance.profile');
+				//Account
+				Route::get('account', 'AccountController@editAccount')->name('maintenance.account');
 				// Banner 
 				Route::get('banner', 'BannerController@viewBanner')->name('maintenance.banner');
 				Route::post('banner', 'BannerController@addBanner');
@@ -162,6 +166,12 @@ Route::group(
 					->name('transaction.report');
 				Route::get('generatePDF','ReportController@generatePDF')
 					->name('transaction.generatedReport');
+				//Inbox
+				Route::get('inbox','InboxController@viewInbox')
+					->name('transaction.inbox');
+				Route::get('viewDetail','InboxController@viewDetail');
+				Route::get('trash','InboxController@viewTrash')
+					->name('transaction.trash');
 			});
 		});
 });
