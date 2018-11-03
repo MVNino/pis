@@ -1,4 +1,4 @@
-<nav class="navbar navbar-area">
+<nav class="navbar navbar-area" style="display: flex;">
     <div class="container">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <div class="col-sm-3 col-md-4">
