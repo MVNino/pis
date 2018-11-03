@@ -148,9 +148,18 @@ Route::group(
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('billing/{id}', 'PaymentController@billing');
-				Route::post('avail-service', 'PaymentController@availService');
-				Route::get('receipt','PaymentController@receipt')
+				Route::get('specialty-service-price', 
+					'PaymentController@getSpecialtyServicePrice');
+				Route::post('avail-service', 
+					'PaymentController@availService');
+				Route::post('proceed-to-payment', 
+					'PaymentController@proceedToPayment');
+				Route::get('{id}/show-initial-amount', 
+					'PaymentController@showInitialAmount');
+
+				Route::get('receipt/{id}','PaymentController@receipt')
 					->name('transaction.receipt');
+				Route::post('receipt/process-payment', 'PaymentController@processPayment');
 				Route::get('balance','PaymentController@balance')
 					->name('transaction.balance');
 				// Clinical Expenses
