@@ -149,7 +149,7 @@
 				
 				<label><b>Step 1 :</b>&nbsp;</label>
 				Under “WEBSITE MAINTENANCE”, click [1] which will direct you to this page.<br><br>
-				<img class="dynamic" src="{{asset('img/banner/banner.jpg')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/banner/banner1.jpg')}}"><br><br>
 
 				<p class="text-danger"><b><em>How to add a Banner?</em></b>&nbsp;</p>
 

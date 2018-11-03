@@ -23,6 +23,6 @@ class DashboardController extends Controller
      */
     public function viewDashboard()
     {
-        return view('admin.dashboard');
+        return view('admin.appointment');
     }
 }
