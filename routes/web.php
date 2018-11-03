@@ -147,6 +147,7 @@ Route::group(
 				Route::get('editRecord', 'PatientController@editRecord');
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
+				Route::get('billing/{id}', 'PaymentController@billing');
 				Route::post('avail-service', 'PaymentController@availService');
 				Route::get('receipt','PaymentController@receipt')
 					->name('transaction.receipt');
@@ -162,6 +163,8 @@ Route::group(
 				// Reports
 				Route::get('report','ReportController@report')
 					->name('transaction.report');
+				Route::get('generatePDF','ReportController@generatePDF')
+					->name('transaction.generatedReport');
 			});
 		});
 });
