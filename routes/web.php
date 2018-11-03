@@ -142,9 +142,9 @@ Route::group(
 				// Patients
 				Route::get('patients', 'PatientController@listPatients')
 					->name('transaction.patients');
-				Route::get('editPatients', 'PatientController@editPatients'); //change it
-				Route::get('medicalPatients','PatientController@patientMedical');
-				// Payments
+				Route::put('patients/{id}', 'PatientController@updatePatient');
+				Route::put('updateRecord/{id}', 'PatientController@updateMedical');
+				Route::get('editRecord', 'PatientController@editRecord');
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('billing/{id}', 'PaymentController@billing');
@@ -156,7 +156,10 @@ Route::group(
 				// Clinical Expenses
 				Route::get('expenses','ReportController@expenses')
 					->name('transaction.expenses');
-				Route::get('editExpenses','ReportController@editExpenses'); //change it
+				Route::get('editExpenses/{id}','ReportController@editExpenses'); //change it
+				Route::post('addExpense', 'ReportController@addExpense');
+				Route::delete('expense/{id}', 'ReportController@deleteExpense');
+				Route::put('updateExpense/{id}', 'ReportController@updateExpense');
 				// Reports
 				Route::get('report','ReportController@report')
 					->name('transaction.report');

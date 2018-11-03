@@ -35,21 +35,26 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>    
-						<td>10/12/1998</td>
-						<td>Buying new Medicine Equipment</td>
-						<td>PHP 100.00</td>
-						<td class="text-center">
-							<a href="{{action('Transaction\ReportController@editExpenses')}}" class="btn btn-sm btn-primary">
-								<i class="fa fa-edit"></i>
-							</a>
-						</td>
-						<td class="text-center">
-							<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
-								<i class="ti-close" aria-hidden="true"></i>
-							</button>
-						</td>
-					</tr>
+					@foreach($expenses as $expense)
+						<tr>    
+							<td>{{\Carbon\Carbon::createFromFormat('Y-m-d', $expense->expense_date)->format('F j, Y')}}</td>
+							<td>{{$expense->name}}</td>
+							<td>PHP {{$expense->cost}}</td>
+							<td class="text-center">
+								<a href="/admin/transaction/editExpenses/{{$expense->expense_id}}" class="btn btn-sm btn-primary">
+									<i class="fa fa-edit"></i>
+								</a>
+							</td>
+							<td class="text-center">
+								{!!Form::open(['action' => ['Transaction\ReportController@deleteExpense', $expense->expense_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Expense?')"])!!}
+									{{Form::hidden('_method', 'DELETE')}}
+									<button type="submit" class="btn btn-sm btn-icon btn-danger delete-row-btn" data-toggle="tooltip" data-original-title="Delete">
+										<i class="ti-close" aria-hidden="true"></i>
+									</button>
+								{!!Form::close()!!}
+							</td>
+						</tr>
+					@endforeach
 				</tbody>
 				<tfoot>
 				</tfoot>
@@ -66,31 +71,31 @@
 				</button>
 				<h4 class="modal-title" id="exampleModalLabel">Add Features</h4>
 			</div>
-			<form class="form-material form-horizontal" method="POST">
+			{!! Form::open(['action' => 'Transaction\ReportController@addExpense', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
 				<div class="modal-body">
-					<div class="form-group">
-						<label class="col-md-12">Date</label>
-						<div class="col-md-12">
-							<input type="date" name="date" class="form-control"> 
+						<div class="form-group">
+							<label class="col-md-12">Date</label>
+							<div class="col-md-12">
+								<input type="date" name="date" class="form-control"> 
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-12">Purpose of Expenses</label>
-						<div class="col-md-12">
-							<textarea name ="expenses" class="form-control" rows="3"></textarea>
+						<div class="form-group">
+							<label class="col-md-12">Purpose of Expenses</label>
+							<div class="col-md-12">
+								<textarea name ="expenses" class="form-control" rows="3"></textarea>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-12">Amount</label>
-						<div class="col-md-12">
-							<input type="number" name="amount" class="form-control"> 
+						<div class="form-group">
+							<label class="col-md-12">Amount</label>
+							<div class="col-md-12">
+								<input type="number" name="amount" class="form-control"> 
+							</div>
 						</div>
-					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
 				</div>
-			</form>	
+			{!! Form::close() !!}
 		</div>
 	</div>
 </div>
