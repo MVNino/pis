@@ -19,7 +19,8 @@
 <div class="row">
     <div class="col-md-12">
         <div class="white-box">
-            <h3><b>BILLING ID</b> <span class="pull-right">#5669626</span></h3>
+            <h3><b>BILLING ID</b> <span class="pull-right">#{{ $billing->billing_id }}</span></h3>
+            <input type="number" id="billingId" value="{{ $billing->billing_id }}" hidden readonly>
             <form class="form-material">
                 <div class="row">
                     <div class="col-md-6">
@@ -29,7 +30,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <input id="OR" class="form-control" name="ORNumber" placeholder="Enter here">
+                            <input id="ORNum" class="form-control" name="ORNumber" placeholder="Enter here" required>
                         </div>
                     </div>
                 </div>
@@ -52,8 +53,8 @@
                                 <p>:</p>
                             </div>
                             <div class="col-md-6">
-                                <p><u>LhexyKhrystelle B. Romero</u></p>
-                                <i class="fa fa-calendar"></i> September 25, 2018</p>
+                                <p><u>{{ $billing->patient->fname.' '.$billing->patient->mname.' '.$billing->patient->lname }}</u></p>
+                                <i class="fa fa-calendar"></i> {{ date('F d, Y', strtotime($billing->billing_date)) }}</p>
                             </div>
                         </div>
                     </div>
@@ -68,20 +69,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <td>1</td>
-                        <td>X-ray</td>
-                        <td class="text-right">PHP 1.00</td>
+                    @foreach($billing->billingDetails as $detail)
+                    <tr>
+                        <td>{{ $detail->specialtyService->spec_service_id }}</td>
+                        <td>{{ $detail->specialtyService->spec_title }}</td>
+                        <td>{{ $detail->specialtyService->price }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
                 <tfoot>
                 </tfoot>
 			</table>
                 </div>
                 <div class="col-md-12">
                     <div class="pull-right m-t-30 text-right">
-                        <h3><b>Total :</b>PHP 2200</h3> 
+                        <h3>
+                            <b>Total :</b>
+                            PHP @if($billing->balance != 0.00)
+                                    {{ $billing->balance }}
+                                    <input type="number" id="total" value="{{ $billing->balance }}" hidden readonly> 
+                                @else
+                                    @if($billing->discounted != 0.00)
+                                        {{ $billing->discounted }}
+                                        <input type="number" id="total" value="{{ $billing->discounted }}" hidden readonly> 
+                                    @else
+                                        {{ $billing->total_amount }}
+                                        <input type="number" id="total" value="{{ $billing->total_amount }}" hidden readonly> 
+                                    @endif
+                                @endif
+                        </h3>
                     </div>
                     <div class="clearfix"></div>
                     <hr>
-                    <form class="form-material">
+                {{--     {!! Form::open(['action' => ['Transaction\PaymentController@processPayment', $billing->billing_id], 'method' => 'POST', 'onsubmit' => "return confirm('Checkout payment?')"]) !!} --}}
+                    <form>
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
                             </div>
@@ -90,7 +112,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <input type="number" id="PA" class="form-control" name="paymentAmount" placeholder="Enter here">
+                                    <input type="number" id="paymentAmount" class="form-control" name="txtPaymentAmount" placeholder="Enter here" required>
                                 </div>
                             </div>
                         </div>
@@ -101,13 +123,14 @@
                                 <label class="col-md-12">Change:</label>    
                             </div>
                             <div class="col-md-3">
-                                <p>10 PHP</p>
+                                <p><span id="change">10</span> PHP</p>
                             </div>
                         </div>
-                    </form>
-                    <div class="text-right">
-                        <button onclick="toCheckOut()" id="checkOut" type="submit" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i>Check Out</button>
-                    </div>
+                        <div class="text-right">
+                            {{ Form::hidden('_method', 'PUT') }}
+                            <button id="checkOut" type="button" class="btn btn-info"><i class="fa fa-fw fa-lg fa-check-circle"></i>Check Out</button>
+                        </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -116,6 +139,32 @@
 @endsection
 
 @section('pg-specific-js')
+<script>
+$('#checkOut').click(() => {
+
+    let ORNumber = $('#ORNum').val();
+    let billingId = $('#billingId').val();    
+    let paymentAmount = $('#total').val();    
+    let _token = $('input[name=_token]').val();
+
+    $.ajax({
+        'dataType' : 'json',
+        'type' : "POST", 
+        'url' : `/admin/transaction/receipt/process-payment`, 
+        'data': {
+            'orNumber' : ORNumber, 
+            'billingId' : billingId, 
+            'paymentAmount' : paymentAmount, 
+            '_token' : _token 
+        }, 
+        'success' : function(res) {
+            alert(res.msg);
+            window.location.href = `/admin/transaction/billing`;
+            
+        }
+    });
+});
+</script>
 <!-- <script>
 $(document).ready(function() {
     $("#print").hide();
