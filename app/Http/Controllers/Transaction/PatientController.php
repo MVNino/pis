@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use DB;
+use App\Patient;
+
 
 use DB;
 use App\Patient;

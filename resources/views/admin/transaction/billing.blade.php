@@ -16,17 +16,34 @@
 @endsection
 
 @section('content')
-{!! Form::open(['action' => 'Transaction\PaymentController@availService', 'method' => 'POST', 'class' => 'form-material form-horizontal', 'onsubmit' => "return confirm('Avail now and proceed to payment?')"]) !!}
-    @csrf
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" id="leftPanel">
+        {{-- {!! Form::open(['action' => 'Transaction\PaymentController@availService', 'method' => 'POST', 'id' => 'formPayment', 'class' => 'form-material form-horizontal', 'onsubmit' => "return confirm('Avail now and proceed to payment?')"]) !!} --}}
+        <form method="POST" id="formPayment" class="form-material form-horizontal">
+            @csrf
             <div class="white-box">
-                <div class="bill"></div>
+                <div class="row">
+                    <div class="col-md-7"></div>
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-5"><label>Billing Number: </label></div>
+                            <div class="col-md-7">
+                            <input type="text" class="form-control text-danger" name="numBill" id="billNumber" readonly>
+                            </div>
+                        </div>
+                      </div>  
+                    </div>
+                </div>
                     <div class="form-group">
                         <label class="col-md-12">Patient Name</span></label>
                         <div class="col-md-12">
-                            <select name="name"  class="form-control">
-                                <option>Leki Romero</option>
+                            <select id="patientId" name="slctPatient" class="form-control">
+                            @foreach($patients as $patient)
+                                <option value="{{ $patient->patient_id }}">
+                                    {{ $patient->full_name }}
+                                </option>
+                            @endforeach
                             </select>
                         </div>
                     </div>
@@ -44,6 +61,15 @@
                             </select>
                         </div>
                     </div>
+                    {{-- Daya ni Leki code --}}
+                    <p style="margin-top:158px;"></p>
+                    <div align="right">
+                        <a style="margin-top:20px;" href="#" role="button" class="btn btn-info waves-effect waves-light m-r-10" id="btnCompute">Compute</a>
+                    </div>
+            </div>
+        </form>
+        {{-- {!! Form::close() !!} --}}
+                    {{-- Effort ni Leki wag i-remove --}}
                     <!-- <div class="feeTxt">
                         <br>
                         <br>
@@ -63,20 +89,23 @@
                                     style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i></button>
                             </div>
                         </div>
-                    </div><br><br> -->
-                    <p style="margin-top:158px;"></p>
-                </div>
-        </div>
-        <div class="col-md-4">
-            <div class="white-box">
+                    </div><br><br> -->  
+        </div>                  
+        <div class="col-md-4" id="rightPanel">
+            <form action="POST" id="formComputePayment" class="form-material form-horizontal">
+                <div class="white-box">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="col-md-12">Initial Amount</label>
+
+                                <input type="number" id="initAmount" value="0" hidden>
                             </div>
                             <div class="col-md-6">
-                                <p>PHP 900.00</p>
-                                <button type="button" id="add" onclick="addDiscount()" class="btn btn-sm btn-info">Add Discount</button>
+                                <div id="initialAmount"></div>
+                                <button type="button" id="add" onclick="addDiscount()" class="btn btn-sm btn-info">
+                                    Add Discount
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -91,19 +120,45 @@
                         </div>
                         <input style="margin-left:50px;" type="radio" name="discount" value="0" id="perDiscount">&nbsp;Percentage<br>
                         <input style="margin-left:50px;" type="radio" name="discount" value="1" id="amtDiscount">&nbsp;Amount<br>
-                        <div id="textbox"></div><br>
+                        <div id="txtboxPercent" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" style="margin-left:50px;" type="number" name="amount" id="txtPerDiscount">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-md-12">%</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="#" id="btnPercent" class="btn btn-info">Set</a>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div id="txtboxAmount" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" style="margin-left:50px;" type="number" name="amount" id="txtAmtDiscount">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-md-12">Php</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="#" id="btnAmount" class="btn btn-info">Set</a>
+                                </div>
+                            </div>
+                        </div><br>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="col-md-12">Discount Price</label>
                             </div>
                             <div class="col-md-6">
-                                <p>PHP 900.00</p>
+                                <div id="discountedPrice"></div>
+                                <input type="numBill" id="discountedAmount" value="0" hidden>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Mode of Payment</label>
-                        <select class="form-control" name="selectMode">
+                        <select class="form-control" id="selectMode" name="selectMode">
                             <option>...</option>
                             <option value="0"> Half Payment </option>
                             <option value="1"> Full Payment </option>
@@ -115,27 +170,173 @@
                                 <br><label class="col-md-12">Total Amount</label>
                             </div>
                             <div class="col-md-6">
-                                <h3 class="text-danger"><b> 900 PHP</b></h3>
+                                <div id="totalAmount"></div>
+                                <input type="number" id="balAmount" value="0" hidden>
+                                <input type="number" id="totAmount" value="0" hidden>
                             </div>
                         </div>
                     </div>
                     <div align="right">
-                        <a style="margin-top:20px;" href="{{ route('transaction.receipt') }}" role="button" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-fw fa-lg fa-check-circle"></i>Proceed to Payment</a>
+                        <a style="margin-top:20px;" href="#" role="button" id="btnProceed" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-fw fa-lg fa-check-circle"></i>Proceed to Payment</a>
                     </div>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
-{!! Form::close() !!}
 @endsection
 
 @section('pg-specific-js')
 <script>
-$(function(){
+$(() => {
+    $('#rightPanel').hide();
     $("#addDiscount").hide();
     let randomNumber =  Math.round(Math.random() * 100000);
     let billNo = '<p style="margin-bottom:0px;" class="text-right">Billing Number</p><p class="text-right box-title text-danger"><font size="5px">#'+randomNumber+'</font></p>';
-    $(".bill").html(billNo);
+    $("#billNumber").val(randomNumber);
 });
+
+$('#btnCompute').click(() => {
+    availServices();
+});
+
+function availServices() {
+    let data = $("#formPayment").serializeArray();
+    // console.log(data);
+    let billNumber = $('#billNumber').val();
+    let patientId = $('#patientId').val();
+    let services = $('#selectServices').val();
+    let _token = $('input[name=_token]').val();
+    // Ajax POST Request
+    $.ajax({
+        'dataType' : 'json',
+        'type' : "POST", 
+        'url' : "/admin/transaction/avail-service", 
+        'data': {
+            'billNumber' : billNumber, 
+            'patientId' : patientId, 
+            'services' : services, 
+            '_token' : _token 
+        }, 
+        'success' : function(msg) {
+            $('#rightPanel').show();
+            $('#btnCompute').hide();
+            $('#patientId').attr('disabled', '');
+            computeServiceAmount(billNumber);
+        }
+    });
+}
+
+// for service computation na to menn
+function computeServiceAmount(billNumber) {
+    // Show initial amount
+    let initPrice = showInitialAmount(billNumber);
+
+    // if the discount was being added
+        // get the price men    
+    $('#btnPercent').click(() => {
+        let perDiscount = $('#txtPerDiscount').val();
+        let billNum = $('#billNumber').val();
+
+        $.get('/admin/transaction/'+billNum+'/show-initial-amount', (response) => {
+            let initialPrice = response[0].price;
+
+            // percentage divide by 100 x the initial amount
+            let discountedPrice = (perDiscount/100)*initialPrice;
+            let actualDiscountedPrice = initialPrice - discountedPrice;
+            let html = `<p>PHP ${actualDiscountedPrice}</p>`;
+            $("#discountedPrice").html(html);
+            let html2 = `<h3 class="text-danger"><b> ${actualDiscountedPrice} PHP</b></h3>`;
+            $('#totalAmount').html(html2);
+            $('#totAmount').val(actualDiscountedPrice);
+            $('#discountedAmount').val(actualDiscountedPrice);
+        });
+    });
+
+
+    $('#btnAmount').click(() => {
+        let amtDiscount = $('#txtAmtDiscount').val();
+        let billNum = $('#billNumber').val();
+
+        $.get('/admin/transaction/'+billNum+'/show-initial-amount', (response) => {
+            let initialPrice = response[0].price;
+            // percentage divide by 100 x the initial amount
+            let discountedPrice = initialPrice - amtDiscount;
+
+            let html = `<p>PHP ${discountedPrice}</p>`;
+            $("#discountedPrice").html(html);
+            let html2 = `<h3 class="text-danger"><b> ${discountedPrice} PHP</b></h3>`;
+            $('#totalAmount').html(html2);
+            $('#totAmount').val(discountedPrice);
+            $('#discountedAmount').val(discountedPrice);
+        });
+    });
+
+    // Mode of payment
+    $("#selectMode").change(() => {
+        let mode = $("#selectMode").val();
+        let amount = $('#totAmount').val();
+        let balAmount = 0;
+        if(mode == 0) {
+            // hindi makuha ung value ng tot amount
+            console.log(`amount: ${amount}`);
+            let totalAmount = amount / 2;
+            priceFromMop = totalAmount;
+            let html = `<h3 class="text-danger"><b> ${priceFromMop} PHP</b></h3>`;
+            $('#totalAmount').html(html);
+            balAmount = amount - totalAmount;
+            $('#balAmount').val(balAmount);
+        } else {
+            let html = `<h3 class="text-danger"><b> ${amount} PHP</b></h3>`;
+            $('#totalAmount').html(html);  
+        }
+    });
+    
+    // PROCEED TO PAYMENT
+    $('#btnProceed').click(() => {
+        proceedToPayment();        
+    });
+
+    function proceedToPayment(){
+        let mode = $("#selectMode").val();
+        let billNumber = $('#billNumber').val();
+        let initialAmount = $('#initAmount').val();
+        let discountedAmount = $('#discountedAmount').val();
+        let balAmount = $('#balAmount').val();
+        let totalAmount = $('#totAmount').val();
+        let _token = $('input[name=_token]').val();
+        // Ajax POST Request
+        $.ajax({
+            'dataType' : 'json',
+            'type' : "POST", 
+            'url' : "/admin/transaction/proceed-to-payment", 
+            'data': {
+                'billNumber' : billNumber,
+                'mode' : mode,
+                'initialAmount' : initialAmount, 
+                'discountedAmount' : discountedAmount, 
+                'balAmount' : balAmount, 
+                'totalAmount' : totalAmount,
+                '_token' : _token 
+            },
+            success: (res) => {
+                console.log(res);
+                window.location.href = `/admin/transaction/receipt/${billNumber}`;
+            }
+        });   
+    }
+}
+
+function showInitialAmount(billNumber) {
+     $.get('/admin/transaction/'+billNumber+'/show-initial-amount', (response) => {
+        let price = response[0].price; 
+        let html = `<p>PHP &nbsp ${price}</p>`
+        $('#initialAmount').html(html);
+        let html2 = `<h3 class="text-danger"><b> ${price} PHP</b></h3>`;
+        $('#totalAmount').html(html2);
+        $('#totAmount').val(price);
+        $('#initAmount').val(price);
+    });
+}
 
 function addDiscount(){
     $("#addDiscount").show();
@@ -149,14 +350,14 @@ function cancelDiscount(){
 
 $( "#perDiscount" ).click(function() {
   let radioValue = $("input[name='discount']:checked").val();
-  let txt = '<div class="row"><div class="col-md-6"><input class="form-control" style="margin-left:50px;" type="text" name="amount"></div><div class="col-md-6"><label class="col-md-12">%</label></div></div>';
-  $("#textbox").html(txt);
+  $("#txtboxAmount").css("display", "none");
+  $("#txtboxPercent").css("display", "block");
 });
 
 $( "#amtDiscount" ).click(function() {
   let radioValue = $("input[name='discount']:checked").val();
-  let txt = '<div class="row"><div class="col-md-6"><input class="form-control" style="margin-left:50px;" type="text" name="amount"></div><div class="col-md-6"><label class="col-md-12">PHP</label></div></div>';
-  $("#textbox").html(txt);
+  $("#txtboxPercent").css("display", "none");
+  $("#txtboxAmount").css("display", "block");
 });
 
 $("#selectServices").multipleSelect({
@@ -168,7 +369,6 @@ let target = $(".feeTxt");
 let targetBtn = $("#responseButton");
 
 function addFees() {
-
     let boxName = "fee" + count;
     let boxName2 = "amountFee" + count;
     let buttonName = "button" + count;
@@ -178,7 +378,6 @@ function addFees() {
     let newDiv = "<div class='feeDiv" + count + " row'>" + "<div class='col-md-6'>" + html + "</div>"+"<div class='col-md-4'>" + html1 + "</div>"+"<div class='col-sm-2'>" + button + "</div>";
 
     target.append(newDiv);
-    
     console.log(count);
     console.log(boxName);
     count++;

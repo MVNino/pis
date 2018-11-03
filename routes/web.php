@@ -14,8 +14,12 @@
 # Website
 // Landing page(banners, request appointment, service, news & events)
 Route::get('/', 'GuestController@viewIndex');
+Route::post('/', 'GuestController@createAppointment');
+Route::post('/fetch', 'GuestController@fetch')
+		->name('guestcontroller.fetch');
 Route::post('schedule-appointment', 
 	'Transaction\AppointmentController@scheduleAppointment');
+
 
 // About page
 Route::get('/about','GuestController@viewAbout');
@@ -40,6 +44,10 @@ Route::group(
 			'prefix' => 'maintenance'
 		], function(){
 			Route::namespace('Maintenance')->group(function () {
+				//Profile
+				Route::get('profile', 'ProfileController@viewProfile')->name('maintenance.profile');
+				//Account
+				Route::get('account', 'AccountController@editAccount')->name('maintenance.account');
 				// Banner 
 				Route::get('banner', 'BannerController@viewBanner')->name('maintenance.banner');
 				Route::post('banner', 'BannerController@addBanner');
@@ -149,9 +157,19 @@ Route::group(
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('billing/{id}', 'PaymentController@billing');
-				Route::post('avail-service', 'PaymentController@availService');
-				Route::get('receipt','PaymentController@receipt')
+
+				Route::get('specialty-service-price', 
+					'PaymentController@getSpecialtyServicePrice');
+				Route::post('avail-service', 
+					'PaymentController@availService');
+				Route::post('proceed-to-payment', 
+					'PaymentController@proceedToPayment');
+				Route::get('{id}/show-initial-amount', 
+					'PaymentController@showInitialAmount');
+
+				Route::get('receipt/{id}','PaymentController@receipt')
 					->name('transaction.receipt');
+				Route::post('receipt/process-payment', 'PaymentController@processPayment');
 				Route::get('balance','PaymentController@balance')
 					->name('transaction.balance');
 				// Clinical Expenses
@@ -166,6 +184,13 @@ Route::group(
 					->name('transaction.report');
 				Route::get('generatePDF','ReportController@generatePDF')
 					->name('transaction.generatedReport');
+
+				//Inbox
+				Route::get('inbox','InboxController@viewInbox')
+					->name('transaction.inbox');
+				Route::get('viewDetail','InboxController@viewDetail');
+				Route::get('trash','InboxController@viewTrash')
+					->name('transaction.trash');
 			});
 		});
 });
