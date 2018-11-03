@@ -28,7 +28,6 @@
                             <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$clinic->clinic_close_time)->format('g:i A')}}</td>
                         </tr>
 
-                        
                         <!-- Modal for Viewing Banner -->
                         <div class="modal fade" id="row{{$clinic->clinic_contact_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">

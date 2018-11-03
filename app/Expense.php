@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Patient extends Model
+class Expense extends Model
 {
     // Table
-	protected $table = 'patient_tbl';
+	protected $table = 'expense_tbl';
     //Primary Key
-    protected $primaryKey = 'patient_id';
+    protected $primaryKey = 'expense_id';
     // timestamp
 	public $timestamps = false;
 }
