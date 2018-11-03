@@ -40,9 +40,11 @@
                         <div class="col-md-12">
                             <select id="patientId" name="slctPatient" class="form-control">
                             @foreach($patients as $patient)
+                                @if(!$patient->billing)
                                 <option value="{{ $patient->patient_id }}">
                                     {{ $patient->full_name }}
                                 </option>
+                                @endif
                             @endforeach
                             </select>
                         </div>

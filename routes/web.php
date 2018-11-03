@@ -164,8 +164,12 @@ Route::group(
 				Route::get('receipt/{id}','PaymentController@receipt')
 					->name('transaction.receipt');
 				Route::post('receipt/process-payment', 'PaymentController@processPayment');
+				Route::post('balance/receipt/process-payment', 'PaymentController@processBalancePayment');
+				// Balance
 				Route::get('balance','PaymentController@balance')
 					->name('transaction.balance');
+				Route::get('balance-receipt/{id}/patient={name}', 
+					'PaymentController@balanceReceipt');
 				// Clinical Expenses
 				Route::get('expenses','ReportController@expenses')
 					->name('transaction.expenses');
