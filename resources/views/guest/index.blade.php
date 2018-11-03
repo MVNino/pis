@@ -15,9 +15,9 @@
                     </ol> -->
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        @foreach($banners as $banner)
+                        @foreach($banners as $banners)
                             <div class="item">
-                                <img src="/storage/images/banner/{{$banner->banner_picture}}" 
+                                <img src="/storage/images/banner/{{$banners->banner_picture}}" 
                                     alt="banner" style="object-fit: cover; height: 700px; width: 100%;">
                             </div>
                         @endforeach
@@ -53,58 +53,49 @@
                     <a href="{{ route('services') }}" class="about-btn">VIEW SERVICES</a>
                     </div>
                 </div>
+                {!! Form::open(['action' => 'GuestController@createAppointment', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
                  <div class="col-sm-6">
                     <div class="about-form">
                         <div class="form-title text-center">
                             <h2>SCHEDULE AN APPOINTMENT</h2>
                         </div>
                         <div class="v2-about-input">
-                            <input type="text" placeholder="First Name">
+                            <input type="text" id="fname" name="fname" placeholder="First Name">
                         </div>
                         <div class="v2-about-input mr0">
-                            <input type="text" placeholder="Middle Name">
+                            <input type="text" id="mname" name="mname" placeholder="Middle Name">
                         </div>
                         <div class="v2-about-input">
-                            <input type="text"  placeholder="Last Name" >
+                            <input type="text" id="lname" name="lname" placeholder="Last Name" >
                         </div>
                         <div class="v2-about-input mr0">
-                            <input type="email" placeholder="Email">
+                            <input type="email" id="email" name="email" placeholder="Email">
                         </div>
                         <div class="v2-about-input">
-                            <input type="text" placeholder="Contact Number">
+                            <input type="text" id="contact" name="contact" placeholder="Contact Number">
                         </div>
                         <div class="v2-about-input mr0">
-                            <div class="v2-about-select">
-                                <select>
-                                    <option value="">Location</option>
-                                    <option value="">Quezon City</option>
-                                    <option value="">Marikina City</option>
-                                    <option value="">Makati City</option>
-                                </select>
-                            </div>
+                            <select name="clinic_location" id="clinic_location" class="v2-about-select" data-dependent="clinic_open_time">
+                                <option value="" style = "color:#000000">Location</option>
+                                @foreach($location_list as $location)
+                                <option value="{{$location->clinic_location}}" style = "color:#000000">{{$location->clinic_location}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="v2-about-input">
-                            <div class="v2-about-select">
-                                <select>
-                                    <option value="">Preferred Date</option>
-                                    <option value="">November 1, 2018</option>
-                                </select>
-                            </div>
+                            <input type="date" id="date" name="date">
                         </div>
                         <div class="v2-about-input mr0">
-                            <div class="v2-about-select">
-                                <select>
-                                    <option value="">Preferred Time</option>
-                                    <option value="">8:00AM - 9:00AM</option>
-                                </select>
-                            </div>
+                            <select name="clinic_open_time" id="clinic_open_time" class="v2-about-select">
+                                <option value="">Preferred Time</option>
+                            </select>
                         </div>
-                        <div class="v2-about-textarea">
-                             <textarea name="message" id="message2" cols="30" rows="10" placeholder="Write your message here..."></textarea>
-                        </div>
+                        {{ csrf_field() }}
+                        
                         <div class="v2-about-submit">
                             <input type="submit" value="SUBMIT">
                         </div>
+                        {!! Form::close() !!}
                     </div>                    
                 </div>
             </div>
@@ -173,10 +164,36 @@
 
 @section('pg-specific-js')
     <script>
+    $(document).ready(function(){
+
+        $('#clinic_location').change(function(){
+
+            if($(this).val() != '')
+            {
+                var select = $(this).attr("id");
+                var value =  $(this).val();
+                var dependent = $(this).data('dependent');
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url:"{{ route('guestcontroller.fetch') }}",
+                    method:"POST",
+                    data:{select:select, value:value, _token:_token, dependent:dependent},
+                    success:function(data)
+                    {
+                        $('#'+dependent).html(data);
+                    }
+                })
+            }
+        });
+    });
+    </script>
+
+    <script>
         $("#navlink-index").addClass("current-menu-item");
         
         //add active to first banner
         document.querySelector('.item').classList.add("active");
         //document.getElementsByClassName('item')[0].classList.add("active");
     </script>
+
 @endsection

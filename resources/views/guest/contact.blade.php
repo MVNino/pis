@@ -109,9 +109,6 @@
                     <div class="v2-about-input mr0">
                         <input type="email" name="email" placeholder="Email">
                     </div>
-                    <div class="v2-about-input">
-                        <input type="text" name="phone" placeholder="Phone">
-                    </div>
                     <div class="v2-about-textarea">
                         <textarea name="inquiry" id="message" cols="30" rows="10" placeholder="Write your comment here..."></textarea>
                     </div>
