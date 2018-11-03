@@ -24,24 +24,38 @@
                 <thead>
                     <tr>
                         <th>Patient Name</th>
-                        <th>Birthday</th>
+                        <th>Age</th>
                         <th>Contact</th>
+                        <th>E-Mail</th>
                         <th>Medical History</th>
                     </tr>
                 </thead>
                 <tbody>
-                        <td>Leki Romero</td>
-                        <td> October 02, 2009</td>
-                        <td>09452066903</td>
-                        <td>
-                            <a role="button" href="{{action('Transaction\PatientController@editPatients')}}" class="btn btn-sm btn-info">
-                            <i class="fa fa-eye"></i>
-                            </a>
-                        </td>
+                    @foreach($patients as $patient)
+                        <tr>
+                            <td>{{$patient->fname}} {{$patient->mname}} {{$patient->lname}}</td>
+                            <td class="text-center">{{\Carbon\Carbon::parse($patient->birthday)->diff(\Carbon\Carbon::now())->format('%y')}}</td>
+                            <td>{{$patient->contact_no}}</td>
+                            <td>{{$patient->email}}</td>
+                            <td>
+                                <center>
+                                    {!! Form::open(['action' => 'Transaction\PatientController@editRecord', 'method' => 'GET', 'class' => 'form-material form-horizontal'])!!}
+                                        <input name="id" value="{{$patient->patient_id}}" style="display: none;">
+                                        <button role="submit" class="btn btn-sm btn-info">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                    {!!Form::close()!!}
+                                </center>
+                            </td>
+                        </tr>
+                    @endforeach
                 <tfoot>
                 </tfoot>
 			</table>
         </div>
     </div>
 </div>
+
+<script>
+</script>
 @endsection

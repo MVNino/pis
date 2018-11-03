@@ -12,14 +12,37 @@ use App\Feature;
 use App\News;
 use App\OtherService;
 use App\SpecialtyService;
+use App\Patient;
+use App\Appointment;
 use App\Http\Controllers\Controller;
 use DB;
+    
 
 class GuestController extends Controller
 {   
     public function _construct() 
     {
         $this->middleware('auth');
+    }
+
+    public function fetch(Request $request)
+    {
+        $select = $request->get('select');
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        $data = DB::table('clinic_contact_tbl')
+              ->where($select, $value)
+              ->groupBy($dependent)
+              ->get();
+
+        $output = '<option value="" >Preferred Time</option>';     
+
+        foreach($data as $row)
+        {
+            $output .= '<option value="'.$row->$dependent.'" style = "color:#000000" >'.$row->$dependent.'</option>';
+        }
+
+        echo $output;
     }
 
     public function viewIndex()
@@ -34,8 +57,15 @@ class GuestController extends Controller
                 ->get();
         $banners = Banner::where('banner_status', 1)
                 ->get();
+
+        $location_list = DB::table('clinic_contact_tbl')
+                       ->select('clinic_location')
+                       ->where('status', 0)
+                       ->groupBy('clinic_location')
+                       ->get();
+
         return view('guest.index', ['banners'=>$banners, 
-                'news' => $news, 'otherServices' => $otherServices]);
+                'news' => $news, 'otherServices' => $otherServices, 'location_list' => $location_list]);
     }
 
     public function viewAbout()
@@ -101,20 +131,55 @@ class GuestController extends Controller
         }
     }
 
+
+    public function createAppointment(Request $request)
+    {
+        $this->validate($request,[
+            'fname' => 'required|string',
+            'mname' => 'required|string',
+            'lname' => 'required|string',
+            'email' => 'required|string',
+            'contact' => 'required|string',
+            'date' => 'required',
+            'clinic_open_time' => 'required',
+
+        ]);
+
+        $patient = new Patient;
+        $patient->fname = $request->fname;
+        $patient->mname = $request->mname;
+        $patient->lname = $request->lname;
+        $patient->contact_no = $request->contact;
+        $patient->email = $request->email;
+
+        $patient->save();
+
+        // latest patient id
+        $patientId = Patient::max('patient_id');
+
+        $appointment = new Appointment;
+        $appointment->appointment_date = $request->date;
+        $appointment->patient_id = $patientId;
+        $appointment->time = $request->clinic_open_time;
+
+
+        $appointment->save();
+        
+        return redirect()->back()->with('success', 'Appointment Sent!');
+        
+    }
+
     public function storeContact(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|string',
             'email' => 'required|string',
-            'phone' => 'required',
             'inquiry' => 'required'
         ]);
         $contact = new Contact;
         $contact->contact_name = $request->name;
         $contact->contact_email = $request->email;
-        $contact->contact_phone = $request->phone;
         $contact->contact_inquiry = $request->inquiry;
-        $contact->status = 0;
 
         if($contact->save()){
             return redirect()->back()->with('success', 'Contact added!');

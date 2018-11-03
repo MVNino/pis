@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Appointment;
 
 class DashboardController extends Controller
 {
@@ -22,7 +23,10 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function viewDashboard()
-    {
-        return view('admin.dashboard');
+    {        // list appointments with the status of '0'
+        $appointment = new Appointment;
+        $appointments = $appointment->listAppointments(0);        
+        return view('admin.transaction.appointment',
+                ['appointments' => $appointments]);
     }
 }
