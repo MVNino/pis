@@ -9,6 +9,8 @@ use App\Notifications\AppointmentApproved;
 use App\Notifications\AppointmentRescheduled;
 use App\Appointment;
 use App\Patient;
+use App\Clinic;
+
 
 class AppointmentController extends Controller
 {
@@ -23,6 +25,33 @@ class AppointmentController extends Controller
     public function scheduleAppointment(Request $request)
     {
         return $request;
+    }
+
+    public function location()
+    {
+        $location_list = DB::table('clinic_contact_tbl')
+                       ->groupBy('clinic_location')
+                       ->get();
+       
+        return view('guest.index', ['location_list'=>$location_list]);
+    }
+
+    public function fetch(Request $request)
+    {
+        $select = $request->get('select');
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        $data = DB::table('clinic_contact_tbl')
+              ->where($select, $value)
+              ->groupBy($dependent)
+              ->get();
+        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
+
+        foreach($data as $row)
+        {
+            $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+        }
+        echo $output;
     }
 
     public function listAppointments() 
