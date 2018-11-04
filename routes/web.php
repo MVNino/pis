@@ -49,6 +49,8 @@ Route::group(
 				Route::post('profile', 'ProfileController@updateProfile');
 				//Account
 				Route::get('account', 'AccountController@editAccount')->name('maintenance.account');
+				Route::put('update-profile/{id}', 'AccountController@updateProfile');
+				Route::put('change-password/{id}', 'AccountController@changePassword');
 				// Banner 
 				Route::get('banner', 'BannerController@viewBanner')->name('maintenance.banner');
 				Route::post('banner', 'BannerController@addBanner');
