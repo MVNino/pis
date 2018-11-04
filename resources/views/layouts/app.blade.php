@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Login | Hospital</title>
+    <title>{{Request::is('login') ? 'Login' : ''}}
+            {{Request::is('register') ? 'Registration' : ''}} | Hospital</title>
    <link rel="icon" href="{{ asset('medicre/img/favicon.png') }}" type="image/x-icon"/>
 
     <!-- Scripts -->

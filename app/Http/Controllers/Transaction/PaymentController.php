@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Transaction;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Billing;
+use App\BillingDetail;
+use App\OfficialReceipt;
 use App\Patient;
 use App\SpecialtyService;
 use PDF;
@@ -18,11 +21,18 @@ class PaymentController extends Controller
     public function billing($id = NULL) 
     {
         if ($id == NULL) {
+            // If there is no specific record
             $specialServices = SpecialtyService::all();
 
+            // need to extract patient na approved na, at wala pang billing men
+            // $patients = Patient::selectRaw('patient_id, CONCAT(lname,", ",fname, " ", mname) as full_name')
+            //         ->get();
+            $patients = Patient::all();
             return view('admin.transaction.billing', 
-                ['specialServices' => $specialServices]);
+                ['specialServices' => $specialServices, 
+                'patients' => $patients]);
         } else {
+            // If there is a certain patient record
             $patient = Patient::findOrFail($id);
             $specialServices = SpecialtyService::all();
             return view('admin.transaction.billing', 
@@ -44,10 +54,11 @@ class PaymentController extends Controller
         $billing->patient_id = $request->patientId;
         if ($billing->save()) {
             foreach($request->services as $serviceId) {
-                $data = array('spec_service_id' => $serviceId, 'billing_id' => $request->billNumber);
+                $data = array('spec_service_id' => $serviceId, 
+                    'billing_id' => $request->billNumber);
                 BillingDetail::insert($data);    
             }
-             $response = array(
+            $response = array(
             'status' => 'success',
             'msg' => 'Setting created successfully',
             );
