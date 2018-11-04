@@ -26,6 +26,7 @@ class InboxController extends Controller
 
     public function viewDetail($id) {
         $message = Contact::findOrFail($id);
+        
         return view('admin.transaction.inbox-detail', ['message'=>$message]);
     }
 
