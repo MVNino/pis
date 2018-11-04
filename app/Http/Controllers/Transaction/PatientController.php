@@ -5,12 +5,8 @@ namespace App\Http\Controllers\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
-use DB;
-use App\Patient;
-
 
 use DB;
-use App\Patient;
 use App\MedicalRecord;
 use App\MedicalFileRecord;
 
@@ -28,6 +24,8 @@ class PatientController extends Controller
                 table('patient_tbl')
                 ->select('patient_tbl.*', 'patient_information_tbl.birthday')
                 ->join('patient_information_tbl','patient_information_tbl.patient_id','=','patient_tbl.patient_id')
+                ->join('appointment_tbl','appointment_tbl.patient_id','=','patient_tbl.patient_id')
+                ->where('appointment_tbl.status', '=', 1)
                 ->get();
 
             $medicalRecords = MedicalRecord::

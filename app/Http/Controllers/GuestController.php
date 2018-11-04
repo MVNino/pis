@@ -13,6 +13,7 @@ use App\News;
 use App\OtherService;
 use App\SpecialtyService;
 use App\Patient;
+use App\Profile;
 use App\Appointment;
 use App\Http\Controllers\Controller;
 use DB;
@@ -70,9 +71,17 @@ class GuestController extends Controller
 
     public function viewAbout()
     {
-        $features = Feature::orderBy('features_id', 'desc')->get();
-        //$about = $this->getAbout();
-        return view('guest.about', ['features' => $features]);
+        $profile = Profile::all();
+
+        if ($profile->count() > 0)
+        {
+            $profileMaxId = Profile::max('profile_id');
+            $profile = Profile::findOrFail($profileMaxId);
+
+            $features = Feature::orderBy('features_id', 'desc')->get();
+
+            return view('guest.about', ['profile' => $profile, 'features' => $features]);
+        }
     }
 
     public function viewServices() 

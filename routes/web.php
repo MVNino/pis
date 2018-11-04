@@ -46,6 +46,7 @@ Route::group(
 			Route::namespace('Maintenance')->group(function () {
 				//Profile
 				Route::get('profile', 'ProfileController@viewProfile')->name('maintenance.profile');
+				Route::post('profile', 'ProfileController@updateProfile');
 				//Account
 				Route::get('account', 'AccountController@editAccount')->name('maintenance.account');
 				// Banner 

@@ -19,27 +19,53 @@
     <div class="col-md-12">
         <div class="white-box">
             <h3 class="box-title">Profile</h3>
-            <form class="form-material form-horizontal">
+            {!! Form::open(['action' => 'Maintenance\ProfileController@updateProfile', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal', 'id' => 'profileForm', 'onsubmit' => 'serialize()'])!!}
                 <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a target="_blank" href="/storage/images/profile/{{$profile->picture}}">
+                                <img src="/storage/images/profile/{{$profile->picture}}" style="width: 100%;">
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <label>Name</span></label>
+                            <input name="name" class="form-control" value="{{$profile->name}}" required>
+                            <br/>
+                            <label>Title</span></label>
+                            <input name="title" class="form-control" value="{{$profile->title}}">
+                            <br/>
+                            <label>Uploaded Banner</label>
+                            <p>{{$profile->picture}}</p>
+                            <label>Banner Image</label>
+                            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
+                                <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                                <input type="file" name="profilepic" accept=".jpg,.jpeg,.png"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
                     <label class="col-md-12">Introduction</span></label>
                     <div class="col-md-12">
-                        <textarea rows="10" name="introduction"  class="form-control"></textarea>
+                        <textarea rows="10" name="introduction"  class="form-control">{{$profile->introduction}}</textarea>
                     </div>
                 </div>
                 <div class="profileTxt">
                     <div class="form-group">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <label>Skills and Specialities</label>
-                            <input class="form-control" name="skill" type="text">
+                            <textarea class="form-control" name="skill" type="text" rows="5">{{$profile->skills}}</textarea>
                         </div>
-                        <div class="col-md-2">
+                        <!--div class="col-md-2">
                             <button type='button' onclick="addSkills()" 
-                                style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i></button>
-                        </div>
+                                style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i>
+                            </button>
+                        </div-->
                     </div>
                 </div><br><br>
                 <button type="submit" class="btn btn-info waves-effect waves-light"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>
-            </form>
+            {!! Form::close() !!}
         </div>
     </div>
 </div>
@@ -56,9 +82,9 @@ function addSkills() {
 
     let boxName = "skills" + count;
     let buttonName = "button" + count;
-    let html = '<input type="text" class="form-control" name="' + boxName + '"">';
+    let html = '<input type="text" class="form-control" name="skill" + boxName + '"">';
     let button = '<button name="' + buttonName + '"type="button" onclick ="deleteField(' + count + ')" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-close"></i></button>';
-    let newDiv = "<div class='profileDiv" + count + " row'>" + "<div class='col-md-8'>" + html + "</div>"+"<div class='col-sm-2'>" + button + "</div>";
+    let newDiv = "<div class='profileDiv" + count + " row'>" + "<div class='col-md-10'>" + html + "</div>"+"<div class='col-sm-2'>" + button + "</div>";
 
     target.append(newDiv);
     count++;
