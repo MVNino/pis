@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Patient;
+use App\Contact;
 
 
 class InboxController extends Controller
@@ -16,14 +17,38 @@ class InboxController extends Controller
     }
 
     public function viewInbox() {
-        return view('admin.transaction.inbox');
+
+        $messages = Contact::where('status', 1);
+        return view('admin.transaction.inbox', ['messages'=>$messages]);
     }
 
-    public function viewDetail() {
-        return view('admin.transaction.inbox-detail');
+    public function viewDetail($id) {
+        $message = Contact::findOrFail($id);
+
+        return view('admin.transaction.inbox-detail', ['message'=>$message]);
     }
 
     public function viewTrash() {
-        return view('admin.transaction.trash');
+        $messages = Contact::where('status', 0);
+        return view('admin.transaction.trash',['messages'=>$messages]);
     }
+
+    public function deleteMessage($id)
+    {
+      try
+      {
+          $message = Contact::find($id);
+          $message->status = 0;
+
+          if ($message->save())
+          {
+              return redirect()->back()->with('success', 'Message Deleted!');
+          }
+
+      }
+      catch (\Exception $e)
+      {
+          return $e->getMessage();
+      }
+  }
 }

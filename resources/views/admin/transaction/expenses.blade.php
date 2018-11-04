@@ -69,7 +69,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="exampleModalLabel">Add Features</h4>
+				<h4 class="modal-title" id="exampleModalLabel">Add Expenses</h4>
 			</div>
 			{!! Form::open(['action' => 'Transaction\ReportController@addExpense', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
 				<div class="modal-body">
