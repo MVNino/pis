@@ -74,7 +74,6 @@ class ReportController extends Controller
             return $e->getMessage();
         }
     }
-
     public function deleteExpense($id)
     {
         try
