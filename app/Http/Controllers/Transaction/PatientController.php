@@ -25,6 +25,7 @@ class PatientController extends Controller
                 ->join('patient_information_tbl','patient_information_tbl.patient_id','=','patient_tbl.patient_id')
                 ->join('appointment_tbl','appointment_tbl.patient_id','=','patient_tbl.patient_id')
                 ->where('appointment_tbl.status', '=', 1)
+                ->groupBy('patient_tbl.patient_id')
                 ->get();
 
             $medicalRecords = MedicalRecord::
