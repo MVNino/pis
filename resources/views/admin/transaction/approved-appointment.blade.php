@@ -20,6 +20,11 @@
     <div class="col-md-12">
         <div class="white-box">
             <h3 class="text-center"><b>LIST OF APPROVED APPOINTMENT</b></h3>
+            <div style="padding-right:90px;"align="right">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAppointment">
+				<i class="fa fa-plus"></i> &nbsp;Add Appointment
+				</button><br><br>
+			</div>
             <div class="row">
                 <div class = "offset-md-1 col-md-10">
                     {{-- Today --}}
@@ -212,6 +217,42 @@
 
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addAppointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 id="exampleModalLabel">Add Appointment</h3>
+            </div>
+            <form class="form-material form-horizontal">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-md-12">Patient Name</label>
+                        <select name="patientName" class="form-control">
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Date</label>
+                        <input type ="date" name="date" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnSend" type="submit" class="btn btn-info">
+                        <i class="fa fa-fw fa-lg fa-check-circle"></i> Send
+                    </button>
+                    <button type="button" class="btn btn-inverse" style="display: inline-block;" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Cancel
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
 </div>

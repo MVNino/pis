@@ -194,6 +194,7 @@ Route::group(
 				Route::get('viewDetail','InboxController@viewDetail');
 				Route::get('trash','InboxController@viewTrash')
 					->name('transaction.trash');
+				Route::get('trash', 'InboxController@deleteMessage');
 			});
 		});
 });

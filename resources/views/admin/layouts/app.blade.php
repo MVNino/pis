@@ -47,9 +47,6 @@
                                     <input type ="text" name="email" class="form-control" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type ="text" name="subject" class="form-control" placeholder="Subject">
-                                </div>
-                                <div class="form-group">
                                     <textarea type ="text" name="subject" class="form-control" rows="10 "placeholder="Message"></textarea>
                                 </div>
                             </div>
