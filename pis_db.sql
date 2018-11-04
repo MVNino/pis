@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2018 at 11:29 AM
+-- Generation Time: Nov 04, 2018 at 05:16 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -609,8 +609,16 @@ CREATE TABLE `expense_tbl` (
   `expense_id` int(11) NOT NULL,
   `name` varchar(160) NOT NULL,
   `cost` decimal(8,2) NOT NULL,
-  `expense_date` date NOT NULL
+  `expense_date` date NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `expense_tbl`
+--
+
+INSERT INTO `expense_tbl` (`expense_id`, `name`, `cost`, `expense_date`, `status`) VALUES
+(1, 'Medicine Purchased', '1000.00', '2018-09-23', 0);
 
 -- --------------------------------------------------------
 
@@ -905,7 +913,6 @@ CREATE TABLE `patient_tbl` (
   `email` varchar(160) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
-
 --
 -- Dumping data for table `patient_tbl`
 --
@@ -999,7 +1006,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Marlon Villa Niño', 'marlon_nino@yahoo.com', NULL, '$2y$10$5o8j9iU1lSA0uR1QIc2Bl.tFWmoZjR6LjrOUmniKSWzCLyr98PCii', NULL, '2018-09-24 01:07:02', '2018-09-24 01:07:02'),
-(2, 'Annthonite Buena', 'annthoniteb@gmail.com', NULL, '$2y$10$w6env5aXq4ifOG6EYVRPG.f8jR42Sw39gMkdRQmNHQGT/N1XAurpO', 'Acv8bSCvleoRAPC1PcsQxNSFIU1zohtM5eHjZmwXw6MYANrsrjLsJ6pXs0RD', '2018-09-25 21:15:44', '2018-09-25 21:15:44'),
+(2, 'Annthonite Buena', 'annthoniteb@gmail.com', NULL, '$2y$10$w6env5aXq4ifOG6EYVRPG.f8jR42Sw39gMkdRQmNHQGT/N1XAurpO', '5PcCh88ju90mCamCKSyLNUxL8azIoeNorxBzRSEqNFDqhxvKhW1DsCo4eTsk', '2018-09-25 21:15:44', '2018-09-25 21:15:44'),
 (3, 'Marlon Villa Niño', 'ninomarlonvilla@gmail.com', NULL, '$2y$10$c9GrmXmpyoVxZy18HeraW.hCSZxpHamLXBNAeBKVFBZV6qkiONPia', 'D21oLdHOeRgstyBbHRKLOZlWImD9NN0VfrmvSMtEYxKrdZD3JG8P3VwCahpr', '2018-09-26 03:39:15', '2018-09-26 03:39:15'),
 (4, 'Ibrahim Samson', 'ibrahimsamson05@gmail.com', NULL, '$2y$10$da13sq0Z71Dz7LTaKqny8ea1wjgq4yEBIKL49LjbTYnJ0a4jzh1xi', NULL, '2018-09-26 13:32:20', '2018-09-26 13:32:20'),
 (5, 'Lhexy Romero', 'lhexyromero@gmail.com', NULL, '$2y$10$DHePi3Lczvw1KfObvdqRfuJeeCRUEUYK9wGXqd4ItKeVIvg0vIt0O', NULL, '2018-09-29 00:44:30', '2018-09-29 00:44:30'),
@@ -1222,12 +1229,12 @@ ALTER TABLE `user_tbl`
 -- AUTO_INCREMENT for table `appointment_tbl`
 --
 ALTER TABLE `appointment_tbl`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `banner_tbl`
 --
 ALTER TABLE `banner_tbl`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `barangay_tbl`
 --
@@ -1247,7 +1254,7 @@ ALTER TABLE `city_tbl`
 -- AUTO_INCREMENT for table `clinic_contact_tbl`
 --
 ALTER TABLE `clinic_contact_tbl`
-  MODIFY `clinic_contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `clinic_contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `company_tbl`
 --
@@ -1262,7 +1269,7 @@ ALTER TABLE `contact_us_tbl`
 -- AUTO_INCREMENT for table `expense_tbl`
 --
 ALTER TABLE `expense_tbl`
-  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `faq_tbl`
 --
@@ -1272,7 +1279,7 @@ ALTER TABLE `faq_tbl`
 -- AUTO_INCREMENT for table `features_tbl`
 --
 ALTER TABLE `features_tbl`
-  MODIFY `features_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `features_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `holiday_tbl`
 --
@@ -1322,7 +1329,7 @@ ALTER TABLE `patient_information_tbl`
 -- AUTO_INCREMENT for table `patient_tbl`
 --
 ALTER TABLE `patient_tbl`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `profile_tbl`
 --
@@ -1332,12 +1339,12 @@ ALTER TABLE `profile_tbl`
 -- AUTO_INCREMENT for table `specialty_service_tbl`
 --
 ALTER TABLE `specialty_service_tbl`
-  MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `spec_service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `specialty_service_vid_tbl`
 --
 ALTER TABLE `specialty_service_vid_tbl`
-  MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `users`
 --
