@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use PDF;
 use Illuminate\Support\Facades\DB;
-
 use App\Expense;
 
 class ReportController extends Controller
@@ -75,7 +74,6 @@ class ReportController extends Controller
             return $e->getMessage();
         }
     }
-
     public function deleteExpense($id)
     {
         try

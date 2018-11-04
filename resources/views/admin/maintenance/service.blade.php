@@ -257,4 +257,85 @@
 	</div>
 </div>
 {{-- /Add other service modal --}}
+
+<!-- Modal -->
+<div style="padding-top: 630px;" class="modal fade bd-example-modal-lg" id="manualService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Services</b></h4>
+			<p style="margin-top:0;">This part will discuss the Services module. It will show you how to manage the services for the website.</p>
+			<div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under “WEBSITE MAINTENANCE”, click [1] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services.JPG')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to add a Specialty Services?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To add a new Service, click [2] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services1.JPG')}}"><br><br>
+				
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Select an image which will correspond to your service. Input the service title, service description, the video link, and its price.<br><br>
+
+				<label><b>Step 3 :</b>&nbsp;</label>
+				To add your new service, click [3]. A message [4] will be shown that the adding of service is successful.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services2.JPG')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to delete a Speciality Services?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To delete a specialty service, click [16]. A message [17] will be shown to confirm your action.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services3.JPG')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to add Other Services?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To add other services, click [17].<br><br>
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Then follow the same instructions in adding Specialty Services. <br><br>
+
+				<p class="text-danger"><b><em>How to delete Other Services?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Follow the same instructions in deleting a specialty service.<br><br>
+
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
+@endsection
+
+@section('pg-specific-js')
+<script>
+	function editOrder(id)
+	{
+		var c = document.getElementsByClassName(id);
+		c[0].style.display = "none";
+		c[1].style.display = "block";
+	}
+	window.onhelp = function() {
+		return false;
+	};
+	window.onkeydown = evt => {
+		if (evt.keyCode == 112){
+			$("#manualService").modal("show");
+			
+		}
+		return false;
+	};
+</script>
 @endsection

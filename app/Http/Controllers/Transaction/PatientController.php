@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
-
 use DB;
 use App\MedicalRecord;
 use App\MedicalFileRecord;
@@ -109,6 +108,7 @@ class PatientController extends Controller
 
         try
         {
+
             $mr = MedicalRecord::
                 find($id);
 
@@ -127,6 +127,7 @@ class PatientController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
 
     public function addMedicalFileRecord(Request $request)
     {

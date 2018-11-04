@@ -58,6 +58,7 @@
                     <div class="about-form">
                         <div class="form-title text-center">
                             <h2>SCHEDULE AN APPOINTMENT</h2>
+                            @include('guest.includes.notification')
                         </div>
                         <div class="v2-about-input">
                             <input type="text" id="fname" name="fname" placeholder="First Name">
