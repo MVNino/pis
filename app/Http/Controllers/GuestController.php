@@ -16,6 +16,7 @@ use App\Patient;
 use App\Appointment;
 use App\Http\Controllers\Controller;
 use DB;
+use Carbon;
     
 
 class GuestController extends Controller
@@ -39,7 +40,7 @@ class GuestController extends Controller
 
         foreach($data as $row)
         {
-            $output .= '<option value="'.$row->$dependent.'" style = "color:#000000" >'.$row->$dependent.'</option>';
+            $output .= '<option value="'.\Carbon\Carbon::createFromFormat('H:i:s',$row->$dependent)->format('g:i A ').'" style = "color:#000000" >'.\Carbon\Carbon::createFromFormat('H:i:s',$row->$dependent)->format('g:i A ').'</option>';
         }
 
         echo $output;
@@ -145,6 +146,8 @@ class GuestController extends Controller
 
         ]);
 
+        try{
+
         $patient = new Patient;
         $patient->fname = $request->fname;
         $patient->mname = $request->mname;
@@ -165,8 +168,14 @@ class GuestController extends Controller
 
         $appointment->save();
         
-        return redirect()->back()->with('success', 'Appointment Sent!');
-        
+        return redirect()->back()->with('success', 'Your appoinment is now sent. Please check your email often to see if your appoinment is approved. Thank you!');
+        }
+
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', "Your appointment was not sent. Please refresh the page.");
+        }
+
     }
 
     public function storeContact(Request $request)
@@ -176,14 +185,25 @@ class GuestController extends Controller
             'email' => 'required|string',
             'inquiry' => 'required'
         ]);
-        $contact = new Contact;
-        $contact->contact_name = $request->name;
-        $contact->contact_email = $request->email;
-        $contact->contact_inquiry = $request->inquiry;
 
-        if($contact->save()){
-            return redirect()->back()->with('success', 'Contact added!');
+        try
+        {
+
+            $contact = new Contact;
+            $contact->contact_name = $request->name;
+            $contact->contact_email = $request->email;
+            $contact->contact_inquiry = $request->inquiry;
+
+            if($contact->save()){
+                return redirect()->back()->with('success', 'Your inquiry has been submitted. Check you email for the response. Thank you');
+            }
         }
+
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', "Your inquiry was not sent. Please refresh the page.");
+        }
+
     }
 
     public function getContact()
