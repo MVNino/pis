@@ -16,14 +16,13 @@
 @endsection
 
 @section('content')
-<div class="container">
 <div class="row">
     <div class="col-md-12">
-        {!! Form::open(['action' => 'Transaction\PaymentController@processPayment', 'method' => 'POST', 
+        {!! Form::open(['action' => 'Transaction\PaymentController@processBalancePayment', 'method' => 'POST', 
         'onsubmit' => "return confirm('Checkout payment?')"]) !!}
         @csrf
         <div class="white-box">
-            <h3><b>BILLING ID</b> <span class="pull-right">#{{ $billing->billing_id }}</span></h3>
+            <h3><b>BILLING ID</b> <span class="pull-right text-danger">#{{ $billing->billing_id }}</span></h3>
             <input type="number" id="billingId" name="txtBillingId" value="{{ $billing->billing_id }}" hidden readonly>
             <form class="form-material">
                 <div class="row">
@@ -83,12 +82,12 @@
                 </tbody>
                 <tfoot>
                 </tfoot>
-            </table>
+			</table>
                 </div>
                 <div class="col-md-12">
                     <div class="pull-right m-t-30 text-right">
                         <h3>
-                            <b>Total :</b>
+                            <b>Total Balance:</b>
                             PHP @if($billing->balance != 0.00)
                                     {{ $billing->balance }}
                                     <input type="number" id="total" name="numTotalAmount" value="{{ $billing->balance }}" hidden readonly> 
@@ -105,6 +104,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <hr>
+                {{--     {!! Form::open(['action' => ['Transaction\PaymentController@processPayment', $billing->billing_id], 'method' => 'POST', 'onsubmit' => "return confirm('Checkout payment?')"]) !!} --}}
                         <div class="row">
                             <div class="col-md-6">
                             </div>
@@ -142,8 +142,6 @@
         </div>
         {!! Form::close() !!}    
     </div>
-</div>
-    
 </div>
 @endsection
 

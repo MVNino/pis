@@ -14,7 +14,7 @@
         <ul class="nav navbar-top-links navbar-right pull-right">
             <li class="dropdown">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ asset('elite/plugins/images/users/d1.jpg') }}"
-                        alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Dra. Joy Gali</b> </a>
+                        alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Dr. {{ Auth::user()->name }}</b> </a>
                 <ul class="dropdown-menu dropdown-user animated flipInY">
                     <li><a href="{{ route('maintenance.profile') }}"><i class="ti-user"></i> My Profile</a></li>
                     <li><a href="{{ route('transaction.inbox') }}"><i class="ti-email"></i> Inbox</a></li>

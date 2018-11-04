@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Transaction;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Billing;
-use App\BillingDetail;
-use App\OfficialReceipt;
 use App\Patient;
 use App\SpecialtyService;
+use PDF;
 
 class PaymentController extends Controller
 {
@@ -21,19 +19,13 @@ class PaymentController extends Controller
     {
         if ($id == NULL) {
             $specialServices = SpecialtyService::all();
-            $patients = Patient::join('appointment_tbl', 
-                    'patient_tbl.patient_id', '=', 'appointment_tbl.patient_id')
-                ->selectRaw('patient_tbl.patient_id, 
-                    CONCAT(lname,", ",fname, " ", mname) as full_name')
-                ->where('status', 1)
-                ->get();
+
             return view('admin.transaction.billing', 
-                ['specialServices' => $specialServices, 
-                'patients' => $patients]);
+                ['specialServices' => $specialServices]);
         } else {
             $patient = Patient::findOrFail($id);
             $specialServices = SpecialtyService::all();
-            return view('admin.transaction.patient-billing', 
+            return view('admin.transaction.billing', 
                 ['specialServices' => $specialServices, 
                 'patient' => $patient]);
         }
@@ -94,11 +86,13 @@ class PaymentController extends Controller
             $billing->balance = $request->balAmount;
         }
         elseif($request->mode == 1) {
+            $billing->isPaid = 1;
             $billing->balance = 0;
         }
         if($billing->save()) {
-            return \Response::json('oks lang ako');        
+            return \Response::json('bill created');        
             // return redirect('/admin/transaction/receipt');
+
         }
     }
 
@@ -111,28 +105,91 @@ class PaymentController extends Controller
 
     public function processPayment(Request $request)
     {
+        // return $request;   
+            // payment is ung binigay niya
         $this->validate($request, [
-            'billingId' => 'required',
-            'orNumber' => 'required',
-            'paymentAmount' => 'required'
+            'txtBillingId' => 'required',
+            'txtOrNumber' => 'required',
+            'numTotalAmount' => 'required',
+            'txtPaymentAmount' => 'required'
         ]);
 
         $or = new OfficialReceipt;
-        $or->or_number = $request->orNumber;
+        $or->or_number = $request->txtOrNumber;
         $or->or_date = now();
-        $or->billing_id = $request->billingId;
-        $or->amount_paid = $request->paymentAmount;
+        $or->billing_id = $request->txtBillingId;
+        $or->amount_paid = $request->numTotalAmount;
         if ($or->save()) {
-             $response = array(
-            'status' => 'success',
-            'msg' => 'Official receipt created successfully',
-            );
-            return \Response::json($response);
+
+            $billing = Billing::findOrFail($request->txtBillingId);
+            $patientName = $billing->patient->fname.' '
+                .$billing->patient->mname.' '.$billing->patient->lname;
+
+            $pdf = PDF::loadView('admin.transaction.checkout-pdf', ['patientName' => $patientName, 'amount' => $request->numTotalAmount]);
+            return $pdf->stream('payment_checkout.pdf');
+            // return redirect()->back()->with('success', 'yeah men');   
         }
     }
 
+    public function generateCheckoutPDF($amount, $billId)
+    {
+        $billing = Billing::findOrFail($billId);
+        $patientName = $billing->patient->fname.' '
+            .$billing->patient->mname.' '.$billing->patient->lname;
+        $data = array(
+            'amount' => $amount,
+            'patientName' => $patientName
+        );
+
+        $pdf = PDF::loadView('admin.transaction.generatedCheckOut.html');
+        return $pdf->stream('payment_checkout.pdf');
+    }
+
     public function balance() {
-        return view('admin.transaction.balance');
+        $patients = Patient::with('billing')->get();
+        return view('admin.transaction.balance', 
+            ['patients' => $patients]);
+    }
+
+    public function balanceReceipt($id)
+    {
+        $billing = Billing::findOrFail($id);
+        return view('admin.transaction.balance-receipt', 
+            ['billing' => $billing]);
+    }
+
+    public function processBalancePayment(Request $request)
+    {
+        // return $request;   
+            // payment is ung binigay niya
+        $this->validate($request, [
+            'txtBillingId' => 'required',
+            'txtOrNumber' => 'required',
+            'numTotalAmount' => 'required',
+            'txtPaymentAmount' => 'required'
+        ]);
+
+        // set 'balance' to 0 and set 'isPaid to 1'
+        $bill = Billing::findOrFail($request->txtBillingId);
+        $bill->balance = 0.00;
+        $bill->isPaid = 1;
+        $bill->save();
+
+        $or = new OfficialReceipt;
+        $or->or_number = $request->txtOrNumber;
+        $or->or_date = now();
+        $or->billing_id = $request->txtBillingId;
+        $or->amount_paid = $request->numTotalAmount;
+        if ($or->save()) {
+
+            $billing = Billing::findOrFail($request->txtBillingId);
+            $patientName = $billing->patient->fname.' '
+                .$billing->patient->mname.' '.$billing->patient->lname;
+
+            $pdf = PDF::loadView('admin.transaction.checkout-pdf', ['patientName' => $patientName, 'amount' => $request->numTotalAmount]);
+            return $pdf->stream('payment_checkout.pdf');
+            // return redirect()->back()->with('success', 'yeah men');   
+        }
     }
 
     # Method for AJAX Request

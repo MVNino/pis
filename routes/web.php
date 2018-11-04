@@ -152,10 +152,12 @@ Route::group(
 					->name('transaction.patients');
 				Route::put('patients/{id}', 'PatientController@updatePatient');
 				Route::put('updateRecord/{id}', 'PatientController@updateMedical');
+				Route::post('addMedicalFile', 'PatientController@addMedicalFileRecord');
 				Route::get('editRecord', 'PatientController@editRecord');
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('billing/{id}', 'PaymentController@billing');
+
 				Route::get('specialty-service-price', 
 					'PaymentController@getSpecialtyServicePrice');
 				Route::post('avail-service', 
@@ -168,8 +170,12 @@ Route::group(
 				Route::get('receipt/{id}','PaymentController@receipt')
 					->name('transaction.receipt');
 				Route::post('receipt/process-payment', 'PaymentController@processPayment');
+				Route::post('balance/receipt/process-payment', 'PaymentController@processBalancePayment');
+				// Balance
 				Route::get('balance','PaymentController@balance')
 					->name('transaction.balance');
+				Route::get('balance-receipt/{id}/patient={name}', 
+					'PaymentController@balanceReceipt');
 				// Clinical Expenses
 				Route::get('expenses','ReportController@expenses')
 					->name('transaction.expenses');

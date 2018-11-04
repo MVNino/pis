@@ -40,9 +40,11 @@
                         <div class="col-md-12">
                             <select id="patientId" name="slctPatient" class="form-control">
                             @foreach($patients as $patient)
+                                @if(!$patient->billing)
                                 <option value="{{ $patient->patient_id }}">
                                     {{ $patient->full_name }}
                                 </option>
+                                @endif
                             @endforeach
                             </select>
                         </div>
@@ -98,6 +100,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="col-md-12">Initial Amount</label>
+
                                 <input type="number" id="initAmount" value="0" hidden>
                             </div>
                             <div class="col-md-6">

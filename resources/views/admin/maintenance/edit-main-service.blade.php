@@ -113,4 +113,90 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div style="padding-top: 1000px;" class="modal fade bd-example-modal-lg" id="manualEditService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Services</b></h4>
+			<p style="margin-top:0;">This part will discuss the Services module. It will show you how to manage the services for the website.</p>
+			<div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under “WEBSITE MAINTENANCE”, click [1] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services2.JPG')}}"><br><br>
+
+				<p class="text-danger"><b><em>How to edit a Specialty Services?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To add a new Service, click [5] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services4.JPG')}}"><br><br>
+				
+				<label><b>Step 2 :</b>&nbsp;</label>
+				You will now be able to change the image, services title, service description, and price.<br><br>
+
+				<label><b>Step 3 :</b>&nbsp;</label>
+				To add another video link, click [6], which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services6.JPG')}}"><br><br>
+
+				<label><b>Step 4 :</b>&nbsp;</label>
+				To add the additional video, click [7]. A message [8] will be shown that the additional video was added successfully.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services11.JPG')}}"><br><br>
+
+				<label><b>Step 5 :</b>&nbsp;</label>
+				To edit a video, click [9] which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services7.JPG')}}"><br><br>
+
+				<label><b>Step 6 :</b>&nbsp;</label>
+				To save any changes, click [11]. To discard the changes, click [12].<br><br>
+
+				<label><b>Step 7 :</b>&nbsp;</label>
+				To delete a service video, click [10]. A message [13] will be shown that the removal of the video link is successful.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services8.JPG')}}"><br><br>
+
+				<label><b>Step 8 :</b>&nbsp;</label>
+				To save all of the changes, click [14]. A message [15] will appear that the editing of service is successful.<br><br>
+				<img class="dynamic" src="{{asset('img/services/services9.JPG')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/services/services10.JPG')}}"><br><br>
+				
+				<p class="text-danger"><b><em>How to edit Other Services?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Follow the same instructions in editing a specialty service.<br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
+@endsection
+
+@section('pg-specific-js')
+<script>
+	function editOrder(id)
+	{
+		var c = document.getElementsByClassName(id);
+		c[0].style.display = "none";
+		c[1].style.display = "block";
+	}
+	window.onhelp = function() {
+		return false;
+	};
+	window.onkeydown = evt => {
+		if (evt.keyCode == 112){
+			$("#manualEditService").modal("show");
+			
+		}
+		return false;
+	};
+</script>
 @endsection

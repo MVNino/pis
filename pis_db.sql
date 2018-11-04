@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2018 at 04:36 PM
+-- Generation Time: Nov 03, 2018 at 11:29 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -30,11 +30,18 @@ CREATE TABLE `appointment_tbl` (
   `appointment_id` int(11) NOT NULL,
   `doctor_id` int(11) DEFAULT NULL,
   `time` time NOT NULL,
-  `day` varchar(15) NOT NULL,
+  `day` varchar(15) DEFAULT NULL,
   `appointment_date` date NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
   `patient_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `appointment_tbl`
+--
+
+INSERT INTO `appointment_tbl` (`appointment_id`, `doctor_id`, `time`, `day`, `appointment_date`, `status`, `patient_id`) VALUES
+(1, NULL, '08:00:00', NULL, '2018-09-03', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -577,18 +584,20 @@ INSERT INTO `company_tbl` (`company_id`, `company_name`, `company_desc`, `compan
 CREATE TABLE `contact_us_tbl` (
   `contact_us_id` int(11) NOT NULL,
   `contact_name` varchar(200) NOT NULL,
-  `contact_email` varchar(80) NOT NULL,
+  `contact_email` varchar(80) DEFAULT NULL,
   `contact_phone` varchar(15) NOT NULL,
   `contact_inquiry` text NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1'
+  `status` int(11) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `contact_us_tbl`
 --
 
-INSERT INTO `contact_us_tbl` (`contact_us_id`, `contact_name`, `contact_email`, `contact_phone`, `contact_inquiry`, `status`) VALUES
-(8, 'Annthonite', 'annthoniteb@gmail.com', '09485044516', 'Hi', 0);
+INSERT INTO `contact_us_tbl` (`contact_us_id`, `contact_name`, `contact_email`, `contact_phone`, `contact_inquiry`, `status`, `created_at`, `updated_at`) VALUES
+(8, 'Annthonite', 'annthoniteb@gmail.com', '09485044516', 'Hi', 0, '2018-11-03 10:11:20', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -896,6 +905,14 @@ CREATE TABLE `patient_tbl` (
   `email` varchar(160) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+
+--
+-- Dumping data for table `patient_tbl`
+--
+
+INSERT INTO `patient_tbl` (`patient_id`, `lname`, `fname`, `mname`, `contact_no`, `email`) VALUES
+(1, 'Buena', 'Annthonite', 'Nanez', '09485044516', 'annthoniteb@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -935,7 +952,7 @@ INSERT INTO `specialty_service_tbl` (`spec_service_id`, `spec_image_icon`, `spec
 (9, '2D & 3D Echocardiography/Doppler_SpecialtyServiceImg_1537955777.jpg', '2D & 3D Echocardiography/Doppler', 'Echocardiography (echo) is a painless test that uses sound waves to create pictures of your heart. This test gives your doctor information about the size and shape of your heart and how well your heart\'s chambers and valves are working.\r\n\r\n2-D (two-dimensional) echocardiogram. This technique is used to see the actual structures and motion of the heart structures. A 2-D echo view looks cone-shaped on the monitor, and the real-time motion of the heart\'s structures can be seen. This allows the doctor to see the various heart structures at work and evaluate them.\r\n\r\n3-D (three-dimensional) echocardiogram. 3-D echo technique captures 3-D views of the heart structures with greater depth than 2-D echo. The live or \"real time\" images allow for a more accurate assessment of heart function by using measurements taken while the heart is beating. 3-D echo shows enhanced views of the heart\'s anatomy and can be used to determine best treatment plan.', NULL, 1),
 (10, 'Dobutamine Stress Echocardiography_SpecialtyServiceImg_1537956209.jpg', 'Dobutamine Stress Echocardiography', 'A dobutamine stress echocardiogram (DSE) may be used if you are unable to exercise. Dobutamine is put in a vein and causes the heart to beat faster. It mimics the effects of exercise on the heart.\r\n\r\nDuring an echo, a transducer (like a microphone) sends out ultrasonic sound waves at a frequency too high to be heard. When the transducer is placed on the chest at certain locations and angles, the ultrasonic sound waves move through the skin and other body tissues to the heart tissues, where the waves bounce or \"echo\" off of the heart structures. The transducer picks up the reflected waves and sends them to a computer. The computer displays the echoes as images of the heart walls and valves.', NULL, 1),
 (11, 'Stress Test and Treadmill Test_SpecialtyServiceImg_1537956570.jpg', 'Stress Test and Treadmill Test', 'The exercise stress test also known as an exercise electrocardiogram, treadmill test, graded exercise test, or stress EKG -- is used most often. It lets your doctor know how your heart responds to being pushed. You\'ll walk on a treadmill or pedal a stationary bike. It\'ll get more difficult as you go. Your electrocardiogram, heart rate, and blood pressure will be tracked throughout.', NULL, 0),
-(12, 'Anesthesia_SpecialtyServiceImg_1538182462.jpg', 'Anesthesia', 'The Department provides valuable services from monitored anesthesia care to anesthesia for major surgery, including transplant and vascular surgeries, urologic cases, orthopedic cases, ENT cases, general surgery and cardiothoracic surgery. It also caters to providing anesthesia outside of the operating room set-up. These procedures include the following: endoscopies, nuclear scans, CT scans and extracorporeal shock wave lithotripsy. Further, the Department answers to calls for patient resuscitation and referrals for acute and chronic pain management services.', NULL, 1);
+(12, 'Anesthesia_SpecialtyServiceImg_1538182462.jpg', 'Anesthesia', 'The Department provides valuable services from monitored anesthesia care to anesthesia for major surgery, including transplant and vascular surgeries, urologic cases, orthopedic cases, ENT cases, general surgery and cardiothoracic surgery. It also caters to providing anesthesia outside of the operating room set-up. These procedures include the following: endoscopies, nuclear scans, CT scans and extracorporeal shock wave lithotripsy. Further, the Department answers to calls for patient resuscitation and referrals for acute and chronic pain management services.', '750.00', 1);
 
 -- --------------------------------------------------------
 
@@ -982,7 +999,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Marlon Villa Niño', 'marlon_nino@yahoo.com', NULL, '$2y$10$5o8j9iU1lSA0uR1QIc2Bl.tFWmoZjR6LjrOUmniKSWzCLyr98PCii', NULL, '2018-09-24 01:07:02', '2018-09-24 01:07:02'),
-(2, 'Annthonite Buena', 'annthoniteb@gmail.com', NULL, '$2y$10$w6env5aXq4ifOG6EYVRPG.f8jR42Sw39gMkdRQmNHQGT/N1XAurpO', 'Kgpndy4c8uPzsOW38PCVLAdlPJ1SKU4HeAdVZx8DAkpGTVHcwaC5ODYZe0b1', '2018-09-25 21:15:44', '2018-09-25 21:15:44'),
+(2, 'Annthonite Buena', 'annthoniteb@gmail.com', NULL, '$2y$10$w6env5aXq4ifOG6EYVRPG.f8jR42Sw39gMkdRQmNHQGT/N1XAurpO', 'Acv8bSCvleoRAPC1PcsQxNSFIU1zohtM5eHjZmwXw6MYANrsrjLsJ6pXs0RD', '2018-09-25 21:15:44', '2018-09-25 21:15:44'),
 (3, 'Marlon Villa Niño', 'ninomarlonvilla@gmail.com', NULL, '$2y$10$c9GrmXmpyoVxZy18HeraW.hCSZxpHamLXBNAeBKVFBZV6qkiONPia', 'D21oLdHOeRgstyBbHRKLOZlWImD9NN0VfrmvSMtEYxKrdZD3JG8P3VwCahpr', '2018-09-26 03:39:15', '2018-09-26 03:39:15'),
 (4, 'Ibrahim Samson', 'ibrahimsamson05@gmail.com', NULL, '$2y$10$da13sq0Z71Dz7LTaKqny8ea1wjgq4yEBIKL49LjbTYnJ0a4jzh1xi', NULL, '2018-09-26 13:32:20', '2018-09-26 13:32:20'),
 (5, 'Lhexy Romero', 'lhexyromero@gmail.com', NULL, '$2y$10$DHePi3Lczvw1KfObvdqRfuJeeCRUEUYK9wGXqd4ItKeVIvg0vIt0O', NULL, '2018-09-29 00:44:30', '2018-09-29 00:44:30'),
