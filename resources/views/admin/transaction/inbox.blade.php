@@ -32,6 +32,7 @@
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-9 col-sm-12 col-xs-12 mail_listing">
+                    <div id="forDeletion"></div>
                     <div class="inbox-center">
                         <table class="table table-hover">
                             <thead>
@@ -42,26 +43,24 @@
                                 <tr class="unread">
                                     <td>
                                         <div class="checkbox m-t-0 m-b-0">
-                                            <input type="checkbox">
+                                            <input type="checkbox" id="checkedBox">
                                             <label for="checkbox0"></label>
                                         </div>
                                     </td>
                                     <td class="hidden-xs">Hritik Roshan</td>
                                     <td class="max-texts"> <a href="{{action('Transaction\InboxController@viewDetail')}}">Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
                                     </td>
-                                    <td class="hidden-xs"><i class="fa fa-paperclip"></i></td>
                                     <td class="text-right"> 12:30 PM </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div class="checkbox m-t-0 m-b-0">
-                                            <input type="checkbox">
+                                            <input type="checkbox" id="checkedBox">
                                             <label for="checkbox0"></label>
                                         </div>
                                     </td>
                                     <td class="hidden-xs">Ritesh Deshmukh</td>
                                     <td class="max-texts"><a href="{{action('Transaction\InboxController@viewDetail')}}">Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                    <td class="hidden-xs"><i class="fa fa-paperclip"></i></td>
                                     <td class="text-right"> May 09 </td>
                                 </tr>
                             </tbody>
@@ -81,4 +80,24 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('pg-specific-js')
+<script>
+$(()=>{
+
+    let html = '<i class="fa fa-trash"></i>&nbsp;<a style="font-size:12px;" role="button">Delete</a> | <a style="font-size:12px;" role="button">Delete All</a>';
+    $('input[type=checkbox]').change(function() {
+        if(this.checked) {
+            $(this).prop("checked");
+            console.log("check");
+            $("#forDeletion").html(html);
+        }   
+        else {
+            $("#forDeletion").html("");
+        }    
+    });
+
+});
+</script>
 @endsection
