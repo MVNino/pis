@@ -22,10 +22,24 @@ class AccountController extends Controller
     public function updateProfile(Request $request, $id)
     {
     	$this->validate($request, [
+    		'profileImage' => 'image|mimes:jpeg,png,jpg|required|max:1500',
     		'txtUsername' => 'required'
     	]);
     	$user = User::findOrFail($id);
     	$user->username = $request->txtUsername;
+    	// Handle file upload for profile image
+    	if($request->hasFile('profileImage')){
+    	    // Get the file's extension
+    	    $fileExtension = $request->file('profileImage')
+    	        ->getClientOriginalExtension();
+    	    // Create a filename to store(database)
+    	    $profImageNameToStore = $request->txtUsername
+    	        .'_'.'profileImage'.'_'.time().'.'.$fileExtension;
+    	    // Upload file to system
+    	    $path = $request->file('profileImage')
+    	        ->storeAs('public/images/profile', $profImageNameToStore);
+    	    $user->profile_image_code = $profImageNameToStore;
+    	}
     	if ($user->save()) {
 	   		return redirect()->back()->with('success', 'Your account has been updated!');
     	}
