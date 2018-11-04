@@ -31,8 +31,6 @@
                 </div>
                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 mail_listing">
                     <div class="media m-b-30 p-t-20">
-                        
-                        
                         <a class="pull-left" href="#"> <img class="media-object thumb-sm img-circle" src="../plugins/images/users/pawandeep.jpg" alt=""> </a>
                         <div class="media-body"> <span class="media-meta pull-right">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$message->created_at)->format('F j Y g:i A ')}}</span>
                             <h4 class="text-danger m-0">{{$message->contact_name}}</h4> <small class="text-muted">From: {{$message->contact_email}}}</small> </div>
