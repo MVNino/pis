@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Patient;
 use App\Contact;
+use Carbon;
 
 
 class InboxController extends Controller
@@ -18,19 +19,21 @@ class InboxController extends Controller
 
     public function viewInbox() {
 
-        $messages = Contact::where('status', 1);
-        return view('admin.transaction.inbox', ['messages'=>$messages]);
+        $messages = Contact::all();
+        $count = Contact::where('status', 0)->count();
+        return view('admin.transaction.inbox', ['messages'=>$messages, 'count'=>$count]);
     }
 
     public function viewDetail($id) {
         $message = Contact::findOrFail($id);
-
+        
         return view('admin.transaction.inbox-detail', ['message'=>$message]);
     }
 
     public function viewTrash() {
-        $messages = Contact::where('status', 0);
-        return view('admin.transaction.trash',['messages'=>$messages]);
+        $messages = Contact::all();
+        $count = Contact::where('status', 1)->count();
+        return view('admin.transaction.trash',['messages'=>$messages, 'count'=>$count]);
     }
 
     public function deleteMessage($id)
@@ -38,7 +41,7 @@ class InboxController extends Controller
       try
       {
           $message = Contact::find($id);
-          $message->status = 0;
+          $message->status = 1;
 
           if ($message->save())
           {
