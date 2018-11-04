@@ -16,6 +16,7 @@ use App\Patient;
 use App\Appointment;
 use App\Http\Controllers\Controller;
 use DB;
+use Carbon;
     
 
 class GuestController extends Controller
@@ -39,7 +40,7 @@ class GuestController extends Controller
 
         foreach($data as $row)
         {
-            $output .= '<option value="'.$row->$dependent.'" style = "color:#000000" >'.$row->$dependent.'</option>';
+            $output .= '<option value="'.\Carbon\Carbon::createFromFormat('H:i:s',$row->$dependent)->format('g:i A ').'" style = "color:#000000" >'.\Carbon\Carbon::createFromFormat('H:i:s',$row->$dependent)->format('g:i A ').'</option>';
         }
 
         echo $output;

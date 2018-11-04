@@ -34,7 +34,7 @@
                         
                         
                         <a class="pull-left" href="#"> <img class="media-object thumb-sm img-circle" src="../plugins/images/users/pawandeep.jpg" alt=""> </a>
-                        <div class="media-body"> <span class="media-meta pull-right">07:23 AM</span>
+                        <div class="media-body"> <span class="media-meta pull-right">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$message->created_at)->format('F j Y g:i A ')}}</span>
                             <h4 class="text-danger m-0">{{$message->contact_name}}</h4> <small class="text-muted">From: {{$message->contact_email}}}</small> </div>
                     </div>
                     <p>{{$message->contact_inquiry}}</p>
