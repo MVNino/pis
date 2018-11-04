@@ -26,8 +26,8 @@
                     <div> 
                     <button data-toggle="modal" data-target="#composeMessage" class="btn btn-custom btn-block waves-effect waves-light">Compose</button>
                         <div class="list-group mail-list m-t-20"> 
-                            <a href="{{ route('transaction.inbox') }}" class="list-group-item active">Inbox <span class="label label-rouded label-info pull-right">55</span></a>
-                            <a href="{{ route('transaction.trash') }}" class="list-group-item">Trash <span class="label label-rouded label-default pull-right">55</span></a> 
+                            <a href="admin/transaction/inbox" class="list-group-item active">Inbox <span class="label label-rouded label-info pull-right">55</span></a>
+                            <a href="admin/transaction/trash" class="list-group-item">Trash <span class="label label-rouded label-default pull-right">55</span></a> 
                         </div>
                     </div>
                 </div>
@@ -40,6 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($messages as $message)
                                 <tr class="unread">
                                     <td>
                                         <div class="checkbox m-t-0 m-b-0">
@@ -47,26 +48,26 @@
                                             <label for="checkbox0"></label>
                                         </div>
                                     </td>
-                                    <td class="hidden-xs">Hritik Roshan</td>
-                                    <td class="max-texts"> <a href="{{action('Transaction\InboxController@viewDetail')}}">Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
+                                    <td class="hidden-xs">{{$message->contact_name}}</td>
+                                    <td class="max-texts"> <a href="{{action('Transaction\InboxController@viewDetail')}}">{{ str_limit($message->contact_inquiry, $limit = 20, $end = '...') }}</a></td>
                                     </td>
-                                    <td class="text-right"> 12:30 PM </td>
-                                </tr>
-                                <tr>
+                                    <td class="text-right"> {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$message->created_at)->format('F j Y g:i A ')}} </td>
                                     <td>
-                                        <div class="checkbox m-t-0 m-b-0">
-                                            <input type="checkbox" id="checkedBox">
-                                            <label for="checkbox0"></label>
+                                        <div align="center">
+                                            {!!Form::open(['action' => ['Admin\MailController@deleteMessage', $message->contact_us_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Message?')"])!!}
+                                                {{Form::hidden('_method', 'DELETE')}}
+                                                <button type="submit" class="fa fa-trash" data-toggle="tooltip" data-original-title="Delete">
+                                                    <i class="ti-close" aria-hidden="true"></i>
+                                                </button>
+                                            {!!Form::close()!!}
                                         </div>
                                     </td>
-                                    <td class="hidden-xs">Ritesh Deshmukh</td>
-                                    <td class="max-texts"><a href="{{action('Transaction\InboxController@viewDetail')}}">Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                    <td class="text-right"> May 09 </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-xs-7 m-t-20"> Showing 1 - 15 of 200 </div>
                         <div class="col-xs-5 m-t-20">
                             <div class="btn-group pull-right">
@@ -74,7 +75,7 @@
                                 <button type="button" class="btn btn-default waves-effect"><i class="fa fa-chevron-right"></i></button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

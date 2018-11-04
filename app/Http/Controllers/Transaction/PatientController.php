@@ -107,6 +107,7 @@ class PatientController extends Controller
 
         try
         {
+
             $mr = MedicalRecord::
                 find($id);
 
@@ -125,6 +126,7 @@ class PatientController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
 
     public function addMedicalFileRecord(Request $request)
     {

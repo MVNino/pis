@@ -170,8 +170,12 @@ Route::group(
 				Route::get('receipt/{id}','PaymentController@receipt')
 					->name('transaction.receipt');
 				Route::post('receipt/process-payment', 'PaymentController@processPayment');
+				Route::post('balance/receipt/process-payment', 'PaymentController@processBalancePayment');
+				// Balance
 				Route::get('balance','PaymentController@balance')
 					->name('transaction.balance');
+				Route::get('balance-receipt/{id}/patient={name}', 
+					'PaymentController@balanceReceipt');
 				// Clinical Expenses
 				Route::get('expenses','ReportController@expenses')
 					->name('transaction.expenses');
@@ -184,13 +188,13 @@ Route::group(
 					->name('transaction.report');
 				Route::get('generatePDF','ReportController@generatePDF')
 					->name('transaction.generatedReport');
-
 				//Inbox
 				Route::get('inbox','InboxController@viewInbox')
 					->name('transaction.inbox');
 				Route::get('viewDetail','InboxController@viewDetail');
 				Route::get('trash','InboxController@viewTrash')
 					->name('transaction.trash');
+				Route::get('trash', 'InboxController@deleteMessage');
 			});
 		});
 });

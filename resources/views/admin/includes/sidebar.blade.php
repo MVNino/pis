@@ -11,7 +11,7 @@
             </li>
             <li class="user-pro">
                 <a href="#" class="waves-effect"><img src="{{ asset('elite/plugins/images/users/d1.jpg') }}" alt="user-img" class="img-circle">                            
-                    <span class="hide-menu">Dra. Joy Gali</span>
+                    <span class="hide-menu">Dr. {{ Auth::user()->name }}</span>
                 </a>
             </li>
             <li class="nav-small-cap m-t-10">--- Professional</li>
