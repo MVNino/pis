@@ -182,6 +182,11 @@ Route::group(
 					->name('transaction.report');
 				Route::get('generatePDF','ReportController@generatePDF')
 					->name('transaction.generatedReport');
+				Route::get('report', 'ReportController@rangedReport')
+					->name('transaction.generatedReport');
+				Route::get('report', 'ReportController@listReport')
+					->name('transaction.report');
+
 				//Inbox
 				Route::get('inbox','InboxController@viewInbox')
 					->name('transaction.inbox');

@@ -20,7 +20,7 @@ class InboxController extends Controller
     public function viewInbox() {
 
         $messages = Contact::all();
-        $count = Contact::where('status', 0)->count();
+        $count = Contact::where('status', 1)->count();
         return view('admin.transaction.inbox', ['messages'=>$messages, 'count'=>$count]);
     }
 
@@ -32,7 +32,7 @@ class InboxController extends Controller
 
     public function viewTrash() {
         $messages = Contact::all();
-        $count = Contact::where('status', 1)->count();
+        $count = Contact::where('status', 0)->count();
         return view('admin.transaction.trash',['messages'=>$messages, 'count'=>$count]);
     }
 
@@ -41,7 +41,7 @@ class InboxController extends Controller
       try
       {
           $message = Contact::find($id);
-          $message->status = 1;
+          $message->status = 0;
 
           if ($message->save())
           {
