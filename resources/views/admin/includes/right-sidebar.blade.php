@@ -40,41 +40,6 @@
                 <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
                 <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme">12</a></li>
             </ul>
-            <ul class="m-t-20 chatonline">
-                <li><b>Chat option</b></li>
-                <li>
-                    <a href="javascript:void(0)"><img src="{{ asset('elite/plugins/images/users/varun.jpg') }}" alt="user-img"
-                            class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><img src="{{ asset('elite/plugins/images/users/genu.jpg') }}" alt="user-img"
-                            class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><img src="{{ asset('elite/plugins/images/users/ritesh.jpg') }}" alt="user-img"
-                            class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><img src="{{ asset('elite/plugins/images/users/arijit.jpg') }}" alt="user-img"
-                            class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><img src="{{ asset('elite/plugins/images/users/govinda.jpg') }}" alt="user-img"
-                            class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><img src="{{ asset('elite/plugins/images/users/hritik.jpg') }}" alt="user-img"
-                            class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><img src="{{ asset('elite/plugins/images/users/john.jpg') }}" alt="user-img"
-                            class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><img src="{{ asset('elite/plugins/images/users/pawandeep.jpg') }}" alt="user-img"
-                            class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
-                </li>
-            </ul>
         </div>
     </div>
 </div>

@@ -46,6 +46,7 @@ Route::group(
 			Route::namespace('Maintenance')->group(function () {
 				//Profile
 				Route::get('profile', 'ProfileController@viewProfile')->name('maintenance.profile');
+				Route::post('profile', 'ProfileController@updateProfile');
 				//Account
 				Route::get('account', 'AccountController@editAccount')->name('maintenance.account');
 				Route::put('update-profile/{id}', 'AccountController@updateProfile');
@@ -154,12 +155,10 @@ Route::group(
 					->name('transaction.patients');
 				Route::put('patients/{id}', 'PatientController@updatePatient');
 				Route::put('updateRecord/{id}', 'PatientController@updateMedical');
-				Route::post('addMedicalFile', 'PatientController@addMedicalFileRecord');
 				Route::get('editRecord', 'PatientController@editRecord');
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('billing/{id}', 'PaymentController@billing');
-
 				Route::get('specialty-service-price', 
 					'PaymentController@getSpecialtyServicePrice');
 				Route::post('avail-service', 
@@ -172,12 +171,8 @@ Route::group(
 				Route::get('receipt/{id}','PaymentController@receipt')
 					->name('transaction.receipt');
 				Route::post('receipt/process-payment', 'PaymentController@processPayment');
-				Route::post('balance/receipt/process-payment', 'PaymentController@processBalancePayment');
-				// Balance
 				Route::get('balance','PaymentController@balance')
 					->name('transaction.balance');
-				Route::get('balance-receipt/{id}/patient={name}', 
-					'PaymentController@balanceReceipt');
 				// Clinical Expenses
 				Route::get('expenses','ReportController@expenses')
 					->name('transaction.expenses');
@@ -190,12 +185,19 @@ Route::group(
 					->name('transaction.report');
 				Route::get('generatePDF','ReportController@generatePDF')
 					->name('transaction.generatedReport');
+				Route::get('report', 'ReportController@rangedReport')
+					->name('transaction.generatedReport');
+				Route::get('report', 'ReportController@listReport')
+					->name('transaction.report');
+
 				//Inbox
 				Route::get('inbox','InboxController@viewInbox')
 					->name('transaction.inbox');
-				Route::get('viewDetail','InboxController@viewDetail');
+				Route::get('inbox/{id}','InboxController@viewDetail')
+					->name('transaction.inbox-detail');
 				Route::get('trash','InboxController@viewTrash')
 					->name('transaction.trash');
+				Route::delete('trash/(id}', 'InboxController@deleteMessage');
 			});
 		});
 });
