@@ -46,6 +46,7 @@ Route::group(
 			Route::namespace('Maintenance')->group(function () {
 				//Profile
 				Route::get('profile', 'ProfileController@viewProfile')->name('maintenance.profile');
+				Route::post('profile', 'ProfileController@updateProfile');
 				//Account
 				Route::get('account', 'AccountController@editAccount')->name('maintenance.account');
 				// Banner 
@@ -182,6 +183,11 @@ Route::group(
 					->name('transaction.report');
 				Route::get('generatePDF','ReportController@generatePDF')
 					->name('transaction.generatedReport');
+				Route::get('report', 'ReportController@rangedReport')
+					->name('transaction.generatedReport');
+				Route::get('report', 'ReportController@listReport')
+					->name('transaction.report');
+
 				//Inbox
 				Route::get('inbox','InboxController@viewInbox')
 					->name('transaction.inbox');

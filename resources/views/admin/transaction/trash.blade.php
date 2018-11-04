@@ -39,7 +39,7 @@
                             <tbody>
                                 @foreach($messages as $message)
                                 @if($count > 0)
-                                @if($message->status == 1)
+                                @if($message->status == 0)
                                 <tr class="unread">
                                     <td>
                                         <div class="checkbox m-t-0 m-b-0">
