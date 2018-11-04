@@ -42,7 +42,7 @@
                             @foreach($patients as $patient)
                                 @if(!$patient->billing)
                                 <option value="{{ $patient->patient_id }}">
-                                    {{ $patient->full_name }}
+                                    {{ $patient->fname.' '.$patient->mname.' '.$patient->lname }}
                                 </option>
                                 @endif
                             @endforeach
