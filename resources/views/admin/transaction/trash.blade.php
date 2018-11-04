@@ -24,8 +24,8 @@
                     <div> 
                         <button data-toggle="modal" data-target="#composeMessage" class="btn btn-custom btn-block waves-effect waves-light">Compose</button>
                         <div class="list-group mail-list m-t-20"> 
-                            <a href="admin/transaction/inbox" class="list-group-item">Inbox <span class="label label-rouded label-info pull-right">55</span></a>
-                            <a href="admin/transaction/trash" class="list-group-item active">Trash <span class="label label-rouded label-default pull-right">55</span></a> 
+                            <a href="{{route('transaction.inbox')}}" class="list-group-item">Inbox <span class="label label-rouded label-info pull-right">55</span></a>
+                            <a href="/admin/transaction/trash" class="list-group-item active">Trash <span class="label label-rouded label-default pull-right">55</span></a> 
                         </div>
                     </div>
                 </div>
@@ -38,6 +38,8 @@
                             </thead>
                             <tbody>
                                 @foreach($messages as $message)
+                                @if($count > 0)
+                                @if($message->status == 0)
                                 <tr class="unread">
                                     <td>
                                         <div class="checkbox m-t-0 m-b-0">
@@ -46,11 +48,15 @@
                                         </div>
                                     </td>
                                     <td class="hidden-xs">{{$message->contact_name}}</td>
-                                    <td class="max-texts"> <a href="{{action('Transaction\InboxController@viewDetail')}}">{{ str_limit($message->contact_inquiry, $limit = 20, $end = '...') }}</a></td>
+                                    <td class="max-texts">{{ str_limit($message->contact_inquiry, $limit = 20, $end = '...') }}</a></td>
                                     </td>
-                                    <td class="hidden-xs"><i class="fa fa-paperclip"></i></td>
-                                    <td class="text-right"> {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$message->created_at)->format('F j Y g:i A ')}} </td>
+                                    
+                                    <td class="hidden-xs">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$message->created_at)->format('F j Y g:i A ')}}</a></td>
                                 </tr>
+                                @endif
+                                @else
+                                    No messages
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>

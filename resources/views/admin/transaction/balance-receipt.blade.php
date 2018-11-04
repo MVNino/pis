@@ -106,7 +106,7 @@
                     <hr>
                 {{--     {!! Form::open(['action' => ['Transaction\PaymentController@processPayment', $billing->billing_id], 'method' => 'POST', 'onsubmit' => "return confirm('Checkout payment?')"]) !!} --}}
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                             </div>
                             <div class="col-md-2">
                                 <label class="col-md-12">Payment Amount:</label>    
@@ -116,22 +116,15 @@
                                     <input type="number" id="paymentAmount" class="form-control" name="txtPaymentAmount" placeholder="Enter here" required>
                                 </div>
                             </div>
-                            <div class="col-md-1">
-                                <div class="form-group">
-                                    <a href="#" class="btn btn-primary" id="btnCompute"><i class="fa fa-fw fa-lg fa-check-circle"></i></a>
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                             </div>
                             <div class="col-md-2">
                                 <label class="col-md-12">Change:</label>    
                             </div>
                             <div class="col-md-3">
                                 <p><span id="change">0</span> PHP</p>
-                            </div>
-                            <div class="col-md-2">
                             </div>
                         </div>
                         <div class="text-right">
@@ -172,7 +165,7 @@ $('#checkOutt').click(() => {
     });
 });
 
-$('#btnCompute').click((e) => {
+$('#paymentAmount').blur((e) => {
     e.preventDefault();
     let total = $('#total').val();   
     let paymentAmount = $('#paymentAmount').val();   

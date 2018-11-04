@@ -13,9 +13,11 @@ use App\News;
 use App\OtherService;
 use App\SpecialtyService;
 use App\Patient;
+use App\Profile;
 use App\Appointment;
 use App\Http\Controllers\Controller;
 use DB;
+use Carbon;
     
 
 class GuestController extends Controller
@@ -39,7 +41,7 @@ class GuestController extends Controller
 
         foreach($data as $row)
         {
-            $output .= '<option value="'.$row->$dependent.'" style = "color:#000000" >'.$row->$dependent.'</option>';
+            $output .= '<option value="'.\Carbon\Carbon::createFromFormat('H:i:s',$row->$dependent)->format('g:i A ').'" style = "color:#000000" >'.\Carbon\Carbon::createFromFormat('H:i:s',$row->$dependent)->format('g:i A ').'</option>';
         }
 
         echo $output;
@@ -70,9 +72,17 @@ class GuestController extends Controller
 
     public function viewAbout()
     {
-        $features = Feature::orderBy('features_id', 'desc')->get();
-        //$about = $this->getAbout();
-        return view('guest.about', ['features' => $features]);
+        $profile = Profile::all();
+
+        if ($profile->count() > 0)
+        {
+            $profileMaxId = Profile::max('profile_id');
+            $profile = Profile::findOrFail($profileMaxId);
+
+            $features = Feature::orderBy('features_id', 'desc')->get();
+
+            return view('guest.about', ['profile' => $profile, 'features' => $features]);
+        }
     }
 
     public function viewServices() 
@@ -145,6 +155,8 @@ class GuestController extends Controller
 
         ]);
 
+        try{
+
         $patient = new Patient;
         $patient->fname = $request->fname;
         $patient->mname = $request->mname;
@@ -165,8 +177,14 @@ class GuestController extends Controller
 
         $appointment->save();
         
-        return redirect()->back()->with('success', 'Appointment Sent!');
-        
+        return redirect()->back()->with('success', 'Your appoinment is now sent. Please check your email often to see if your appoinment is approved. Thank you!');
+        }
+
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', "Your appointment was not sent. Please refresh the page.");
+        }
+
     }
 
     public function storeContact(Request $request)
@@ -176,14 +194,25 @@ class GuestController extends Controller
             'email' => 'required|string',
             'inquiry' => 'required'
         ]);
-        $contact = new Contact;
-        $contact->contact_name = $request->name;
-        $contact->contact_email = $request->email;
-        $contact->contact_inquiry = $request->inquiry;
 
-        if($contact->save()){
-            return redirect()->back()->with('success', 'Contact added!');
+        try
+        {
+
+            $contact = new Contact;
+            $contact->contact_name = $request->name;
+            $contact->contact_email = $request->email;
+            $contact->contact_inquiry = $request->inquiry;
+
+            if($contact->save()){
+                return redirect()->back()->with('success', 'Your inquiry has been submitted. Check you email for the response. Thank you');
+            }
         }
+
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', "Your inquiry was not sent. Please refresh the page.");
+        }
+
     }
 
     public function getContact()

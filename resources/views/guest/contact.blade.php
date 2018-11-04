@@ -67,6 +67,7 @@
                         <h1><span>get in touch</span>  with us</h1>
                         <p> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially</p>
                         <p>specimen book unchanged.</p>
+                        @include('guest.includes.notification')
                     </div>
                 </div>
             </div>

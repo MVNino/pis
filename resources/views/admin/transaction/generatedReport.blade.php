@@ -81,16 +81,13 @@
         <div class="table">
             <table>
                 <tbody>
+                    @foreach($expenses as $expense)
                     <tr>
-                        <td>Client Sale</td>
+                        <td>{{$expense->expense_id}}</td>
                         <td>PHP</td>
-                        <td>2,674.00</td>
+                        <td>{{$expense->cost}}</td>
                     </tr>
-                    <tr>
-                        <td>Medicine Sale</td>
-                        <td></td>
-                        <td>240.00</td>
-                    </tr>
+                    @endforeach
                     <tr class="total">
                         <td>Total Revenue</td>
                         <td></td>
