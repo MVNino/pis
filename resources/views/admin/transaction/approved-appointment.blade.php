@@ -236,7 +236,9 @@
                     <div class="form-group">
                         <label class="col-md-12">Patient Name</label>
                         <select name="patientName" class="form-control">
-                            <option>...</option>
+                            @foreach($appointments as $appointment)
+                            <option value="">{{ $appointment->full_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
