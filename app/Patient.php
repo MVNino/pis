@@ -17,4 +17,9 @@ class Patient extends Model
 	{
 		return $this->hasOne('App\Billing', 'patient_id', 'patient_id');
 	}
+
+	public function appointment()
+	{
+		// 
+	}
 }
