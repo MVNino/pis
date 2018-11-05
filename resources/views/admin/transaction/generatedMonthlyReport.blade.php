@@ -72,8 +72,31 @@
     <div class="header">
         <h1 style="margin:0px;">DRA. JOY GALI</h1>
         <h3 style="margin-top:5px; margin-bottom:5px;">Income Statement</h3>
-       
-        <label>{{\Carbon\Carbon::createFromFormat('Y-m-d',$dateStart)->format('F j Y')}}</label> <!-- if monthly --> <br>
+        @if($dateStart == 1)
+        <label>For the month of January</label>
+        @elseif($dateStart == 2)
+        <label>For the month of February</label>
+        @elseif($dateStart == 3)
+        <label>For the month of March</label>
+        @elseif($dateStart == 4)
+        <label>For the month of April</label>
+        @elseif($dateStart == 5)
+        <label>For the month of May</label>
+        @elseif($dateStart == 6)
+        <label>For the month of June</label>
+        @elseif($dateStart == 7)
+        <label>For the month of July</label>
+        @elseif($dateStart == 8)
+        <label>For the month of August</label>
+        @elseif($dateStart == 9)
+        <label>For the month of September</label>
+        @elseif($dateStart == 10)
+        <label>For the month of October</label>
+        @elseif($dateStart == 11)
+        <label>For the month of November</label>
+        @elseif($dateStart == 12)
+        <label>For the month of December</label>
+        @endif <!-- if monthly --> <br>
         <!-- 
         <label>October 30,2018</label> if daily  <br>
         <label>For the 3rd week of October</label>  if weekly -->
