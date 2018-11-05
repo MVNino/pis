@@ -92,4 +92,33 @@ class AppointmentController extends Controller
             ['appointments' => $appointments]);
     }
 
+    public function addAnotherAppointment(Request $request)
+    {
+        $this->validate($request, [
+            'patientId' => 'required',
+            'appointmentDate' => 'required',
+            'appointmentTime' => 'required'
+        ]);
+        $patient = Patient::findOrFail($request->patientId);
+        $newPatient = new Patient;
+        $newPatient->fname = $patient->fname;
+        $newPatient->mname = $patient->mname;
+        $newPatient->lname = $patient->lname;
+        $newPatient->contact_no = $patient->contact_no;
+        $newPatient->email = $patient->email;
+        if($newPatient->save()) {
+            $appointment = new Appointment;
+            // $appointment->doctor_id = auth()->user()->id;
+            $appointment->time = $request->appointmentTime;
+            $appointment->day = 2;
+            $appointment->appointment_date = $request->appointmentDate;
+            $appointment->status = 1;
+            $latestPatientId = Patient::max('patient_id');
+            $appointment->patient_id = $latestPatientId;
+            if($appointment->save()) {
+                return redirect()->back()->with('success', 
+                    'Another appointment has been added!');
+            }
+        }
+    }
 }
