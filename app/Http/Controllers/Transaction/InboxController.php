@@ -26,14 +26,15 @@ class InboxController extends Controller
 
     public function viewDetail($id) {
         $message = Contact::findOrFail($id);
-        
-        return view('admin.transaction.inbox-detail', ['message'=>$message]);
+        $count = Contact::where('status', 1)->count();
+        return view('admin.transaction.inbox-detail', ['message'=>$message, 'count'=>$count]);
     }
 
     public function viewTrash() {
         $messages = Contact::all();
         $count = Contact::where('status', 0)->count();
-        return view('admin.transaction.trash',['messages'=>$messages, 'count'=>$count]);
+        $countInbox = Contact::where('status', 1)->count();
+        return view('admin.transaction.trash',['messages'=>$messages, 'count'=>$count, 'countInbox'=>$countInbox]);
     }
 
     public function deleteMessage($id)

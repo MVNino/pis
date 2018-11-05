@@ -26,8 +26,9 @@
                     <div> 
                     <button data-toggle="modal" data-target="#composeMessage" class="btn btn-custom btn-block waves-effect waves-light">Compose</button>
                         <div class="list-group mail-list m-t-20"> 
-                            <a href="{{route('transaction.inbox')}}" class="list-group-item active">Inbox</a>
+                            <a href="{{route('transaction.inbox')}}" class="list-group-item active">Inbox<span class="label label-rouded label-info pull-right">{{$count}}</span></a>
                             <a href="/admin/transaction/trash" class="list-group-item">Trash</a> 
+                            
                         </div>
                     </div>
                 </div>
@@ -54,7 +55,7 @@
                                     <td class="max-texts"> <a href="/admin/transaction/inbox/{{$message->contact_us_id}}">{{ str_limit($message->contact_inquiry, $limit = 20, $end = '...') }}</a></td>
                                     </td>
                                     <td class="hidden-xs text-right">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$message->created_at)->format('F j Y g:i A ')}}</a></td>
-                                    <!-- <td>
+                                    <td>
                                         <div align="center">
                                             {!!Form::open(['action' => ['Transaction\InboxController@deleteMessage', $message->contact_us_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Message?')"])!!}
                                                 {{Form::hidden('_method', 'DELETE')}}
@@ -63,11 +64,11 @@
                                                 </button>
                                             {!!Form::close()!!}
                                         </div>
-                                    </td> -->
+                                    </td>
                                 </tr>
                                 @endif
                                 @else
-                                    No messages
+                                    No messages 
                                 @endif    
                                 @endforeach
                             </tbody>
