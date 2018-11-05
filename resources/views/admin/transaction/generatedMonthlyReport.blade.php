@@ -73,29 +73,29 @@
         <h1 style="margin:0px;">DRA. JOY GALI</h1>
         <h3 style="margin-top:5px; margin-bottom:5px;">Income Statement</h3>
         @if($dateStart == 1)
-        <label>For the month of January</label>
+        <label>For the month of January {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 2)
-        <label>For the month of February</label>
+        <label>For the month of February {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 3)
-        <label>For the month of March</label>
+        <label>For the month of March {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 4)
-        <label>For the month of April</label>
+        <label>For the month of April {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 5)
-        <label>For the month of May</label>
+        <label>For the month of May {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 6)
-        <label>For the month of June</label>
+        <label>For the month of June {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 7)
-        <label>For the month of July</label>
+        <label>For the month of July {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 8)
-        <label>For the month of August</label>
+        <label>For the month of August {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 9)
-        <label>For the month of September</label>
+        <label>For the month of September {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 10)
-        <label>For the month of October</label>
+        <label>For the month of October {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 11)
-        <label>For the month of November</label>
+        <label>For the month of November {{ date('Y', strtotime(now())) }}</label>
         @elseif($dateStart == 12)
-        <label>For the month of December</label>
+        <label>For the month of December {{ date('Y', strtotime(now())) }}</label>
         @endif <!-- if monthly --> <br>
         <!-- 
         <label>October 30,2018</label> if daily  <br>
@@ -108,7 +108,7 @@
                 <tbody>
                     @foreach($totalrevenue as $totrevenue)
                     <tr>
-                        <td>Revenue</td>
+                        <td>Hospital Income</td>
                         <td>PHP</td>
                         <td>{{$totrevenue->totalRevenue}}</td>
                     </tr>
@@ -128,7 +128,7 @@
         <div class="table">
             <table>
                 <tbody>
-                    <td>Hospital Income</td>
+                    <td></td>
                     @foreach($expenses as $expense) 
                     <tr>
                         <td></td>  
