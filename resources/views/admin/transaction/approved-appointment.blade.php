@@ -231,19 +231,24 @@
                 </button>
                 <h3 id="exampleModalLabel">Add Appointment</h3>
             </div>
-            <form class="form-material form-horizontal">
+            {!! Form::open(['action' => 'Transaction\AppointmentController@addAnotherAppointment', 'method' => 'POST']) !!}
+                @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="col-md-12">Patient Name</label>
-                        <select name="patientName" class="form-control">
+                        <select name="patientId" class="form-control">
                             @foreach($appointments as $appointment)
-                            <option value="">{{ $appointment->full_name }}</option>
+                            <option value="{{ $appointment->patient_id }}">{{ $appointment->full_name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Date</label>
-                        <input type ="date" name="date" class="form-control">
+                        <input type ="date" name="appointmentDate" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Time</label>
+                        <input type ="time" name="appointmentTime" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -254,7 +259,7 @@
                         <i class="fa fa-close"></i> Cancel
                     </a>
                 </div>
-            </form>
+            {!! Form::close() !!}
         </div>
     </div>
 </div>
