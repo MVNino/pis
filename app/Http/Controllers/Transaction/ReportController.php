@@ -8,14 +8,45 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use PDF;
 use Illuminate\Support\Facades\DB;
-
 use App\Expense;
+use App\OfficialReceipt;
+use Auth;
 
 class ReportController extends Controller
 {
+    public $expense;
+    public $revenue;
+
     public function __construct()
     {
+        $this->expense = new Expense;
+        $this->revenue = new OfficialReceipt;
         $this->middleware('auth');
+    }
+
+    public function listReport()
+    {
+        $expenses = $this->expense->listReport();
+        $revenue = $this->revenue->listReport();
+        return view('admin.transaction.report', 
+            ['expenses' => $expenses, 'revenue' => $revenue]);
+    }
+
+    public function rangedReport(Request $request)
+    {
+        $this->validate($request, [
+            'dateStart' => 'required',
+            'dateEnd' => 'required'
+        ]);
+        $dateStart = $request->dateStart;
+        $dateEnd = $request->dateEnd;
+
+        $expense = $this->expense->listReport($dateStart, $dateEnd);
+        $revenue = $this->revenue->listReport($dateStart, $dateEnd);
+        return view('admin.transaction.generatedReport', 
+            ['expense' => $expense, 'revenue' => $revenue, 
+            'dateStart' => $dateStart, 'dateEnd' => $dateEnd]);
+
     }
 
     public function expenses()
@@ -75,7 +106,6 @@ class ReportController extends Controller
             return $e->getMessage();
         }
     }
-
     public function deleteExpense($id)
     {
         try

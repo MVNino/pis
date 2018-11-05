@@ -16,7 +16,8 @@
 @endsection
 
 @section('content')
-
+{!! Form::open(['action' => 'Transaction\ReportController@rangedReport', 'method' => 'GET', 'autocomplete' => 'off']) !!}
+    @csrf
 <div class="row">
     <div class="col-md-8">
         <div class="white-box">
@@ -26,83 +27,18 @@
     <div class="col-md-4">
         <div class="white-box">
 			<form class="form-material form-horizontal" method="POST">
-				<div class="modal-body">
-					<div class="form-group">
-						<label class="col-md-12">Frequencies of Reports</label>
-						<div class="col-md-12">
-							<select id="freqReports" class="form-control">
-                                <option value="">...</option>
-                                <option value="1">Daily</option>
-                                <option value="2">Weekly</option>
-                                <option value="3">Monthly</option>
-                            </select> 
-						</div>
-                    </div>
-                    <div class="collapse" id="collapseDaily">
-                        <div class="form-group">
-                            <label class="col-md-12">Date</label>
-                            <div class="col-md-12">
-                                <input type="date" name="date" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="collapse" id="collapseMonthly">
-                        <div class="form-group">
-                            <label class="col-md-12">Month</label>
-                            <div class="col-md-12">
-                                <select id="selectMonth"class="form-control">
-                                    <option value="">...</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="collapse" id="collapseWeekly">
-                        <div class="form-group">
-                            <label class="col-md-12">Month</label>
-                            <div class="col-md-12">
-                                <select id="selectMonth1"class="form-control">
-                                    <option value="">...</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Week</label>
-                            <div class="col-md-12">
-                                <select id="selectWeek"class="form-control">
-                                    <option value="">...</option>
-                                    <option value="1">1st</option>
-                                    <option value="2">2nd</option>
-                                    <option value="3">3rd</option>
-                                    <option value="4">4th</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-				</div>
+				<div class="">
+                    <label>Start Date</label>
+                    <input class="form-control" name="dateStart" id="demoDate" type="date" placeholder="Select Date">
+                </div>
+                <div class="">
+                    <label>End Date</label>
+                    <input class="form-control" name="dateEnd" id="demoDate2" type="date" placeholder="Select Date" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>    
+                </div>
+                <div class="col-md-2">
+                    <br>
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>Search</button> 
+                </div>
                 <div class="modal-footer">
                     <a role="button" target="_blank" href="{{ route('transaction.generatedReport') }}" class="btn btn-primary float-right">
                         <i class="fa fa-file"> Generate PDF</i>
@@ -111,6 +47,7 @@
 			</form>	
         </div>
     </div>
+    {!! Form::close() !!}
 </div>
 <!-- BEGIN MODAL -->
 <div class="modal fade" id="my-event">

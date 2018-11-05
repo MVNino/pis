@@ -11,5 +11,5 @@ class Contact extends Model
     //Primary Key
     protected $primaryKey = 'contact_us_id';
     // timestamp
-	public $timestamps = false;
+	public $timestamps = true;
 }

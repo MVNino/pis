@@ -25,13 +25,12 @@
             <div class="container">
                     <br/>
                     <div class="form-group">
-                        <label class="col-md-12">Medical Treatment History</label>
+                        <label class="col-md-12">Appointment Date</label>
                         <div class="col-md-12">
-                            <input name="id" value="{{$patient->patient_id}}" style="display: none;">
                             <select id="dateSelect" name="mr" class="form-control" rows="5">
                                 @foreach($mr as $r)
-                                    <option value="{{$r->medical_record_id}}">
-                                        {{\Carbon\Carbon::createFromFormat('Y-m-d', $r->med_hist_date)->format('F j, Y')}}
+                                    <option value="{{$r->appointment_id}}">
+                                        {{\Carbon\Carbon::createFromFormat('Y-m-d', $r->appointment_date)->format('F j, Y')}}
                                     </option>
                                 @endforeach
                             </select>
@@ -44,7 +43,7 @@
                     </div>       
                 <div style="display: none;">
                     @foreach($mr as $r)
-                        <button class="btn btn-info" type="button" id="{{$r->medical_record_id}}" data-toggle="collapse" data-target="#collapseRecord{{$r->medical_record_id}}" aria-expanded="false" aria-controls="collapseRecord">button</button>
+                        <button class="btn btn-info" type="button" id="{{$r->appointment_id}}" data-toggle="collapse" data-target="#collapseRecord{{$r->appointment_id}}" aria-expanded="false" aria-controls="collapseRecord">button</button>
                     @endforeach
                 </div>
             </div>
@@ -53,24 +52,25 @@
 </div><br>
 
 @foreach($mr as $r)
-        <div class="collapse" id="collapseRecord{{$r->medical_record_id}}">
+        <div class="collapse" id="collapseRecord{{$r->appointment_id}}">
             <div class="container">
                 <div class="card">
                     <div class="card-header bg-primary">
                         <h3 class="text-light">
                             Medical Record
-                            <button type="button" class="close" aria-label="Close" data-toggle="collapse" data-target="#collapseRecord{{$r->medical_record_id}}" aria-expanded="false" aria-controls="collapseRecord">
+                            <button type="button" class="close" aria-label="Close" data-toggle="collapse" data-target="#collapseRecord{{$r->appointment_id}}" aria-expanded="false" aria-controls="collapseRecord">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </h3>    
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            {!!Form::open(['action' => ['Transaction\PatientController@updateMedical', $r->medical_record_id], 'method' => 'POST', 'class' => 'form-material form-horizontal'])!!}
+
+                            {!!Form::open(['action' => ['Transaction\PatientController@updateMedical', $r->appointment_id], 'method' => 'POST', 'class' => 'form-material form-horizontal'])!!}
                                 {{Form::hidden('_method', 'PUT')}}<br>
                                 <h5>
                                     Patient ID: {{sprintf("%011d", $r->patient_id)}}
-                                    <span class="pull-right">{{\Carbon\Carbon::createFromFormat('Y-m-d', $r->med_hist_date)->format('F j, Y')}}</span>
+                                    <span class="pull-right">{{\Carbon\Carbon::createFromFormat('Y-m-d', $r->appointment_date)->format('F j, Y')}}</span>
                                 </h5>
                                 <br/>
                                 <div class="row">
@@ -89,6 +89,7 @@
                                                 <input type="text" name="firstName" class="form-control" value="{{$patient->fname}}" disabled>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -102,22 +103,23 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="col-md-12">Birthdate</label>
-                                            <div class="col-md-12">
-                                                <input type="text" name="birthdate" class="form-control" value="{{\Carbon\Carbon::createFromFormat('Y-m-d', $patient->birthday)->format('F j, Y')}}" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
                                             <label class="col-md-12">Contact Number</label>
                                             <div class="col-md-12">
                                                 <input type="text" name="contactNumber" class="form-control" value="{{$patient->contact_no}}"disabled>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-md-12">E-Mail</label>
+                                            <div class="col-md-12">
+                                                <input type="text" name="birthdate" class="form-control" value="{{$patient->email}}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
+
                                     <div class=col-md-4>
                                         <div class="form-group">
                                             <label class="col-md-12">Height</label>
@@ -152,7 +154,7 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Treatment</label>
                                     <div class="col-md-12">
-                                        <textarea name="procedure" class="form-control" rows="5">{{$r->treatment}}</textarea>
+                                        <textarea name="treatment" class="form-control" rows="5">{{$r->treatment}}</textarea>
                                     </div>
                                 </div>
                                 <div align="right">

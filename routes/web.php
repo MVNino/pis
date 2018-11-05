@@ -153,12 +153,11 @@ Route::group(
 					->name('transaction.patients');
 				Route::put('patients/{id}', 'PatientController@updatePatient');
 				Route::put('updateRecord/{id}', 'PatientController@updateMedical');
-				Route::post('addMedicalFile', 'PatientController@addMedicalFileRecord');
+				Route::post('addfile', 'PatientController@addMedicalFileRecord');
 				Route::get('editRecord', 'PatientController@editRecord');
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
 				Route::get('billing/{id}', 'PaymentController@billing');
-
 				Route::get('specialty-service-price', 
 					'PaymentController@getSpecialtyServicePrice');
 				Route::post('avail-service', 
@@ -185,13 +184,19 @@ Route::group(
 					->name('transaction.report');
 				Route::get('generatePDF','ReportController@generatePDF')
 					->name('transaction.generatedReport');
+				Route::get('report', 'ReportController@rangedReport')
+					->name('transaction.generatedReport');
+				Route::get('report', 'ReportController@listReport')
+					->name('transaction.report');
 
 				//Inbox
 				Route::get('inbox','InboxController@viewInbox')
 					->name('transaction.inbox');
-				Route::get('viewDetail','InboxController@viewDetail');
+				Route::get('inbox/{id}','InboxController@viewDetail')
+					->name('transaction.inbox-detail');
 				Route::get('trash','InboxController@viewTrash')
 					->name('transaction.trash');
+				Route::delete('trash/(id}', 'InboxController@deleteMessage');
 			});
 		});
 });

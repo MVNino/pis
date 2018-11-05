@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
-
 use DB;
+use App\Patient;
+use App\Appointment;
 use App\MedicalRecord;
 use App\MedicalFileRecord;
 
@@ -22,17 +23,14 @@ class PatientController extends Controller
         {
             $patients = DB::
                 table('patient_tbl')
-                ->select('patient_tbl.*', 'patient_information_tbl.birthday')
-                ->join('patient_information_tbl','patient_information_tbl.patient_id','=','patient_tbl.patient_id')
+                ->select('patient_tbl.*')
+                //->join('patient_information_tbl','patient_information_tbl.patient_id','=','patient_tbl.patient_id')
                 ->join('appointment_tbl','appointment_tbl.patient_id','=','patient_tbl.patient_id')
                 ->where('appointment_tbl.status', '=', 1)
                 ->groupBy('patient_tbl.patient_id')
                 ->get();
 
-            $medicalRecords = MedicalRecord::
-                all();
-
-            return view('admin.transaction.patient', ['patients'=>$patients, 'medicalRecords'=>$medicalRecords]);
+            return view('admin.transaction.patient', ['patients'=>$patients]);
         }
         catch (\Exception $e)
         {
@@ -48,21 +46,24 @@ class PatientController extends Controller
 
         try
         {
-            $patient = DB::
-                table('patient_tbl')
-                ->select('patient_tbl.*', 'patient_information_tbl.birthday')
-                ->join('patient_information_tbl','patient_information_tbl.patient_id','=','patient_tbl.patient_id')
-                ->where('patient_tbl.patient_id', '=', $request->input('id'))
+            $patient = Patient::
+                where('patient_tbl.patient_id', '=', $request->input('id'))
                 ->first();
-
-            $mr = MedicalRecord::
-                all()
-                ->where('patient_id', '=', $request->input('id'));
             
             $mfr = MedicalFileRecord::
                 all();
 
-            return view('admin.transaction.edit-patient', ['patient'=>$patient, 'mr'=>$mr, 'mfr'=>$mfr]);
+            $mr = DB::
+                table('medical_records_tbl')
+                ->join('patient_tbl','medical_records_tbl.patient_id','=','patient_tbl.patient_id')
+                ->join('appointment_tbl','patient_tbl.patient_id','=','appointment_tbl.patient_id')
+                ->select('medical_records_tbl.*', 'appointment_tbl.appointment_id', 'appointment_tbl.appointment_date')
+                ->where('appointment_tbl.status', '=', 1)
+                ->where('medical_records_tbl.patient_id', '=', $request->input('id'))
+                ->groupBy('appointment_date')
+                ->get();
+
+            return view('admin.transaction.edit-patient', ['patient'=>$patient, 'mfr'=>$mfr, 'mr'=>$mr]);
         }
         catch (\Exception $e)
         {
@@ -110,6 +111,7 @@ class PatientController extends Controller
 
         try
         {
+
             $mr = MedicalRecord::
                 find($id);
 
@@ -121,6 +123,36 @@ class PatientController extends Controller
             if ($mr->save())
             {
                 return redirect()->back()->with('success', 'Medical Record Updated!');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function addMedical(Request $request)
+    {
+        $this->validate($request, [
+            'height' => 'required',
+            'weight' => 'required',
+            'temperature' => 'required',
+            'procedure' => 'required'
+        ]);
+
+        try
+        {
+            $mr = new MedicalRecord;
+
+            $mr->height = $request->input('height');
+            $mr->weight = $request->input('weight');
+            $mr->temperature = $request->input('temperature');
+            $mr->med_hist_procedure = $request->input('procedure');
+            $mr->treatment = $request->input('treatment');
+
+            if ($mr->save())
+            {
+                return redirect()->back()->with('success', 'Medical Record Added!');
             }
         }
         catch (\Exception $e)
