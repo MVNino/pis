@@ -150,11 +150,13 @@ Route::group(
 					->name('transaction.approvedAppointments');
 				Route::put('appointment-reschedule/{id}', 'AppointmentController@rescheduleAppointment');
 				Route::put('appointment/{id}', 'AppointmentController@approveAppointment');
+				Route::post('another-appointment', 'AppointmentController@addAnotherAppointment');
 				// Patients
 				Route::get('patients', 'PatientController@listPatients')
 					->name('transaction.patients');
 				Route::put('patients/{id}', 'PatientController@updatePatient');
 				Route::put('updateRecord/{id}', 'PatientController@updateMedical');
+				Route::post('addfile', 'PatientController@addMedicalFileRecord');
 				Route::get('editRecord', 'PatientController@editRecord');
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');

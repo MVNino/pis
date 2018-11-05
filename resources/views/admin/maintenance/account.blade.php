@@ -22,7 +22,7 @@
                 'enctype' => 'multipart/form-data', 'onsubmit' => "return confirm('Update your account?')", 'class' => 'form-material form-horizontal', 'style' => 'padding-left:80px; padding-right:80px;']) !!}
                 @csrf
                 <div class="form-group">
-                    <img class="" src="{{ asset('elite/plugins/images/users/d1.jpg') }}" alt="preveiw of Uploaded Profile Picture" style="height: 40px; width: 30px;" height="100" width="80"><br>
+                    <img class="" src="/storage/images/profile/{{ auth()->user()->profile_image_code }}" alt="preveiw of Uploaded Profile Picture" height="100" width="80"><br>
                     <label class="col-sm-12">Profile Picture</label>
                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                         <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>

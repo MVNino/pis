@@ -5,7 +5,7 @@
     @yield('pg-specific-css')
 </head>
 
-<body>
+<body> {{-- leki --}}
     <!-- Preloader -->
     <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
