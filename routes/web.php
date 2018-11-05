@@ -156,6 +156,7 @@ Route::group(
 					->name('transaction.patients');
 				Route::put('patients/{id}', 'PatientController@updatePatient');
 				Route::put('updateRecord/{id}', 'PatientController@updateMedical');
+				Route::post('addfile', 'PatientController@addMedicalFileRecord');
 				Route::get('editRecord', 'PatientController@editRecord');
 				Route::get('billing','PaymentController@billing')
 					->name('transaction.billing');
