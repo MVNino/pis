@@ -25,15 +25,15 @@
                     <div> 
                         <button data-toggle="modal" data-target="#composeMessage" class="btn btn-custom btn-block waves-effect waves-light">Compose</button>
                         <div class="list-group mail-list m-t-20"> 
-                        <a href="{{ route('transaction.inbox') }}" class="list-group-item active">Inbox <span class="label label-rouded label-info pull-right">5</span></a> 
-                        <a href="{{ route('transaction.trash') }}" class="list-group-item">Trash <span class="label label-rouded label-default pull-right">55</span></a> </div>
+                        <a href="{{ route('transaction.inbox') }}" class="list-group-item active">Inbox <span class="label label-rouded label-info pull-right">{{$count}}</span></a> 
+                        <a href="{{ route('transaction.trash') }}" class="list-group-item">Trash</a> </div>
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 mail_listing">
                     <div class="media m-b-30 p-t-20">
                         <a class="pull-left" href="#"> <img class="media-object thumb-sm img-circle" src="../plugins/images/users/pawandeep.jpg" alt=""> </a>
                         <div class="media-body"> <span class="media-meta pull-right">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$message->created_at)->format('F j Y g:i A ')}}</span>
-                            <h4 class="text-danger m-0">{{$message->contact_name}}</h4> <small class="text-muted">From: {{$message->contact_email}}}</small> </div>
+                            <h4 class="text-danger m-0">{{$message->contact_name}}</h4> <small class="text-muted">From: {{$message->contact_email}}</small> </div>
                     </div>
                     <p>{{$message->contact_inquiry}}</p>
                     <form class="form-material form-horizontal">

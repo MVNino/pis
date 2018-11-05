@@ -24,17 +24,15 @@
                 <thead>
                     <tr>
                         <th>Patient Name</th>
-                        <th>Age</th>
                         <th>Contact</th>
                         <th>E-Mail</th>
                         <th>Medical History</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($patients as $patient)
+                    @forelse($patients as $patient)
                         <tr>
                             <td>{{$patient->fname}} {{$patient->mname}} {{$patient->lname}}</td>
-                            <td class="text-center">{{\Carbon\Carbon::parse($patient->birthday)->diff(\Carbon\Carbon::now())->format('%y')}}</td>
                             <td>{{$patient->contact_no}}</td>
                             <td>{{$patient->email}}</td>
                             <td>
@@ -48,9 +46,14 @@
                                 </center>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                    <div class="alert alert-warning">
+                        There is no record yet.
+                    </div>
                 <tfoot>
                 </tfoot>
+                @endforelse
+                </tbody>
 			</table>
         </div>
     </div>

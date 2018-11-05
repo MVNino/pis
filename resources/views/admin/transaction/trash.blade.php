@@ -24,8 +24,8 @@
                     <div> 
                         <button data-toggle="modal" data-target="#composeMessage" class="btn btn-custom btn-block waves-effect waves-light">Compose</button>
                         <div class="list-group mail-list m-t-20"> 
-                            <a href="{{route('transaction.inbox')}}" class="list-group-item">Inbox <span class="label label-rouded label-info pull-right">55</span></a>
-                            <a href="/admin/transaction/trash" class="list-group-item active">Trash <span class="label label-rouded label-default pull-right">55</span></a> 
+                            <a href="{{route('transaction.inbox')}}" class="list-group-item">Inbox <span class="label label-rouded label-info pull-right">{{$countInbox}}</span></a>
+                            <a href="/admin/transaction/trash" class="list-group-item active">Trash </a> 
                         </div>
                     </div>
                 </div>

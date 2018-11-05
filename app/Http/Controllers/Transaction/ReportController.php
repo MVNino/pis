@@ -14,55 +14,59 @@ use Auth;
 
 class ReportController extends Controller
 {
-    public $expense;
-    public $revenue;
-
-    public function __construct()
+    
+    public function listDailyReport(Request $request)
     {
-        $this->expense = new Expense;
-        $this->revenue = new OfficialReceipt;
-        $this->middleware('auth');
-    }
-
-    public function listReport()
-    {
-        $expenses = $this->expense->listReport();
-        $revenue = $this->revenue->listReport();
-        return view('admin.transaction.report', 
-            ['expenses' => $expenses, 'revenue' => $revenue]);
-    }
-
-    public function rangedReport(Request $request)
-    {
-        $this->validate($request, [
-            'dateStart' => 'required',
-            'dateEnd' => 'required'
-        ]);
+    
         $dateStart = $request->dateStart;
-        $dateEnd = $request->dateEnd;
+        
+        $totalexpenses = Expense::selectRaw('SUM(cost) as totalCost')->where('expense_date', [$dateStart])
+                    ->get();
+        $expenses = Expense::where('expense_date', [$dateStart])
+                    ->get();
 
-        $expense = $this->expense->listReport($dateStart, $dateEnd);
-        $revenue = $this->revenue->listReport($dateStart, $dateEnd);
-        return view('admin.transaction.generatedReport', 
-            ['expense' => $expense, 'revenue' => $revenue, 
-            'dateStart' => $dateStart, 'dateEnd' => $dateEnd]);
+        $totalrevenue = OfficialReceipt::selectRaw('SUM(amount_paid) as totalRevenue')->where('or_date', [$dateStart])
+                    ->get();
+        $grossincome = ($totalexpenses[0]->totalCost + $totalrevenue[0]->totalRevenue);
+
+        return view('admin.transaction.generatedReport', ['expenses'=>$expenses, 'totalexpenses'=>$totalexpenses, 'totalrevenue'=>$totalrevenue, 'dateStart'=>$dateStart, 'grossincome'=>$grossincome]);
+    }
+
+    public function listMonthlyReport(Request $request)
+    {
+        $dateStart = $request->dateStart;
+
+        $totalexpenses = Expense::selectRaw('SUM(cost) as totalCost')->whereMonth('expense_date', [$dateStart])
+                    ->get();
+        $expenses = Expense::whereMonth('expense_date', $dateStart)
+                    ->get();
+
+        $totalrevenue = OfficialReceipt::selectRaw('SUM(amount_paid) as totalRevenue')->whereMonth('or_date', [$dateStart])
+                    ->get();
+        $grossincome = ($totalexpenses[0]->totalCost + $totalrevenue[0]->totalRevenue);
+
+        return view('admin.transaction.generatedMonthlyReport', ['expenses'=>$expenses, 'totalexpenses'=>$totalexpenses, 'totalrevenue'=>$totalrevenue, 'dateStart'=>$dateStart, 'grossincome'=>$grossincome]);
+
+
 
     }
+
+
 
     public function expenses()
     {
+        $expenses = Expense::
+            where('status', '=', 0)
+            ->orderBy('expense_date')
+            ->paginate(5);
         try
         {
-            $expenses = Expense::
-                where('status', '=', 0)
-                ->orderBy('expense_date')
-                ->paginate(5);
 
             return view('admin.transaction.expenses', ['expenses'=>$expenses]);
         }
         catch (\Exception $e)
         {
-            return view('admin.transaction.expenses')->with('error', $e->getMessage());
+            return view('admin.transaction.expenses', ['expenses'=>$expenses])->with('error', $e->getMessage());
         }
     }
 
