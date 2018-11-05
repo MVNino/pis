@@ -85,7 +85,7 @@
                 <tbody>
                     @foreach($totalrevenue as $totrevenue)
                     <tr>
-                        <td>Revenue</td>
+                        <td>Hospital Income</td>
                         <td>PHP</td>
                         <td>{{$totrevenue->totalRevenue}}</td>
                     </tr>
@@ -105,7 +105,7 @@
         <div class="table">
             <table>
                 <tbody>
-                    <td>Hospital Income</td>
+                    <td></td>
                     @foreach($expenses as $expense) 
                     <tr>
                         <td></td>  

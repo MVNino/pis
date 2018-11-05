@@ -55,18 +55,18 @@ class ReportController extends Controller
 
     public function expenses()
     {
+        $expenses = Expense::
+            where('status', '=', 0)
+            ->orderBy('expense_date')
+            ->paginate(5);
         try
         {
-            $expenses = Expense::
-                where('status', '=', 0)
-                ->orderBy('expense_date')
-                ->paginate(5);
 
             return view('admin.transaction.expenses', ['expenses'=>$expenses]);
         }
         catch (\Exception $e)
         {
-            return view('admin.transaction.expenses')->with('error', $e->getMessage());
+            return view('admin.transaction.expenses', ['expenses'=>$expenses])->with('error', $e->getMessage());
         }
     }
 
