@@ -73,14 +73,17 @@ class GuestController extends Controller
     public function viewAbout()
     {
         $profile = Profile::all();
+        $features = Feature::orderBy('features_id', 'desc')->get();
 
         if ($profile->count() > 0)
         {
             $profileMaxId = Profile::max('profile_id');
             $profile = Profile::findOrFail($profileMaxId);
 
-            $features = Feature::orderBy('features_id', 'desc')->get();
-
+            return view('guest.about', ['profile' => $profile, 'features' => $features]);
+        }
+        else
+        {
             return view('guest.about', ['profile' => $profile, 'features' => $features]);
         }
     }
