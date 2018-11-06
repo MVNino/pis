@@ -180,12 +180,12 @@ class GuestController extends Controller
 
         $appointment->save();
         
-        return redirect()->back()->with('success', 'Your appoinment is now sent. Please check your email often to see if your appoinment is approved. Thank you!');
+        return redirect()->back()->with('success');
         }
 
         catch (\Exception $e)
         {
-            return redirect()->back()->with('error', "Your appointment was not sent. Please refresh the page.");
+            return redirect()->back()->with('error');
         }
 
     }
