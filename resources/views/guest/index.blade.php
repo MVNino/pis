@@ -51,7 +51,7 @@
                         <p> Treating people drives my wheel and curing them will always be my pleasure because helping people in need of my expertise puts my education and skills into good use. </p>
 
                     <a href="{{ route('services') }}" class="about-btn">VIEW SERVICES</a>
-                    </div>
+                    </div><!-- leki -->
                 </div>
                 {!! Form::open(['action' => 'GuestController@createAppointment', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
                  <div class="col-sm-6">
