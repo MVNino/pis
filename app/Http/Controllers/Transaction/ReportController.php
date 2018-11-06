@@ -27,7 +27,7 @@ class ReportController extends Controller
 
         $totalrevenue = OfficialReceipt::selectRaw('SUM(amount_paid) as totalRevenue')->where('or_date', [$dateStart])
                     ->get();
-        $grossincome = ($totalexpenses[0]->totalCost + $totalrevenue[0]->totalRevenue);
+        $grossincome = ($totalrevenue[0]->totalRevenue - $totalexpenses[0]->totalCost);
 
         return view('admin.transaction.generatedReport', ['expenses'=>$expenses, 'totalexpenses'=>$totalexpenses, 'totalrevenue'=>$totalrevenue, 'dateStart'=>$dateStart, 'grossincome'=>$grossincome]);
     }
@@ -43,7 +43,7 @@ class ReportController extends Controller
 
         $totalrevenue = OfficialReceipt::selectRaw('SUM(amount_paid) as totalRevenue')->whereMonth('or_date', [$dateStart])
                     ->get();
-        $grossincome = ($totalexpenses[0]->totalCost + $totalrevenue[0]->totalRevenue);
+        $grossincome = ($totalrevenue[0]->totalRevenue - $totalexpenses[0]->totalCost);
 
         return view('admin.transaction.generatedMonthlyReport', ['expenses'=>$expenses, 'totalexpenses'=>$totalexpenses, 'totalrevenue'=>$totalrevenue, 'dateStart'=>$dateStart, 'grossincome'=>$grossincome]);
 
