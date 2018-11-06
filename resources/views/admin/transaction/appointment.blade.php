@@ -62,4 +62,64 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div style="padding-top: 350px;" class="modal fade bd-example-modal-lg" id="manualAppointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Schedule</b></h4>
+				<p class="text-danger"><b><em>Appointment</em></b>&nbsp;</p>
+                <div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under Appointment, the list of pending appointments will be shown. To approve an appointment, click [1].<br><br>
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				To confirm the approval, click [2].<br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment1.jpg')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment2.jpg')}}"><br><br>
+
+				
+				<label><b>Step 3 :</b>&nbsp;</label>
+				To reschedule an appointment, click [3].<br><br>
+
+				<label><b>Step 4 :</b>&nbsp;</label>
+				To confirm the rescheduling, click [4].<br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment3.jpg')}}"><br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
+@endsection
+
+@section('pg-specific-js')
+<script>
+	function editOrder(id)
+	{
+		var c = document.getElementsByClassName(id);
+		c[0].style.display = "none";
+		c[1].style.display = "block";
+	}
+	window.onhelp = function() {
+		return false;
+	};
+	window.onkeydown = evt => {
+		if (evt.keyCode == 112){
+			$("#manualAppointment").modal("show");
+			
+		}
+		return false;
+	};
+</script>
 @endsection
