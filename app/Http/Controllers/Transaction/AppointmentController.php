@@ -11,7 +11,6 @@ use App\Appointment;
 use App\Patient;
 use App\Clinic;
 
-
 class AppointmentController extends Controller
 {
     public $appointment;
@@ -75,12 +74,19 @@ class AppointmentController extends Controller
 
     public function approveAppointment(Request $request, $id)
     {
-        $appointment = Appointment::findOrFail($id);
-        $appointment->status = 1;
-        if ($appointment->save()) {
-            \Notification::route('mail', $appointment->patient->email)
-                ->notify(new AppointmentApproved());
-            return redirect()->back()->with('success', 'The appointment has been approved!');
+        try
+        {
+            $appointment = Appointment::findOrFail($id);
+            $appointment->status = 1;
+            if ($appointment->save()) {
+                \Notification::route('mail', $appointment->patient->email)
+                    ->notify(new AppointmentApproved());
+                return redirect()->back()->with('success', 'The appointment has been approved!');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
         }
     }
 
