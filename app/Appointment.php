@@ -22,6 +22,11 @@ class Appointment extends Model
 		return $this->belongsTo('App\Patient', 'patient_id', 'patient_id');
 	}
 
+	public function billing()
+	{
+		return $this->hasOne('App\Billing', '');
+	}
+
 	public function listAppointments($status)
 	{
 		return $this->join('patient_tbl', 'appointment_tbl.patient_id', '=', 'patient_tbl.patient_id')

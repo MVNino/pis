@@ -20,6 +20,6 @@ class Patient extends Model
 
 	public function appointment()
 	{
-		// 
+		return $this->hasOne('App\Appointment', 'patient_id', 'patient_id');
 	}
 }

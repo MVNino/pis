@@ -16,8 +16,6 @@
 @endsection
 
 @section('content')
-{!! Form::open(['action' => 'Transaction\ReportController@rangedReport', 'method' => 'GET', 'autocomplete' => 'off']) !!}
-    @csrf
 <div class="row">
     <div class="col-md-8">
         <div class="white-box">
@@ -26,28 +24,55 @@
     </div>
     <div class="col-md-4">
         <div class="white-box">
-			<form class="form-material form-horizontal" method="POST">
-				<div class="">
-                    <label>Start Date</label>
-                    <input class="form-control" name="dateStart" id="demoDate" type="date" placeholder="Select Date">
+        {!! Form::open(['action' => 'Transaction\ReportController@listDailyReport', 'method' => 'POST', 'autocomplete' => 'off', 'onsubmit' => "return confirm('Generate PDF?')"]) !!}
+            @csrf
+            <form class="form-material form-horizontal" method="POST">
+                <div class="form-group">
+                    <select class="form-control" name="" id="freqReports">
+                        <option value="0">...</option>
+                        <option value="1">Daily</option>
+                        <option value="3">Monthly</option>
+                    </select>
                 </div>
-                <div class="">
-                    <label>End Date</label>
-                    <input class="form-control" name="dateEnd" id="demoDate2" type="date" placeholder="Select Date" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>    
+                
+                <div class="collapse" id="collapseDaily">
+                    <div class="form-group">
+                        <input class="form-control" name="dateStart" id="demoDate" type="date" placeholder="Select Date" value ="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary float-right"><i class="fa fa-file"></i> Generate PDF</button>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <br>
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>Search</button> 
-                </div>
-                <div class="modal-footer">
-                    <a role="button" target="_blank" href="{{ route('transaction.generatedReport') }}" class="btn btn-primary float-right">
-                        <i class="fa fa-file"> Generate PDF</i>
-                    </a>
-                </div>
-			</form>	
-        </div>
+            </form> 
+        {!! Form::close() !!}
+
+    {!! Form::open(['action' => 'Transaction\ReportController@listMonthlyReport', 'method' => 'POST', 'autocomplete' => 'off', 'onsubmit' => "return confirm('Generate PDF?')"]) !!}
+        @csrf
+    <div class="collapse" id="collapseMonthly">
+            <div class="form-group">
+                <select name="dateStart" id="demoDate" class="form-control">
+                    <option value="0">...</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary float-right"><i class="fa fa-file"></i> Generate PDF</button>
+            </div>
     </div>
     {!! Form::close() !!}
+        </div>
+    </div>
 </div>
 <!-- BEGIN MODAL -->
 <div class="modal fade" id="my-event">
@@ -80,12 +105,14 @@
             $("#collapseDaily").collapse({toggle: false}).collapse('hide');
             $("#collapseMonthly").collapse({toggle: false}).collapse('hide');   
             $("#collapseWeekly").collapse({toggle: false}).collapse('hide'); 
+            $("#btnDaily").show();
         }
         else if(selected == 1){
             console.log("Daily");  
             $("#collapseDaily").collapse({toggle: true}).collapse('show');
             $("#collapseMonthly").collapse({toggle: false}).collapse('hide'); 
             $("#collapseWeekly").collapse({toggle: false}).collapse('hide'); 
+            $("#btnDaily").show();
         }
         else if(selected == 2){
             console.log("Weekly"); 

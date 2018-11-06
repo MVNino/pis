@@ -42,7 +42,7 @@
                             @foreach($patients as $patient)
                                 @if(!$patient->billing)
                                 <option value="{{ $patient->patient_id }}">
-                                    {{ $patient->fname.' '.$patient->mname.' '.$patient->lname }}
+                                    {{ $patient->fname.' '.$patient->mname.' '.$patient->lname }} ({{ date('m/d/Y', strtotime($patient->appointment->appointment_date)).' '.date('g:i A', strtotime($patient->appointment->time)) }})
                                 </option>
                                 @endif
                             @endforeach
