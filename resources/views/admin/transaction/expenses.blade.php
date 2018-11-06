@@ -19,7 +19,6 @@
 <div class="row">
     <div class="col-md-12">
 		<div class="white-box">
-		
 			<div align="right">
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 					<i class="fa fa-plus"></i> Add Expenses
@@ -62,6 +61,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -99,4 +99,70 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div style="padding-top: 400px;" class="modal fade bd-example-modal-lg" id="manualExpenses" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Clinic Expenses</b></h4>
+			<div style="padding:15px;">
+				
+				<p class="text-danger"><b><em>How to add a expense record?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To view the existing clinic expenses, click [1] from the navigation bar.<br><br>
+
+				<img class="dynamic" src="{{asset('img/expense/expense1.jpg')}}"><br><br>
+
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				To add a new record of clinic expense, click [2], which will direct you to this page.<br><br>
+				<img class="dynamic" src="{{asset('img/expense/expense2.jpg')}}"><br><br>
+				
+				<label><b>Step 3 :</b>&nbsp;</label>
+				Input the date, purpose, and amount of the expense.<br><br>
+
+				<label><b>Step 4 :</b>&nbsp;</label>
+				Click [3] to save the record.<br><br>
+
+				<p class="text-danger"><b><em>How to delete an expense record?</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To delete an expense record, click [5] from the clinic expenses page.<br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
+@endsection
+
+@section('pg-specific-js')
+<script>
+	function editOrder(id)
+	{
+		var c = document.getElementsByClassName(id);
+		c[0].style.display = "none";
+		c[1].style.display = "block";
+	}
+	window.onhelp = function() {
+		return false;
+	};
+	window.onkeydown = evt => {
+		if (evt.keyCode == 112){
+			$("#manualExpenses").modal("show");
+			
+		}
+		return false;
+	};
+</script>
 @endsection
