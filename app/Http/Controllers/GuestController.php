@@ -73,14 +73,17 @@ class GuestController extends Controller
     public function viewAbout()
     {
         $profile = Profile::all();
+        $features = Feature::orderBy('features_id', 'desc')->get();
 
         if ($profile->count() > 0)
         {
             $profileMaxId = Profile::max('profile_id');
             $profile = Profile::findOrFail($profileMaxId);
 
-            $features = Feature::orderBy('features_id', 'desc')->get();
-
+            return view('guest.about', ['profile' => $profile, 'features' => $features]);
+        }
+        else
+        {
             return view('guest.about', ['profile' => $profile, 'features' => $features]);
         }
     }
@@ -177,12 +180,12 @@ class GuestController extends Controller
 
         $appointment->save();
         
-        return redirect()->back()->with('success', 'Your appoinment is now sent. Please check your email often to see if your appoinment is approved. Thank you!');
+        return redirect()->back()->with('success');
         }
 
         catch (\Exception $e)
         {
-            return redirect()->back()->with('error', "Your appointment was not sent. Please refresh the page.");
+            return redirect()->back()->with('error');
         }
 
     }
