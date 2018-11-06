@@ -42,7 +42,7 @@
                         </div>
                     </div>       
                 <div style="display: none;">
-                    @foreach($mr as $r)
+                    @foreach($ap as $r)
                         <button class="btn btn-info" type="button" id="{{$r->appointment_id}}" data-toggle="collapse" data-target="#collapseRecord{{$r->appointment_id}}" aria-expanded="false" aria-controls="collapseRecord">button</button>
                     @endforeach
                 </div>
