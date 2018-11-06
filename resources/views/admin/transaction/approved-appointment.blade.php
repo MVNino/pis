@@ -263,4 +263,56 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div style="padding-top: 250px;" class="modal fade bd-example-modal-lg" id="manualApprovedAppointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Schedule</b></h4>
+				<p class="text-danger"><b><em>Approved Appointment</em></b>&nbsp;</p>
+                <div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Once an appointment is approved, the record will be shown under Future Appointments.<br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment4.jpg')}}"><br><br>
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Other approved appointments will also be shown under List of Approved Appointments.<br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment5.jpg')}}"><br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
+@endsection
+
+@section('pg-specific-js')
+<script>
+	function editOrder(id)
+	{
+		var c = document.getElementsByClassName(id);
+		c[0].style.display = "none";
+		c[1].style.display = "block";
+	}
+	window.onhelp = function() {
+		return false;
+	};
+	window.onkeydown = evt => {
+		if (evt.keyCode == 112){
+			$("#manualApprovedAppointment").modal("show");
+			
+		}
+		return false;
+	};
+</script>
 @endsection
