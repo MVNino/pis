@@ -63,7 +63,20 @@ class PatientController extends Controller
                 ->groupBy('appointment_date')
                 ->get();
 
-            return view('admin.transaction.edit-patient', ['patient'=>$patient, 'mfr'=>$mfr, 'mr'=>$mr]);
+            $ap = DB::
+                table('patient_tbl')
+                ->join('appointment_tbl', 'patient_tbl.patient_id', '=', 'appointment_tbl.patient_id')
+                ->select('appointment_tbl.*', 'patient_tbl.fname', 'patient_tbl.mname', 'patient_tbl.lname', 'patient_tbl.contact_no', 'patient_tbl.email')
+                ->where('appointment_tbl.status', '=', 1)
+                ->where('patient_tbl.patient_id', '=', $request->input('id'))
+                ->groupBy('appointment_date')
+                ->get();
+
+            $medicalrecords = MedicalRecord::
+                where('patient_id', '=', $request->input('id'))
+                ->get();
+
+            return view('admin.transaction.edit-patient', ['patient'=>$patient, 'mfr'=>$mfr, 'mr'=>$mr, 'ap'=>$ap, 'medicalrecords'=>$medicalrecords]);
         }
         catch (\Exception $e)
         {
@@ -137,15 +150,19 @@ class PatientController extends Controller
             'height' => 'required',
             'weight' => 'required',
             'temperature' => 'required',
-            'procedure' => 'required'
+            'procedure' => 'required',
+            'med_hist_date'=>'required|date',
+            'patient' => 'required'
         ]);
 
         try
         {
             $mr = new MedicalRecord;
 
+            $mr->patient_id = $request->input('patient');
             $mr->height = $request->input('height');
             $mr->weight = $request->input('weight');
+            $mr->med_hist_date = $request->input('med_hist_date');
             $mr->temperature = $request->input('temperature');
             $mr->med_hist_procedure = $request->input('procedure');
             $mr->treatment = $request->input('treatment');
