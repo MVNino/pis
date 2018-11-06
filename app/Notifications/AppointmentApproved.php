@@ -10,15 +10,17 @@ use Illuminate\Notifications\Messages\MailMessage;
 class AppointmentApproved extends Notification
 {
     use Queueable;
-
+    public $date;
+    public $time;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($date, $time)
     {
-        //
+        $this->date = $date;
+        $this->time = $time;
     }
 
     /**
@@ -41,8 +43,9 @@ class AppointmentApproved extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Your appointment has been approved!')
-                    ->line('Thank you for using our application!');
+                ->subject('Appointment Approved')
+                ->markdown('mail.appointment.approved', 
+                    ['date' => $this->date, 'time' => $this->time]);
     }
 
     /**

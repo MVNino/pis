@@ -79,8 +79,10 @@ class AppointmentController extends Controller
             $appointment = Appointment::findOrFail($id);
             $appointment->status = 1;
             if ($appointment->save()) {
+                $date = $appointment->appointment_date;
+                $time = $appointment->time;
                 \Notification::route('mail', $appointment->patient->email)
-                    ->notify(new AppointmentApproved());
+                    ->notify(new AppointmentApproved($date, $time));
                 return redirect()->back()->with('success', 'The appointment has been approved!');
             }
         }
