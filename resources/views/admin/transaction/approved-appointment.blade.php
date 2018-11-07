@@ -201,9 +201,11 @@
                         <tbody>
                         @forelse($appointments as $appointment)
                             @if($appointment->appointment_date->diffInDays(Carbon\Carbon::now()) >= 6)
+                            <tr>
                                 <td>{{ $appointment->custom_appointment_date }}</td>
                                 <td>{{ $appointment->time }}</td>
                                 <td>{{ $appointment->full_name }}</td>
+                            </tr>
                             @endif
                         @empty
                         <div class="alert alert-warning">
