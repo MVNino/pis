@@ -165,6 +165,8 @@
 
 @section('pg-specific-js')
     <script>
+
+
     $(document).ready(function(){
 
         $('#clinic_location').change(function(){
