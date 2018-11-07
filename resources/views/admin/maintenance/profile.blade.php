@@ -47,25 +47,21 @@
                         </div>
                     </div>
                     <br/>
-                    <label class="col-md-12">Introduction</span></label>
-                    <div class="col-md-12">
-                        <textarea rows="10" name="introduction"  class="form-control">{{$profile->introduction}}</textarea>
+                    <div class="form-group">
+                        <label class="col-md-12">Introduction</span></label>
+                        <div class="col-md-12">
+                            <textarea rows="10" name="introduction"  class="form-control">{{$profile->introduction}}</textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="profileTxt">
                     <div class="form-group">
                         <div class="col-md-12">
                             <label>Skills and Specialities</label>
                             <textarea class="form-control" name="skill" type="text" rows="5">{{$profile->skills}}</textarea>
                         </div>
-                        <!--div class="col-md-2">
-                            <button type='button' onclick="addSkills()" 
-                                style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i>
-                            </button>
-                        </div-->
                     </div>
-                </div><br><br>
+                    <br><br>
                 <button type="submit" class="btn btn-info waves-effect waves-light"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>
+                </div>
             {!! Form::close() !!}
         </div>
     </div>
