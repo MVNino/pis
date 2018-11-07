@@ -62,8 +62,6 @@
                 backdrop: 'static'
             });
             var form = $("<form></form>");
-            form.append("<div class='row'></div>");
-            form.find(".row");
 
             $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                 form.submit();
