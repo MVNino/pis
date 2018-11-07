@@ -281,11 +281,11 @@
 				
 				<label><b>Step 1 :</b>&nbsp;</label>
 				Once an appointment is approved, the record will be shown under Future Appointments.<br><br>
-				<img class="dynamic" src="{{asset('img/appointment/appointment4.jpg')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment4.JPG')}}"><br><br>
 
 				<label><b>Step 2 :</b>&nbsp;</label>
 				Other approved appointments will also be shown under List of Approved Appointments.<br><br>
-				<img class="dynamic" src="{{asset('img/appointment/appointment5.jpg')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment5.JPG')}}"><br><br>
 			</div>
 		</div>
 		<div class="modal-footer">

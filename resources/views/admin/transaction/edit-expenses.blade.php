@@ -56,7 +56,7 @@
 </div>
 
 <!-- Modal -->
-<div style="padding-top: 240px;" class="modal fade bd-example-modal-lg" id="manualEditExpenses" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div style="padding-top: 230px;" class="modal fade bd-example-modal-lg" id="manualEditExpenses" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 		<div class="modal-content">
 		<div class="modal-header">
@@ -74,7 +74,7 @@
 				<label><b>Step 1 :</b>&nbsp;</label>
 				To edit an expense record, click [4] from the Clinic Expenses page.<br><br>
 
-				<img class="dynamic" src="{{asset('img/expense/expense3.jpg')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/expense/expense3.JPG')}}"><br><br>
 
 
 				<label><b>Step 2 :</b>&nbsp;</label>

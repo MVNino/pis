@@ -19,7 +19,7 @@
     <div class="col-md-12">
         <div class="white-box">
             <h3 class="box-title">Profile</h3>
-            {!! Form::open(['action' => 'Maintenance\ProfileController@updateProfile', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal', 'id' => 'profileForm', 'onsubmit' => 'serialize()'])!!}
+            {!! Form::open(['action' => 'Maintenance\ProfileController@updateProfile', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-4">
@@ -28,15 +28,16 @@
                             </a>
                         </div>
                         <div class="col-md-8">
-                            <label>Name</span></label>
+                            <label>Username</span></label>
                             <input name="name" class="form-control" value="{{$profile->name}}" required>
                             <br/>
                             <label>Title</span></label>
                             <input name="title" class="form-control" value="{{$profile->title}}">
                             <br/>
-                            <label>Uploaded Banner</label>
+                            <label>About Uploaded Picture</label>
                             <p>{{$profile->picture}}</p>
-                            <label>Banner Image</label>
+                            <input style="display: none;" name="uploaded" value="{{$profile->picture}}">
+                            <label>About Picture</label
                             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                 <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
                                 <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
@@ -46,25 +47,21 @@
                         </div>
                     </div>
                     <br/>
-                    <label class="col-md-12">Introduction</span></label>
-                    <div class="col-md-12">
-                        <textarea rows="10" name="introduction"  class="form-control">{{$profile->introduction}}</textarea>
+                    <div class="form-group">
+                        <label class="col-md-12">Introduction</span></label>
+                        <div class="col-md-12">
+                            <textarea rows="10" name="introduction"  class="form-control">{{$profile->introduction}}</textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="profileTxt">
                     <div class="form-group">
                         <div class="col-md-12">
                             <label>Skills and Specialities</label>
                             <textarea class="form-control" name="skill" type="text" rows="5">{{$profile->skills}}</textarea>
                         </div>
-                        <!--div class="col-md-2">
-                            <button type='button' onclick="addSkills()" 
-                                style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i>
-                            </button>
-                        </div-->
                     </div>
-                </div><br><br>
+                    <br><br>
                 <button type="submit" class="btn btn-info waves-effect waves-light"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>
+                </div>
             {!! Form::close() !!}
         </div>
     </div>

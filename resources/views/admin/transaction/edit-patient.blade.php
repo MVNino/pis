@@ -181,7 +181,7 @@
                                                                 <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#file{{$file->medical_file_record_id}}">
                                                                     {{$file->file_title}}
                                                                 </button>
-                                                                <!-- Modal for Adding Banner -->
+                                                                <!-- Modal for  Viewing Files -->
                                                                 <div class="modal fade" id="file{{$file->medical_file_record_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
