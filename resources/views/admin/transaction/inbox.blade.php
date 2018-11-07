@@ -45,22 +45,15 @@
                                 @if($count > 0)
                                 @if($message->status == 1)
                                 <tr class="unread">
-                                    <td>
-                                        <div class="checkbox m-t-0 m-b-0">
-                                            <input type="checkbox" id="checkedBox">
-                                            <label for="checkbox0"></label>
-                                        </div>
-                                    </td>
                                     <td class="hidden-xs">{{$message->contact_name}}</td>
                                     <td class="max-texts"> <a href="/admin/transaction/inbox/{{$message->contact_us_id}}">{{ str_limit($message->contact_inquiry, $limit = 20, $end = '...') }}</a></td>
                                     </td>
                                     <td class="hidden-xs text-right">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$message->created_at)->format('F j Y g:i A ')}}</a></td>
-                                    <td>
+                                    <td class="text-right">
                                         <div align="center">
                                             {!!Form::open(['action' => ['Transaction\InboxController@deleteMessage', $message->contact_us_id],'method' => 'POST', 'onsubmit' => "return confirm('Remove Message?')"])!!}
                                                 {{Form::hidden('_method', 'DELETE')}}
-                                                <button type="submit" class="fa fa-trash" data-toggle="tooltip" data-original-title="Delete">
-                                                    <i class="ti-close" aria-hidden="true"></i>
+                                                <button type="submit" class="btn-sm btn-danger fa fa-trash" data-toggle="tooltip" data-original-title="Delete">
                                                 </button>
                                             {!!Form::close()!!}
                                         </div>
@@ -90,22 +83,3 @@
 </div>
 @endsection
 
-@section('pg-specific-js')
-<script>
-$(()=>{
-
-    let html = '<i class="fa fa-trash"></i>&nbsp;<a style="font-size:12px;" role="button">Delete</a> | <a style="font-size:12px;" role="button">Delete All</a>';
-    $('input[type=checkbox]').change(function() {
-        if(this.checked) {
-            $(this).prop("checked");
-            console.log("check");
-            $("#forDeletion").html(html);
-        }   
-        else {
-            $("#forDeletion").html("");
-        }    
-    });
-
-});
-</script>
-@endsection
