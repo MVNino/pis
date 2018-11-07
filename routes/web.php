@@ -200,7 +200,7 @@ Route::group(
 					->name('transaction.inbox-detail');
 				Route::get('trash','InboxController@viewTrash')
 					->name('transaction.trash');
-				Route::delete('trash/(id}', 'InboxController@deleteMessage');
+				Route::delete('trash/{id}', 'InboxController@deleteMessage');
 			});
 		});
 });
