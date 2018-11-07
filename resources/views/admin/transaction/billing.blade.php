@@ -56,9 +56,11 @@
                         <div class="col-md-12">
                             <select id="selectServices" name="slctServices" multiple="multiple" class="form-control">
                                 @foreach($specialServices as $service)
-                                    <option value="{{ $service->spec_service_id }}">
-                                        {{ $service->spec_title }}
-                                    </option>
+                                    @if($service->status == 1)
+                                        <option value="{{ $service->spec_service_id }}">
+                                            {{ $service->spec_title }}
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
