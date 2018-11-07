@@ -55,6 +55,7 @@ class GuestController extends Controller
                 if($ctr > 9) 
                     $time_value = $ctr.':'.$minute_slice.':00';
 
+
                 $output .= '<option value="'.\Carbon\Carbon::createFromFormat('H:i:s', $time_value)->format('g:i A ').'" style = "color:#000000" >'.\Carbon\Carbon::createFromFormat('H:i:s',$time_value)->format('g:i A ').'</option>';
 
             }

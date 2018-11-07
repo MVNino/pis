@@ -10,8 +10,8 @@
                 <!-- /input-group -->
             </li>
             <li class="user-pro">
-                <a target="_blank" href="/storage/images/profile/{{$profile->picture}}" class="waves-effect">
-                    <img src="/storage/images/profile/{{$profile->picture}}" class="img-circle" style="width: 100%;">
+                <a class="waves-effect">
+                    <img src="/storage/images/profile/{{Auth::user()->profile_image_code}}" class="img-circle" style="width: 100%;">
                     <span class="hide-menu">Dr. {{ Auth::user()->name }}</span>
                 </a>
             </li>

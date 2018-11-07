@@ -51,6 +51,7 @@ Route::group(
 				Route::get('account', 'AccountController@editAccount')->name('maintenance.account');
 				Route::put('update-profile/{id}', 'AccountController@updateProfile');
 				Route::put('change-password/{id}', 'AccountController@changePassword');
+				Route::put('change-name/{id}', 'AccountController@changeName');
 				// Banner 
 				Route::get('banner', 'BannerController@viewBanner')->name('maintenance.banner');
 				Route::post('banner', 'BannerController@addBanner');
@@ -176,6 +177,10 @@ Route::group(
 				Route::post('receipt/process-payment', 'PaymentController@processPayment');
 				Route::get('balance','PaymentController@balance')
 					->name('transaction.balance');
+				Route::get('balance-receipt/{id}/patient={patient}', 
+					'PaymentController@balanceReceipt');
+				Route::post('balance-receipt/process-payment', 
+					'PaymentController@processBalancePayment');
 				// Clinical Expenses
 				Route::get('expenses','ReportController@expenses')
 					->name('transaction.expenses');

@@ -201,9 +201,11 @@
                         <tbody>
                         @forelse($appointments as $appointment)
                             @if($appointment->appointment_date->diffInDays(Carbon\Carbon::now()) >= 6)
+                            <tr>
                                 <td>{{ $appointment->custom_appointment_date }}</td>
                                 <td>{{ $appointment->time }}</td>
                                 <td>{{ $appointment->full_name }}</td>
+                            </tr>
                             @endif
                         @empty
                         <div class="alert alert-warning">
@@ -237,7 +239,7 @@
                     <div class="form-group">
                         <label class="col-md-12">Patient Name</label>
                         <select name="patientId" class="form-control">
-                            @foreach($appointments as $appointment)
+                            @foreach($billedAppointments as $appointment)
                             <option value="{{ $appointment->patient_id }}">{{ $appointment->full_name }}</option>
                             @endforeach
                         </select>

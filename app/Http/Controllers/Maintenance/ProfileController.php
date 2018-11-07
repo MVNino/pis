@@ -22,11 +22,13 @@ class ProfileController extends Controller
             {
                 $profileMaxId = Profile::max('profile_id');
                 $profile = Profile::findOrFail($profileMaxId);
-                return view('admin.maintenance.profile', ['profile' => $profile]);
+                $res = 1;
+                return view('admin.maintenance.profile', ['profile' => $profile, 'res' => $res]);
             }
             else
             {
-                return redirect()->back()->with('error', 'No Profile Record');
+                $res = 0;
+                return view('admin.maintenance.profile', ['res' => $res]);
             }
         }
         catch (\Exception $e)
@@ -42,7 +44,6 @@ class ProfileController extends Controller
             'skill' => 'required',
             'title' => 'nullable',
             'name' => 'required',
-            'uploaded' => 'required',
             'profilepic' => 'image|nullable|max:10000'
         ]);
 
@@ -69,9 +70,13 @@ class ProfileController extends Controller
                     ->storeAs('public/images/profile', $profilepicNameToStore);
                 $profile->picture = $profilepicNameToStore;
             }
-            else
+            elseif($request->input('uploaded') != "")
             {
                 $profile->picture = $request->input('uploaded');
+            }
+            else
+            {
+                $profile->picture = "";
             }
 
             if ($profile->save())
