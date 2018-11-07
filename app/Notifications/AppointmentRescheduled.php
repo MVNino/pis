@@ -41,8 +41,8 @@ class AppointmentRescheduled extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Your appointment has been rescheduled.')
-            ->line('Thank you for using our application!');
+            ->subject('Requested Appointment Rejected')
+            ->markdown('mail.appointment.disapproved');
     }
 
     /**
