@@ -47,12 +47,13 @@ class GuestController extends Controller
             $end_hour = $row->$end_variable;
             $start_slice = $start_hour[0].$start_hour[1];
             $end_slice = $end_hour[0].$end_hour[1];
+            $minute_slice = $start_hour[3].$start_hour[4];
             
             for($ctr = (int)$start_slice ; $ctr < (int)$end_slice ; $ctr++) {
 
-                $time_value = '0'.$ctr.':00:00';
+                $time_value = '0'.$ctr.':'.$minute_slice.':00';
                 if($ctr > 9) 
-                    $time_value = $ctr.':00:00';
+                    $time_value = $ctr.':'.$minute_slice.':00';
 
                 $output .= '<option value="'.\Carbon\Carbon::createFromFormat('H:i:s', $time_value)->format('g:i A ').'" style = "color:#000000" >'.\Carbon\Carbon::createFromFormat('H:i:s',$time_value)->format('g:i A ').'</option>';
 
