@@ -101,7 +101,7 @@
 </div>
 
 <!-- Modal -->
-<div style="padding-top: 400px;" class="modal fade bd-example-modal-lg" id="manualExpenses" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div style="padding-top: 390px;" class="modal fade bd-example-modal-lg" id="manualExpenses" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 		<div class="modal-content">
 		<div class="modal-header">
@@ -119,12 +119,12 @@
 				<label><b>Step 1 :</b>&nbsp;</label>
 				To view the existing clinic expenses, click [1] from the navigation bar.<br><br>
 
-				<img class="dynamic" src="{{asset('img/expense/expense1.jpg')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/expense/expense1.JPG')}}"><br><br>
 
 
 				<label><b>Step 2 :</b>&nbsp;</label>
 				To add a new record of clinic expense, click [2], which will direct you to this page.<br><br>
-				<img class="dynamic" src="{{asset('img/expense/expense2.jpg')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/expense/expense2.JPG')}}"><br><br>
 				
 				<label><b>Step 3 :</b>&nbsp;</label>
 				Input the date, purpose, and amount of the expense.<br><br>
