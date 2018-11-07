@@ -10,8 +10,12 @@
                 <!-- /input-group -->
             </li>
             <li class="user-pro">
-                <a target="_blank" href="/storage/images/profile/{{$profile->picture}}" class="waves-effect">
-                    <img src="/storage/images/profile/{{$profile->picture}}" class="img-circle" style="width: 100%;">
+                <a class="waves-effect">
+                    @if($profile->picture == "")
+                        <img src="/storage/images/pis/default_profile.png" class="img-circle" style="width: 100%;">
+                    @else
+                        <img src=/storage/images/profile/{{$profile->picture}} class="img-circle" style="width: 100%;">
+                    @endif
                     <span class="hide-menu">Dr. {{ Auth::user()->name }}</span>
                 </a>
             </li>

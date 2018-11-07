@@ -42,7 +42,6 @@ class ProfileController extends Controller
             'skill' => 'required',
             'title' => 'nullable',
             'name' => 'required',
-            'uploaded' => 'required',
             'profilepic' => 'image|nullable|max:10000'
         ]);
 
