@@ -83,8 +83,8 @@
 
 				<label><b>Step 2 :</b>&nbsp;</label>
 				To confirm the approval, click [2].<br><br>
-				<img class="dynamic" src="{{asset('img/appointment/appointment1.jpg')}}"><br><br>
-				<img class="dynamic" src="{{asset('img/appointment/appointment2.jpg')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment1.JPG')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment2.JPG')}}"><br><br>
 
 				
 				<label><b>Step 3 :</b>&nbsp;</label>
@@ -92,7 +92,7 @@
 
 				<label><b>Step 4 :</b>&nbsp;</label>
 				To confirm the rescheduling, click [4].<br><br>
-				<img class="dynamic" src="{{asset('img/appointment/appointment3.jpg')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment3.JPG')}}"><br><br>
 			</div>
 		</div>
 		<div class="modal-footer">
