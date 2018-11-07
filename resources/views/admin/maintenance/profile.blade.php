@@ -28,16 +28,16 @@
                             </a>
                         </div>
                         <div class="col-md-8">
-                            <label>Name</span></label>
+                            <label>Username</span></label>
                             <input name="name" class="form-control" value="{{$profile->name}}" required>
-                            <br/>
+                            <br/><!-- 
                             <label>Title</span></label>
-                            <input name="title" class="form-control" value="{{$profile->title}}">
+                            <input name="title" class="form-control" value="{{$profile->title}}"> -->
                             <br/>
-                            <label>Uploaded Banner</label>
+                            <label>Uploaded Profile Picture</label>
                             <p>{{$profile->picture}}</p>
                             <input style="display: none;" name="uploaded" value="{{$profile->picture}}">
-                            <label>Banner Image</label>
+                            <label>Profile Picture</label>
                             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                 <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
                                 <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
