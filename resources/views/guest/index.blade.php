@@ -79,7 +79,7 @@
                             <select name="clinic_location" id="clinic_location" class="v2-about-select" data-dependent="clinic_open_time">
                                 <option value="" style = "color:#000000">Location</option>
                                 @foreach($location_list as $location)
-                                <option value="{{$location->clinic_location}}" style = "color:#000000">{{$location->clinic_location}}</option>
+                                <option value="{{$location->clinic_contact_id}}" style = "color:#000000">{{$location->clinic_location}}</option>
                                 @endforeach
                             </select>
                         </div>

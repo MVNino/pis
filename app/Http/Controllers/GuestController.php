@@ -29,19 +29,34 @@ class GuestController extends Controller
 
     public function fetch(Request $request)
     {
-        $select = $request->get('select');
+        // $select = $request->get('select');
         $value = $request->get('value');
-        $dependent = $request->get('dependent');
+        $start_variable = 'clinic_open_time';
+        $end_variable = 'clinic_close_time';
         $data = DB::table('clinic_contact_tbl')
-              ->where($select, $value)
-              ->groupBy($dependent)
+              ->where('clinic_contact_id', $value)
+              ->groupBy('clinic_contact_id')
               ->get();
 
         $output = '<option value="" >Preferred Time</option>';     
 
         foreach($data as $row)
         {
-            $output .= '<option value="'.\Carbon\Carbon::createFromFormat('H:i:s',$row->$dependent)->format('g:i A ').'" style = "color:#000000" >'.\Carbon\Carbon::createFromFormat('H:i:s',$row->$dependent)->format('g:i A ').'</option>';
+
+            $start_hour = $row->$start_variable;
+            $end_hour = $row->$end_variable;
+            $start_slice = $start_hour[0].$start_hour[1];
+            $end_slice = $end_hour[0].$end_hour[1];
+            
+            for($ctr = (int)$start_slice ; $ctr < (int)$end_slice ; $ctr++) {
+
+                $time_value = '0'.$ctr.':00:00';
+                if($ctr > 9) 
+                    $time_value = $ctr.':00:00';
+
+                $output .= '<option value="'.\Carbon\Carbon::createFromFormat('H:i:s', $time_value)->format('g:i A ').'" style = "color:#000000" >'.\Carbon\Carbon::createFromFormat('H:i:s',$time_value)->format('g:i A ').'</option>';
+
+            }
         }
 
         echo $output;
@@ -61,9 +76,9 @@ class GuestController extends Controller
                 ->get();
 
         $location_list = DB::table('clinic_contact_tbl')
-                       ->select('clinic_location')
+                       ->selectRaw('clinic_contact_id, clinic_location')
                        ->where('status', 0)
-                       ->groupBy('clinic_location')
+                       ->groupBy('clinic_contact_id')
                        ->get();
 
         return view('guest.index', ['banners'=>$banners, 
