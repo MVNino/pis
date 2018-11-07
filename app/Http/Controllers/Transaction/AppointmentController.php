@@ -94,10 +94,12 @@ class AppointmentController extends Controller
 
     public function listApprovedAppointments() 
     {
-        // list appointments with the status of '1'
+        // list appointments with the status of '1' and paid their bills
         $appointments = $this->appointment->listAppointments(1);
+        $billedAppointments = $this->appointment->appointmentsWithPaidBill();
         return view('admin.transaction.approved-appointment', 
-            ['appointments' => $appointments]);
+            ['appointments' => $appointments, 
+            'billedAppointments' => $billedAppointments]);
     }
 
     public function addAnotherAppointment(Request $request)
