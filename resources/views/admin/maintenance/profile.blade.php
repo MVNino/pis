@@ -19,7 +19,7 @@
     <div class="col-md-12">
         <div class="white-box">
             <h3 class="box-title">Profile</h3>
-            {!! Form::open(['action' => 'Maintenance\ProfileController@updateProfile', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal', 'id' => 'profileForm', 'onsubmit' => 'serialize()'])!!}
+            {!! Form::open(['action' => 'Maintenance\ProfileController@updateProfile', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-4">
@@ -36,6 +36,7 @@
                             <br/>
                             <label>Uploaded Banner</label>
                             <p>{{$profile->picture}}</p>
+                            <input style="display: none;" name="uploaded" value="{{$profile->picture}}">
                             <label>Banner Image</label>
                             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                 <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>

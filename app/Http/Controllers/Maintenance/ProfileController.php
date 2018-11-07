@@ -24,6 +24,10 @@ class ProfileController extends Controller
                 $profile = Profile::findOrFail($profileMaxId);
                 return view('admin.maintenance.profile', ['profile' => $profile]);
             }
+            else
+            {
+                return redirect()->back()->with('error', 'No Profile Record');
+            }
         }
         catch (\Exception $e)
         {
@@ -38,6 +42,7 @@ class ProfileController extends Controller
             'skill' => 'required',
             'title' => 'nullable',
             'name' => 'required',
+            'uploaded' => 'required',
             'profilepic' => 'image|nullable|max:10000'
         ]);
 
@@ -52,7 +57,8 @@ class ProfileController extends Controller
             $profile->status = 0;
 
             // Handle file upload for file image
-            if($request->hasFile('profilepic')){
+            if($request->hasFile('profilepic'))
+            {
                 // Get the file's extension
                 $fileExtension = $request->file('profilepic')
                     ->getClientOriginalExtension();
@@ -62,6 +68,10 @@ class ProfileController extends Controller
                 $path = $request->file('profilepic')
                     ->storeAs('public/images/profile', $profilepicNameToStore);
                 $profile->picture = $profilepicNameToStore;
+            }
+            else
+            {
+                $profile->picture = $request->input('uploaded');
             }
 
             if ($profile->save())
