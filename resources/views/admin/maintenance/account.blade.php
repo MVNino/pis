@@ -17,34 +17,69 @@
 <div class="row">
     <div class="col-md-12">
         <div class="white-box">
-            <h3 class="box-title">Account</h3>
-            {!! Form::open(['action' => ['Maintenance\AccountController@updateProfile', Auth::user()->id], 'method' => 'POST', 
-                'enctype' => 'multipart/form-data', 'onsubmit' => "return confirm('Update your account?')", 'class' => 'form-material form-horizontal', 'style' => 'padding-left:80px; padding-right:80px;']) !!}
-                @csrf
-                <div class="form-group">
-                    <img class="" src="/storage/images/profile/{{ auth()->user()->profile_image_code }}" alt="preveiw of Uploaded Profile Picture" height="100" width="80"><br>
-                    <label class="col-sm-12">Profile Picture</label>
-                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                        <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                            <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
-                        <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-                        <input type="hidden"><input type="file" name="profileImage" accept=".jpg,.jpeg,.png"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+            <div id="pnlSecurity">
+                <h3 class="box-title" id="security">Change Account Name</h3>
+                {!! Form::open(['action' => ['Maintenance\AccountController@changeName', Auth::user()->id], 'method' => 'POST', 
+                    'onsubmit' => "return confirm('Update Name?')", 'class' => 'form-material form-horizontal', 
+                    'style' => 'padding-left:80px; padding-right:80px;']) !!}
+                    {{ Form::hidden('_method', 'PUT') }}
+                    @csrf
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Current Name</label>
+                            <div>
+                                <input class="form-control" name="name" value="{{Auth::user()->name}} "required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Current Username</label>
+                            <div>
+                                <input class="form-control" name="username" value="{{Auth::user()->username}} "required>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-12">User Name</span></label>
-                    <div class="col-md-12">
-                        <input class="form-control" name="txtUsername" type="text" value="{{ Auth::user()->username }}" placeholder="Enter username">
+                    <button type="submit" class="btn btn-info waves-effect pull-right waves-light">
+                        <i class="fa fa-fw fa-lg fa-check-circle"></i>Save Changes
+                    </button><br><br>
+                {!! Form::close() !!}
+            </div>
+            
+            <div id="pnlSecurity">
+                <h3 class="box-title" id="security">Change Account Picture</h3>
+                {!! Form::open(['action' => ['Maintenance\AccountController@updateProfile', Auth::user()->id], 'method' => 'POST', 
+                    'onsubmit' => "return confirm('Update Account Picture?')", 'class' => 'form-material form-horizontal', 
+                    'style' => 'padding-left:80px; padding-right:80px;', 'enctype' => 'multipart/form-data']) !!}
+                    {{ Form::hidden('_method', 'PUT') }}
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a target="_blank" href="/storage/images/profile/{{Auth::user()->profile_image_code}}">
+                                <img src="/storage/images/profile/{{Auth::user()->profile_image_code}}" style="width: 100%;">
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="col-sm-12">Current Account Image</label>
+                                <p>{{Auth::user()->profile_image_code}}</p>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                        <span class="fileinput-filename"></span>
+                                    </div>
+                                    <span class="input-group-addon btn btn-default btn-file">
+                                        <span class="fileinput-new">Select file</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="file" name="profileImage" accept=".jpg,.jpeg,.png">
+                                    </span>
+                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info waves-effect pull-right waves-light">
+                                <i class="fa fa-fw fa-lg fa-check-circle"></i>Save Changes
+                            </button><br><br>
+                        </div>
                     </div>
-                </div>
-                {{ Form::hidden('_method', 'PUT') }}
-                <button type="submit" class="btn btn-info waves-effect pull-right waves-light">
-                    <i class="fa fa-fw fa-lg fa-check-circle"></i>Save Changes
-                </button>
-            {!! Form::close() !!}
-            <br><br><br>
-
-            <a href="#" role="button" id="security" class="btn btn-primary">Security Settings</a>
+                {!! Form::close() !!}
+            </div>
             <div id="pnlSecurity">
                 <h3 class="box-title" id="security">Change Account Password</h3>
                 {!! Form::open(['action' => ['Maintenance\AccountController@changePassword', Auth::user()->id], 'method' => 'POST', 
@@ -82,12 +117,6 @@
 
 @section('pg-specific-js')
 <script>
-$(() => {
-    $('#pnlSecurity').hide();
-});
-$('#security').click(() => {
-    $('#pnlSecurity').toggle();
-});
 
 $('#confirmPwd').blur(() => {
     $newPwd = $('#newPwd').val();

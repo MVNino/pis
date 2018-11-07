@@ -22,7 +22,13 @@ class ProfileController extends Controller
             {
                 $profileMaxId = Profile::max('profile_id');
                 $profile = Profile::findOrFail($profileMaxId);
-                return view('admin.maintenance.profile', ['profile' => $profile]);
+                $res = 1;
+                return view('admin.maintenance.profile', ['profile' => $profile, 'res' => $res]);
+            }
+            else
+            {
+                $res = 0;
+                return view('admin.maintenance.profile', ['res' => $res]);
             }
         }
         catch (\Exception $e)
@@ -52,7 +58,8 @@ class ProfileController extends Controller
             $profile->status = 0;
 
             // Handle file upload for file image
-            if($request->hasFile('profilepic')){
+            if($request->hasFile('profilepic'))
+            {
                 // Get the file's extension
                 $fileExtension = $request->file('profilepic')
                     ->getClientOriginalExtension();
@@ -62,6 +69,14 @@ class ProfileController extends Controller
                 $path = $request->file('profilepic')
                     ->storeAs('public/images/profile', $profilepicNameToStore);
                 $profile->picture = $profilepicNameToStore;
+            }
+            elseif($request->input('uploaded') != "")
+            {
+                $profile->picture = $request->input('uploaded');
+            }
+            else
+            {
+                $profile->picture = "";
             }
 
             if ($profile->save())

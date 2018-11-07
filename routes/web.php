@@ -51,6 +51,7 @@ Route::group(
 				Route::get('account', 'AccountController@editAccount')->name('maintenance.account');
 				Route::put('update-profile/{id}', 'AccountController@updateProfile');
 				Route::put('change-password/{id}', 'AccountController@changePassword');
+				Route::put('change-name/{id}', 'AccountController@changeName');
 				// Banner 
 				Route::get('banner', 'BannerController@viewBanner')->name('maintenance.banner');
 				Route::post('banner', 'BannerController@addBanner');
@@ -199,7 +200,7 @@ Route::group(
 					->name('transaction.inbox-detail');
 				Route::get('trash','InboxController@viewTrash')
 					->name('transaction.trash');
-				Route::delete('trash/(id}', 'InboxController@deleteMessage');
+				Route::delete('trash/{id}', 'InboxController@deleteMessage');
 			});
 		});
 });
