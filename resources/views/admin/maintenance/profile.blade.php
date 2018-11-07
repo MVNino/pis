@@ -19,54 +19,103 @@
     <div class="col-md-12">
         <div class="white-box">
             <h3 class="box-title">Profile</h3>
-            {!! Form::open(['action' => 'Maintenance\ProfileController@updateProfile', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a target="_blank" href="/storage/images/profile/{{$profile->picture}}">
-                                <img src="/storage/images/profile/{{$profile->picture}}" style="width: 100%;">
-                            </a>
-                        </div>
-                        <div class="col-md-8">
-                            <label>Name</span></label>
-                            <input name="name" class="form-control" value="{{$profile->name}}" required>
-                            <br/>
-                            <label>Title</span></label>
-                            <input name="title" class="form-control" value="{{$profile->title}}">
-                            <br/>
-                            <label>Uploaded Banner</label>
-                            <p>{{$profile->picture}}</p>
-                            <input style="display: none;" name="uploaded" value="{{$profile->picture}}">
-                            <label>Banner Image</label>
-                            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                                <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
-                                <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-                                <input type="file" name="profilepic" accept=".jpg,.jpeg,.png"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+            @if($res == 0)
+                {!! Form::open(['action' => 'Maintenance\ProfileController@updateProfile', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Name</label>
+                                <input name="name" class="form-control" required>
+                                <br/>
+                                <label>Title</label>
+                                <input name="title" class="form-control" required>
+                                <br/>
+                                <input style="display: none;" name="uploaded" value="">
+                                <label>Profile Picture</label>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                    <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
+                                    <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                                    <input type="file" name="profilepic" accept=".jpg,.jpeg,.png"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br/>
-                    <label class="col-md-12">Introduction</span></label>
-                    <div class="col-md-12">
-                        <textarea rows="10" name="introduction"  class="form-control">{{$profile->introduction}}</textarea>
-                    </div>
-                </div>
-                <div class="profileTxt">
-                    <div class="form-group">
+                        <br/>
+                        <label class="col-md-12">Introduction</span></label>
                         <div class="col-md-12">
-                            <label>Skills and Specialities</label>
-                            <textarea class="form-control" name="skill" type="text" rows="5">{{$profile->skills}}</textarea>
+                            <textarea rows="10" name="introduction"  class="form-control"></textarea>
                         </div>
-                        <!--div class="col-md-2">
-                            <button type='button' onclick="addSkills()" 
-                                style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i>
-                            </button>
-                        </div-->
                     </div>
-                </div><br><br>
-                <button type="submit" class="btn btn-info waves-effect waves-light"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>
-            {!! Form::close() !!}
+                    <div class="profileTxt">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>Skills and Specialities</label>
+                                <textarea class="form-control" name="skill" type="text" rows="5"></textarea>
+                            </div>
+                            <!--div class="col-md-2">
+                                <button type='button' onclick="addSkills()" 
+                                    style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i>
+                                </button>
+                            </div-->
+                        </div>
+                    </div><br><br>
+                    <button type="submit" class="btn btn-info waves-effect waves-light"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>
+                {!! Form::close() !!}
+            @else
+                {!! Form::open(['action' => 'Maintenance\ProfileController@updateProfile', 'method' => 'POST', 'autocomplete' => 'off', 'enctype' => 'multipart/form-data', 'class' => 'form-material form-horizontal'])!!}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a target="_blank" href="/storage/images/profile/{{$profile->picture}}">
+                                    <img src="/storage/images/profile/{{$profile->picture}}" style="width: 100%;">
+                                </a>
+                            </div>
+                            <div class="col-md-8">
+                                <label>Username</span></label>
+                                <input name="name" class="form-control" value="{{$profile->name}}" required>
+                                <br/>
+                                <label>Title</label>
+                                <input name="title" class="form-control" value="{{$profile->title}}">
+                                <br/>
+                                <label>Uploaded Profile Picture</label>
+                                    @if($profile->picture == "")
+                                        <p>No Profile Image</p>
+                                    @else
+                                        <p>{{$profile->picture}}</p>
+                                    @endif
+                                <br/>
+                                <input style="display: none;" name="uploaded" value="{{$profile->picture}}">
+                                <label>Profile Picture</label>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                    <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
+                                    <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                                    <input type="file" name="profilepic" accept=".jpg,.jpeg,.png"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <label class="col-md-12">Introduction</span></label>
+                        <div class="col-md-12">
+                            <textarea rows="10" name="introduction"  class="form-control">{{$profile->introduction}}</textarea>
+                        </div>
+                    </div>
+                    <div class="profileTxt">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>Skills and Specialities</label>
+                                <textarea class="form-control" name="skill" type="text" rows="5">{{$profile->skills}}</textarea>
+                            </div>
+                            <!--div class="col-md-2">
+                                <button type='button' onclick="addSkills()" 
+                                    style="margin-top:30px;" rel="tooltip" title="" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-plus"></i>
+                                </button>
+                            </div-->
+                        </div>
+                    </div><br><br>
+                    <button type="submit" class="btn btn-info waves-effect waves-light"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>
+                {!! Form::close() !!}
+            @endif
         </div>
     </div>
 </div>

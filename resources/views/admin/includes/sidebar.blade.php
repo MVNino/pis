@@ -11,11 +11,7 @@
             </li>
             <li class="user-pro">
                 <a class="waves-effect">
-                    @if($profile->picture == "")
-                        <img src="/storage/images/pis/default_profile.png" class="img-circle" style="width: 100%;">
-                    @else
-                        <img src=/storage/images/profile/{{$profile->picture}} class="img-circle" style="width: 100%;">
-                    @endif
+                    <img src="/storage/images/profile/{{Auth::user()->profile_image_code}}" class="img-circle" style="width: 100%;">
                     <span class="hide-menu">Dr. {{ Auth::user()->name }}</span>
                 </a>
             </li>
