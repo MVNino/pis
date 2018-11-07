@@ -72,19 +72,22 @@ class GuestController extends Controller
 
     public function viewAbout()
     {
-        $profile = Profile::all();
-        $features = Feature::orderBy('features_id', 'desc')->get();
-
-        if ($profile->count() > 0)
+        try
         {
-            $profileMaxId = Profile::max('profile_id');
-            $profile = Profile::findOrFail($profileMaxId);
+            $profile = Profile::all();
+            $features = Feature::orderBy('features_id', 'desc')->get();
 
-            return view('guest.about', ['profile' => $profile, 'features' => $features]);
+            if ($profile->count() > 0)
+            {
+                $profileMaxId = Profile::max('profile_id');
+                $profile = Profile::findOrFail($profileMaxId);
+
+                return view('guest.about', ['profile' => $profile, 'features' => $features]);
+            }
         }
-        else
+        catch (\Exception $e)
         {
-            return view('guest.about', ['profile' => $profile, 'features' => $features]);
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -135,8 +138,7 @@ class GuestController extends Controller
         {
     		$clinicMaxId = Clinic::max('clinic_contact_id');
     		$clinic = Clinic::findOrFail($clinicMaxId);
-    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact,
-                    'clinics' => $clinics]);
+    		return view('guest.contact', ['clinic' => $clinic, 'contact' => $contact, 'clinics' => $clinics]);
         }
         else
         {
