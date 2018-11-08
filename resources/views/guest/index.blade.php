@@ -6,8 +6,7 @@
         <div class="Modern-Slider">
             <!-- Item -->
             <div>
-                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
-                    <!--Indicators-->
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" style="margin-top: 5%;">                    <!--Indicators-->
                     <!-- <ol class="carousel-indicators">
                       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                       <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -198,3 +197,55 @@
     </script>
 
 @endsection
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="manualIndex" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header" style="background-color: #fff;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+        </div>
+        <div class="modal-body" style="background-color: #fff;">
+            <h4 style="margin-bottom:0;" class="text-primary"><b>Home</b></h4>
+            <div style="padding:15px;">
+
+                <p class="text-danger"><b><em>Schedule an Appointment</em></b>&nbsp;</p>
+                <br>
+
+                <label><b>Step 1 :</b>&nbsp;</label>
+                Located under the home page is the appointment form. To create an appointment, Input the first name, middle name, last name, email, contact number, birthday of the patient and the preferred time.<br><br>
+
+                <label><b>Step 2 :</b>&nbsp;</label>
+                Step 2: Click Submit.<br><br>
+
+                <label><b>Step 3 :</b>&nbsp;</label>
+                After clicking submit, a confirmation message will appear confirming the transaction on scheduling an appointment.<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/index/index1.jpg')}}"><br><br> -->
+
+            
+            </div>
+        </div>
+        <div class="modal-footer" style="background-color: #fff;" >
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+@section('pg-specific-js')
+<script>
+    window.onhelp = function() {
+        return false;
+    };
+    window.onkeydown = evt => {
+        if (evt.keyCode == 112){
+            $("#manualIndex").modal("show");
+            
+        }
+        return false;
+    };
+</script>

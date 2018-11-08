@@ -38,7 +38,7 @@
     </section>
     <!-- start about us section -->
     <section class="constructo-news-post-area section-padding">
-        <div class="container">
+        <div class="container" style="margin-top: 5%;">
             <div class="row">
                 <div class="col-md-8 col-sm-7">
                     @foreach($news as $new)
@@ -104,3 +104,47 @@
 $("#navlink-news").addClass("current-menu-item");
 </script>
 @endsection
+
+<div class="modal fade bd-example-modal-lg" id="manualNews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header" style="background-color: #fff;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+        </div>
+        <div class="modal-body" style="background-color: #fff;">
+            <h4 style="margin-bottom:0;" class="text-primary"><b>News</b></h4>
+            <div style="padding:15px;">
+
+                <p style="margin-top:0;">This part will discuss News. This will contain the Recent News chosen by the clinic in relation to its medical services.</p><br>
+
+                <label><b>Step 1 :</b>&nbsp;</label>
+                From the navigation bar, click [1] to go to News which will display this page. The page will display a list of the recent news.<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/service/service1.jpg')}}"><br><br> -->
+                
+            </div>
+        </div>
+        <div class="modal-footer" style="background-color: #fff;" >
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+@section('pg-specific-js')
+<script>
+    window.onhelp = function() {
+        return false;
+    };
+    window.onkeydown = evt => {
+        if (evt.keyCode == 112){
+            $("#manualNews").modal("show");
+            
+        }
+        return false;
+    };
+</script>
+

@@ -1,10 +1,10 @@
 @extends('guest.layouts.app')
 
 @section('content')
-    <section class="home-sm">
+    <section class="home-sm" >
     </section>
     <section class="section-padding"> 
-    <div align= "center">
+    <div align= "center"  style="margin-top: 5%;">
      <div style="color: #fff; background-color: #F05B57; height: 100%; width: 40%; font-size: 300%; font-weight: 900; margin-bottom: 3%;">
          The Doctor is In!
      </div>
@@ -31,7 +31,7 @@
                         <!-- Modal for Viewing Banner -->
                         <div class="modal fade" id="row{{$clinic->clinic_contact_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
-                                <div class="modal-content">
+                                <div class="modal-content" style="background-color: #fff;">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -150,3 +150,4 @@ $(document).ready(function() {
 });
 </script>
 @endsection
+

@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="features-area singlepageservice section-padding">
-    <div class="container">
+    <div class="container" style="margin-top: 5%;">
         <div class="row">
             <div class="col-xs-12 text-center">
                 <div class="section-title">
@@ -80,3 +80,64 @@ $("#navlink-services").addClass("current-menu-item");
       });
 </script>
 @endsection
+
+<div class="modal fade bd-example-modal-lg" id="manualServices" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header" style="background-color: #fff;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+        </div>
+        <div class="modal-body" style="background-color: #fff;">
+            <h4 style="margin-bottom:0;" class="text-primary"><b>Services</b></h4>
+            <div style="padding:15px;">
+
+                <p style="margin-top:0;">This part will discuss Services. This will contain the Services of the clinic, which includes the Specialty services and Other services.</p><br>
+
+                <label><b>Step 1 :</b>&nbsp;</label>
+                From the navigation bar, click [1] to go to Services which will display this page. The page will display a list of the different Medical services of the clinic.<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/service/service1.jpg')}}"><br><br> -->
+
+                <label><b>Step 2 :</b>&nbsp;</label>
+                To view a medical service, click [2]. The page will display the medical service information and its corresponding video.<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/service/service2.jpg')}}"><br><br> -->
+
+                <label><b>Step 3 :</b>&nbsp;</label>
+                To go back to the previous page, click [3].<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/service/service3.jpg')}}"><br><br> -->
+
+                <label><b>Step 4 :</b>&nbsp;</label>
+                The page will also display the special services of the clinic. To view a specific specialty service, click [4].<br><br>
+
+                <label><b>Step 5 :</b>&nbsp;</label>
+                The page will also display the specialty service information and its corresponding video. To back to the previous page, click [5].<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/service/service4.jpg')}}"><br><br> -->
+ 
+            </div>
+        </div>
+        <div class="modal-footer" style="background-color: #fff;" >
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+@section('pg-specific-js')
+<script>
+    window.onhelp = function() {
+        return false;
+    };
+    window.onkeydown = evt => {
+        if (evt.keyCode == 112){
+            $("#manualServices").modal("show");
+            
+        }
+        return false;
+    };
+</script>

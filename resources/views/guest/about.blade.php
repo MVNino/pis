@@ -4,7 +4,7 @@
 
     <!-- end of get quote area -->
     <section class="mediacare-whychoose-us" style="padding-top: 10%;">
-        <div class="container">
+        <div class="container"  style="margin-top: 5%;">
             <div class="row">
                 <div class="col-md-6">
                     <div class="best-feature-title">
@@ -130,3 +130,54 @@
         $("#navlink-about").addClass("current-menu-item");
     </script>
 @endsection
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="manualAbout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header" style="background-color: #fff;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+        </div>
+        <div class="modal-body" style="background-color: #fff;">
+            <h4 style="margin-bottom:0;" class="text-primary"><b>About</b></h4>
+            <div style="padding:15px;">
+
+                <p style="margin-top:0;">This part will discuss About. This will contain all of the features of the clinic.</p>
+
+
+                <label><b>Step 1 :</b>&nbsp;</label>
+                From the navigation bar, click [1] to go to <i>About</i> which will display this page. The page will display a list of the different features of the clinic.<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/about/about1.jpg')}}"><br><br> -->
+
+                <label><b>Step 2 :</b>&nbsp;</label>
+                To view a Feature information, click [2]. The tab will then expand to reveal the feature information [3].<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/about/about2.jpg')}}"><br><br> -->
+
+            
+            </div>
+        </div>
+        <div class="modal-footer" style="background-color: #fff;" >
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+@section('pg-specific-js')
+<script>
+    window.onhelp = function() {
+        return false;
+    };
+    window.onkeydown = evt => {
+        if (evt.keyCode == 112){
+            $("#manualAbout").modal("show");
+            
+        }
+        return false;
+    };
+</script>

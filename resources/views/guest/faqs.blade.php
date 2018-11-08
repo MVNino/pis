@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="aboutUs-area v2 v3 section-padding">
-    <div class="container">
+    <div class="container" style="margin-top: 5%;">
         <div class="row">
             <div class="col-xs-12 text-center">
                 <div class="section-title">
@@ -376,3 +376,63 @@
 $("#navlink-faqs").addClass("current-menu-item");
 </script>
 @endsection
+
+
+
+<div class="modal fade bd-example-modal-lg" id="manualFaqs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header" style="background-color: #fff;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+        </div>
+        <div class="modal-body" style="background-color: #fff;">
+            <h4 style="margin-bottom:0;" class="text-primary"><b>FAQs</b></h4>
+            <div style="padding:15px;">
+
+                <p style="margin-top:0;">This part will discuss FAQs. This will contain the frequently asked questions, which is grouped into six categories: Surgery, Service, Recovery, Appointment, Payment, and Others.</p><br>
+
+                <label><b>Step 1 :</b>&nbsp;</label>
+                Step 1: From the navigation bar, click [1] to go to FAQ which will display this page. The page will display the categories of FAQs and the questions below.<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/FAQs/faqs1.jpg')}}"><br><br> -->
+
+                <label><b>Step 2 :</b>&nbsp;</label>
+                To select a category, click [2]. A list of questions will be shown below under the selected category.<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/FAQs/faqs2.jpg')}}"><br><br> -->
+               
+                <label><b>Step 3 :</b>&nbsp;</label>
+                Step 3: Select a question by clicking [3] to reveal the answer [4].<br><br>
+
+                <!-- <img class="dynamic" src="{{asset('img/FAQs/faqs3.jpg')}}"><br><br> -->
+
+               <p class="text-danger"><b><em>Note: </em></b>&nbsp;</p>
+                Other questions will still be shown on the same page under the selected question.<br><br>
+
+               
+            </div>
+        </div>
+        <div class="modal-footer" style="background-color: #fff;" >
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+@section('pg-specific-js')
+<script>
+    window.onhelp = function() {
+        return false;
+    };
+    window.onkeydown = evt => {
+        if (evt.keyCode == 112){
+            $("#manualFaqs").modal("show");
+            
+        }
+        return false;
+    };
+</script>
+
