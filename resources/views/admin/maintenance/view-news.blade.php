@@ -144,15 +144,11 @@ $(document).ready(function() {
 	}
 });
 
-window.onhelp = function() {
-	return false;
-};
-window.onkeydown = evt => {
-	if (evt.keyCode == 112){
-		$("#manualEditNews").modal("show");
-		
-	}
-	return false;
-};
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualEditNews").modal("show");
+    }
+})
 </script>
 @endsection

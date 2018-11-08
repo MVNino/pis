@@ -181,15 +181,11 @@ $(document).ready(function() {
 		});
 	}
 });
-window.onhelp = function() {
-	return false;
-};
-window.onkeydown = evt => {
-	if (evt.keyCode == 112){
-		$("#manualFeatures").modal("show");
-		
-	}
-	return false;
-};
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualFeatures").modal("show");
+    }
+})
 </script>
 @endsection
