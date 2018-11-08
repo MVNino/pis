@@ -81,5 +81,70 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div style="padding-top: 840px;" class="modal fade bd-example-modal-lg" id="manualInbox" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+                <div style="padding:15px;">
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Click her user profile [1] to view the drop down choices.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav1.JPG')}}"><br><br>
+				
+				<p class="text-danger"><b><em>Inbox</em></b>&nbsp;</p>
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Click 'Inbox' [3] on the drop down menu.<br><br>
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Click 'Inbox' [7] to view received messages.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav5.JPG')}}"><br><br>
+
+                <label><b>Step 3 :</b>&nbsp;</label>
+				To view a message, click [8].<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav6.JPG')}}"><br><br>
+
+                <label><b>Step 4 :</b>&nbsp;</label>
+				To delete a message, click [9]. Click OK on the confirmation message that will appear.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav7.JPG')}}"><br><br>
+                
+                <label><b>Step 5 :</b>&nbsp;</label>
+				To delete a message, click [9]. Click OK on the confirmation message that will appear.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav8.JPG')}}"><br><br>
+
+                <label><b>Step 6 :</b>&nbsp;</label>
+				To compose a message, click 'Compose' [11] button.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav9.JPG')}}"><br><br>
+                
+                <label><b>Step 7 :</b>&nbsp;</label>
+				Input email and message.<br><br>
+                
+                <label><b>Step 8 :</b>&nbsp;</label>
+				Click 'Send' [12] to send the message or click 'Cancel' [13] to cancel sending.<br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
+@endsection
+
+@section('pg-specific-js')
+<script>
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualInbox").modal("show");
+    }
+});
+</script>
 @endsection
 

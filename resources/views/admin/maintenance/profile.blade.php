@@ -119,32 +119,51 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div style="padding-top: 550px;" class="modal fade bd-example-modal-lg" id="manualProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+                <div style="padding:15px;">
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Click her user profile [1] to view the drop down choices.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav1.JPG')}}"><br><br>
+				
+				<p class="text-danger"><b><em>My Profile</em></b>&nbsp;</p>
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Click 'My Profile' [2] if you wish to update your profile.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav2.JPG')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav3.JPG')}}"><br><br>
 
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Edit/input the username, title, profile picture, introduction and skills and specialties.<br><br>
+
+                <label><b>Step 3 :</b>&nbsp;</label>
+				Click 'Update' [6] to save the record/changes. A message will be shown once the record/changes is updated.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav4.JPG')}}"><br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('pg-specific-js')
 <script>
-let count = 0;
-let target = $(".profileTxt");
-let targetBtn = $("#responseButton");
-
-function addSkills() {
-
-    let boxName = "skills" + count;
-    let buttonName = "button" + count;
-    let html = '<input type="text" class="form-control" name="skill" + boxName + '"">';
-    let button = '<button name="' + buttonName + '"type="button" onclick ="deleteField(' + count + ')" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove"><i class="fa fa-close"></i></button>';
-    let newDiv = "<div class='profileDiv" + count + " row'>" + "<div class='col-md-10'>" + html + "</div>"+"<div class='col-sm-2'>" + button + "</div>";
-
-    target.append(newDiv);
-    count++;
-}
-
-function deleteField(count) {
-    $('input[name=skills' + count + ']').remove();
-    $('button[name=button' + count + ']').remove();
-    $('.profileDiv' + count).remove();
-    count--;
-}
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualProfile").modal("show");
+    }
+});
 </script>
 @endsection

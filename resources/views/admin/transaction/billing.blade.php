@@ -187,10 +187,66 @@
             </form>
         </div>
     </div>
+
+<!-- Modal -->
+<div style="padding-top: 570px;" class="modal fade bd-example-modal-lg" id="manualBilling" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Payment</b></h4>
+                <div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under payments is the Billing and Balance of Patients in the clinic. To go to payments, click [1].<br><br>
+				<img class="dynamic" src="{{asset('img/payment/payment1.JPG')}}"><br><br>
+                
+				<p class="text-danger"><b><em>Billing</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under billing section, select the patient’s name from the drop down choices [2].<br><br>
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Select the services offered to the patient [3].<br><br>
+
+				<label><b>Step 3 :</b>&nbsp;</label>
+				To compute the total bill, click [4].<br><br>
+				<img class="dynamic" src="{{asset('img/payment/payment2.JPG')}}"><br><br>
+
+                <label><b>Step 4 :</b>&nbsp;</label>
+				To add a discount, click [6].<br><br>
+
+                <label><b>Step 5 :</b>&nbsp;</label>
+				    After clicking the Add Discount button, the user can choose either
+                    Percentage or Amount then must specify the discount price base on the chosen
+                    discount.<br><br>
+				<img class="dynamic" src="{{asset('img/payment/payment3.JPG')}}"><br><br>
+
+                <label><b>Step 6 :</b>&nbsp;</label>
+				Select the mode of payment [7] then click Proceed to Payment [8].<br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('pg-specific-js')
 <script>
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualBilling").modal("show");
+    }
+})
 $(() => {
     $('#rightPanel').hide();
     $("#addDiscount").hide();

@@ -267,7 +267,7 @@
 </div>
 
 <!-- Modal -->
-<div style="padding-top: 250px;" class="modal fade bd-example-modal-lg" id="manualApprovedAppointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div style="padding-top: 440px;" class="modal fade bd-example-modal-lg" id="manualApprovedAppointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 		<div class="modal-content">
 		<div class="modal-header">
@@ -288,6 +288,17 @@
 				<label><b>Step 2 :</b>&nbsp;</label>
 				Other approved appointments will also be shown under List of Approved Appointments.<br><br>
 				<img class="dynamic" src="{{asset('img/appointment/appointment5.JPG')}}"><br><br>
+
+                <label><b>Step 3 :</b>&nbsp;</label>
+				To create a follow-up appointment for fully-paid patients, click [7].<br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment6.JPG')}}"><br><br>
+
+                <label><b>Step 4 :</b>&nbsp;</label>
+				Select the patient’s name and select the desired date and time.<br><br>
+
+                <label><b>Step 5 :</b>&nbsp;</label>
+				Click [8] to confirm the follow-up appointment. A message will be shown once the follow-up appointment is set.<br><br>
+				<img class="dynamic" src="{{asset('img/appointment/appointment7.JPG')}}"><br><br>
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -309,7 +320,7 @@
 	window.addEventListener("keydown",function (e) {
     if (e.keyCode === 112) { 
         e.preventDefault();
-        $("#manualApprovedAppoinment").modal("show");
+        $("#manualApprovedAppointment").modal("show");
     }
 })
 </script>

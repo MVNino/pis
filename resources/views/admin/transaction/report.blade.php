@@ -74,12 +74,63 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div style="padding-top: 580px;" class="modal fade bd-example-modal-lg" id="manualReport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Reports</b></h4>
+                <div style="padding:15px;">
 
+				<p class="text-danger"><b><em>Generate Daily Reports</em></b>&nbsp;</p>
+                <label><b>Step 1 :</b>&nbsp;</label>
+				To select the frequency of reports, choose 'Daily' from the dropdown [1].<br><br>
+
+                <label><b>Step 2 :</b>&nbsp;</label>
+				Select the date of choice.<br><br>
+				<img class="dynamic" src="{{asset('img/reports/report1.JPG')}}"><br><br>
+
+                <label><b>Step 3 :</b>&nbsp;</label>
+				Click generate PDF [2] to generate the reports.<br><br>
+
+                <p class="text-danger"><b><em>Generate Monthly Reports</em></b>&nbsp;</p>
+                <label><b>Step 1 :</b>&nbsp;</label>
+				To select the frequency of reports, choose Monthly from the dropdown [1].<br><br>
+				<img class="dynamic" src="{{asset('img/reports/report2.JPG')}}"><br><br>
+                
+                <label><b>Step 2 :</b>&nbsp;</label>
+				Select a month from the dropdown [2]<br><br>
+
+                <label><b>Step 3 :</b>&nbsp;</label>
+				Click 'Generate PDF' [3] to generate the reports.<br><br>
+
+                Once Generate Reports is clicked, the report of the chosen frequency will be shown in PDF format.<br><br>
+				<img class="dynamic" src="{{asset('img/reports/report3.JPG')}}"><br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('pg-specific-js')
 
 <script>
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualReport").modal("show");
+    }
+})
     function getSelected() {
         let selected = $("#freqReports").val();
         //console.log(selected);

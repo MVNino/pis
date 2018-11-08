@@ -48,4 +48,49 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div style="padding-top: 320px;" class="modal fade bd-example-modal-lg" id="manualBalance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Payment</b></h4>
+                <div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+				Under payments is the Billing and Balance of Patients in the clinic. To go to payments, click [1].<br><br>
+				<img class="dynamic" src="{{asset('img/payment/payment1.JPG')}}"><br><br>
+                
+				<p class="text-danger"><b><em>Balance</em></b>&nbsp;</p>
+
+				<label><b>Step 1 :</b>&nbsp;</label>
+				To go to balance, click [5]. Under payments.<br><br>
+				<img class="dynamic" src="{{asset('img/payment/payment8.JPG')}}"><br><br>
+
+                <label><b>Step 2 :</b>&nbsp;</label>
+				The patient name and his outstanding balance will be shown. Once the balance is to be payed, click [8].<br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
+@endsection
+
+@section('pg-specific-js')
+<script>
+	window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualBalance").modal("show");
+    }
+})
+</script>
 @endsection
