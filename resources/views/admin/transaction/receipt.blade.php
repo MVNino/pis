@@ -138,10 +138,57 @@
 </div>
     
 </div>
+
+<!-- Modal -->
+<div style="padding-top: 590px;" class="modal fade bd-example-modal-lg" id="manualReceipt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Reciept</b></h4>
+                <div style="padding:15px;">
+
+                <label><b>Step 7 :</b>&nbsp;</label>
+				Input the Official Receipt Number [9].<br><br>
+
+                <label><b>Step 8 :</b>&nbsp;</label>
+				Input the Payment Amount [10], then click Check Out [11].<br><br>
+				<img class="dynamic" src="{{asset('img/payment/payment4.JPG')}}"><br><br>
+
+                <label><b>Step 9 :</b>&nbsp;</label>
+				To confirm the checkout, click [12].<br><br>
+				<img class="dynamic" src="{{asset('img/payment/payment5.JPG')}}"><br><br>
+
+                <label><b>Step 10 :</b>&nbsp;</label>
+				After confirming, the Receipt of Payment will be provided.<br><br>
+                
+                <label><b>Step 11 :</b>&nbsp;</label>
+				To download click [13] then save [14].<br><br>
+				<img class="dynamic" src="{{asset('img/payment/payment6.JPG')}}"><br><br>
+				<img class="dynamic" src="{{asset('img/payment/payment7.JPG')}}"><br><br>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('pg-specific-js')
 <script>
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualReceipt").modal("show");
+    }
+})
 $('#checkOutt').click(() => {
     let ORNumber = $('#ORNum').val();
     let billingId = $('#billingId').val();    

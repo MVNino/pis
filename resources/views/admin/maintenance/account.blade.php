@@ -113,11 +113,86 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div style="padding-top: 850px;" class="modal fade bd-example-modal-lg" id="manualAppointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 id="exampleModalLongTitle"> &nbsp;<b>HELP</b> &nbsp;<i class="fa fa-question-circle"></i></h3>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-bottom:0;" class="text-primary"><b>Account Setting</b></h4>
+                <div style="padding:15px;">
+				
+				<label><b>Step 1 :</b>&nbsp;</label>
+                Click 'Account Setting' [4] on the drop down menu.<br><br>
+				
+                <p class="text-danger"><b><em>Edit Account name</em></b>&nbsp;</p>
+				<img class="dynamic" src="{{asset('img/nav/nav10.JPG')}}"><br><br>
+
+                <label><b>Step 1 :</b>&nbsp;</label>
+				Update the current name and username.<br><br>
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Click 'Save Changes' [14] to update the account name.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav11.JPG')}}"><br><br>
+				
+				<label><b>Step 3 :</b>&nbsp;</label>
+				Click [15] to confirm the changes. A message will appear once the changes are successfully made.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav12.JPG')}}"><br><br>
+                
+                <p class="text-danger"><b><em>Edit Account Picture</em></b>&nbsp;</p>
+				<img class="dynamic" src="{{asset('img/nav/nav10.JPG')}}"><br><br>
+
+                <label><b>Step 1 :</b>&nbsp;</label>
+				To change the account picture, click [16] to select an image.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav13.JPG')}}"><br><br>
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Once the image is selected, click [17] to save the changes<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav14.JPG')}}"><br><br>
+				
+				<label><b>Step 3 :</b>&nbsp;</label>
+				Click [18] to confirm the changes. A message will appear once the changes are successfully made.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav12.JPG')}}"><br><br>
+                
+                <p class="text-danger"><b><em>Edit Account Password</em></b>&nbsp;</p>
+				<img class="dynamic" src="{{asset('img/nav/nav10.JPG')}}"><br><br>
+
+                <label><b>Step 1 :</b>&nbsp;</label>
+				To change the password, input the current password, then input the new password.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav15.JPG')}}"><br><br>
+
+				<label><b>Step 2 :</b>&nbsp;</label>
+				Click [19] to save the changes.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav16.JPG')}}"><br><br>
+				
+				<label><b>Step 3 :</b>&nbsp;</label>
+				Click [20] to confirm the changes. A message will appear once the changes are successfully made.<br><br>
+				<img class="dynamic" src="{{asset('img/nav/nav17.JPG')}}"><br><br>
+
+
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+		</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('pg-specific-js')
 <script>
-
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualAppointment").modal("show");
+    }
+})
 $('#confirmPwd').blur(() => {
     $newPwd = $('#newPwd').val();
     $confirmPwd = $('#confirmPwd').val();
