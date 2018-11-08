@@ -208,15 +208,11 @@ $(document).ready(function() {
     }
 });
 
-window.onhelp = function() {
-    return false;
-};
-window.onkeydown = evt => {
-    if (evt.keyCode == 112){
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
         $("#manualClinic").modal("show");
-        
     }
-    return false;
-};
+})
 </script>
 @endsection

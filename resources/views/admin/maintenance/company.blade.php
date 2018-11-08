@@ -97,15 +97,11 @@
 
 @section('pg-specific-js')
 <script>
-window.onhelp = function() {
-    return false;
-};
-window.onkeydown = evt => {
-    if (evt.keyCode == 112){
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
         $("#manualCompany").modal("show");
-        
     }
-    return false;
-};
+})
 </script>
 @endsection

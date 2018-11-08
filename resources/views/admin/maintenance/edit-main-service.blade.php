@@ -188,15 +188,11 @@
 		c[0].style.display = "none";
 		c[1].style.display = "block";
 	}
-	window.onhelp = function() {
-		return false;
-	};
-	window.onkeydown = evt => {
-		if (evt.keyCode == 112){
-			$("#manualEditService").modal("show");
-			
-		}
-		return false;
-	};
+	window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 112) { 
+        e.preventDefault();
+        $("#manualEditService").modal("show");
+    }
+})
 </script>
 @endsection
